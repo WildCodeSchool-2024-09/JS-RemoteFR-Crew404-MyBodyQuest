@@ -1,13 +1,13 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
-import itemRepository from "./itemRepository";
+import categoryRepository from "./categoryRepository";
 
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all items
-    const items = await itemRepository.readAll();
+    const items = await categoryRepository.readAll();
 
     // Respond with the items in JSON format
     res.json(items);
@@ -22,7 +22,7 @@ const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific item based on the provided ID
     const itemId = Number(req.params.id);
-    const item = await itemRepository.read(itemId);
+    const item = await categoryRepository.read(itemId);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
@@ -47,7 +47,7 @@ const add: RequestHandler = async (req, res, next) => {
     };
 
     // Create the item
-    const insertId = await itemRepository.create(newItem);
+    const insertId = await categoryRepository.create(newItem);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });

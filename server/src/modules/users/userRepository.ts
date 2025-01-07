@@ -8,7 +8,7 @@ type Item = {
   user_id: number;
 };
 
-class ItemRepository {
+class UserRepository {
   // The C of CRUD - Create operation
 
   async create(item: Omit<Item, "id">) {
@@ -58,4 +58,4 @@ class ItemRepository {
   // }
 }
 
-export default new ItemRepository();
+export default new UserRepository();
