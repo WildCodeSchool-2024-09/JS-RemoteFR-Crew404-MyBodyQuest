@@ -8,7 +8,7 @@ type Quests = {
   description: string;
   xp: number;
   category_id: number;
-  };
+};
 
 class QuestsRepository {
   // The C of CRUD - Create operation

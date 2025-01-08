@@ -23,7 +23,18 @@ class TrackingRepository {
     // Execute the SQL INSERT query to add a new tracking to the "tracking" table
     const [result] = await databaseClient.query<Result>(
       "insert into tracking (date, mesure_size, mesure_chest, mesure_breast, mesure_buttocks, mesure_hips, mesure_calves, weight, comments,user_id) values (?, ?,?,?,?,?,?,?,?,?)",
-      [tracking.date,tracking.mesure_size,tracking.mesure_chest,tracking.mesure_breast,tracking.mesure_buttocks,tracking.mesure_hips,tracking.mesure_calves,tracking.weight,tracking.comments ,tracking.user_id],
+      [
+        tracking.date,
+        tracking.mesure_size,
+        tracking.mesure_chest,
+        tracking.mesure_breast,
+        tracking.mesure_buttocks,
+        tracking.mesure_hips,
+        tracking.mesure_calves,
+        tracking.weight,
+        tracking.comments,
+        tracking.user_id,
+      ],
     );
 
     // Return the ID of the newly inserted tracking

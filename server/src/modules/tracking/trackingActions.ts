@@ -50,7 +50,7 @@ const add: RequestHandler = async (req, res, next) => {
       mesure_hips: req.body.mesure_hips,
       mesure_calves: req.body.mesure_calves,
       weight: req.body.weight,
-      comments:req.body.comments,
+      comments: req.body.comments,
       user_id: req.body.user_id,
     };
 

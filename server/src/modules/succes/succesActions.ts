@@ -47,7 +47,7 @@ const add: RequestHandler = async (req, res, next) => {
     };
 
     // Create the succes
-   const insertId = await succesRepository.create(newSuccess);
+    const insertId = await succesRepository.create(newSuccess);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted success
     res.status(201).json({ insertId });

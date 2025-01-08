@@ -42,7 +42,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the user data from the request body
     const newUser = {
-      firstname: req.body.firstname, 
+      firstname: req.body.firstname,
       lastname: req.body.lastname,
       avatar: req.body.avatar,
       email: req.body.email,

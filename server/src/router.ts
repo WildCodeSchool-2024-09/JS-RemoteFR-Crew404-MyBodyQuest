@@ -5,7 +5,6 @@ const router = express.Router();
 /* ************************************************************************* */
 // Define Your API Routes Here
 
-
 import levelsActions from "./modules/levels/levelsActions";
 
 router.get("/api/levels", levelsActions.browse);
@@ -38,6 +37,5 @@ import succesActions from "./modules/succes/succesActions";
 router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);
-
 
 export default router;

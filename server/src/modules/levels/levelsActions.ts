@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
-import levelRepository from "./levelsRepository" 
+import levelRepository from "./levelsRepository";
 
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
@@ -42,7 +42,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the level data from the request body
     const newLevel = {
-      xp_max:req.body.xp_max
+      xp_max: req.body.xp_max,
     };
 
     // Create the level
@@ -56,4 +56,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read , add};
+export default { browse, read, add };

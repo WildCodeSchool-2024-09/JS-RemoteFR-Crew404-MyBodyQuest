@@ -4,7 +4,7 @@ import type { Result, Rows } from "../../../database/client";
 
 type User = {
   id: number;
-  firstname: string; 
+  firstname: string;
   lastname: string;
   avatar: string;
   email: string;
@@ -26,7 +26,21 @@ class UserRepository {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
       "insert into users (firstname, lastname, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-      [user.firstname, user.lastname, user.avatar, user.email, user.password, user.birthday_date, user.size, user.objective, user.initial_weight, user.desired_weight, user.weight_frequency, user.current_xp, user.level_id],
+      [
+        user.firstname,
+        user.lastname,
+        user.avatar,
+        user.email,
+        user.password,
+        user.birthday_date,
+        user.size,
+        user.objective,
+        user.initial_weight,
+        user.desired_weight,
+        user.weight_frequency,
+        user.current_xp,
+        user.level_id,
+      ],
     );
 
     // Return the ID of the newly inserted user

@@ -4,9 +4,9 @@ import type { Result, Rows } from "../../../database/client";
 
 type Category = {
   id: number;
-  name:string;
-  success_id:number;
-  };
+  name: string;
+  success_id: number;
+};
 
 class CategoryRepository {
   // The C of CRUD - Create operation

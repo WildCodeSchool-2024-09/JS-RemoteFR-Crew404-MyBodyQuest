@@ -42,7 +42,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the item data from the request body
     const newCategory = {
-      name: req.body.name, 
+      name: req.body.name,
       success_id: req.body.success_id,
     };
 
