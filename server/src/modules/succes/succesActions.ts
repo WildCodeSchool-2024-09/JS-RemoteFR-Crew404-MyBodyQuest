@@ -6,11 +6,11 @@ import succesRepository from "./succesRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
-    const items = await succesRepository.readAll();
+    // Fetch all success
+    const successes = await succesRepository.readAll();
 
-    // Respond with the items in JSON format
-    res.json(items);
+    // Respond with the success in JSON format
+    res.json(successes);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -20,16 +20,16 @@ const browse: RequestHandler = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific item based on the provided ID
-    const itemId = Number(req.params.id);
-    const item = await succesRepository.read(itemId);
+    // Fetch a specific success based on the provided ID
+    const successId = Number(req.params.id);
+    const success = await succesRepository.read(successId);
 
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    // If the success is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the success in JSON format
+    if (success == null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(success);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -40,16 +40,16 @@ const read: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the item data from the request body
-    const newItem = {
-      title: req.body.title,
-      user_id: req.body.user_id,
+    // Extract the success data from the request body
+    const newSuccess = {
+      succes_title: req.body.succes_title,
+      succes_img: req.body.succes_img,
     };
 
-    // Create the item
-    const insertId = await succesRepository.create(newItem);
+    // Create the succes
+   const insertId = await succesRepository.create(newSuccess);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted success
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware

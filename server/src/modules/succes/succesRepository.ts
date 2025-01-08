@@ -2,45 +2,45 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Item = {
+type Success = {
   id: number;
-  title: string;
-  user_id: number;
+  succes_title: string;
+  succes_img: string;
 };
 
 class SuccesRepository {
   // The C of CRUD - Create operation
 
-  async create(item: Omit<Item, "id">) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(success: Omit<Success, "id">) {
+    // Execute the SQL INSERT query to add a new success to the "success" table
     const [result] = await databaseClient.query<Result>(
-      "insert into item (title, user_id) values (?, ?)",
-      [item.title, item.user_id],
+      "insert into success (success_title, success_img) values (?,?)",
+      [success.succes_title, success.succes_img],
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted success
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific success by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+      "select * from success where id >= 1",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
-    return rows[0] as Item;
+    // Return the first row of the result, which represents the success
+    return rows[0] as Success;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await databaseClient.query<Rows>("select * from item");
+    // Execute the SQL SELECT query to retrieve all items from the "success" table
+    const [rows] = await databaseClient.query<Rows>("select * from success");
 
     // Return the array of items
-    return rows as Item[];
+    return rows as Success[];
   }
 
   // The U of CRUD - Update operation

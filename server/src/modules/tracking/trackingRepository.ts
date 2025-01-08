@@ -2,56 +2,64 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Item = {
+type Tracking = {
   id: number;
-  title: string;
+  date: Date;
+  mesure_size: number;
+  mesure_chest: number;
+  mesure_breast: number;
+  mesure_buttocks: number;
+  mesure_hips: number;
+  mesure_calves: number;
+  weight: number;
+  comments: string;
   user_id: number;
 };
 
 class TrackingRepository {
   // The C of CRUD - Create operation
 
-  async create(item: Omit<Item, "id">) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(tracking: Omit<Tracking, "id">) {
+    // Execute the SQL INSERT query to add a new tracking to the "tracking" table
     const [result] = await databaseClient.query<Result>(
-      "insert into item (title, user_id) values (?, ?)",
-      [item.title, item.user_id],
+      "insert into tracking (date, mesure_size, mesure_chest, mesure_breast, mesure_buttocks, mesure_hips, mesure_calves, weight, comments,user_id) values (?, ?,?,?,?,?,?,?,?,?)",
+      [tracking.date,tracking.mesure_size,tracking.mesure_chest,tracking.mesure_breast,tracking.mesure_buttocks,tracking.mesure_hips,tracking.mesure_calves,tracking.weight,tracking.comments ,tracking.user_id],
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted tracking
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific tracking by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+      "select * from tracking where id >=1",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
-    return rows[0] as Item;
+    // Return the first row of the result, which represents the tracking
+    return rows[0] as Tracking;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await databaseClient.query<Rows>("select * from item");
+    // Execute the SQL SELECT query to retrieve all tracking from the "tracking" table
+    const [rows] = await databaseClient.query<Rows>("select * from tracking");
 
-    // Return the array of items
-    return rows as Item[];
+    // Return the array of trackings
+    return rows as Tracking[];
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // TODO: Implement the update operation to modify an existing tracking
 
-  // async update(item: Item) {
+  // async update(tracking: tracking) {
   //   ...
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove an tracking by its ID
 
   // async delete(id: number) {
   //   ...

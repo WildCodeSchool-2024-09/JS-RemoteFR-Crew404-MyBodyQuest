@@ -2,56 +2,58 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Item = {
+type Quests = {
   id: number;
-  title: string;
-  user_id: number;
-};
+  quest_title: string;
+  description: string;
+  xp: number;
+  category_id: number;
+  };
 
 class QuestsRepository {
   // The C of CRUD - Create operation
 
-  async create(item: Omit<Item, "id">) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(quests: Omit<Quests, "id">) {
+    // Execute the SQL INSERT query to add a new quest to the "quests" table
     const [result] = await databaseClient.query<Result>(
-      "insert into item (title, user_id) values (?, ?)",
-      [item.title, item.user_id],
+      "insert into quests (quest_title, description, xp, category_id) values (?, ?, ?, ?)",
+      [quests.quest_title, quests.description, quests.xp, quests.category_id],
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted quest
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific quest by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+      "select * from quests where id >= 1",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
-    return rows[0] as Item;
+    // Return the first row of the result, which represents the quest
+    return rows[0] as Quests;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await databaseClient.query<Rows>("select * from item");
+    // Execute the SQL SELECT query to retrieve all quests from the "quests" table
+    const [rows] = await databaseClient.query<Rows>("select * from quests");
 
-    // Return the array of items
-    return rows as Item[];
+    // Return the array of quests
+    return rows as Quests[];
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // TODO: Implement the update operation to modify an existing quest
 
-  // async update(item: Item) {
+  // async update(quest: Quest) {
   //   ...
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove an quest by its ID
 
   // async delete(id: number) {
   //   ...

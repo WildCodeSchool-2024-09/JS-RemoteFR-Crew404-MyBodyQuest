@@ -1,16 +1,16 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
-import levelsRepository from "./levelsRepository";
+import levelRepository from "./levelsRepository" 
 
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
-    const items = await levelsRepository.readAll();
+    // Fetch all levels
+    const levels = await levelRepository.readAll();
 
-    // Respond with the items in JSON format
-    res.json(items);
+    // Respond with the levels in JSON format
+    res.json(levels);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -20,16 +20,16 @@ const browse: RequestHandler = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific item based on the provided ID
-    const itemId = Number(req.params.id);
-    const item = await levelsRepository.read(itemId);
+    // Fetch a specific levels based on the provided ID
+    const levelId = Number(req.params.id);
+    const level = await levelRepository.read(levelId);
 
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    // If the level is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the level in JSON format
+    if (level == null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(level);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -40,16 +40,15 @@ const read: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the item data from the request body
-    const newItem = {
-      title: req.body.title,
-      user_id: req.body.user_id,
+    // Extract the level data from the request body
+    const newLevel = {
+      xp_max:req.body.xp_max
     };
 
-    // Create the item
-    const insertId = await levelsRepository.create(newItem);
+    // Create the level
+    const insertId = await levelRepository.create(newLevel);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted level
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -57,4 +56,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+export default { browse, read , add};

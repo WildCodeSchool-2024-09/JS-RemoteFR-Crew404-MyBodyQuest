@@ -6,11 +6,11 @@ import questsRepository from "./questsRepository";
 // The B of BREAD - Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
-    const items = await questsRepository.readAll();
+    // Fetch all Quests
+    const quests = await questsRepository.readAll();
 
-    // Respond with the items in JSON format
-    res.json(items);
+    // Respond with the Quests in JSON format
+    res.json(quests);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -20,16 +20,16 @@ const browse: RequestHandler = async (req, res, next) => {
 // The R of BREAD - Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific item based on the provided ID
-    const itemId = Number(req.params.id);
-    const item = await questsRepository.read(itemId);
+    // Fetch a specific Quest based on the provided ID
+    const questId = Number(req.params.id);
+    const quest = await questsRepository.read(questId);
 
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    // If the Quest is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the Quests in JSON format
+    if (quest == null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(quest);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -40,16 +40,18 @@ const read: RequestHandler = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the item data from the request body
-    const newItem = {
-      title: req.body.title,
-      user_id: req.body.user_id,
+    // Extract the Quest data from the request body
+    const newQuest = {
+      quest_title: req.body.quest_title,
+      description: req.body.description,
+      xp: req.body.xp,
+      category_id: req.body.category_id,
     };
 
-    // Create the item
-    const insertId = await questsRepository.create(newItem);
+    // Create the Quest
+    const insertId = await questsRepository.create(newQuest);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted Quest
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware

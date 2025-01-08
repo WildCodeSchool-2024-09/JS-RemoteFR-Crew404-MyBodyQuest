@@ -2,56 +2,56 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Item = {
+type Category = {
   id: number;
-  title: string;
-  user_id: number;
-};
+  name:string;
+  success_id:number;
+  };
 
 class CategoryRepository {
   // The C of CRUD - Create operation
 
-  async create(item: Omit<Item, "id">) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(category: Omit<Category, "id">) {
+    // Execute the SQL INSERT query to add a new category to the "category" table
     const [result] = await databaseClient.query<Result>(
-      "insert into item (title, user_id) values (?, ?)",
-      [item.title, item.user_id],
+      "insert into category (name, success_id) values (?, ?)",
+      [category.name, category.success_id],
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted category
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific category by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+      "select * from category where id >= 1",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
-    return rows[0] as Item;
+    // Return the first row of the result, which represents the category
+    return rows[0] as Category;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await databaseClient.query<Rows>("select * from item");
+    // Execute the SQL SELECT query to retrieve all categories from the "category" table
+    const [rows] = await databaseClient.query<Rows>("select * from category");
 
-    // Return the array of items
-    return rows as Item[];
+    // Return the array of categories
+    return rows as Category[];
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // TODO: Implement the update operation to modify an existing category
 
-  // async update(item: Item) {
+  // async update(category: Category) {
   //   ...
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove an category by its ID
 
   // async delete(id: number) {
   //   ...

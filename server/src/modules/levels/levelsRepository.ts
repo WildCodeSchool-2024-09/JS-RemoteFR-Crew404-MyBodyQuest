@@ -2,60 +2,59 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type Item = {
+type Level = {
   id: number;
-  title: string;
-  user_id: number;
+  xp_max: number;
 };
 
-class LevelsRepository {
+class LevelRepository {
   // The C of CRUD - Create operation
 
-  async create(item: Omit<Item, "id">) {
-    // Execute the SQL INSERT query to add a new item to the "item" table
+  async create(level: Omit<Level, "id">) {
+    // Execute the SQL INSERT query to add a new level to the "levels" table
     const [result] = await databaseClient.query<Result>(
-      "insert into item (title, user_id) values (?, ?)",
-      [item.title, item.user_id],
+      "insert into levels (xp_max) values (?)",
+      [level.xp_max],
     );
 
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted level
     return result.insertId;
   }
 
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific level by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from item where id = ?",
+      "select * from levels where id >= 1",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
-    return rows[0] as Item;
+    // Return the first row of the result, which represents the level
+    return rows[0] as Level;
   }
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await databaseClient.query<Rows>("select * from item");
+    // Execute the SQL SELECT query to retrieve all levels from the "level" table
+    const [rows] = await databaseClient.query<Rows>("select * from levels");
 
-    // Return the array of items
-    return rows as Item[];
+    // Return the array of levels
+    return rows as Level[];
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // TODO: Implement the update operation to modify an existing level
 
-  // async update(item: Item) {
+  // async update(level: Level) {
   //   ...
   // }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
+  // TODO: Implement the delete operation to remove an level by its ID
 
   // async delete(id: number) {
   //   ...
   // }
 }
 
-export default new LevelsRepository();
+export default new LevelRepository();
