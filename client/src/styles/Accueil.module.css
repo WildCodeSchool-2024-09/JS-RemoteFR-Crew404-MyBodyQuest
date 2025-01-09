@@ -168,19 +168,9 @@ p {
   text-align: center;
 }
 
-.closeConnexion,
-.closeCreateAccount .closeInscription {
-  margin-top: 20px;
-  background-color: var(--another-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .createAccount,
-.inscription {
+.inscription,
+.buttonConnexion {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: var(--another-color);
@@ -195,7 +185,8 @@ p {
 .connexion:hover,
 .closeConnexion:hover,
 .closeCreateAccount:hover,
-.closeInscription:hover {
+.closeInscription:hover,
+.buttonConnexion:hover {
   background-color: var(--other-color);
 }
 

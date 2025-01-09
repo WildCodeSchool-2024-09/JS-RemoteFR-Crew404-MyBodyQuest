@@ -65,6 +65,9 @@ function Accueil() {
               Créer un compte
             </button>
 
+            <button type="button" className={style.buttonConnexion}>
+              Connexion
+            </button>
             <button
               type="button"
               className={style.closeConnexion}
