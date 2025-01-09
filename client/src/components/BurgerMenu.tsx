@@ -3,7 +3,14 @@ import styles from "../styles/BurgerMenu.module.css";
 
 function BurgerMenu() {
   return (
-    <Menu>
+    <Menu
+      width={"00px"}
+      isOpen={false}
+      onStateChange={(state) => console.log("Menu is open:", state.isOpen)}
+      disableAutoFocus
+    >
+      {/* Empêche le focus automatique lors de l'ouverture */}
+
       <a className={styles.menuItem} href="/suivi">
         Suivi
       </a>
