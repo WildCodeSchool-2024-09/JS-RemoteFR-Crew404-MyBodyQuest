@@ -1,3 +1,4 @@
+import BurgerMenu from "../components/BurgerMenu.tsx";
 import styles from "../styles/Layout.module.css";
 
 function Layout() {
@@ -11,6 +12,7 @@ function Layout() {
           src="images/illustration-avatar-degrade_52683-142426.avif"
           alt="avatar user"
         />
+        <BurgerMenu />
       </header>
       <nav>
         <ul>

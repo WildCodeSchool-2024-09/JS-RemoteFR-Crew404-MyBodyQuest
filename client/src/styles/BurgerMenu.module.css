@@ -1,0 +1,38 @@
+/* Menu container */
+.bm-menu {
+  background: #373a47; /* Couleur de fond du menu */
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Lien des éléments du menu */
+.bm-item {
+  display: block;
+  color: #b8b7ad;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bm-item:hover {
+  color: red;
+}
+
+/* Bouton burger */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px; /* Position à ajuster */
+  top: 36px; /* Position à ajuster */
+}
+
+/* Icones des trois lignes du burger */
+.bm-burger-bars {
+  background: #b8b7ad;
+}
+
+/* Fond derrière le menu lorsqu'il est ouvert */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3); /* Couleur semi-transparente */
+}
