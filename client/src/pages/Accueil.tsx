@@ -8,6 +8,10 @@ function Accueil() {
   const [isConnexionOpen, setConnexionOpen] = useState(false);
   const [isCreateAccountOpen, setCreateAccountOpen] = useState(false);
   const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [motdepasse, setMotdepasse] = useState("");
+
   return (
     <>
       {/* BOUTON CONNEXION */}
@@ -32,8 +36,23 @@ function Accueil() {
         >
           <div className={style.modaleConnexionContent}>
             <h2>Se connecter</h2>
-            <p>Votre email</p>
-            <p>Votre mot de passe</p>
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Votre email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={style.inputField}
+            />
+            <input
+              type="motdepasse"
+              id="motdepasse"
+              placeholder="Votre mot de passe"
+              value={motdepasse}
+              onChange={(e) => setMotdepasse(e.target.value)}
+              className={style.inputField}
+            />
 
             <button
               type="button"

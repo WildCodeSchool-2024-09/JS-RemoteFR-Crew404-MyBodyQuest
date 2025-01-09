@@ -120,23 +120,13 @@ p {
 }
 
 .Content {
-  background-color: white; /* Fond blanc de la modale */
+  background-color: white;
   padding: 20px;
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Ombre */
-  max-width: 400px; /* Largeur maximale de la modale */
-  width: 90%; /* Largeur responsive */
-  text-align: center; /* Centrer le contenu */
-}
-
-.close {
-  margin-top: 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
 }
 
 /* MODALES */
