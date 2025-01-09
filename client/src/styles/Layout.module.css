@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "Tajawal";
+  src: url(../../public/fonts/Tajawal/Tajawal-Regular.ttf);
+}
+
+/*MOBILE FIRST */
+/*Header Mobile*/
+:root {
+  --text-font-family: Tajawal;
+  --background-color: #f2f0f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.coeur {
+  width: 44px;
+  height: 44px;
+  animation: heartbeat 2.5s ease-in-out infinite, blink 1s step-start infinite;
+}
+
+/* Animation de clignotement qui imite un battement de cœur (pouls) */
+@keyframes heartbeat {
+  0%,
+  100% {
+    opacity: 1; /* Début et fin : logo visible */
+  }
+  20% {
+    opacity: 0.6; /* Premier battement : logo devient plus léger */
+  }
+  40% {
+    opacity: 1; /* Retour à la pleine opacité */
+  }
+  60% {
+    opacity: 0.6; /* Deuxième battement : logo devient plus léger */
+  }
+  80% {
+    opacity: 1; /* Retour à la pleine opacité */
+  }
+}
+
+/* Animation de clignotement (opacité) */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5; /* Clignotement au milieu de l'animation */
+  }
+}
+
+.logo {
+  width: 166px;
+  height: 44px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+}
+
+nav {
+  display: none;
+}
+
+/*Footer Mobile*/
+footer {
+  font-family: var(--text-font-family);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 0.8rem;
+  background-color: var(--background-color);
+  border-radius: 20px;
+  height: 41px;
+  width: 90%; /* Ajustez la largeur selon vos besoins */
+  max-width: 337px; /* Limite la largeur maximale */
+  margin: 0.8rem auto; /* Centre le conteneur horizontalement */
+  position: fixed; /* Fixe le footer en bas de la page */
+  bottom: 0; /* Positionne le footer en bas */
+  left: 50%; /* Centre horizontalement */
+  transform: translateX(-50%); /* Centre le footer */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
+}
+
+footer img {
+  width: 25px;
+  height: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*RESPONSIVE DESKTOP*/
+/*Header Desktop
+
+
+ul{
+    width: 45%;
+    height: 10%;
+    list-style: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}*/
