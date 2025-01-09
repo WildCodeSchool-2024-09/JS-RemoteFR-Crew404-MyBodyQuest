@@ -23,6 +23,10 @@ function Accueil() {
             Faire le questionnaire
           </button>
         </div>
+
+        <div className={style.avis}>
+          <div className={style.card_avis} />
+        </div>
       </header>
     </>
   );
