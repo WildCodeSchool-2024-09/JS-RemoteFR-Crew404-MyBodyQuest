@@ -9,7 +9,8 @@
 
 header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
 }
@@ -32,7 +33,7 @@ p {
   margin-top: 5rem;
   border-radius: 2rem;
   padding: 1.5rem;
-  height: 15rem;
+  height: 13rem;
   width: 15em;
   background-color: var(--main-color);
   align-items: center;
@@ -75,4 +76,147 @@ p {
   font-family: "Libre Franklin", serif;
   margin-top: 2rem;
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* AVIS */
+
+.conteneur_avis {
+  margin: 2rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: auto;
+  width: auto;
+  background-color: var(--main-color);
+  align-items: center;
+  text-align: center;
+}
+
+.card_avis {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 12rem;
+  height: 12rem;
+  margin: 0.8rem;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+
+.note_avis,
+.titre_avis,
+.avis,
+.name_lastname,
+.date_avis {
+  margin: 5px 0;
+}
+
+.date_avis {
+  color: grey;
+}
+
+.Content {
+  background-color: white; /* Fond blanc de la modale */
+  padding: 20px;
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Ombre */
+  max-width: 400px; /* Largeur maximale de la modale */
+  width: 90%; /* Largeur responsive */
+  text-align: center; /* Centrer le contenu */
+}
+
+.close {
+  margin-top: 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* MODALES */
+
+.modaleConnexion,
+.modaleCreateAccount,
+.modaleInscription {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+.modaleConnexion.active,
+.modaleCreateAccount.active,
+.modaleInscription.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modaleConnexionContent,
+.modaleCreateAccountContent,
+.modaleInscriptionContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.closeConnexion,
+.closeCreateAccount .closeInscription {
+  margin-top: 20px;
+  background-color: var(--another-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createAccount,
+.inscription {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--another-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createAccount:hover,
+.inscription:hover,
+.connexion:hover,
+.closeConnexion:hover,
+.closeCreateAccount:hover,
+.closeInscription:hover {
+  background-color: var(--other-color);
+}
+
+.closeConnexion,
+.closeCreateAccount,
+.closeInscription {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: var(--another-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
