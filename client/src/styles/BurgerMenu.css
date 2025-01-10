@@ -5,17 +5,18 @@
     border-radius: 100% !important;
     position: fixed;
     width: 11%;
-    height: 7%;
+    height: 6%;
     left: 85%;
     top: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
   }
 
   .bm-icon {
-    width: 80% !important;
-    height: 80% !important;
+    width: 70% !important;
+    height: 60% !important;
   }
 
   .bm-overlay {

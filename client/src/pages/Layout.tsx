@@ -12,7 +12,7 @@ function Layout() {
           src="images/illustration-avatar-degrade_52683-142426.avif"
           alt="avatar user"
         />
-        <BurgerMenu />
+        <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
       <nav>
         <ul>
