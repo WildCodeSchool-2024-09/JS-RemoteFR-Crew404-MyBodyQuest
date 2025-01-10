@@ -17,7 +17,7 @@ header {
 .coeur {
   width: 44px;
   height: 44px;
-  animation: heartbeat 2.5s ease-in-out infinite, blink 1s step-start infinite;
+  animation: heartbeat 2.5s ease-in-out 1, blink 1s step-start 5;
 }
 
 /* Animation de clignotement qui imite un battement de cœur (pouls) */

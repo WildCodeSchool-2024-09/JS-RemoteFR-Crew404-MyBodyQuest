@@ -1,31 +1,19 @@
 import { slide as Menu } from "react-burger-menu";
-import styles from "../styles/BurgerMenu.module.css";
+import "../styles/BurgerMenu.css";
 
 function BurgerMenu() {
   return (
     <Menu
-      width={"00px"}
+      right
+      customBurgerIcon={<img src="images/hamburger.png" alt="icon" />} // Ajout de l'icône du menu
       isOpen={false}
       onStateChange={(state) => console.log("Menu is open:", state.isOpen)}
-      disableAutoFocus
     >
-      {/* Empêche le focus automatique lors de l'ouverture */}
-
-      <a className={styles.menuItem} href="/suivi">
-        Suivi
-      </a>
-      <a className={styles.menuItem} href="/mes-quetes">
-        Mes Quêtes
-      </a>
-      <a className={styles.menuItem} href="/mes-succes">
-        Mes Succès
-      </a>
-      <a className={styles.menuItem} href="/alimentation">
-        Alimentation
-      </a>
-      <a className={styles.menuItem} href="/mon-compte">
-        Mon Compte
-      </a>
+      <a href="/suivi">Suivi</a>
+      <a href="/mes-quetes">Mes Quêtes</a>
+      <a href="/mes-succes">Mes Succès</a>
+      <a href="/alimentation">Alimentation</a>
+      <a href="/mon-compte">Mon Compte</a>
     </Menu>
   );
 }
