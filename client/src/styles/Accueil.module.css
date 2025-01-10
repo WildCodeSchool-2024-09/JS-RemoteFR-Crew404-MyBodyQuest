@@ -6,198 +6,490 @@
 }
 
 /* MOBILE FIRST */
+@media (max-width: 767px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+  }
 
-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 0;
+  h1 {
+    color: var(--other-color);
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    color: var(--another-color);
+    font-size: 0.7rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+  }
+
+  .bienvenue {
+    margin-top: 5rem;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    height: 13rem;
+    width: 15em;
+    background-color: var(--main-color);
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .logo img {
+    width: 50%;
+    height: auto;
+  }
+
+  .connexion {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: "Libre Franklin", serif;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .questionnaire {
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: "Libre Franklin", serif;
+    margin-top: 2rem;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* AVIS */
+
+  .conteneur_avis {
+    margin: 2rem;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    height: auto;
+    width: auto;
+    background-color: var(--main-color);
+    align-items: center;
+    text-align: center;
+  }
+
+  .card_avis {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 12rem;
+    height: 12rem;
+    margin: 0.8rem;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
+
+  .note_avis,
+  .titre_avis,
+  .avis,
+  .name_lastname,
+  .date_avis {
+    margin: 5px 0;
+  }
+
+  .date_avis {
+    color: grey;
+  }
+
+  .Content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+
+  /* MODALES */
+
+  .textlogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h3 {
+    color: var(--another-color);
+    font-family: "Libre Franklin", serif;
+  }
+
+  .modaleConnexion,
+  .modaleCreateAccount,
+  .modaleInscription {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+  }
+
+  .modaleConnexion.active,
+  .modaleCreateAccount.active,
+  .modaleInscription.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modaleConnexionContent,
+  .modaleCreateAccountContent,
+  .modaleInscriptionContent {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-color);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    text-align: center;
+  }
+
+  .createAccount,
+  .inscription,
+  .buttonConnexion,
+  .buttonInscription,
+  .closeConnexion,
+  .closeCreateAccount,
+  .closeInscription {
+    margin: 0.3rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .createAccount:hover,
+  .inscription:hover,
+  .connexion:hover,
+  .closeConnexion:hover,
+  .closeCreateAccount:hover,
+  .closeInscription:hover,
+  .buttonConnexion:hover {
+    background-color: var(--other-color);
+  }
+
+  input {
+    font-family: "Libre Franklin", serif;
+    margin: 0.4rem;
+    padding: 0.3rem;
+    border-radius: 2rem;
+    border: var(--another-color);
+    border-width: thick;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .logoModale {
+    width: 20%;
+  }
+
+  .logoMail,
+  .logoMdp {
+    width: 5%;
+  }
+
+  /* STYLE MODALE INSCRIPTION */
+
+  .inputContainer {
+    margin: 0;
+  }
+
+  /* STYLE MODALE "FAISONS CONNAISSANCE" */
+
+  .infosUserContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logoAvatar {
+    width: 20%;
+    padding: 0.5rem;
+  }
 }
 
-h1 {
-  color: var(--other-color);
-  font-size: 1.2rem;
-}
+/* DESKTOP  */
 
-h2 {
-  color: var(--another-color);
-  font-size: 0.7rem;
-}
+@media (min-width: 767px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+  }
 
-p {
-  font-size: 0.6rem;
-}
+  h1 {
+    color: var(--other-color);
+    font-size: 3rem;
+  }
 
-.bienvenue {
-  margin-top: 5rem;
-  border-radius: 2rem;
-  padding: 1.5rem;
-  height: 13rem;
-  width: 15em;
-  background-color: var(--main-color);
-  align-items: center;
-  text-align: center;
-}
+  h2 {
+    color: var(--another-color);
+    font-size: 1.5rem;
+  }
 
-.logo {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-}
+  p {
+    font-size: 1rem;
+  }
 
-.logo img {
-  width: 50%;
-  height: auto;
-}
+  .bienvenue {
+    margin-top: 10rem;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    height: 20rem;
+    width: 70rem;
+    background-color: var(--main-color);
+    align-items: center;
+    text-align: center;
+  }
 
-.connexion {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--another-color);
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-family: "Libre Franklin", serif;
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-}
+  .questionnaire {
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: "Libre Franklin", serif;
+    margin-top: 2rem;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
 
-.questionnaire {
-  background-color: var(--another-color);
-  color: white;
-  border: none;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-family: "Libre Franklin", serif;
-  margin-top: 2rem;
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-}
+  .logo {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 50%;
+  }
 
-/* AVIS */
+  .logo img {
+    width: 40%;
+    height: auto;
+  }
 
-.conteneur_avis {
-  margin: 2rem;
-  border-radius: 2rem;
-  padding: 1.5rem;
-  height: auto;
-  width: auto;
-  background-color: var(--main-color);
-  align-items: center;
-  text-align: center;
-}
+  .connexion {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: "Libre Franklin", serif;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
 
-.card_avis {
-  background-color: white;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 12rem;
-  height: 12rem;
-  margin: 0.8rem;
-}
+  /* AVIS */
 
-.avatar {
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
-  object-fit: cover;
-}
+  .conteneur_avis {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 2rem;
+  }
 
-.note_avis,
-.titre_avis,
-.avis,
-.name_lastname,
-.date_avis {
-  margin: 5px 0;
-}
+  .card_avis {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 30%;
+    margin: 1rem 0;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
+  }
 
-.date_avis {
-  color: grey;
-}
+  .avatar {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+  }
 
-.Content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-}
+  .note_avis,
+  .titre_avis,
+  .avis,
+  .name_lastname,
+  .date_avis {
+    margin: 5px 0;
+  }
 
-/* MODALES */
+  .date_avis {
+    color: grey;
+  }
 
-.modaleConnexion,
-.modaleCreateAccount,
-.modaleInscription {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.3s;
-}
+  .Content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
 
-.modaleConnexion.active,
-.modaleCreateAccount.active,
-.modaleInscription.active {
-  visibility: visible;
-  opacity: 1;
-}
+  /* MODALES */
 
-.modaleConnexionContent,
-.modaleCreateAccountContent,
-.modaleInscriptionContent {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-}
+  .textlogoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.createAccount,
-.inscription,
-.buttonConnexion {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: var(--another-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+  h3 {
+    color: var(--another-color);
+    font-family: "Libre Franklin", serif;
+  }
 
-.createAccount:hover,
-.inscription:hover,
-.connexion:hover,
-.closeConnexion:hover,
-.closeCreateAccount:hover,
-.closeInscription:hover,
-.buttonConnexion:hover {
-  background-color: var(--other-color);
-}
+  .modaleConnexion,
+  .modaleCreateAccount,
+  .modaleInscription {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
+  }
 
-.closeConnexion,
-.closeCreateAccount,
-.closeInscription {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: var(--another-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  .modaleConnexion.active,
+  .modaleCreateAccount.active,
+  .modaleInscription.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modaleConnexionContent,
+  .modaleCreateAccountContent,
+  .modaleInscriptionContent {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-color);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    text-align: center;
+  }
+
+  .createAccount,
+  .inscription,
+  .buttonConnexion,
+  .buttonInscription,
+  .closeConnexion,
+  .closeCreateAccount,
+  .closeInscription {
+    margin: 0.3rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: var(--another-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .createAccount:hover,
+  .inscription:hover,
+  .connexion:hover,
+  .closeConnexion:hover,
+  .closeCreateAccount:hover,
+  .closeInscription:hover,
+  .buttonConnexion:hover {
+    background-color: var(--other-color);
+  }
+
+  input {
+    font-family: "Libre Franklin", serif;
+    margin: 0.4rem;
+    padding: 0.3rem;
+    border-radius: 2rem;
+    border: var(--another-color);
+    border-width: thick;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .logoModale {
+    width: 20%;
+  }
+
+  .logoMail,
+  .logoMdp {
+    width: 5%;
+  }
+
+  /* STYLE MODALE INSCRIPTION */
+
+  .inputContainer {
+    margin: 0;
+  }
+
+  /* STYLE MODALE "FAISONS CONNAISSANCE" */
+
+  .infosUserContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logoAvatar {
+    width: 20%;
+    padding: 0.5rem;
+  }
 }
