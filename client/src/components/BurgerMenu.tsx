@@ -1,7 +1,24 @@
 import { slide as Menu } from "react-burger-menu";
 import "../styles/BurgerMenu.css";
+import { useEffect, useState } from "react";
 
 function BurgerMenu() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Fonction pour vérifier la taille de l'écran
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // 768px est un exemple de largeur max pour mobile
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile); // Écoute les changements de taille d'écran
+    return () => window.removeEventListener("resize", checkMobile); // Nettoyage
+  }, []);
+
+  if (!isMobile)
+    // Rendu uniquement sur mobile
+    return null;
   return (
     <Menu
       right

@@ -1,52 +1,54 @@
-/*MENU BURGER - seule solution pour surpasser les propriétés par défaut du package - ne fonctionne pas en modules.css*/
-.bm-burger-button {
-  background-color: var(--bg-color-light) !important;
-  border-radius: 100% !important;
-  position: fixed;
-  width: 11%;
-  height: 7%;
-  left: 85%;
-  top: 3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+@media only screen and (max-width: 767px) {
+  /*MENU BURGER - seule solution pour surpasser les propriétés par défaut du package - ne fonctionne pas en modules.css*/
+  .bm-burger-button {
+    background-color: var(--bg-color-light) !important;
+    border-radius: 100% !important;
+    position: fixed;
+    width: 11%;
+    height: 7%;
+    left: 85%;
+    top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.bm-icon {
-  width: 80% !important;
-  height: 80% !important;
-}
+  .bm-icon {
+    width: 80% !important;
+    height: 80% !important;
+  }
 
-.bm-overlay {
-  display: none !important;
-}
+  .bm-overlay {
+    display: none !important;
+  }
 
-.bm-menu-wrap {
-  width: 40% !important;
-  height: 40% !important;
-}
+  .bm-menu-wrap {
+    width: 40% !important;
+    height: 40% !important;
+  }
 
-.bm-menu {
-  background-color: var(--bg-color-light) !important;
-  height: 70% !important;
-  border-radius: 10% !important;
-}
+  .bm-menu {
+    background-color: var(--bg-color-light) !important;
+    height: 70% !important;
+    border-radius: 10% !important;
+  }
 
-.bm-item-list {
-  display: flex;
-  flex-direction: column !important;
-  gap: 1rem;
-  align-items: start;
-  justify-content: center;
-  padding-left: 3rem;
-}
+  .bm-item-list {
+    display: flex;
+    flex-direction: column !important;
+    gap: 1rem;
+    align-items: start;
+    justify-content: center;
+    padding-left: 3rem;
+  }
 
-.bm-item {
-  color: black !important;
-  font-family: var(--title-font) !important;
-  font-size: var(--fontsize-title) !important;
-}
+  .bm-item {
+    color: black !important;
+    font-family: var(--title-font) !important;
+    font-size: var(--fontsize-title) !important;
+  }
 
-.bm-cross {
-  background-color: var(--bg-color-purple) !important;
+  .bm-cross {
+    background-color: var(--bg-color-purple) !important;
+  }
 }
