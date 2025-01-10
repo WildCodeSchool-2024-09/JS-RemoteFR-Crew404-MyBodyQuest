@@ -188,7 +188,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3>Faisons connaissance!</h3>
+              <h3>Questionnaire</h3>
             </section>
 
             <section className={style.inputContainer}>
@@ -311,7 +311,7 @@ function Accueil() {
             className={style.questionnaire}
             onClick={() => setModaleInscriptionOpen(true)}
           >
-            Faire le questionnaire
+            On fait connaissance ?
           </button>
         </section>
 

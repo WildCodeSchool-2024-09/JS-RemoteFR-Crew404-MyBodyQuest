@@ -444,7 +444,9 @@
   .closeConnexion:hover,
   .closeCreateAccount:hover,
   .closeInscription:hover,
-  .buttonConnexion:hover {
+  .buttonConnexion:hover,
+  .questionnaire:hover,
+  .buttonInscription:hover {
     background-color: var(--other-color);
   }
 
