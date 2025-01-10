@@ -306,7 +306,11 @@ function Accueil() {
             souhaitant perdre du poids ou prendre de la masse en leur offrant un
             accompagnement personnalisé
           </p>
-          <button type="button" className={style.questionnaire}>
+          <button
+            type="button"
+            className={style.questionnaire}
+            onClick={() => setModaleInscriptionOpen(true)}
+          >
             Faire le questionnaire
           </button>
         </section>
