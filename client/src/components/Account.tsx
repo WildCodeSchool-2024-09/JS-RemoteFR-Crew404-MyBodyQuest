@@ -1,106 +1,101 @@
+import style from "../styles/Account.module.css";
+
 export default function Account() {
   return (
     // --------------------------liste des formulaires utilisateurs------------------------------
 
-    <section className="Account">
-      <form action="" method="get" className="User">
-        <label>
+    <section className={style.account}>
+      <form action="" method="get" className={style.user}>
+        <label className={style.form}>
           Nom d'utilisateur * :
-          <input type="text" name="username" id="username" required />
+          <input
+            type="text"
+            name="username"
+            className={style.input}
+            id="username"
+            required
+          />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="Name">
-        <label>
+        <label className={style.form}>
           Nom * :
-          <input type="text" name="name" id="name" required />
+          <input
+            type="text"
+            name="lastname"
+            className={style.input}
+            id="lastname"
+            required
+          />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="firstname">
-        <label>
+        <label className={style.form}>
           Prénom * :
-          <input type="text" name="firstname" id="firstname" required />
+          <input
+            type="text"
+            name="firstname"
+            className={style.input}
+            id="firstname"
+            required
+          />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="birthday_date">
-        <label>
+        <label className={style.form}>
           Date d'anniversaire :
-          <input type="text" name="birthday_date" id="birthday_date" />
+          <input type="text" name="date" className={style.input} id="date" />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="age">
-        <label>
+        <label className={style.form}>
           Age :
-          <input type="text" name="age" id="age" />
+          <input type="text" name="age" className={style.input} id="age" />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="size">
-        <label>
+        <label className={style.form}>
           Taille * :
-          <input type="text" name="size" id="size" required />
+          <input
+            type="text"
+            name="size"
+            className={style.input}
+            id="size"
+            required
+          />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="original_weight">
-        <label>
+        <label className={style.form}>
           Poids Initial * :
           <input
             type="text"
-            name="woriginal_weight"
+            name="original_weight"
+            className={style.input}
             id="original_weight"
             required
           />
         </label>
-        <button type="button">modifier</button>
-      </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <form action="" method="get" className="desired_weight">
-        <label>
+        <label className={style.form}>
           Objectif de poids * :
           <input
             type="text"
             name="desired_weight"
+            className={style.input}
             id="desired_weight"
             required
           />
         </label>
-        <button type="button">modifier</button>
+
+        <section className={style.frequency}>
+          <p>Fréquence de pesée</p>
+          <button type="button" className={style.oneweek}>
+            1 fois/sem
+          </button>
+          <button type="button" className={style.twoweek}>
+            1 fois/2sem
+          </button>
+        </section>
+
+        <button type="button" className={style.notif}>
+          Paramètres de notification
+        </button>
+        <button type="button" className={style.pass}>
+          Modifier mon mot de passe
+        </button>
+
+        <button type="button" className={style.valid}>
+          Valider
+        </button>
       </form>
-
-      {/*---------------------------------------------------------- */}
-
-      <p>Fréquence de pesée</p>
-      <button type="button">1 fois/sem</button>
-      <button type="button">1 fois/2sem</button>
-
-      {/*---------------------------------------------------------- */}
-
-      <button type="button">Paramètres de notification</button>
-      <button type="button">Modifier mon mot de passe</button>
     </section>
   );
 }

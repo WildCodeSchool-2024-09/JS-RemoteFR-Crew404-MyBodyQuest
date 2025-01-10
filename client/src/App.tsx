@@ -1,4 +1,3 @@
-import "./components/Account";
 import Account from "./components/Account";
 
 function App() {
