@@ -1,11 +1,5 @@
-import Account from "./components/Account";
-
 function App() {
-  return (
-    <>
-      <Account />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
