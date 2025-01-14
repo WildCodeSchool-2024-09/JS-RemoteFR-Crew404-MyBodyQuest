@@ -28,12 +28,12 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
   },
   {
-
     path: "/accueil",
     element: <Accueil />,
+  },
+  {
     path: "/moncompte",
     element: <Layout />,
-
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
