@@ -1,0 +1,80 @@
+.mainDashoard {
+  margin: 0;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 992px) {
+    padding: 5em;
+  }
+}
+
+.helloUser h1 {
+  font-size: 2em;
+}
+
+.widgetsDashboard {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 3.5em;
+  gap: 2em;
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3em;
+  }
+}
+
+.widgetStats {
+  background-color: #f2f0f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20em;
+  border-radius: 1.2em;
+}
+
+.widgetTracking {
+  background-color: #f2f0f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20em;
+  border-radius: 1.2em;
+}
+
+.widgetQuests {
+  background-color: #f2f0f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20em;
+  border-radius: 1.2em;
+}
+
+.widgetSeasonalRecipe {
+  background-color: #f2f0f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 20em;
+  border-radius: 1.2em;
+  gap: 0.8em;
+  @media screen and (min-width: 992px) {
+    gap: 0.7em;
+  }
+}
+
+.imgSeasonalRecipe {
+  width: 60%;
+  @media screen and (min-width: 992px) {
+    width: 40%;
+  }
+}
+
+.widgetSeasonalRecipe p {
+  margin: 0 1em;
+}
