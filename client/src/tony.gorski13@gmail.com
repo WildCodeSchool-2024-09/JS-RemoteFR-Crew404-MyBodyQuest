@@ -7,9 +7,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-
-import Dashboard from "./pages/Dashboard";
 import Accueil from "./pages/Accueil";
+import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 
 // Import additional components for new routes
