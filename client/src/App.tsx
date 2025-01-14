@@ -4,8 +4,10 @@ import "./styles/Global.css";
 
 
 function App() {
-return
-<Accueil />;
+  return
+  <>
+<Accueil />
+  </>
 }
 
 
