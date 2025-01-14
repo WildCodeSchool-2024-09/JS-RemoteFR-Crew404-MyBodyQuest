@@ -183,10 +183,7 @@
   .createAccount,
   .inscription,
   .buttonConnexion,
-  .buttonInscription,
-  .closeConnexion,
-  .closeCreateAccount,
-  .closeInscription {
+  .buttonInscription {
     margin: 0.3rem;
     margin-top: 1rem;
     padding: 0.5rem;
@@ -196,6 +193,41 @@
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .closeConnexion {
+    position: absolute;
+    top: 11.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  .closeCreateAccount {
+    position: absolute;
+    top: 13rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+
+  .closeInscription {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
   }
 
   .createAccount:hover,
@@ -288,11 +320,13 @@
     background-color: var(--another-color);
     color: white;
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1.5rem;
     font-family: "Libre Franklin", serif;
     margin-top: 2rem;
+    width: 18rem;
+    height: 2.5rem;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   }
 
@@ -410,6 +444,7 @@
   .modaleInscriptionContent {
     display: flex;
     flex-direction: column;
+    position: relative;
     background-color: var(--main-color);
     padding: 2rem;
     border-radius: 2rem;
@@ -418,13 +453,22 @@
     text-align: center;
   }
 
-  .createAccount,
+  .createAccount {
+    width: 10rem;
+    margin: 0.3rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    align-self: center;
+  }
+
   .inscription,
   .buttonConnexion,
-  .buttonInscription,
-  .closeConnexion,
-  .closeCreateAccount,
-  .closeInscription {
+  .buttonInscription {
     width: 10rem;
     margin: 0.3rem;
     margin-top: 1rem;
@@ -436,6 +480,20 @@
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     align-self: center;
+  }
+
+  .closeConnexion,
+  .closeCreateAccount,
+  .closeInscription {
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
   }
 
   .createAccount:hover,

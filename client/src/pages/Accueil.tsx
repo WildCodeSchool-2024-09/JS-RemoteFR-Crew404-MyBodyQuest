@@ -48,6 +48,13 @@ function Accueil() {
                 className={style.logoModale}
               />
               <h3>Se connecter</h3>
+              <button
+                type="button"
+                className={style.closeConnexion}
+                onClick={() => setConnexionOpen(false)}
+              >
+                x
+              </button>
             </section>
 
             <section className={style.inputContainer}>
@@ -89,18 +96,10 @@ function Accueil() {
               className={style.createAccount}
               onClick={() => {
                 setConnexionOpen(false);
-                setCreateAccountOpen(true);
+                setModaleInscriptionOpen(true);
               }}
             >
               Créer un compte
-            </button>
-
-            <button
-              type="button"
-              className={style.closeConnexion}
-              onClick={() => setConnexionOpen(false)}
-            >
-              Fermer
             </button>
           </section>
         </section>
@@ -120,6 +119,13 @@ function Accueil() {
                 className={style.logoModale}
               />
               <h3>M'inscrire</h3>
+              <button
+                type="button"
+                className={style.closeCreateAccount}
+                onClick={() => setCreateAccountOpen(false)}
+              >
+                x
+              </button>
             </section>
 
             <section className={style.inputContainer}>
@@ -156,22 +162,23 @@ function Accueil() {
 
             <button
               type="button"
-              className={style.inscription}
+              className={style.buttonInscription}
               onClick={() => {
-                setCreateAccountOpen(false);
-                setModaleInscriptionOpen(true);
+                setMessageBienvenue(true);
+
+                setTimeout(() => {
+                  setCreateAccountOpen(false);
+                  setMessageBienvenue(false);
+                }, 3000);
               }}
             >
               M'inscrire
             </button>
-
-            <button
-              type="button"
-              className={style.closeCreateAccount}
-              onClick={() => setCreateAccountOpen(false)}
-            >
-              Fermer
-            </button>
+            {isMessageBienvenue && (
+              <section className={style.messageBienvenue}>
+                <h3>Inscription validée ! Bienvenue !</h3>
+              </section>
+            )}
           </section>
         </section>
 
@@ -243,7 +250,12 @@ function Accueil() {
                 alt="Icone d'un avatar pour insérer un avatar"
                 className={style.logoAvatar}
               />
-              <h3>Ajouter une photo</h3>
+              <form method="post" encType="multipart/form-data">
+                <div>
+                  <label htmlFor="file">Ajouter une photo</label>
+                  <input type="file" id="file" name="file" multiple />
+                </div>
+              </form>
 
               <section className={style.objectif}>
                 <form>
@@ -269,29 +281,20 @@ function Accueil() {
             </section>
             <button
               type="button"
-              className={style.buttonInscription}
+              className={style.inscription}
               onClick={() => {
-                setMessageBienvenue(true);
-                setTimeout(() => {
-                  setMessageBienvenue(false);
-                  setModaleInscriptionOpen(false);
-                }, 3000);
+                setModaleInscriptionOpen(false);
+                setCreateAccountOpen(true);
               }}
             >
               Créer un compte
             </button>
-
-            {isMessageBienvenue && (
-              <section className={style.messageBienvenue}>
-                <h3>Inscription validée ! Bienvenue !</h3>
-              </section>
-            )}
             <button
               type="button"
               className={style.closeInscription}
               onClick={() => setModaleInscriptionOpen(false)}
             >
-              Fermer
+              x
             </button>
           </section>
         </section>
@@ -311,7 +314,7 @@ function Accueil() {
             className={style.questionnaire}
             onClick={() => setModaleInscriptionOpen(true)}
           >
-            On fait connaissance ?
+            Faisons connaissance
           </button>
         </section>
 
