@@ -1,0 +1,24 @@
+.progressUser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1.2em;
+  background-color: #f2f0f6;
+  border-radius: 5em;
+}
+
+.progressTitle {
+  font-size: medium;
+  margin: 0.6em 0.8em;
+  @media screen and (min-width: 992px) {
+    margin: 1.2em 1.8em;
+  }
+}
+
+.levelProgressBar {
+  width: 8em;
+  margin: 0.6em 1em;
+  @media screen and (min-width: 992px) {
+    width: 20em;
+  }
+}
