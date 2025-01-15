@@ -9,6 +9,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Account from "./components/Account";
 import Dashboard from "./components/Dashboard";
+import Food from "./components/Food";
+import Quests from "./components/Quests";
+import Success from "./components/Success";
+import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
 
 // Import additional components for new routes
@@ -32,6 +36,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/tracking",
+        element: <Tracking />,
+      },
+      {
+        path: "/quets",
+        element: <Quests />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/food",
+        element: <Food />,
       },
       {
         path: "/moncompte",
