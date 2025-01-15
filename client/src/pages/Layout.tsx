@@ -1,3 +1,4 @@
+import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import styles from "../styles/Layout.module.css";
 
@@ -17,23 +18,23 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <a href="suivi">Suivi</a>
+            <Link to="/tracking">Suivi</Link>
           </li>
           <li>
-            <a href="mesquetes">Mes quêtes</a>
+            <Link to="/quests">Mes quêtes</Link>
           </li>
           <li>
-            <a href="messucces">Mes succès</a>
+            <Link to="/success">Mes succès</Link>
           </li>
           <li>
-            <a href="alimentation">Alimentation</a>
+            <Link to="/food">Alimentation</Link>
           </li>
           <li>
-            <a href="moncompte">Mon compte</a>
+            <Link to="/account">Mon compte</Link>
           </li>
         </ul>
       </nav>
-
+      <Outlet />
       <footer>
         <a href="cgu">CGU</a>
         <img src="images/instagram_icon.png" alt="instagram" />

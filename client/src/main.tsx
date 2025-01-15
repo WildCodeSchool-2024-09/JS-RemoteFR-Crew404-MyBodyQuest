@@ -7,8 +7,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-import Accueil from "./pages/Accueil";
-import Dashboard from "./pages/Dashboard";
+import Account from "./components/Account";
+import Dashboard from "./components/Dashboard";
+import Food from "./components/Food";
+import Quests from "./components/Quests";
+import Success from "./components/Success";
+import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
 
 // Import additional components for new routes
@@ -27,17 +31,35 @@ const router = createBrowserRouter([
     element: <App />, // Renders the App component for the home page
   },
   {
-    path: "/accueil",
-    element: <Accueil />,
-  },
-  {
-    path: "/moncompte",
     element: <Layout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/tracking",
+        element: <Tracking />,
+      },
+      {
+        path: "/quests",
+        element: <Quests />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/food",
+        element: <Food />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
+      },
+    ],
   },
-  {
-    path: "/moncompte/Dashboard",
-    element: <Dashboard />,
-  },
+
   // Try adding a new route! For example, "/about" with an About component
 ]);
 
