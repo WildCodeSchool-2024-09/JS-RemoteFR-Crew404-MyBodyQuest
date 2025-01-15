@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         element: <Tracking />,
       },
       {
-        path: "/quets",
+        path: "/quests",
         element: <Quests />,
       },
       {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         element: <Food />,
       },
       {
-        path: "/moncompte",
+        path: "/account",
         element: <Account />,
       },
     ],

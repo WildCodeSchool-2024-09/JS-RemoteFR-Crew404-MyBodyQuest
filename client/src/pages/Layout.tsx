@@ -18,19 +18,19 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <a href="suivi">Suivi</a>
+            <a href="tracking">Suivi</a>
           </li>
           <li>
-            <a href="mesquetes">Mes quêtes</a>
+            <a href="quests">Mes quêtes</a>
           </li>
           <li>
-            <a href="messucces">Mes succès</a>
+            <a href="success">Mes succès</a>
           </li>
           <li>
-            <a href="alimentation">Alimentation</a>
+            <a href="food">Alimentation</a>
           </li>
           <li>
-            <a href="moncompte">Mon compte</a>
+            <a href="account">Mon compte</a>
           </li>
         </ul>
       </nav>
