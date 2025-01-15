@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import styles from "../styles/Layout.module.css";
 
@@ -18,19 +18,19 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <a href="tracking">Suivi</a>
+            <Link to="/tracking">Suivi</Link>
           </li>
           <li>
-            <a href="quests">Mes quêtes</a>
+            <Link to="/quests">Mes quêtes</Link>
           </li>
           <li>
-            <a href="success">Mes succès</a>
+            <Link to="/success">Mes succès</Link>
           </li>
           <li>
-            <a href="food">Alimentation</a>
+            <Link to="/food">Alimentation</Link>
           </li>
           <li>
-            <a href="account">Mon compte</a>
+            <Link to="/account">Mon compte</Link>
           </li>
         </ul>
       </nav>
