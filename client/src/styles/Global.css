@@ -17,3 +17,8 @@
   --bg-color-green: #5dcd8a;
   --bg-color-purple: #7b5cb9;
 }
+
+* {
+  font-family: var(--text-font);
+  font-size: var(--fontsize-text);
+}

@@ -1,6 +1,6 @@
-import HelloUserDashboard from "../components/HelloUserDashboard";
-import ProgressBar from "../components/ProgressBar";
 import style from "../styles/Dashboard.module.css";
+import HelloUserDashboard from "./HelloUserDashboard";
+import ProgressBar from "./ProgressBar";
 
 function Dashbord() {
   return (

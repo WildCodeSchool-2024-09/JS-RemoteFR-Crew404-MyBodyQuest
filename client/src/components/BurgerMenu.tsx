@@ -1,9 +1,11 @@
 import { slide as Menu } from "react-burger-menu";
 import "../styles/BurgerMenu.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function BurgerMenu() {
   const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // Ajout de l'état pour gérer l'ouverture du menu
 
   useEffect(() => {
     // Fonction pour vérifier la taille de l'écran
@@ -16,6 +18,10 @@ function BurgerMenu() {
     return () => window.removeEventListener("resize", checkMobile); // Nettoyage
   }, []);
 
+  const handleMenuClose = () => {
+    setMenuOpen(false); // Ferme le menu lorsque l'utilisateur clique sur un lien
+  };
+
   if (!isMobile)
     // Rendu uniquement sur mobile
     return null;
@@ -23,14 +29,24 @@ function BurgerMenu() {
     <Menu
       right
       customBurgerIcon={<img src="images/hamburger.png" alt="icon" />} // Ajout de l'icône du menu
-      isOpen={false}
-      onStateChange={(state) => console.log("Menu is open:", state.isOpen)}
+      isOpen={menuOpen} // Ajout de l'état pour gérer l'ouverture du menu
+      onStateChange={({ isOpen }) => setMenuOpen(isOpen)} // Met à jour l'état du menu lors de l'ouverture/fermeture
     >
-      <a href="/suivi">Suivi</a>
-      <a href="/mes-quetes">Mes Quêtes</a>
-      <a href="/mes-succes">Mes Succès</a>
-      <a href="/alimentation">Alimentation</a>
-      <a href="/mon-compte">Mon Compte</a>
+      <Link to="tracking" onClick={handleMenuClose}>
+        Suivi
+      </Link>
+      <Link to="quests" onClick={handleMenuClose}>
+        Mes Quêtes
+      </Link>
+      <Link to="success" onClick={handleMenuClose}>
+        Mes Succès
+      </Link>
+      <Link to="food" onClick={handleMenuClose}>
+        Alimentation
+      </Link>
+      <Link to="account" onClick={handleMenuClose}>
+        Mon Compte
+      </Link>
     </Menu>
   );
 }

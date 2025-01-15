@@ -7,14 +7,6 @@
 
 /* MOBILE FIRST */
 @media (max-width: 767px) {
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-  }
-
   h1 {
     color: var(--other-color);
     font-size: 1.2rem;
@@ -285,12 +277,6 @@
 /* DESKTOP  */
 
 @media (min-width: 767px) {
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   h1 {
     color: var(--other-color);
     font-size: 3rem;

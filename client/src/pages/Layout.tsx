@@ -1,12 +1,19 @@
+import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import styles from "../styles/Layout.module.css";
 
 function Layout() {
   return (
     <>
-      <header>
-        <img className={styles.coeur} src="images/coeur_logo.png" alt="logo" />
-        <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
+      <header className={styles.headercontainer}>
+        <Link to="dashboard">
+          <img
+            className={styles.coeur}
+            src="images/coeur_logo.png"
+            alt="logo"
+          />
+          <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
+        </Link>
         <img
           className={styles.avatar}
           src="images/illustration-avatar-degrade_52683-142426.avif"
@@ -14,27 +21,27 @@ function Layout() {
         />
         <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
-      <nav>
-        <ul>
+      <nav className={styles.navbar}>
+        <ul className={styles.navlist}>
           <li>
-            <a href="suivi">Suivi</a>
+            <Link to="tracking">Suivi</Link>
           </li>
           <li>
-            <a href="mesquetes">Mes quêtes</a>
+            <Link to="quests">Mes quêtes</Link>
           </li>
           <li>
-            <a href="messucces">Mes succès</a>
+            <Link to="success">Mes succès</Link>
           </li>
           <li>
-            <a href="alimentation">Alimentation</a>
+            <Link to="food">Alimentation</Link>
           </li>
           <li>
-            <a href="moncompte">Mon compte</a>
+            <Link to="account">Mon compte</Link>
           </li>
         </ul>
       </nav>
-
-      <footer>
+      <Outlet />
+      <footer className={styles.footercontainer}>
         <a href="cgu">CGU</a>
         <img src="images/instagram_icon.png" alt="instagram" />
         <img src="images/facebook.png" alt="facebook" />

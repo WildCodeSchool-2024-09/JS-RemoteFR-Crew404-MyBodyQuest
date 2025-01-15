@@ -1,43 +1,52 @@
-// Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-/* **/
-
 // Import the main app component
 import App from "./App";
-import Accueil from "./pages/Accueil";
-import Dashboard from "./pages/Dashboard";
+import Account from "./components/Account";
+import Dashboard from "./components/Dashboard";
+import Food from "./components/Food";
+import Quests from "./components/Quests";
+import Success from "./components/Success";
+import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
 
-// Import additional components for new routes
-// Try creating these components in the "pages" folder
-
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
-
-/* **/
-
-// Create router configuration with routes
-// You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
   },
   {
-    path: "/accueil",
-    element: <Accueil />,
-  },
-  {
-    path: "/moncompte",
     element: <Layout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/tracking",
+        element: <Tracking />,
+      },
+      {
+        path: "/quests",
+        element: <Quests />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/food",
+        element: <Food />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
+      },
+    ],
   },
-  {
-    path: "/moncompte/Dashboard",
-    element: <Dashboard />,
-  },
+
   // Try adding a new route! For example, "/about" with an About component
 ]);
 

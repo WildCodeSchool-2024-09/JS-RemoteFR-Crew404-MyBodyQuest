@@ -1,17 +1,8 @@
 /*MOBILE FIRST */
 /*Header Mobile*/
 
-* {
-  box-sizing: border-box;
-  font-family: var(--text-font);
-  font-size: var(--fontsize-text);
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
+.headercontainer {
   padding: 1rem;
-  position: fixed;
 }
 
 .coeur {
@@ -56,13 +47,13 @@ header {
   height: 44px;
 }
 
-nav,
+.navbar,
 .avatar {
   display: none;
 }
 
 /*Footer Mobile*/
-footer {
+.footercontainer {
   font-family: var(--text-font);
   display: flex;
   justify-content: space-evenly;
@@ -80,7 +71,7 @@ footer {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
 }
 
-footer img {
+.footercontainer img {
   width: 25px;
   height: 25px;
 }
@@ -93,8 +84,10 @@ a {
 /*RESPONSIVE TABLET & DESKTOP*/
 @media only screen and (min-width: 768px) {
   /*Header Desktop*/
-  header {
+  .headercontainer {
     padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
   }
 
   .coeur {
@@ -108,15 +101,16 @@ a {
   }
 
   .avatar {
-    display: block;
+    display: inline-block;
     width: 88px;
     height: 88px;
-    margin-left: auto;
+    border-radius: 50%;
     position: fixed;
     left: 90%;
+    top: 3%;
   }
 
-  nav {
+  .navbar {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -126,7 +120,7 @@ a {
     left: 2%;
   }
 
-  ul {
+  .navlist {
     height: 10%;
     list-style: none;
     padding: 2rem;
@@ -146,7 +140,7 @@ a {
   }
 
   /*Footer Desktop*/
-  footer {
+  .footercontainer {
     width: 80%;
     max-width: 800px;
     margin: 0.8rem auto;
