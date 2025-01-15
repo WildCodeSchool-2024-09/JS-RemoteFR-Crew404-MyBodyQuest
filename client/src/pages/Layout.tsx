@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import styles from "../styles/Layout.module.css";
 
@@ -33,7 +34,7 @@ function Layout() {
           </li>
         </ul>
       </nav>
-
+      <Outlet />
       <footer>
         <a href="cgu">CGU</a>
         <img src="images/instagram_icon.png" alt="instagram" />
