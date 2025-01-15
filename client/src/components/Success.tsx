@@ -1,5 +1,5 @@
-function Succes() {
+function Success() {
   return <h1>Je suis le composant success!</h1>;
 }
 
-export default Succes;
+export default Success;
