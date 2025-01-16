@@ -1,70 +1,67 @@
 import { useState } from "react";
-import { AiFillCaretDown } from "react-icons/ai";
-import { SlCalender } from "react-icons/sl";
+import DatePicker from "react-datepicker";
 import { TbCirclePlusFilled } from "react-icons/tb";
 import style from "../styles/Tracking.module.css";
+import "../styles/DatePicker.css";
+import "react-datepicker/dist/react-datepicker.css"; // Styles de base pour le calendrier
+import { FaPencilAlt } from "react-icons/fa";
 
 import Chart from "./Chart";
 
 function Tracking() {
-  const [isDataTypeOpen, setIsDataTypeOpen] = useState(false); // détermine si la liste données est ouverte
-  const [isPeriodOpen, setIsPeriodOpen] = useState(false); // détermine si la liste période est ouverte
-  const handleClickDataType = () => setIsDataTypeOpen((prev) => !prev); // Fonction qui inverse la valeur du state
-  const handleClickPeriod = () => setIsPeriodOpen((prev) => !prev); // Fonction qui inverse la valeur du state
-  const handleOptionDataType = () => setIsDataTypeOpen(false); // Fonction qui passe le state en false (fermé) après choix option
-  const handleOptionPeriod = () => setIsPeriodOpen(false); // Fonction qui passe le state en false (fermé) après choix option
-  const optionsData = ["Poids", "Mesures"]; // Const avec les choix de données à afficher
-  const optionsPeriod = ["du", "au"]; // Const avec les choix de période à afficher
+  const [selectedDataType, setSelectedDataType] = useState(""); // Gère le type de données sélectionné
+  //const [selectedPeriod, setSelectedPeriod] = useState(""); // Gère la période sélectionnée
+  const [selectedRange, setSelectedRange] = useState<
+    [Date | null, Date | null]
+  >([null, null]); // Gère la plage de dates sélectionnée
+  const [startDate, endDate] = selectedRange;
+
+  const optionsData = [
+    "Poids",
+    "Mesures",
+    "Tour de taille",
+    "Tour de poitrine",
+    "Tour de hanches",
+    "Tour de bras",
+    "Tour de cuisses",
+    "Tour de mollet",
+  ]; // Const avec les choix de données à afficher
+
+  const handleDataTypeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    setSelectedDataType(event.target.value); // Met à jour la valeur sélectionnée
+  };
 
   return (
     <>
       <section className={style.ButtonsSection}>
-        <button
-          type="button"
-          onClick={handleClickDataType}
+        <select
+          id="dataTypeSelect"
+          value={selectedDataType}
+          onChange={handleDataTypeChange}
           className={style.toggleButton}
         >
-          Type de données <AiFillCaretDown />
-        </button>
-        {isDataTypeOpen && (
-          <ul className={style.optionsList}>
-            {optionsData.map((option) => (
-              <li key={option} className={style.optionItem}>
-                <span
-                  onClick={handleOptionDataType}
-                  onKeyUp={handleOptionDataType}
-                  className={style.option}
-                >
-                  {option}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <button
-          type="button"
-          className={style.toggleButton}
-          onClick={handleClickPeriod}
-        >
-          Période <SlCalender /> <AiFillCaretDown />
-        </button>
-        {isPeriodOpen && (
-          <ul className={style.optionsList}>
-            {optionsPeriod.map((option) => (
-              <li key={option} className={style.optionItem}>
-                <span
-                  onClick={handleOptionPeriod}
-                  onKeyUp={handleOptionPeriod}
-                  className={style.option}
-                >
-                  {option}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
+          <option value="" disabled>
+            Type de données
+          </option>
+          {optionsData.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <DatePicker
+          selectsRange={true} // Active la sélection d'une plage de dates
+          startDate={startDate}
+          endDate={endDate}
+          onChange={(update) => setSelectedRange(update)} // Met à jour la plage sélectionnée
+          isClearable={true} // Ajoute un bouton pour effacer la sélection
+          placeholderText="Période"
+        />
+
         <button type="button" className={style.modifyButton}>
-          Modifier mes données
+          <FaPencilAlt /> Modifier mes données
         </button>
       </section>
       <section className={style.GraphSection}>

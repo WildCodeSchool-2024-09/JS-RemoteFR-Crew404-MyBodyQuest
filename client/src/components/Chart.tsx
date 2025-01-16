@@ -34,7 +34,7 @@ function Chart() {
       },
       {
         label: "Mesures",
-        data: [28, 48, 40, 19, 86, 27, 90],
+        data: [28, 48, 40, 19, 86, 27, 90, 150],
         fill: false,
         backgroundColor: "#7b5cb9",
         borderColor: "#7b5cb9",

@@ -2,6 +2,10 @@
   padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
   margin-top: 10%;
   position: relative;
 }
@@ -54,12 +58,22 @@
   margin-top: 1rem;
 }
 
-.modifyButton,
-.NewEntryButton {
-  background-color: --var(bg-color-light);
+.modifyButton {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 1rem;
+  grid-column: span 2;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-color-light);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
+}
+.NewEntrySection {
+  display: flex;
+  justify-content: center;
+}
+
+.NewEntryButton {
+  all: unset;
 }
