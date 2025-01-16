@@ -6,6 +6,7 @@
   font-family: "Catamaran", sans-serif;
   font-weight: 800;
   margin: 70px 15px;
+  padding-top: 20vh;
 }
 .error_container > span {
   display: inline-block;
@@ -172,5 +173,5 @@
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  margin-left: 100vh;
+  margin-left: 72em;
 }
