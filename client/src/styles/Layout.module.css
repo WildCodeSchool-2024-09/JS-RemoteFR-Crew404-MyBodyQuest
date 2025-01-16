@@ -1,19 +1,6 @@
 /*MOBILE FIRST */
 /*Header Mobile*/
 
-* {
-  box-sizing: border-box;
-  font-family: var(--text-font);
-  font-size: var(--fontsize-text);
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  position: fixed;
-}
-
 .coeur {
   width: 44px;
   height: 44px;

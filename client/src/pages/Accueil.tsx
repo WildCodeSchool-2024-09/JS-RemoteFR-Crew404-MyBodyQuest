@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
 import logo from "../assets/images/Logo site.png";
@@ -87,9 +88,12 @@ function Accueil() {
                 className={style.inputField}
               />
             </section>
-            <button type="button" className={style.buttonConnexion}>
-              Connexion
-            </button>
+
+            <Link to="/dashboard">
+              <button type="button" className={style.buttonConnexion}>
+                Connexion
+              </button>
+            </Link>
 
             <button
               type="button"

@@ -11,7 +11,10 @@ router.get("/api/levels", levelsActions.browse);
 router.get("/api/levels/:id", levelsActions.read);
 router.post("/api/levels", levelsActions.add);
 
+import authActions from "./modules/auth/authActions";
 import userActions from "./modules/users/usersActions";
+
+router.post("/api/register", authActions.register);
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
@@ -34,6 +37,7 @@ router.get("/api/categories/:id", categoryActions.read);
 router.post("/api/categories", categoryActions.add);
 
 import succesActions from "./modules/succes/succesActions";
+
 router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);

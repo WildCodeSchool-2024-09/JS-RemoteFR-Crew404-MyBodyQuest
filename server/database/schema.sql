@@ -12,12 +12,12 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(15) NOT NULL,
   birthday_date DATE DEFAULT NULL,
-  size DECIMAL(5,2),
+  size DECIMAL(5,2) NOT NULL,
   objective VARCHAR(50) NOT NULL,
-  initial_weight DECIMAL(5,2),
-  desired_weight DECIMAL(5,2),
+  initial_weight DECIMAL(5,2) NOT NULL,
+  desired_weight DECIMAL(5,2) NOT NULL,
   weight_frequency VARCHAR(50) NOT NULL,
-  current_xp INT NOT NULL,
+  current_xp INT DEFAULT 1 NOT NULL,
   level_id INT UNSIGNED,
   FOREIGN KEY (level_id) REFERENCES levels(id)
 );
