@@ -1,284 +1,275 @@
-:root {
-  font-family: "Libre Franklin", serif;
-  --main-color: #f2f0f6;
-  --other-color: #5dcd8a;
-  --another-color: #7b5cb9;
+/* MOBILE FIRST */
+.headercontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
+.titleh1 {
+  color: var(--bg-color-green);
+  font-size: 1.2rem;
 }
 
-/* MOBILE FIRST */
-@media (max-width: 768px) {
-  .headercontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-  }
-  h1 {
-    color: var(--other-color);
-    font-size: 1.2rem;
-  }
+.titleh2 {
+  color: var(--bg-color-purple);
+  font-size: 0.7rem;
+}
 
-  h2 {
-    color: var(--another-color);
-    font-size: 0.7rem;
-  }
+.intro {
+  font-size: 0.6rem;
+}
 
-  p {
-    font-size: 0.6rem;
-  }
+.bienvenue {
+  margin-top: 5rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: 13rem;
+  width: 15em;
+  background-color: var(--bg-color-light);
+  align-items: center;
+  text-align: center;
+}
 
-  .bienvenue {
-    margin-top: 5rem;
-    border-radius: 2rem;
-    padding: 1.5rem;
-    height: 13rem;
-    width: 15em;
-    background-color: var(--main-color);
-    align-items: center;
-    text-align: center;
-  }
+.logo {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
 
-  .logo {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-  }
+.logo img {
+  width: 50%;
+  height: auto;
+}
 
-  .logo img {
-    width: 50%;
-    height: auto;
-  }
+.connexion {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
 
-  .connexion {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-family: "Libre Franklin", serif;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+.questionnaire {
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: "Libre Franklin", serif;
+  margin-top: 2rem;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
 
-  .questionnaire {
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-family: "Libre Franklin", serif;
-    margin-top: 2rem;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+/* AVIS */
 
-  /* AVIS */
+.conteneur_avis {
+  margin: 2rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: auto;
+  width: auto;
+  background-color: var(--bg-color-light);
+  align-items: center;
+  text-align: center;
+}
 
-  .conteneur_avis {
-    margin: 2rem;
-    border-radius: 2rem;
-    padding: 1.5rem;
-    height: auto;
-    width: auto;
-    background-color: var(--main-color);
-    align-items: center;
-    text-align: center;
-  }
+.card_avis {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 12rem;
+  height: 12rem;
+  margin: 0.8rem;
+}
 
-  .card_avis {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 12rem;
-    height: 12rem;
-    margin: 0.8rem;
-  }
+.avatar {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
 
-  .avatar {
-    border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
-  }
+.note_avis,
+.titre_avis,
+.avis,
+.name_lastname,
+.date_avis {
+  margin: 5px 0;
+}
 
-  .note_avis,
-  .titre_avis,
-  .avis,
-  .name_lastname,
-  .date_avis {
-    margin: 5px 0;
-  }
+.date_avis {
+  color: grey;
+}
 
-  .date_avis {
-    color: grey;
-  }
+.Content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
 
-  .Content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-  }
+/* MODALES */
 
-  /* MODALES */
+.textlogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .textlogoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.titleh3 {
+  color: var(--bg-color-purple);
+  font-family: "Libre Franklin", serif;
+}
 
-  h3 {
-    color: var(--another-color);
-    font-family: "Libre Franklin", serif;
-  }
+.modaleConnexion,
+.modaleCreateAccount,
+.modaleInscription {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
 
-  .modaleConnexion,
-  .modaleCreateAccount,
-  .modaleInscription {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s;
-  }
+.modaleConnexion.active,
+.modaleCreateAccount.active,
+.modaleInscription.active {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .modaleConnexion.active,
-  .modaleCreateAccount.active,
-  .modaleInscription.active {
-    visibility: visible;
-    opacity: 1;
-  }
+.modaleConnexionContent,
+.modaleCreateAccountContent,
+.modaleInscriptionContent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color-light);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  text-align: center;
+}
 
-  .modaleConnexionContent,
-  .modaleCreateAccountContent,
-  .modaleInscriptionContent {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--main-color);
-    padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    width: 70%;
-    text-align: center;
-  }
+.createAccount,
+.inscription,
+.buttonConnexion,
+.buttonInscription {
+  margin: 0.3rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-  .createAccount,
-  .inscription,
-  .buttonConnexion,
-  .buttonInscription {
-    margin: 0.3rem;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  }
+.closeConnexion {
+  position: absolute;
+  top: 11.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+.closeCreateAccount {
+  position: absolute;
+  top: 13rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
 
-  .closeConnexion {
-    position: absolute;
-    top: 11.5rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
-  .closeCreateAccount {
-    position: absolute;
-    top: 13rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
+.closeInscription {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
 
-  .closeInscription {
-    position: absolute;
-    top: 1rem;
-    right: 2rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
+.createAccount:hover,
+.inscription:hover,
+.connexion:hover,
+.closeConnexion:hover,
+.closeCreateAccount:hover,
+.closeInscription:hover,
+.buttonConnexion:hover {
+  background-color: var(--bg-color-green);
+}
 
-  .createAccount:hover,
-  .inscription:hover,
-  .connexion:hover,
-  .closeConnexion:hover,
-  .closeCreateAccount:hover,
-  .closeInscription:hover,
-  .buttonConnexion:hover {
-    background-color: var(--other-color);
-  }
+.input {
+  font-family: "Libre Franklin", serif;
+  margin: 0.4rem;
+  padding: 0.3rem;
+  border-radius: 2rem;
+  border: var(--bg-color-purple);
+  border-width: thick;
+}
 
-  input {
-    font-family: "Libre Franklin", serif;
-    margin: 0.4rem;
-    padding: 0.3rem;
-    border-radius: 2rem;
-    border: var(--another-color);
-    border-width: thick;
-  }
+.input:focus {
+  outline: none;
+}
 
-  input:focus {
-    outline: none;
-  }
+.logoModale {
+  width: 20%;
+}
 
-  .logoModale {
-    width: 20%;
-  }
+.logoMail,
+.logoMdp {
+  width: 5%;
+}
 
-  .logoMail,
-  .logoMdp {
-    width: 5%;
-  }
+/* STYLE MODALE INSCRIPTION */
 
-  /* STYLE MODALE INSCRIPTION */
+.inputContainer {
+  margin: 0;
+}
 
-  .inputContainer {
-    margin: 0;
-  }
+/* STYLE MODALE "FAISONS CONNAISSANCE" */
 
-  /* STYLE MODALE "FAISONS CONNAISSANCE" */
+.infosUserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .infosUserContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logoAvatar {
-    width: 20%;
-    padding: 0.5rem;
-  }
+.logoAvatar {
+  width: 20%;
+  padding: 0.5rem;
 }
 
 /* DESKTOP  */
@@ -289,17 +280,17 @@
     flex-direction: column;
     align-items: center;
   }
-  h1 {
-    color: var(--other-color);
+  .titleh1 {
+    color: var(--bg-color-green);
     font-size: 3rem;
   }
 
-  h2 {
-    color: var(--another-color);
+  .titleh2 {
+    color: var(--bg-color-purple);
     font-size: 1.5rem;
   }
 
-  p {
+  .pintro {
     font-size: 1rem;
   }
 
@@ -309,13 +300,13 @@
     padding: 1.5rem;
     height: 20rem;
     width: 70rem;
-    background-color: var(--main-color);
+    background-color: var(--bg-color-light);
     align-items: center;
     text-align: center;
   }
 
   .questionnaire {
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -346,7 +337,7 @@
     top: 1rem;
     right: 5rem;
     padding: 0.5rem 1rem;
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -366,7 +357,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 2rem;
-    background-color: var(--main-color);
+    background-color: var(--bg-color-light);
     border-radius: 2rem;
   }
 
@@ -407,8 +398,8 @@
     gap: 1rem;
   }
 
-  h3 {
-    color: var(--another-color);
+  .titleh3 {
+    color: var(--bg-color-purple);
     font-family: "Libre Franklin", serif;
   }
 
@@ -443,7 +434,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: var(--main-color);
+    background-color: var(--bg-color-light);
     padding: 2rem;
     border-radius: 2rem;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
@@ -471,7 +462,7 @@
     margin: 0.3rem;
     margin-top: 1rem;
     padding: 0.5rem;
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 5px;
@@ -503,19 +494,19 @@
   .buttonConnexion:hover,
   .questionnaire:hover,
   .buttonInscription:hover {
-    background-color: var(--other-color);
+    background-color: var(--bg-color-green);
   }
 
-  input {
+  .input {
     font-family: "Libre Franklin", serif;
     margin: 0.4rem;
     padding: 0.3rem;
     border-radius: 2rem;
-    border: var(--another-color);
+    border: var(--bg-color-purple);
     border-width: thick;
   }
 
-  input:focus {
+  .input:focus {
     outline: none;
   }
 

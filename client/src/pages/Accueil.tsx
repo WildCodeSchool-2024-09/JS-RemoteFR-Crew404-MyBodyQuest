@@ -48,7 +48,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3>Se connecter</h3>
+              <h3 className={style.titleh3}>Se connecter</h3>
               <button
                 type="button"
                 className={style.closeConnexion}
@@ -122,7 +122,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3>M'inscrire</h3>
+              <h3 className={style.titleh3}>M'inscrire</h3>
               <button
                 type="button"
                 className={style.closeCreateAccount}
@@ -180,7 +180,9 @@ function Accueil() {
             </button>
             {isMessageBienvenue && (
               <section className={style.messageBienvenue}>
-                <h3>Inscription validée ! Bienvenue !</h3>
+                <h3 className={style.titleh3}>
+                  Inscription validée ! Bienvenue !
+                </h3>
               </section>
             )}
           </section>
@@ -199,7 +201,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3>Questionnaire</h3>
+              <h3 className={style.titleh3}>Questionnaire</h3>
             </section>
 
             <section className={style.inputContainer}>
@@ -236,11 +238,18 @@ function Accueil() {
             </section>
             <section className={style.infosUserContainer}>
               <form>
-                <h3>Sexe :</h3>
-                <input type="radio" id="feminin" name="sexe" value="feminin" />
+                <h3 className={style.titleh3}>Sexe :</h3>
+                <input
+                  className={style.input}
+                  type="radio"
+                  id="feminin"
+                  name="sexe"
+                  value="feminin"
+                />
                 <label htmlFor="feminin">Féminin</label>
 
                 <input
+                  className={style.input}
                   type="radio"
                   id="masculin"
                   name="sexe"
@@ -257,15 +266,22 @@ function Accueil() {
               <form method="post" encType="multipart/form-data">
                 <div>
                   <label htmlFor="file">Ajouter une photo</label>
-                  <input type="file" id="file" name="file" multiple />
+                  <input
+                    className={style.input}
+                    type="file"
+                    id="file"
+                    name="file"
+                    multiple
+                  />
                 </div>
               </form>
 
               <section className={style.objectif}>
                 <form>
-                  <h3>Quel est votre objectif ?</h3>
+                  <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
 
                   <input
+                    className={style.input}
                     type="radio"
                     id="perte"
                     name="objectif"
@@ -274,6 +290,7 @@ function Accueil() {
                   <label htmlFor="perte">Perte de poids</label>
 
                   <input
+                    className={style.input}
                     type="radio"
                     id="prise"
                     name="objectif"
@@ -306,9 +323,11 @@ function Accueil() {
         {/* ENCART DE BIENVENUE */}
 
         <section className={style.bienvenue}>
-          <h1>Bienvenue </h1>
-          <h2>Une plateforme qui allie bien-être et engagement ludique</h2>
-          <p>
+          <h1 className={style.titleh1}>Bienvenue </h1>
+          <h2 className={style.titleh2}>
+            Une plateforme qui allie bien-être et engagement ludique
+          </h2>
+          <p className={style.intro}>
             Ce site a été conçu pour répondre aux besoins des personnes
             souhaitant perdre du poids ou prendre de la masse en leur offrant un
             accompagnement personnalisé

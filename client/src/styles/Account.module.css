@@ -1,23 +1,19 @@
-:root {
-  font-family: "Libre Franklin", serif;
-  --main-color: #f2f0f6;
-  --other-color: #5dcd8a;
-  --another-color: #7b5cb9;
-}
-
 .account {
-  background-color: var(--main-color);
+  background-color: var(--bg-color-light);
   border-radius: 20px;
   padding: 1em;
-  margin: 18vh 2vh 2vh 2vh;
+  margin: 2vh;
   height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user {
   display: flex;
   flex-direction: column;
-  width: 20em;
-  height: 25em;
+  width: 100%;
+  height: 100%;
   gap: 1em;
 }
 
@@ -25,7 +21,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 20em;
+  width: 100%;
   gap: 1em;
 }
 
@@ -61,6 +57,7 @@
 
 .input {
   border-radius: 25px;
+  width: 40%;
 }
 
 .frequency {
