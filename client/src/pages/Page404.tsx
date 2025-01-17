@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../styles/Page_404.module.css";
 
-function Page_404() {
+function Page404() {
   return (
     <>
       <section className={styles.error_container}>
@@ -22,4 +22,4 @@ function Page_404() {
   );
 }
 
-export default Page_404;
+export default Page404;
