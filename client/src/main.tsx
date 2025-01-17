@@ -1,9 +1,6 @@
-// Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-/* **/
 
 // Import the main app component
 import App from "./App";
@@ -16,16 +13,6 @@ import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 
-// Import additional components for new routes
-// Try creating these components in the "pages" folder
-
-// import About from "./pages/About";
-// import Contact from "./pages/Contact";
-
-/* **/
-
-// Create router configuration with routes
-// You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
     path: "/", // The root path

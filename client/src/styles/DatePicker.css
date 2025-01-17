@@ -1,0 +1,28 @@
+/*CSS du calendrier dans la page tracking - package DatePicker*/
+.react-datepicker-wrapper {
+  background-color: white !important;
+  width: 90%;
+}
+
+.react-datepicker__input-container {
+  background-color: white !important;
+  border: 2px solid var(--bg-color-purple);
+  border-radius: 5px;
+}
+
+.react-datepicker-ignore-onclickoutside {
+  background-color: white !important;
+}
+
+input {
+  background-color: white;
+  width: 90%;
+}
+
+.react-datepicker__close-icon::after {
+  background-color: var(--bg-color-purple) !important;
+}
+
+.react-datepicker__header {
+  background-color: var(--bg-color-light) !important;
+}

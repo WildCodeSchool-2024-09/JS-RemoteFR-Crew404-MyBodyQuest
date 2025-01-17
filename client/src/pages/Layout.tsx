@@ -5,9 +5,15 @@ import styles from "../styles/Layout.module.css";
 function Layout() {
   return (
     <>
-      <header>
-        <img className={styles.coeur} src="images/coeur_logo.png" alt="logo" />
-        <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
+      <header className={styles.headercontainer}>
+        <Link to="dashboard">
+          <img
+            className={styles.coeur}
+            src="images/coeur_logo.png"
+            alt="logo"
+          />
+          <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
+        </Link>
         <img
           className={styles.avatar}
           src="images/illustration-avatar-degrade_52683-142426.avif"
@@ -15,8 +21,8 @@ function Layout() {
         />
         <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
-      <nav>
-        <ul>
+      <nav className={styles.navbar}>
+        <ul className={styles.navlist}>
           <li>
             <Link to="/tracking">Suivi</Link>
           </li>
@@ -35,7 +41,7 @@ function Layout() {
         </ul>
       </nav>
       <Outlet />
-      <footer>
+      <footer className={styles.footercontainer}>
         <a href="cgu">CGU</a>
         <img src="images/instagram_icon.png" alt="instagram" />
         <img src="images/facebook.png" alt="facebook" />
