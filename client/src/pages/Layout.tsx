@@ -24,19 +24,19 @@ function Layout() {
       <nav className={styles.navbar}>
         <ul className={styles.navlist}>
           <li>
-            <Link to="tracking">Suivi</Link>
+            <Link to="/tracking">Suivi</Link>
           </li>
           <li>
-            <Link to="quests">Mes quêtes</Link>
+            <Link to="/quests">Mes quêtes</Link>
           </li>
           <li>
-            <Link to="success">Mes succès</Link>
+            <Link to="/success">Mes succès</Link>
           </li>
           <li>
-            <Link to="food">Alimentation</Link>
+            <Link to="/food">Alimentation</Link>
           </li>
           <li>
-            <Link to="account">Mon compte</Link>
+            <Link to="/account">Mon compte</Link>
           </li>
         </ul>
       </nav>

@@ -11,6 +11,7 @@ import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
+import Page404 from "./pages/Page404";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
         element: <Account />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Page404 />,
   },
 
   // Try adding a new route! For example, "/about" with an About component

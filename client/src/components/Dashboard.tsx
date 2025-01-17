@@ -1,8 +1,9 @@
+import HelloUserDashboard from "../components/HelloUserDashboard";
+import ProgressBar from "../components/ProgressBar";
 import style from "../styles/Dashboard.module.css";
-import HelloUserDashboard from "./HelloUserDashboard";
-import ProgressBar from "./ProgressBar";
 
-function Dashboard() {
+function Dashbord() {
+
   return (
     <main className={style.mainDashoard}>
       <section className={style.helloUser}>
@@ -38,4 +39,6 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+
+export default Dashbord;
+
