@@ -13,19 +13,19 @@
 
 .titleh2 {
   color: var(--bg-color-purple);
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .intro {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 
 .bienvenue {
   margin-top: 5rem;
   border-radius: 2rem;
   padding: 1.5rem;
-  height: 13rem;
-  width: 15em;
+  height: auto;
+  width: 20em;
   background-color: var(--bg-color-light);
   align-items: center;
   text-align: center;
@@ -86,8 +86,8 @@
   background-color: white;
   border-radius: 8px;
   padding: 1rem;
-  width: 12rem;
-  height: 12rem;
+  width: auto;
+  height: auto;
   margin: 0.8rem;
 }
 
@@ -171,10 +171,10 @@
   text-align: center;
 }
 
-.createAccount,
 .inscription,
 .buttonConnexion,
 .buttonInscription {
+  width: 10rem;
   margin: 0.3rem;
   margin-top: 1rem;
   padding: 0.5rem;
@@ -184,6 +184,34 @@
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  align-self: center;
+}
+
+.createAccount:hover,
+.inscription:hover,
+.connexion:hover,
+.closeConnexion:hover,
+.closeCreateAccount:hover,
+.closeInscription:hover,
+.buttonConnexion:hover,
+.questionnaire:hover,
+.buttonInscription:hover,
+.buttoncreateAccount:hover {
+  background-color: var(--bg-color-green);
+}
+
+.buttoncreateAccount {
+  width: 10rem;
+  margin: 0.3rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  align-self: center;
 }
 
 .closeConnexion {
@@ -221,17 +249,8 @@
   cursor: pointer;
 }
 
-.createAccount:hover,
-.inscription:hover,
-.connexion:hover,
-.closeConnexion:hover,
-.closeCreateAccount:hover,
-.closeInscription:hover,
-.buttonConnexion:hover {
-  background-color: var(--bg-color-green);
-}
-
-.input {
+.inputField,
+.inscriptionInput {
   font-family: "Libre Franklin", serif;
   margin: 0.4rem;
   padding: 0.3rem;
@@ -240,7 +259,8 @@
   border-width: thick;
 }
 
-.input:focus {
+.inputField:focus,
+.inscriptionInput:focus {
   outline: none;
 }
 
@@ -335,7 +355,7 @@
     position: absolute;
     width: 8rem;
     top: 1rem;
-    right: 5rem;
+    right: 2rem;
     padding: 0.5rem 1rem;
     background-color: var(--bg-color-purple);
     color: white;
@@ -356,7 +376,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 2rem;
+    margin: 7rem;
     background-color: var(--bg-color-light);
     border-radius: 2rem;
   }
@@ -473,6 +493,33 @@
     align-self: center;
   }
 
+  .buttoncreateAccount {
+    width: 10rem;
+    margin: 0.3rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    align-self: center;
+  }
+
+  .createAccount:hover,
+  .inscription:hover,
+  .connexion:hover,
+  .closeConnexion:hover,
+  .closeCreateAccount:hover,
+  .closeInscription:hover,
+  .buttonConnexion:hover,
+  .questionnaire:hover,
+  .buttonInscription:hover,
+  .buttoncreateAccount:hover {
+    background-color: var(--bg-color-green);
+  }
+
   .closeConnexion,
   .closeCreateAccount,
   .closeInscription {
@@ -487,19 +534,8 @@
     cursor: pointer;
   }
 
-  .createAccount:hover,
-  .inscription:hover,
-  .connexion:hover,
-  .closeConnexion:hover,
-  .closeCreateAccount:hover,
-  .closeInscription:hover,
-  .buttonConnexion:hover,
-  .questionnaire:hover,
-  .buttonInscription:hover {
-    background-color: var(--bg-color-green);
-  }
-
-  .input {
+  .inputField,
+  .inscriptionInput {
     font-family: "Libre Franklin", serif;
     margin: 0.4rem;
     padding: 0.3rem;
@@ -508,7 +544,8 @@
     border-width: thick;
   }
 
-  .input:focus {
+  .inputField:focus,
+  .inscriptionInput:focus {
     outline: none;
   }
 

@@ -97,7 +97,7 @@ function Accueil() {
 
             <button
               type="button"
-              className={style.createAccount}
+              className={style.buttoncreateAccount}
               onClick={() => {
                 setConnexionOpen(false);
                 setModaleInscriptionOpen(true);
