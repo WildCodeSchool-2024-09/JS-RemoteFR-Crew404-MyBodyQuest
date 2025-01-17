@@ -26,13 +26,11 @@ if (process.env.CLIENT_URL != null) {
 
 // If you need to allow extra origins, you can add something like this:
 
-/*
-app.use(
-  cors({
-    origin: ["http://mysite.com", "http://another-domain.com"],
-  }),
-);
-*/
+// app.use(
+//   cors({
+//     origin: ["http://mysite.com", "http://another-domain.com"],
+//   }),
+// );
 
 // With ["http://mysite.com", "http://another-domain.com"]
 // to be replaced with an array of your trusted origins
