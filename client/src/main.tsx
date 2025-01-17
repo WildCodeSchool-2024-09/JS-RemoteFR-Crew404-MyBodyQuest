@@ -14,7 +14,7 @@ import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
 import Layout from "./pages/Layout";
-import Page_404 from "./pages/Page_404";
+import Page404 from "./pages/Page404";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Page_404 />,
+    element: <Page404 />,
   },
 
   // Try adding a new route! For example, "/about" with an About component
