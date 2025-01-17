@@ -2,7 +2,7 @@ import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
 import styles from "../styles/Dashboard.module.css";
 
-function Dashbord() {
+function Dashboard() {
   return (
     <main className={styles.mainDashoard}>
       <section className={styles.helloUser}>
@@ -38,4 +38,4 @@ function Dashbord() {
   );
 }
 
-export default Dashbord;
+export default Dashboard;
