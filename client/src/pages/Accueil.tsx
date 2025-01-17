@@ -22,7 +22,7 @@ function Accueil() {
     <>
       {/* BOUTON CONNEXION */}
 
-      <header>
+      <header className={style.headercontainer}>
         <section className={style.logo}>
           <img src={logo} alt="logo MyBodyQuest" />
         </section>

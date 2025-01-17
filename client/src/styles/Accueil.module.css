@@ -290,7 +290,7 @@
     font-size: 1.5rem;
   }
 
-  .pintro {
+  .intro {
     font-size: 1rem;
   }
 
@@ -364,8 +364,9 @@
   .card_avis {
     background-color: white;
     border-radius: 8px;
-    padding: 1rem;
+    padding: auto;
     width: 16rem;
+    height: auto;
     margin: 1rem;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
   }
@@ -383,6 +384,7 @@
   .name_lastname,
   .date_avis {
     margin: 5px 0;
+    font-size: 1.2rem;
   }
 
   .date_avis {
