@@ -3,7 +3,6 @@ import ProgressBar from "../components/ProgressBar";
 import style from "../styles/Dashboard.module.css";
 
 function Dashbord() {
-
   return (
     <main className={style.mainDashoard}>
       <section className={style.helloUser}>
@@ -39,6 +38,4 @@ function Dashbord() {
   );
 }
 
-
 export default Dashbord;
-
