@@ -22,7 +22,7 @@ function Accueil() {
     <>
       {/* BOUTON CONNEXION */}
 
-      <header>
+      <header className={style.headercontainer}>
         <section className={style.logo}>
           <img src={logo} alt="logo MyBodyQuest" />
         </section>
@@ -33,9 +33,9 @@ function Accueil() {
         >
           Connexion
         </button>
-
-        {/* MODALE CONNEXION */}
-
+      </header>
+      {/* MODALE CONNEXION */}
+      <main className={style.pageAccueil}>
         <section
           className={`${style.modaleConnexion} ${
             isConnexionOpen ? style.active : ""
@@ -97,7 +97,7 @@ function Accueil() {
 
             <button
               type="button"
-              className={style.createAccount}
+              className={style.buttoncreateAccount}
               onClick={() => {
                 setConnexionOpen(false);
                 setModaleInscriptionOpen(true);
@@ -329,8 +329,9 @@ function Accueil() {
           </h2>
           <p className={style.intro}>
             Ce site a été conçu pour répondre aux besoins des personnes
-            souhaitant perdre du poids ou prendre de la masse en leur offrant un
-            accompagnement personnalisé
+            souhaitant perdre du poids <br />
+            ou prendre de la masse en leur offrant un accompagnement
+            personnalisé.
           </p>
           <button
             type="button"
@@ -370,7 +371,7 @@ function Accueil() {
             <p className={style.avis}>Ceci est l'avis de l'utilisateur.</p>
           </section>
         </section>
-      </header>
+      </main>
     </>
   );
 }
