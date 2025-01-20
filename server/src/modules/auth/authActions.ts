@@ -16,4 +16,14 @@ const register: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { register };
+const login: RequestHandler = async (req, res, next) => {
+  try {
+    const user = await authRepository.read(req.body.email);
+    res.status(200).json(user);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { register, login };

@@ -11,11 +11,12 @@ router.get("/api/levels", levelsActions.browse);
 router.get("/api/levels/:id", levelsActions.read);
 router.post("/api/levels", levelsActions.add);
 
+// Login & Register
 import authActions from "./modules/auth/authActions";
-import userActions from "./modules/users/usersActions";
-
 router.post("/api/register", authActions.register);
+router.get("/api/login", authActions.login);
 
+import userActions from "./modules/users/usersActions";
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", userActions.add);
