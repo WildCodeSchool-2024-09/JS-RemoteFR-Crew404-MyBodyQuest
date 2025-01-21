@@ -29,7 +29,12 @@ function Accueil() {
     weight_frequency: "",
   });
 
-  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChangeRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setRegister((prevRegister) => ({
       ...prevRegister,
@@ -37,9 +42,18 @@ function Accueil() {
     }));
   };
 
+  const handleChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLogin((prevLogin) => ({
+      ...prevLogin,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.info(register);
+    console.info(login);
   };
 
   return (
@@ -82,7 +96,7 @@ function Accueil() {
               </button>
             </section>
 
-            <section className={style.inputContainer}>
+            <form className={style.inputContainer} onSubmit={handleSubmit}>
               <img
                 src={mail}
                 alt="Icone d'un email"
@@ -92,12 +106,10 @@ function Accueil() {
                 type="email"
                 id="email-login"
                 placeholder="Votre email"
-                value={register.email}
+                value={login.email}
                 className={style.inputField}
-                onChange={handlechange}
+                onChange={handleChangeLogin}
               />
-            </section>
-            <section className={style.inputContainer}>
               <img
                 src={mdp}
                 alt="Icone d'un cadenas"
@@ -107,11 +119,11 @@ function Accueil() {
                 type="password"
                 id="password-login"
                 placeholder="Votre mot de passe"
-                value={register.password}
+                value={login.password}
                 className={style.inputField}
-                onChange={handlechange}
+                onChange={handleChangeLogin}
               />
-            </section>
+            </form>
 
             <Link to="/dashboard">
               <button type="button" className={style.buttonConnexion}>
@@ -168,7 +180,7 @@ function Accueil() {
                   placeholder="Votre email"
                   value={register.email}
                   name="email"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                   className={style.inputField}
                 />
                 <img
@@ -182,7 +194,7 @@ function Accueil() {
                   placeholder="Votre mot de passe"
                   value={register.password}
                   name="password"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                   className={style.inputField}
                 />
               </section>
@@ -230,7 +242,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="firstname"
                 value={register.firstname}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
@@ -238,7 +250,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="lastname"
                 value={register.lastname}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
@@ -246,7 +258,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="birthday_date"
                 value={register.birthday_date}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
@@ -254,7 +266,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="size"
                 value={register.size}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
@@ -262,7 +274,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="initial_weight"
                 value={register.initial_weight}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />{" "}
               <input
                 type="text"
@@ -270,7 +282,7 @@ function Accueil() {
                 className={style.inscriptionInput}
                 name="desired_weight"
                 value={register.desired_weight}
-                onChange={handlechange}
+                onChange={handleChangeRegister}
               />
               <section className={style.infosUserContainer}>
                 <h3>Sexe :</h3>
@@ -280,7 +292,7 @@ function Accueil() {
                   id="feminin"
                   name="sexe"
                   value="feminin"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                 />
                 <label htmlFor="masculin">Masculin</label>
                 <input
@@ -288,7 +300,7 @@ function Accueil() {
                   id="masculin"
                   name="sexe"
                   value="masculin"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                 />
                 <img
                   src={logoAvatar}
@@ -301,7 +313,7 @@ function Accueil() {
                   id="file"
                   name="file"
                   multiple
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                 />
               </section>
               <section className={style.objectif}>
@@ -311,7 +323,7 @@ function Accueil() {
                   id="perte"
                   name="objective"
                   value="perte"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                 />
                 <label htmlFor="perte">Perte de poids</label>
                 <input
@@ -319,7 +331,7 @@ function Accueil() {
                   id="prise"
                   name="objective"
                   value="prise"
-                  onChange={handlechange}
+                  onChange={handleChangeRegister}
                 />
                 <label htmlFor="prise">Prise de masse</label>
               </section>
