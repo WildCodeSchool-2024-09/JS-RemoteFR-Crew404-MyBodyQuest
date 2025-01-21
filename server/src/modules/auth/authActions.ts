@@ -19,6 +19,15 @@ const register: RequestHandler = async (req, res, next) => {
 const login: RequestHandler = async (req, res, next) => {
   try {
     const user = await authRepository.read(req.body.email);
+
+    if (!user) {
+      res.status(401).json({ message: "Aucun compte existant" });
+      return;
+    }
+    if (user.password !== req.body.password) {
+      res.status(401).json({ message: "Email ou mot de passe invalide" });
+      return;
+    }
     res.status(200).json(user);
   } catch (err) {
     // Pass any errors to the error-handling middleware

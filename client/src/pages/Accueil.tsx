@@ -15,8 +15,32 @@ function Accueil() {
   const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
   const [isMessageBienvenue, setMessageBienvenue] = useState(false);
 
-  const [email, setEmail] = useState("");
-  const [motdepasse, setMotdepasse] = useState("");
+  const [register, setRegister] = useState({
+    email: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    file: "",
+    birthday_date: "",
+    size: "",
+    objective: "",
+    initial_weight: "",
+    desired_weight: "",
+    weight_frequency: "",
+  });
+
+  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRegister((prevRegister) => ({
+      ...prevRegister,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.info(register);
+  };
 
   return (
     <>
@@ -31,11 +55,11 @@ function Accueil() {
           className={style.connexion}
           onClick={() => setConnexionOpen(true)}
         >
-          Connexion
+          {" "}
+          Connexion{" "}
         </button>
 
         {/* MODALE CONNEXION */}
-
         <section
           className={`${style.modaleConnexion} ${
             isConnexionOpen ? style.active : ""
@@ -66,11 +90,11 @@ function Accueil() {
               />
               <input
                 type="email"
-                id="email"
+                id="email-login"
                 placeholder="Votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={register.email}
                 className={style.inputField}
+                onChange={handlechange}
               />
             </section>
             <section className={style.inputContainer}>
@@ -81,11 +105,11 @@ function Accueil() {
               />
               <input
                 type="password"
-                id="motdepasse"
+                id="password-login"
                 placeholder="Votre mot de passe"
-                value={motdepasse}
-                onChange={(e) => setMotdepasse(e.target.value)}
+                value={register.password}
                 className={style.inputField}
+                onChange={handlechange}
               />
             </section>
 
@@ -109,199 +133,216 @@ function Accueil() {
         </section>
 
         {/* MODALE CREATION DE COMPTE */}
+        <form className={style.inputContainer} onSubmit={handleSubmit}>
+          <section
+            className={`${style.modaleCreateAccount} ${
+              isCreateAccountOpen ? style.active : ""
+            }`}
+          >
+            <section className={style.modaleCreateAccountContent}>
+              <section className={style.textlogoContainer}>
+                <img
+                  src={logoModale}
+                  alt="logo coeur cardio"
+                  className={style.logoModale}
+                />
+                <h3>M'inscrire</h3>
+                <button
+                  type="button"
+                  className={style.closeCreateAccount}
+                  onClick={() => setCreateAccountOpen(false)}
+                >
+                  x
+                </button>
+              </section>
 
-        <section
-          className={`${style.modaleCreateAccount} ${
-            isCreateAccountOpen ? style.active : ""
-          }`}
-        >
-          <section className={style.modaleCreateAccountContent}>
-            <section className={style.textlogoContainer}>
-              <img
-                src={logoModale}
-                alt="logo coeur cardio"
-                className={style.logoModale}
-              />
-              <h3>M'inscrire</h3>
+              <section className={style.inputContainer}>
+                <img
+                  src={mail}
+                  alt="Icone d'un email"
+                  className={style.logoMail}
+                />
+                <input
+                  type="email"
+                  id="email-create"
+                  placeholder="Votre email"
+                  value={register.email}
+                  name="email"
+                  onChange={handlechange}
+                  className={style.inputField}
+                />
+                <img
+                  src={mdp}
+                  alt="Icone d'un cadenas"
+                  className={style.logoMdp}
+                />
+                <input
+                  type="password"
+                  id="password-create"
+                  placeholder="Votre mot de passe"
+                  value={register.password}
+                  name="password"
+                  onChange={handlechange}
+                  className={style.inputField}
+                />
+              </section>
+
               <button
                 type="button"
-                className={style.closeCreateAccount}
-                onClick={() => setCreateAccountOpen(false)}
+                className={style.buttonInscription}
+                onClick={() => {
+                  setMessageBienvenue(true);
+
+                  setTimeout(() => {
+                    setCreateAccountOpen(false);
+                    setMessageBienvenue(false);
+                  }, 3000);
+                }}
               >
-                x
+                M'inscrire
               </button>
+              {isMessageBienvenue && (
+                <section className={style.messageBienvenue}>
+                  <h3>Inscription validée ! Bienvenue !</h3>
+                </section>
+              )}
             </section>
-
-            <section className={style.inputContainer}>
-              <img
-                src={mail}
-                alt="Icone d'un email"
-                className={style.logoMail}
-              />
-              <input
-                type="email"
-                id="email"
-                placeholder="Votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={style.inputField}
-              />
-            </section>
-
-            <section className={style.inputContainer}>
-              <img
-                src={mdp}
-                alt="Icone d'un cadenas"
-                className={style.logoMdp}
-              />
-              <input
-                type="password"
-                id="motdepasse"
-                placeholder="Votre mot de passe"
-                value={motdepasse}
-                onChange={(e) => setMotdepasse(e.target.value)}
-                className={style.inputField}
-              />
-            </section>
-
-            <button
-              type="button"
-              className={style.buttonInscription}
-              onClick={() => {
-                setMessageBienvenue(true);
-
-                setTimeout(() => {
-                  setCreateAccountOpen(false);
-                  setMessageBienvenue(false);
-                }, 3000);
-              }}
-            >
-              M'inscrire
-            </button>
-            {isMessageBienvenue && (
-              <section className={style.messageBienvenue}>
-                <h3>Inscription validée ! Bienvenue !</h3>
-              </section>
-            )}
           </section>
-        </section>
 
-        {/* MODALE D'INSCRIPTION */}
-        <section
-          className={`${style.modaleInscription} ${
-            isModaleInscriptionOpen ? style.active : ""
-          }`}
-        >
-          <section className={style.modaleInscriptionContent}>
-            <section className={style.textlogoContainer}>
-              <img
-                src={logoModale}
-                alt="logo coeur cardio"
-                className={style.logoModale}
-              />
-              <h3>Questionnaire</h3>
-            </section>
-
-            <section className={style.inputContainer}>
+          {/* MODALE D'INSCRIPTION */}
+          <section
+            className={`${style.modaleInscription} ${
+              isModaleInscriptionOpen ? style.active : ""
+            }`}
+          >
+            <section className={style.modaleInscriptionContent}>
+              <section className={style.textlogoContainer}>
+                <img
+                  src={logoModale}
+                  alt="logo coeur cardio"
+                  className={style.logoModale}
+                />
+                <h3>Questionnaire</h3>
+              </section>
               <input
                 type="text"
                 placeholder="Prénom"
                 className={style.inscriptionInput}
+                name="firstname"
+                value={register.firstname}
+                onChange={handlechange}
               />
               <input
                 type="text"
                 placeholder="Nom"
                 className={style.inscriptionInput}
+                name="lastname"
+                value={register.lastname}
+                onChange={handlechange}
               />
               <input
                 type="text"
                 placeholder="Date de naissance"
                 className={style.inscriptionInput}
+                name="birthday_date"
+                value={register.birthday_date}
+                onChange={handlechange}
               />
               <input
                 type="text"
                 placeholder="Taille"
                 className={style.inscriptionInput}
+                name="size"
+                value={register.size}
+                onChange={handlechange}
               />
               <input
                 type="text"
                 placeholder="Votre poids actuel"
                 className={style.inscriptionInput}
+                name="initial_weight"
+                value={register.initial_weight}
+                onChange={handlechange}
               />{" "}
               <input
                 type="text"
                 placeholder="Votre poids souhaité"
                 className={style.inscriptionInput}
+                name="desired_weight"
+                value={register.desired_weight}
+                onChange={handlechange}
               />
-            </section>
-            <section className={style.infosUserContainer}>
-              <form>
+              <section className={style.infosUserContainer}>
                 <h3>Sexe :</h3>
-                <input type="radio" id="feminin" name="sexe" value="feminin" />
                 <label htmlFor="feminin">Féminin</label>
-
+                <input
+                  type="radio"
+                  id="feminin"
+                  name="sexe"
+                  value="feminin"
+                  onChange={handlechange}
+                />
+                <label htmlFor="masculin">Masculin</label>
                 <input
                   type="radio"
                   id="masculin"
                   name="sexe"
                   value="masculin"
+                  onChange={handlechange}
                 />
-                <label htmlFor="masculin">Masculin</label>
-              </form>
-
-              <img
-                src={logoAvatar}
-                alt="Icone d'un avatar pour insérer un avatar"
-                className={style.logoAvatar}
-              />
-              <form method="post" encType="multipart/form-data">
-                <div>
-                  <label htmlFor="file">Ajouter une photo</label>
-                  <input type="file" id="file" name="file" multiple />
-                </div>
-              </form>
-
-              <section className={style.objectif}>
-                <form>
-                  <h3>Quel est votre objectif ?</h3>
-
-                  <input
-                    type="radio"
-                    id="perte"
-                    name="objectif"
-                    value="perte"
-                  />
-                  <label htmlFor="perte">Perte de poids</label>
-
-                  <input
-                    type="radio"
-                    id="prise"
-                    name="objectif"
-                    value="prise"
-                  />
-                  <label htmlFor="prise">Prise de masse</label>
-                </form>
+                <img
+                  src={logoAvatar}
+                  alt="Icone d'un avatar pour insérer un avatar"
+                  className={style.logoAvatar}
+                />
+                <label htmlFor="file">Ajouter une photo</label>
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  multiple
+                  onChange={handlechange}
+                />
               </section>
+              <section className={style.objectif}>
+                <h3>Quel est votre objectif ?</h3>
+                <input
+                  type="radio"
+                  id="perte"
+                  name="objective"
+                  value="perte"
+                  onChange={handlechange}
+                />
+                <label htmlFor="perte">Perte de poids</label>
+                <input
+                  type="radio"
+                  id="prise"
+                  name="objective"
+                  value="prise"
+                  onChange={handlechange}
+                />
+                <label htmlFor="prise">Prise de masse</label>
+              </section>
+              <button
+                type="button"
+                className={style.inscription}
+                onClick={() => {
+                  setModaleInscriptionOpen(false);
+                  setCreateAccountOpen(true);
+                }}
+              >
+                Créer un compte
+              </button>
+              <button
+                type="button"
+                className={style.closeInscription}
+                onClick={() => setModaleInscriptionOpen(false)}
+              >
+                x
+              </button>
             </section>
-            <button
-              type="button"
-              className={style.inscription}
-              onClick={() => {
-                setModaleInscriptionOpen(false);
-                setCreateAccountOpen(true);
-              }}
-            >
-              Créer un compte
-            </button>
-            <button
-              type="button"
-              className={style.closeInscription}
-              onClick={() => setModaleInscriptionOpen(false)}
-            >
-              x
-            </button>
           </section>
-        </section>
+        </form>
 
         {/* ENCART DE BIENVENUE */}
 
