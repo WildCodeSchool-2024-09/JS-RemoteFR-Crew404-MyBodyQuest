@@ -1,284 +1,302 @@
-:root {
-  font-family: "Libre Franklin", serif;
-  --main-color: #f2f0f6;
-  --other-color: #5dcd8a;
-  --another-color: #7b5cb9;
+/* MOBILE FIRST */
+.headercontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.pageAccueil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titleh1 {
+  color: var(--bg-color-green);
+  font-size: 1.7rem;
 }
 
-/* MOBILE FIRST */
-@media (max-width: 768px) {
-  .headercontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0;
-  }
-  h1 {
-    color: var(--other-color);
-    font-size: 1.2rem;
-  }
+.titleh2 {
+  color: var(--bg-color-purple);
+  font-size: 1.2rem;
+}
 
-  h2 {
-    color: var(--another-color);
-    font-size: 0.7rem;
-  }
+.intro {
+  font-size: 1rem;
+}
 
-  p {
-    font-size: 0.6rem;
-  }
+.bienvenue {
+  margin-top: 5rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: auto;
+  width: 20em;
+  background-color: var(--bg-color-light);
+  align-items: center;
+  text-align: center;
+}
 
-  .bienvenue {
-    margin-top: 5rem;
-    border-radius: 2rem;
-    padding: 1.5rem;
-    height: 13rem;
-    width: 15em;
-    background-color: var(--main-color);
-    align-items: center;
-    text-align: center;
-  }
+.logo {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
 
-  .logo {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-  }
+.logo img {
+  width: 50%;
+  height: auto;
+}
 
-  .logo img {
-    width: 50%;
-    height: auto;
-  }
+.connexion {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
 
-  .connexion {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-family: "Libre Franklin", serif;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+.questionnaire {
+  height: auto;
+  width: auto;
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
 
-  .questionnaire {
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-family: "Libre Franklin", serif;
-    margin-top: 2rem;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
-  }
+/* AVIS */
 
-  /* AVIS */
+.conteneur_avis {
+  margin: 2rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: auto;
+  width: auto;
+  background-color: var(--bg-color-light);
+  align-items: center;
+  text-align: center;
+}
 
-  .conteneur_avis {
-    margin: 2rem;
-    border-radius: 2rem;
-    padding: 1.5rem;
-    height: auto;
-    width: auto;
-    background-color: var(--main-color);
-    align-items: center;
-    text-align: center;
-  }
+.card_avis {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  width: auto;
+  height: auto;
+  margin: 0.8rem;
+}
 
-  .card_avis {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 12rem;
-    height: 12rem;
-    margin: 0.8rem;
-  }
+.avatar {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
 
-  .avatar {
-    border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    object-fit: cover;
-  }
+.note_avis,
+.titre_avis,
+.avis,
+.name_lastname,
+.date_avis {
+  margin: 5px 0;
+}
 
-  .note_avis,
-  .titre_avis,
-  .avis,
-  .name_lastname,
-  .date_avis {
-    margin: 5px 0;
-  }
+.date_avis {
+  color: grey;
+}
 
-  .date_avis {
-    color: grey;
-  }
+.Content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
 
-  .Content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-  }
+/* MODALES */
 
-  /* MODALES */
+.textlogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .textlogoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.titleh3 {
+  color: var(--bg-color-purple);
+  font-family: "Libre Franklin", serif;
+}
 
-  h3 {
-    color: var(--another-color);
-    font-family: "Libre Franklin", serif;
-  }
+.modaleConnexion,
+.modaleCreateAccount,
+.modaleInscription {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
 
-  .modaleConnexion,
-  .modaleCreateAccount,
-  .modaleInscription {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s;
-  }
+.modaleConnexion.active,
+.modaleCreateAccount.active,
+.modaleInscription.active {
+  visibility: visible;
+  opacity: 1;
+}
 
-  .modaleConnexion.active,
-  .modaleCreateAccount.active,
-  .modaleInscription.active {
-    visibility: visible;
-    opacity: 1;
-  }
+.modaleConnexionContent,
+.modaleCreateAccountContent,
+.modaleInscriptionContent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color-light);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  text-align: center;
+}
 
-  .modaleConnexionContent,
-  .modaleCreateAccountContent,
-  .modaleInscriptionContent {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--main-color);
-    padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    width: 70%;
-    text-align: center;
-  }
+.inscription,
+.buttonConnexion,
+.buttonInscription {
+  width: 10rem;
+  margin: 0.3rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: var(--bg-color-purple);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  align-self: center;
+}
 
-  .createAccount,
-  .inscription,
-  .buttonConnexion,
-  .buttonInscription {
-    margin: 0.3rem;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    background-color: var(--another-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  }
+.createAccount:hover,
+.inscription:hover,
+.connexion:hover,
+.closeConnexion:hover,
+.closeCreateAccount:hover,
+.closeInscription:hover,
+.buttonConnexion:hover,
+.questionnaire:hover,
+.buttonInscription:hover,
+.buttoncreateAccount:hover {
+  background-color: var(--bg-color-green);
+}
 
-  .closeConnexion {
-    position: absolute;
-    top: 11.5rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
-  .closeCreateAccount {
-    position: absolute;
-    top: 13rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
+.buttoncreateAccount {
+  width: 10rem;
+  margin: 0.3rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  align-self: center;
+}
 
-  .closeInscription {
-    position: absolute;
-    top: 1rem;
-    right: 2rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
+.closeConnexion {
+  position: absolute;
+  top: 11.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+.closeCreateAccount {
+  position: absolute;
+  top: 13rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
 
-  .createAccount:hover,
-  .inscription:hover,
-  .connexion:hover,
-  .closeConnexion:hover,
-  .closeCreateAccount:hover,
-  .closeInscription:hover,
-  .buttonConnexion:hover {
-    background-color: var(--other-color);
-  }
+.closeInscription {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
 
-  input {
-    font-family: "Libre Franklin", serif;
-    margin: 0.4rem;
-    padding: 0.3rem;
-    border-radius: 2rem;
-    border: var(--another-color);
-    border-width: thick;
-  }
+.inputField,
+.inscriptionInput {
+  font-family: "Libre Franklin", serif;
+  margin: 0.4rem;
+  padding: 0.3rem;
+  border-radius: 2rem;
+  border: var(--bg-color-purple);
+  border-width: thick;
+}
 
-  input:focus {
-    outline: none;
-  }
+.inputField:focus,
+.inscriptionInput:focus {
+  outline: none;
+}
 
-  .logoModale {
-    width: 20%;
-  }
+.logoModale {
+  width: 20%;
+}
 
-  .logoMail,
-  .logoMdp {
-    width: 5%;
-  }
+.logoMail,
+.logoMdp {
+  width: 5%;
+}
 
-  /* STYLE MODALE INSCRIPTION */
+/* STYLE MODALE INSCRIPTION */
 
-  .inputContainer {
-    margin: 0;
-  }
+.inputContainer {
+  margin: 0;
+}
 
-  /* STYLE MODALE "FAISONS CONNAISSANCE" */
+/* STYLE MODALE "FAISONS CONNAISSANCE" */
 
-  .infosUserContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.infosUserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .logoAvatar {
-    width: 20%;
-    padding: 0.5rem;
-  }
+.logoAvatar {
+  width: 20%;
+  padding: 0.5rem;
 }
 
 /* DESKTOP  */
@@ -286,45 +304,50 @@
 @media (min-width: 768px) {
   .headercontainer {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .pageAccueil {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
-  h1 {
-    color: var(--other-color);
-    font-size: 3rem;
+
+  .titleh1 {
+    color: var(--bg-color-green);
+    font-size: 4rem;
   }
 
-  h2 {
-    color: var(--another-color);
-    font-size: 1.5rem;
+  .titleh2 {
+    color: var(--bg-color-purple);
+    font-size: 2.5rem;
   }
 
-  p {
-    font-size: 1rem;
+  .intro {
+    font-size: 1.4rem;
   }
 
   .bienvenue {
     margin-top: 10rem;
     border-radius: 2rem;
     padding: 1.5rem;
-    height: 20rem;
-    width: 70rem;
-    background-color: var(--main-color);
+    height: 30rem;
+    width: 100rem;
+    background-color: var(--bg-color-light);
     align-items: center;
     text-align: center;
   }
 
   .questionnaire {
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1.5rem;
     font-family: "Libre Franklin", serif;
-    margin-top: 2rem;
     width: 18rem;
-    height: 2.5rem;
+    height: auto;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   }
 
@@ -342,16 +365,16 @@
 
   .connexion {
     position: absolute;
-    width: 8rem;
-    top: 1rem;
-    right: 5rem;
+    width: auto;
+    top: 2rem;
+    right: 3rem;
     padding: 0.5rem 1rem;
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-family: "Libre Franklin", serif;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   }
@@ -365,16 +388,17 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 2rem;
-    background-color: var(--main-color);
+    margin: 3.2rem;
+    background-color: var(--bg-color-light);
     border-radius: 2rem;
   }
 
   .card_avis {
     background-color: white;
     border-radius: 8px;
-    padding: 1rem;
+    padding: auto;
     width: 16rem;
+    height: auto;
     margin: 1rem;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.1);
   }
@@ -392,6 +416,7 @@
   .name_lastname,
   .date_avis {
     margin: 5px 0;
+    font-size: 1.2rem;
   }
 
   .date_avis {
@@ -407,8 +432,8 @@
     gap: 1rem;
   }
 
-  h3 {
-    color: var(--another-color);
+  .titleh3 {
+    color: var(--bg-color-purple);
     font-family: "Libre Franklin", serif;
   }
 
@@ -424,7 +449,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s;
@@ -438,19 +462,32 @@
   }
 
   .modaleConnexionContent,
-  .modaleCreateAccountContent,
+  .modaleCreateAccountContent {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: var(--bg-color-light);
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 35rem;
+    height: 17rem;
+    text-align: center;
+    gap: 0.5rem;
+  }
   .modaleInscriptionContent {
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: var(--main-color);
+    background-color: var(--bg-color-light);
     padding: 2rem;
     border-radius: 2rem;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    width: 20%;
+    width: 25rem;
+    height: 50rem;
     text-align: center;
+    gap: 0.5rem;
   }
-
   .createAccount {
     width: 10rem;
     margin: 0.3rem;
@@ -466,18 +503,47 @@
 
   .inscription,
   .buttonConnexion,
-  .buttonInscription {
+  .buttonInscription,
+  .buttoncreateAccount {
     width: 10rem;
     margin: 0.3rem;
     margin-top: 1rem;
     padding: 0.5rem;
-    background-color: var(--another-color);
+    background-color: var(--bg-color-purple);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     align-self: center;
+    font-size: 1.1rem;
+  }
+
+  .buttoncreateAccount {
+    width: 10rem;
+    margin: 0.3rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    align-self: center;
+  }
+
+  .createAccount:hover,
+  .inscription:hover,
+  .connexion:hover,
+  .closeConnexion:hover,
+  .closeCreateAccount:hover,
+  .closeInscription:hover,
+  .buttonConnexion:hover,
+  .questionnaire:hover,
+  .buttonInscription:hover,
+  .buttoncreateAccount:hover {
+    background-color: var(--bg-color-green);
   }
 
   .closeConnexion,
@@ -494,28 +560,18 @@
     cursor: pointer;
   }
 
-  .createAccount:hover,
-  .inscription:hover,
-  .connexion:hover,
-  .closeConnexion:hover,
-  .closeCreateAccount:hover,
-  .closeInscription:hover,
-  .buttonConnexion:hover,
-  .questionnaire:hover,
-  .buttonInscription:hover {
-    background-color: var(--other-color);
-  }
-
-  input {
+  .inputField,
+  .inscriptionInput {
     font-family: "Libre Franklin", serif;
     margin: 0.4rem;
     padding: 0.3rem;
     border-radius: 2rem;
-    border: var(--another-color);
+    border: var(--bg-color-purple);
     border-width: thick;
   }
 
-  input:focus {
+  .inputField:focus,
+  .inscriptionInput:focus {
     outline: none;
   }
 

@@ -83,7 +83,7 @@ function Accueil() {
     <>
       {/* BOUTON CONNEXION */}
 
-      <header>
+      <header className={style.headercontainer}>
         <section className={style.logo}>
           <img src={logo} alt="logo MyBodyQuest" />
         </section>
@@ -95,8 +95,9 @@ function Accueil() {
           {" "}
           Connexion{" "}
         </button>
-
-        {/* MODALE CONNEXION */}
+      </header>
+      {/* MODALE CONNEXION */}
+      <main className={style.pageAccueil}>
         <section
           className={`${style.modaleConnexion} ${
             isConnexionOpen ? style.active : ""
@@ -109,7 +110,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3>Se connecter</h3>
+              <h3 className={style.titleh3}>Se connecter</h3>
               <button
                 type="button"
                 className={style.closeConnexion}
@@ -155,7 +156,7 @@ function Accueil() {
 
             <button
               type="button"
-              className={style.createAccount}
+              className={style.buttoncreateAccount}
               onClick={() => {
                 setConnexionOpen(false);
                 setModaleInscriptionOpen(true);
@@ -167,21 +168,21 @@ function Accueil() {
         </section>
 
         {/* MODALE D'INSCRIPTION */}
-        <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
-          <section
-            className={`${style.modaleInscription} ${
-              isModaleInscriptionOpen ? style.active : ""
-            }`}
-          >
-            <section className={style.modaleInscriptionContent}>
-              <section className={style.textlogoContainer}>
-                <img
-                  src={logoModale}
-                  alt="logo coeur cardio"
-                  className={style.logoModale}
-                />
-                <h3>Questionnaire</h3>
-              </section>
+       <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
+        <section
+          className={`${style.modaleInscription} ${
+            isModaleInscriptionOpen ? style.active : ""
+          }`}
+        >
+          <section className={style.modaleInscriptionContent}>
+            <section className={style.textlogoContainer}>
+              <img
+                src={logoModale}
+                alt="logo coeur cardio"
+                className={style.logoModale}
+              />
+              <h3 className={style.titleh3}>Questionnaire</h3>
+            </section>
               <input
                 type="text"
                 placeholder="Prénom"
@@ -238,24 +239,27 @@ function Accueil() {
                 value={register.weight_frequency}
                 onChange={handleChangeRegister}
               />
-              <section className={style.infosUserContainer}>
-                <h3>Sexe :</h3>
+            
+              <section className={style.infosUserContainer}
+                <h3 className={style.titleh3}>Sexe :</h3>
                 <label htmlFor="Féminin">Féminin</label>
                 <input
+                  className={style.input}
                   type="radio"
                   id="Féminin"
                   name="sexe"
                   value="Féminin"
                   onChange={handleChangeRegister}
                 />
-                <label htmlFor="masculin">Masculin</label>
-                <input
+                <label htmlFor="Masculin">Masculin</label>
+                 <input
+                  className={style.input}
                   type="radio"
                   id="Masculin"
                   name="sexe"
                   value="Masculin"
                   onChange={handleChangeRegister}
-                />
+                />               
                 <img
                   src={logoAvatar}
                   alt="Icone d'un avatar pour insérer un avatar"
@@ -271,8 +275,9 @@ function Accueil() {
                 />
               </section>
               <section className={style.objectif}>
-                <h3>Quel est votre objectif ?</h3>
+                  <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
                 <input
+                  className={style.input}
                   type="radio"
                   id="perte"
                   name="objective"
@@ -281,6 +286,7 @@ function Accueil() {
                 />
                 <label htmlFor="perte">Perte de poids</label>
                 <input
+                  className={style.input}
                   type="radio"
                   id="prise"
                   name="objective"
@@ -336,12 +342,15 @@ function Accueil() {
         {/* ENCART DE BIENVENUE */}
 
         <section className={style.bienvenue}>
-          <h1>Bienvenue </h1>
-          <h2>Une plateforme qui allie bien-être et engagement ludique</h2>
-          <p>
+          <h1 className={style.titleh1}>Bienvenue </h1>
+          <h2 className={style.titleh2}>
+            Une plateforme qui allie bien-être et engagement ludique
+          </h2>
+          <p className={style.intro}>
             Ce site a été conçu pour répondre aux besoins des personnes
-            souhaitant perdre du poids ou prendre de la masse en leur offrant un
-            accompagnement personnalisé
+            souhaitant perdre du poids <br />
+            ou prendre de la masse en leur offrant un accompagnement
+            personnalisé.
           </p>
           <button
             type="button"
@@ -381,7 +390,7 @@ function Accueil() {
             <p className={style.avis}>Ceci est l'avis de l'utilisateur.</p>
           </section>
         </section>
-      </header>
+      </main>
     </>
   );
 }
