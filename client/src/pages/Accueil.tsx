@@ -60,20 +60,12 @@ function Accueil() {
       register,
     );
     console.info(response.data);
-
-    /**
-     * SI OK, le server, renvoi le token + le user [res.cookie("token", token).json({user})] et j'envoi l'alert success + une redirection vers /dashboard
-     *
-     *
-     * Sinon, j'envoi l'alert error
-     *
-     */
-
+    /*Si ok le server renvoi le token + le user [res.cookie("token", token).json({user})]*/
     success(`Bonjour ${register.firstname}, ton compte est bien créé !`);
-
     setTimeout(() => {
       nav("/dashboard");
-    }, 2000);
+    }, 3000);
+    /*Sinon j'envoi l'alert error*/
   };
 
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -84,6 +76,8 @@ function Accueil() {
       login,
     );
     console.info(response.data);
+    nav("/dashboard");
+    /*sinon j'envoie  l'alert error*/
   };
 
   return (
