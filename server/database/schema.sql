@@ -81,12 +81,42 @@ INSERT INTO tracking (date,weight,comments,user_id)
 
 INSERT INTO success (success_title)
 VALUES ('Inscription sur le site réussie 💪');
+INSERT INTO success (success_title)
+VALUES ('Explorateur des quêtes running ');
+
+INSERT INTO success (success_title)
+VALUES ('Aventurier des quêtes running');
+
+INSERT INTO success (success_title)
+VALUES ('Vétéran des quêtes running');
+
+INSERT INTO success (success_title)
+VALUES ('Explorateur des quêtes fitness');
+
+INSERT INTO success (success_title)
+VALUES ('Aventurier des quêtes fitness');
+
+INSERT INTO success (success_title)
+VALUES ('Vétéran des quêtes fitness');
+
+INSERT INTO success (success_title)
+VALUES ('Sorties en folie');
+
+INSERT INTO success (success_title)
+VALUES ('Anti courbatures');
+
+INSERT INTO success (success_title)
+VALUES ('Bien dans son corps');
+
+INSERT INTO success (success_title)
+VALUES ('La nourriture c''est la vie');
+
 
 INSERT INTO category (name, success_id)
 VALUES ('Test', '1');
 
 INSERT INTO quests (quest_title, description, xp, category_id)
-VALUES ('Première connexion', 'Félicitations, tu as débloqué ta première quête, tu remportes donc 15 xp. Valides en dautres afin datteindre le prochain niveau!','15', '1');
+VALUES ('Première connexion', 'Félicitations, tu as débloqué ta première quête! Valide en d''autres afin d''atteindre le prochain niveau!','10', '1');
 
 INSERT INTO user_quests (user_id, quest_id, is_done)
 VALUES ('1', '1', TRUE);
