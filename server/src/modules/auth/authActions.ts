@@ -28,6 +28,7 @@ const login: RequestHandler = async (req, res, next) => {
       res.status(401).json({ message: "Email ou mot de passe invalide" });
       return;
     }
+    user.password = undefined;
     res.status(200).json(user);
   } catch (err) {
     // Pass any errors to the error-handling middleware

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { success } from "../services/toasts";
 
@@ -53,16 +53,15 @@ function Accueil() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await axios.post(
-      "http://localhost:3310/api/register",
+      `${import.meta.env.VITE_API_URL}/api/register`,
       register,
     );
     console.info(response.data);
+
     /**
-     * J'envoi les infos en BDD
-     *
      * SI OK, le server, renvoi le token + le user [res.cookie("token", token).json({user})] et j'envoi l'alert success + une redirection vers /dashboard
      *
      *
@@ -75,6 +74,16 @@ function Accueil() {
     setTimeout(() => {
       nav("/dashboard");
     }, 2000);
+  };
+
+  const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.info("coucou");
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/login`,
+      login,
+    );
+    console.info(response.data);
   };
 
   return (
@@ -109,7 +118,7 @@ function Accueil() {
               />
               <h3>Se connecter</h3>
               <button
-                type="submit"
+                type="button"
                 className={style.closeConnexion}
                 onClick={() => setConnexionOpen(false)}
               >
@@ -117,7 +126,7 @@ function Accueil() {
               </button>
             </section>
 
-            <form className={style.inputContainer} onSubmit={handleSubmit}>
+            <form className={style.inputContainer} onSubmit={handleSubmitLogin}>
               <img
                 src={mail}
                 alt="Icone d'un email"
@@ -126,6 +135,7 @@ function Accueil() {
               <input
                 type="email"
                 id="email-login"
+                name="email"
                 placeholder="Votre email"
                 value={login.email}
                 className={style.inputField}
@@ -138,19 +148,17 @@ function Accueil() {
               />
               <input
                 type="password"
+                name="password"
                 id="password-login"
                 placeholder="Votre mot de passe"
                 value={login.password}
                 className={style.inputField}
                 onChange={handleChangeLogin}
               />
-            </form>
-
-            <Link to="/dashboard">
-              <button type="button" className={style.buttonConnexion}>
+              <button type="submit" className={style.buttonConnexion}>
                 Connexion
               </button>
-            </Link>
+            </form>
 
             <button
               type="button"
@@ -166,7 +174,7 @@ function Accueil() {
         </section>
 
         {/* MODALE D'INSCRIPTION */}
-        <form className={style.inputContainer} onSubmit={handleSubmit}>
+        <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
           <section
             className={`${style.modaleInscription} ${
               isModaleInscriptionOpen ? style.active : ""
