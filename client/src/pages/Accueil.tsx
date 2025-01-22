@@ -110,7 +110,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3 className={style.titleh3}>Se connecter</h3>
+              <h3> className={style.titleh3}>Se connecter</h3>
               <button
                 type="button"
                 className={style.closeConnexion}
