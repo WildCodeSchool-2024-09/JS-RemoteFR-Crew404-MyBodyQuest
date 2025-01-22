@@ -1,3 +1,4 @@
+import * as argon2 from "argon2";
 import type { RequestHandler } from "express";
 
 // Import access to data
@@ -24,9 +25,14 @@ const login: RequestHandler = async (req, res, next) => {
       res.status(401).json({ message: "Aucun compte existant" });
       return;
     }
-    if (user.password !== req.body.password) {
-      res.status(401).json({ message: "Email ou mot de passe invalide" });
-      return;
+
+    if (
+      user.password &&
+      (await argon2.verify(user.password, req.body.password))
+    ) {
+      res.status(200).json(user);
+    } else {
+      res.status(401).json({ message: "Email ou Mot de passe incorrect" });
     }
     user.password = undefined;
     res.status(200).json(user);

@@ -243,20 +243,20 @@ function Accueil() {
               />
               <section className={style.infosUserContainer}>
                 <h3>Sexe :</h3>
-                <label htmlFor="feminin">Féminin</label>
+                <label htmlFor="Féminin">Féminin</label>
                 <input
                   type="radio"
-                  id="feminin"
+                  id="Féminin"
                   name="sexe"
-                  value="feminin"
+                  value="Féminin"
                   onChange={handleChangeRegister}
                 />
                 <label htmlFor="masculin">Masculin</label>
                 <input
                   type="radio"
-                  id="masculin"
+                  id="Masculin"
                   name="sexe"
-                  value="masculin"
+                  value="Masculin"
                   onChange={handleChangeRegister}
                 />
                 <img

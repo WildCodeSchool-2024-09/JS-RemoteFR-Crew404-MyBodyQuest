@@ -73,9 +73,9 @@ INSERT INTO levels (xp_max)
  VALUES ('80');
 
 INSERT INTO users 
-(firstname, lastname, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
+(firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
   VALUES
-  ('john', 'doe', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '1', '1' );
+  ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
 
 INSERT INTO tracking (date,weight,comments,user_id)
  VALUES ('2025-01-08','83.70','Test','1');
