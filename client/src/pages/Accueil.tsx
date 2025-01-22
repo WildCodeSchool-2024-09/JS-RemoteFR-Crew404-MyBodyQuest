@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { error, success } from "../services/toasts";
+import { failed, success } from "../services/toasts";
 
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
@@ -55,28 +55,35 @@ function Accueil() {
 
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Empêche le rechargement de la page
-    const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API
-    console.info(response.data);
-
-    if (response.status === 200) {
-      success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
+    try {
+      const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API
+      console.info(response.data);
+      // si le user est bien créé message succes de toastify
+      if (response.status === 201) {
+        success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
+        setTimeout(() => {
+          //Redirection apres 3sec vers dashboard
+          nav("/dashboard");
+        }, 3000);
+      }
+    } catch (error) {
+      failed("Erreur lors de la création de votre compte. Veuillez réessayer.");
     }
-    /*Si ok le server renvoi le token + le user [res.cookie("token", token).json({user})]*/
-    setTimeout(() => {
-      nav("/dashboard");
-    }, 3000);
-    error("Erreur lors de la création de votre compte");
-    /*Sinon j'envoi l'alert error*/
   };
 
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.info("coucou");
-    const response = await api.post("/api/login", login);
-    console.info(response.data);
-    nav("/dashboard");
-
-    /*sinon j'envoie  l'alert error*/
+    e.preventDefault(); //empeche rechargement page
+    try {
+      const response = await api.post("/api/login", login);
+      console.info(response.data);
+      //si le mail password correspondent je redirige vers dashboard
+      if (response.status === 200) {
+        success(`Bonjour ${register.firstname} !`);
+        nav("/dashboard");
+      }
+    } catch (error) {
+      failed("Email ou mot de passe invalide. Veuillez réessayer.");
+    }
   };
 
   return (
@@ -110,7 +117,7 @@ function Accueil() {
                 alt="logo coeur cardio"
                 className={style.logoModale}
               />
-              <h3> className={style.titleh3}>Se connecter</h3>
+              <h3 className={style.titleh3}>Se connecter</h3>
               <button
                 type="button"
                 className={style.closeConnexion}
@@ -168,21 +175,21 @@ function Accueil() {
         </section>
 
         {/* MODALE D'INSCRIPTION */}
-       <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
-        <section
-          className={`${style.modaleInscription} ${
-            isModaleInscriptionOpen ? style.active : ""
-          }`}
-        >
-          <section className={style.modaleInscriptionContent}>
-            <section className={style.textlogoContainer}>
-              <img
-                src={logoModale}
-                alt="logo coeur cardio"
-                className={style.logoModale}
-              />
-              <h3 className={style.titleh3}>Questionnaire</h3>
-            </section>
+        <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
+          <section
+            className={`${style.modaleInscription} ${
+              isModaleInscriptionOpen ? style.active : ""
+            }`}
+          >
+            <section className={style.modaleInscriptionContent}>
+              <section className={style.textlogoContainer}>
+                <img
+                  src={logoModale}
+                  alt="logo coeur cardio"
+                  className={style.logoModale}
+                />
+                <h3 className={style.titleh3}>Questionnaire</h3>
+              </section>
               <input
                 type="text"
                 placeholder="Prénom"
@@ -239,8 +246,7 @@ function Accueil() {
                 value={register.weight_frequency}
                 onChange={handleChangeRegister}
               />
-            
-              <section className={style.infosUserContainer}
+              <section className={style.infosUserContainer}>
                 <h3 className={style.titleh3}>Sexe :</h3>
                 <label htmlFor="Féminin">Féminin</label>
                 <input
@@ -252,14 +258,14 @@ function Accueil() {
                   onChange={handleChangeRegister}
                 />
                 <label htmlFor="Masculin">Masculin</label>
-                 <input
+                <input
                   className={style.input}
                   type="radio"
                   id="Masculin"
                   name="sexe"
                   value="Masculin"
                   onChange={handleChangeRegister}
-                />               
+                />
                 <img
                   src={logoAvatar}
                   alt="Icone d'un avatar pour insérer un avatar"
@@ -275,7 +281,7 @@ function Accueil() {
                 />
               </section>
               <section className={style.objectif}>
-                  <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
+                <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
                 <input
                   className={style.input}
                   type="radio"
