@@ -80,40 +80,10 @@ INSERT INTO tracking (date,weight,comments,user_id)
  VALUES ('2025-01-08','83.70','Test','1');
 
 INSERT INTO success (success_title)
-VALUES ('Inscription sur le site réussie 💪');
-INSERT INTO success (success_title)
-VALUES ('Explorateur des quêtes running ');
-
-INSERT INTO success (success_title)
-VALUES ('Aventurier des quêtes running');
-
-INSERT INTO success (success_title)
-VALUES ('Vétéran des quêtes running');
-
-INSERT INTO success (success_title)
-VALUES ('Explorateur des quêtes fitness');
-
-INSERT INTO success (success_title)
-VALUES ('Aventurier des quêtes fitness');
-
-INSERT INTO success (success_title)
-VALUES ('Vétéran des quêtes fitness');
-
-INSERT INTO success (success_title)
-VALUES ('Sorties en folie');
-
-INSERT INTO success (success_title)
-VALUES ('Anti courbatures');
-
-INSERT INTO success (success_title)
-VALUES ('Bien dans son corps');
-
-INSERT INTO success (success_title)
-VALUES ('La nourriture c''est la vie');
-
+VALUES ('Inscription sur le site réussie 💪'), ('Explorateur des quêtes running '), ('Aventurier des quêtes running'), ('Vétéran des quêtes running'), ('Explorateur des quêtes fitness'), ('Aventurier des quêtes fitness'), ('Vétéran des quêtes fitness'), ('Sorties en folie'), ('Anti courbatures'), ('Bien dans son corps'), ('La nourriture c''est la vie');
 
 INSERT INTO category (name, success_id)
-VALUES ('Test', '1');
+VALUES ('Running lvl1', '2'), ('Running lvl2', '3'), ('Running lvl3', '4'), ('Fitness lvl1', '5'), ('Fitness lvl2', '6'), ('Fitness lvl3', '7'), ('Autres activités sportives', '8'), ('Echauffements et étirements', '9'), ('Activités bien-être', '10'), ('Alimentation', '11');
 
 INSERT INTO quests (quest_title, description, xp, category_id)
 VALUES ('Première connexion', 'Félicitations, tu as débloqué ta première quête! Valide en d''autres afin d''atteindre le prochain niveau!','10', '1');
