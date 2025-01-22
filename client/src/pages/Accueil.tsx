@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { success } from "../services/toasts";
+
+import axios from "axios";
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
 import logo from "../assets/images/Logo site.png";
@@ -10,11 +14,10 @@ import mdp from "../assets/images/mdp.png";
 import style from "../styles/Accueil.module.css";
 
 function Accueil() {
-  const [isConnexionOpen, setConnexionOpen] = useState(false);
-  const [isCreateAccountOpen, setCreateAccountOpen] = useState(false);
-  const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
-  const [isMessageBienvenue, setMessageBienvenue] = useState(false);
+  const nav = useNavigate();
 
+  const [isConnexionOpen, setConnexionOpen] = useState(false);
+  const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
   const [register, setRegister] = useState({
     email: "",
     password: "",
@@ -50,10 +53,28 @@ function Accueil() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.info(register);
-    console.info(login);
+    const response = await axios.post(
+      "http://localhost:3310/api/register",
+      register,
+    );
+    console.info(response.data);
+    /**
+     * J'envoi les infos en BDD
+     *
+     * SI OK, le server, renvoi le token + le user [res.cookie("token", token).json({user})] et j'envoi l'alert success + une redirection vers /dashboard
+     *
+     *
+     * Sinon, j'envoi l'alert error
+     *
+     */
+
+    success(`Bonjour ${register.firstname}, ton compte est bien créé !`);
+
+    setTimeout(() => {
+      nav("/dashboard");
+    }, 2000);
   };
 
   return (
@@ -88,7 +109,7 @@ function Accueil() {
               />
               <h3>Se connecter</h3>
               <button
-                type="button"
+                type="submit"
                 className={style.closeConnexion}
                 onClick={() => setConnexionOpen(false)}
               >
@@ -144,84 +165,8 @@ function Accueil() {
           </section>
         </section>
 
-        {/* MODALE CREATION DE COMPTE */}
+        {/* MODALE D'INSCRIPTION */}
         <form className={style.inputContainer} onSubmit={handleSubmit}>
-          <section
-            className={`${style.modaleCreateAccount} ${
-              isCreateAccountOpen ? style.active : ""
-            }`}
-          >
-            <section className={style.modaleCreateAccountContent}>
-              <section className={style.textlogoContainer}>
-                <img
-                  src={logoModale}
-                  alt="logo coeur cardio"
-                  className={style.logoModale}
-                />
-                <h3>M'inscrire</h3>
-                <button
-                  type="button"
-                  className={style.closeCreateAccount}
-                  onClick={() => setCreateAccountOpen(false)}
-                >
-                  x
-                </button>
-              </section>
-
-              <section className={style.inputContainer}>
-                <img
-                  src={mail}
-                  alt="Icone d'un email"
-                  className={style.logoMail}
-                />
-                <input
-                  type="email"
-                  id="email-create"
-                  placeholder="Votre email"
-                  value={register.email}
-                  name="email"
-                  onChange={handleChangeRegister}
-                  className={style.inputField}
-                />
-                <img
-                  src={mdp}
-                  alt="Icone d'un cadenas"
-                  className={style.logoMdp}
-                />
-                <input
-                  type="password"
-                  id="password-create"
-                  placeholder="Votre mot de passe"
-                  value={register.password}
-                  name="password"
-                  onChange={handleChangeRegister}
-                  className={style.inputField}
-                />
-              </section>
-
-              <button
-                type="button"
-                className={style.buttonInscription}
-                onClick={() => {
-                  setMessageBienvenue(true);
-
-                  setTimeout(() => {
-                    setCreateAccountOpen(false);
-                    setMessageBienvenue(false);
-                  }, 3000);
-                }}
-              >
-                M'inscrire
-              </button>
-              {isMessageBienvenue && (
-                <section className={style.messageBienvenue}>
-                  <h3>Inscription validée ! Bienvenue !</h3>
-                </section>
-              )}
-            </section>
-          </section>
-
-          {/* MODALE D'INSCRIPTION */}
           <section
             className={`${style.modaleInscription} ${
               isModaleInscriptionOpen ? style.active : ""
@@ -284,6 +229,14 @@ function Accueil() {
                 value={register.desired_weight}
                 onChange={handleChangeRegister}
               />
+              <input
+                type="text"
+                placeholder="Fréquence de pesée"
+                className={style.inscriptionInput}
+                name="weight_frequency"
+                value={register.weight_frequency}
+                onChange={handleChangeRegister}
+              />
               <section className={style.infosUserContainer}>
                 <h3>Sexe :</h3>
                 <label htmlFor="feminin">Féminin</label>
@@ -335,14 +288,37 @@ function Accueil() {
                 />
                 <label htmlFor="prise">Prise de masse</label>
               </section>
-              <button
-                type="button"
-                className={style.inscription}
-                onClick={() => {
-                  setModaleInscriptionOpen(false);
-                  setCreateAccountOpen(true);
-                }}
-              >
+              <section className={style.inputContainer}>
+                <img
+                  src={mail}
+                  alt="Icone d'un email"
+                  className={style.logoMail}
+                />
+                <input
+                  type="email"
+                  id="email-create"
+                  placeholder="Votre email"
+                  value={register.email}
+                  name="email"
+                  onChange={handleChangeRegister}
+                  className={style.inputField}
+                />
+                <img
+                  src={mdp}
+                  alt="Icone d'un cadenas"
+                  className={style.logoMdp}
+                />
+                <input
+                  type="password"
+                  id="password-create"
+                  placeholder="Votre mot de passe"
+                  value={register.password}
+                  name="password"
+                  onChange={handleChangeRegister}
+                  className={style.inputField}
+                />
+              </section>
+              <button type="submit" className={style.inscription}>
                 Créer un compte
               </button>
               <button
