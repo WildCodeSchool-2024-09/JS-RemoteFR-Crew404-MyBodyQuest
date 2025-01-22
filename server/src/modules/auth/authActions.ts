@@ -32,7 +32,9 @@ const login: RequestHandler = async (req, res, next) => {
       (await argon2.verify(user.password, req.body.password))
     ) {
       const token = JwtMiddleware.createToken(user);
-      res.cookie("jwtToken", token).json(user);
+      res
+        .cookie("jwtToken", token, { httpOnly: true, secure: false })
+        .json(user);
     } else {
       res.status(401).json({ message: "Email ou Mot de passe incorrect" });
     }
