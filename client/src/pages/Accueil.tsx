@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { success } from "../services/toasts";
+import { error, success } from "../services/toasts";
 
 import axios from "axios";
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
@@ -65,6 +65,7 @@ function Accueil() {
     setTimeout(() => {
       nav("/dashboard");
     }, 3000);
+    error("Erreur lors de la création de votre compte");
     /*Sinon j'envoi l'alert error*/
   };
 
@@ -77,6 +78,7 @@ function Accueil() {
     );
     console.info(response.data);
     nav("/dashboard");
+
     /*sinon j'envoie  l'alert error*/
   };
 
