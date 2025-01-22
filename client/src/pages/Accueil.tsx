@@ -54,12 +54,14 @@ function Accueil() {
   };
 
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const response = await api.post("/api/register", register);
-
+    e.preventDefault(); // Empêche le rechargement de la page
+    const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API
     console.info(response.data);
+
+    if (response.status === 200) {
+      success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
+    }
     /*Si ok le server renvoi le token + le user [res.cookie("token", token).json({user})]*/
-    success(`Bonjour ${register.firstname}, ton compte est bien créé !`);
     setTimeout(() => {
       nav("/dashboard");
     }, 3000);
