@@ -1,5 +1,6 @@
 import * as argon2 from "argon2";
 import type { RequestHandler } from "express";
+import JwtMiddleware from "../../middlewares/JwtMiddleware";
 
 // Import access to data
 import authRepository from "./authRepository";
@@ -30,7 +31,8 @@ const login: RequestHandler = async (req, res, next) => {
       user.password &&
       (await argon2.verify(user.password, req.body.password))
     ) {
-      res.status(200).json(user);
+      const token = JwtMiddleware.createToken(user);
+      res.cookie("jwtToken", token).json(user);
     } else {
       res.status(401).json({ message: "Email ou Mot de passe incorrect" });
     }

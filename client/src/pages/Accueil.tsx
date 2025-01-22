@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { error, success } from "../services/toasts";
 
-import axios from "axios";
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
 import logo from "../assets/images/Logo site.png";
@@ -11,6 +10,7 @@ import logoAvatar from "../assets/images/avatar.png";
 import logoModale from "../assets/images/coeur_logo.png";
 import mail from "../assets/images/mail.png";
 import mdp from "../assets/images/mdp.png";
+import api from "../services/api";
 import style from "../styles/Accueil.module.css";
 
 function Accueil() {
@@ -55,10 +55,8 @@ function Accueil() {
 
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/register`,
-      register,
-    );
+    const response = await api.post("/api/register", register);
+
     console.info(response.data);
     /*Si ok le server renvoi le token + le user [res.cookie("token", token).json({user})]*/
     success(`Bonjour ${register.firstname}, ton compte est bien créé !`);
@@ -72,10 +70,7 @@ function Accueil() {
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.info("coucou");
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/login`,
-      login,
-    );
+    const response = await api.post("/api/login", login);
     console.info(response.data);
     nav("/dashboard");
 
