@@ -75,7 +75,8 @@ function Accueil() {
       const response = await api.post("/api/login", login);
       //si le mail password correspondent je redirige vers dashboard
       if (response.status === 200) {
-        success(`Bonjour ${register.firstname} !`);
+        const firstname = response.data.firstname;
+        success(`Bonjour ${firstname} !`);
         nav("/dashboard");
       }
     } catch (error) {

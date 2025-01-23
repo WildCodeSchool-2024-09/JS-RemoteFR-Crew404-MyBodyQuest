@@ -4,11 +4,22 @@ export type {};
 declare global {
   namespace Express {
     export interface Request {
-      /* ************************************************************************* */
-      // Add your custom properties here, for example:
-      //
-      // user?: { ... }
-      /* ************************************************************************* */
+      user: {
+        id: number;
+        firstname: string;
+        lastname: string;
+        avatar: string;
+        email: string;
+        password: string;
+        birthday_date?: number;
+        size: number;
+        objective: string;
+        initial_weight: number;
+        desired_weight: number;
+        weight_frequency: string;
+        current_xp: number;
+        level_id: number;
+      };
     }
   }
 }

@@ -11,11 +11,11 @@ router.get("/api/levels", levelsActions.browse);
 router.get("/api/levels/:id", levelsActions.read);
 router.post("/api/levels", levelsActions.add);
 
-import hashPwd from "./middlewares/AuthMiddleware";
+import { hashPwd, verifyEmail, verifyPwd } from "./middlewares/AuthMiddleware";
 // Login & Register
 import authActions from "./modules/auth/authActions";
 router.post("/api/register", hashPwd, authActions.register);
-router.post("/api/login", authActions.login);
+router.post("/api/login", verifyEmail, verifyPwd, authActions.login);
 
 import userActions from "./modules/users/usersActions";
 router.get("/api/users", userActions.browse);

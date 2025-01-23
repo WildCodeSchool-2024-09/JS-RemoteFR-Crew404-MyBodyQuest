@@ -8,7 +8,7 @@ type User = {
   lastname: string;
   avatar: string;
   email: string;
-  password: string | undefined;
+  password: string;
   birthday_date?: number;
   size: number;
   objective: string;

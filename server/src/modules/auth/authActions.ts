@@ -1,4 +1,3 @@
-import * as argon2 from "argon2";
 import type { RequestHandler } from "express";
 import JwtMiddleware from "../../middlewares/JwtMiddleware";
 
@@ -20,25 +19,10 @@ const register: RequestHandler = async (req, res, next) => {
 
 const login: RequestHandler = async (req, res, next) => {
   try {
+    // Fetch the user by email
     const user = await authRepository.read(req.body.email);
-
-    if (!user) {
-      res.status(401).json({ message: "Aucun compte existant" });
-      return;
-    }
-
-    if (
-      user.password &&
-      (await argon2.verify(user.password, req.body.password))
-    ) {
-      const token = JwtMiddleware.createToken(user);
-      res
-        .cookie("jwtToken", token, { httpOnly: true, secure: false })
-        .json(user);
-    } else {
-      res.status(401).json({ message: "Email ou Mot de passe incorrect" });
-    }
-    user.password = undefined;
+    const token = JwtMiddleware.createToken(user); // génération JWT
+    res.cookie("jwtToken", token, { httpOnly: true, secure: false }).json(user); // envoi du jwt dans les cookies
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
