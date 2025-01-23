@@ -56,9 +56,7 @@ function Accueil() {
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Empêche le rechargement de la page
     try {
-      const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API
-      console.info(response.data);
-      // si le user est bien créé message succes de toastify
+      const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API     // si le user est bien créé message succes de toastify
       if (response.status === 201) {
         success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
         setTimeout(() => {
@@ -75,7 +73,6 @@ function Accueil() {
     e.preventDefault(); //empeche rechargement page
     try {
       const response = await api.post("/api/login", login);
-      console.info(response.data);
       //si le mail password correspondent je redirige vers dashboard
       if (response.status === 200) {
         success(`Bonjour ${register.firstname} !`);
