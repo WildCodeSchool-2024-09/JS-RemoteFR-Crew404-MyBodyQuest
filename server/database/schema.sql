@@ -8,16 +8,17 @@ CREATE TABLE users (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   firstname VARCHAR(50) NOT NULL,
   lastname VARCHAR(50) NOT NULL,
+  sexe ENUM('Masculin', 'Féminin') DEFAULT NULL,
   avatar VARCHAR(255),
-  email VARCHAR(255) NOT NULL,
-  password VARCHAR(15) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
   birthday_date DATE DEFAULT NULL,
   size DECIMAL(5,2) NOT NULL,
   objective VARCHAR(50) NOT NULL,
   initial_weight DECIMAL(5,2) NOT NULL,
   desired_weight DECIMAL(5,2) NOT NULL,
   weight_frequency VARCHAR(50) NOT NULL,
-  current_xp INT DEFAULT 1 NOT NULL,
+  current_xp INT DEFAULT 200 NOT NULL,
   level_id INT UNSIGNED,
   FOREIGN KEY (level_id) REFERENCES levels(id)
 );
@@ -72,9 +73,9 @@ INSERT INTO levels (xp_max)
  VALUES ('80');
 
 INSERT INTO users 
-(firstname, lastname, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
+(firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
   VALUES
-  ('john', 'doe', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
+  ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
 
 INSERT INTO tracking (date,weight,comments,user_id)
  VALUES ('2025-01-08','83.70','Test','1');

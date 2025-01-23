@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { failed, success } from "../services/toasts";
+
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
 import logo from "../assets/images/Logo site.png";
@@ -7,16 +10,79 @@ import logoAvatar from "../assets/images/avatar.png";
 import logoModale from "../assets/images/coeur_logo.png";
 import mail from "../assets/images/mail.png";
 import mdp from "../assets/images/mdp.png";
+import api from "../services/api";
 import style from "../styles/Accueil.module.css";
 
 function Accueil() {
-  const [isConnexionOpen, setConnexionOpen] = useState(false);
-  const [isCreateAccountOpen, setCreateAccountOpen] = useState(false);
-  const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
-  const [isMessageBienvenue, setMessageBienvenue] = useState(false);
+  const nav = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [motdepasse, setMotdepasse] = useState("");
+  const [isConnexionOpen, setConnexionOpen] = useState(false);
+  const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
+  const [register, setRegister] = useState({
+    email: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    file: "",
+    birthday_date: "",
+    size: "",
+    objective: "",
+    initial_weight: "",
+    desired_weight: "",
+    weight_frequency: "",
+  });
+
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChangeRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setRegister((prevRegister) => ({
+      ...prevRegister,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setLogin((prevLogin) => ({
+      ...prevLogin,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Empêche le rechargement de la page
+    try {
+      const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API     // si le user est bien créé message succes de toastify
+      if (response.status === 201) {
+        success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
+        setTimeout(() => {
+          //Redirection apres 3sec vers dashboard
+          nav("/dashboard");
+        }, 3000);
+      }
+    } catch (error) {
+      failed("Erreur lors de la création de votre compte. Veuillez réessayer.");
+    }
+  };
+
+  const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); //empeche rechargement page
+    try {
+      const response = await api.post("/api/login", login);
+      //si le mail password correspondent je redirige vers dashboard
+      if (response.status === 200) {
+        const firstname = response.data.firstname;
+        success(`Bonjour ${firstname} !`);
+        nav("/dashboard");
+      }
+    } catch (error) {
+      failed("Email ou mot de passe invalide. Veuillez réessayer.");
+    }
+  };
 
   return (
     <>
@@ -31,7 +97,8 @@ function Accueil() {
           className={style.connexion}
           onClick={() => setConnexionOpen(true)}
         >
-          Connexion
+          {" "}
+          Connexion{" "}
         </button>
       </header>
       {/* MODALE CONNEXION */}
@@ -58,7 +125,7 @@ function Accueil() {
               </button>
             </section>
 
-            <section className={style.inputContainer}>
+            <form className={style.inputContainer} onSubmit={handleSubmitLogin}>
               <img
                 src={mail}
                 alt="Icone d'un email"
@@ -66,14 +133,13 @@ function Accueil() {
               />
               <input
                 type="email"
-                id="email"
+                id="email-login"
+                name="email"
                 placeholder="Votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={login.email}
                 className={style.inputField}
+                onChange={handleChangeLogin}
               />
-            </section>
-            <section className={style.inputContainer}>
               <img
                 src={mdp}
                 alt="Icone d'un cadenas"
@@ -81,19 +147,17 @@ function Accueil() {
               />
               <input
                 type="password"
-                id="motdepasse"
+                name="password"
+                id="password-login"
                 placeholder="Votre mot de passe"
-                value={motdepasse}
-                onChange={(e) => setMotdepasse(e.target.value)}
+                value={login.password}
                 className={style.inputField}
+                onChange={handleChangeLogin}
               />
-            </section>
-
-            <Link to="/dashboard">
-              <button type="button" className={style.buttonConnexion}>
+              <button type="submit" className={style.buttonConnexion}>
                 Connexion
               </button>
-            </Link>
+            </form>
 
             <button
               type="button"
@@ -108,217 +172,176 @@ function Accueil() {
           </section>
         </section>
 
-        {/* MODALE CREATION DE COMPTE */}
-
-        <section
-          className={`${style.modaleCreateAccount} ${
-            isCreateAccountOpen ? style.active : ""
-          }`}
-        >
-          <section className={style.modaleCreateAccountContent}>
-            <section className={style.textlogoContainer}>
-              <img
-                src={logoModale}
-                alt="logo coeur cardio"
-                className={style.logoModale}
-              />
-              <h3 className={style.titleh3}>M'inscrire</h3>
-              <button
-                type="button"
-                className={style.closeCreateAccount}
-                onClick={() => setCreateAccountOpen(false)}
-              >
-                x
-              </button>
-            </section>
-
-            <section className={style.inputContainer}>
-              <img
-                src={mail}
-                alt="Icone d'un email"
-                className={style.logoMail}
-              />
-              <input
-                type="email"
-                id="email"
-                placeholder="Votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={style.inputField}
-              />
-            </section>
-
-            <section className={style.inputContainer}>
-              <img
-                src={mdp}
-                alt="Icone d'un cadenas"
-                className={style.logoMdp}
-              />
-              <input
-                type="password"
-                id="motdepasse"
-                placeholder="Votre mot de passe"
-                value={motdepasse}
-                onChange={(e) => setMotdepasse(e.target.value)}
-                className={style.inputField}
-              />
-            </section>
-
-            <button
-              type="button"
-              className={style.buttonInscription}
-              onClick={() => {
-                setMessageBienvenue(true);
-
-                setTimeout(() => {
-                  setCreateAccountOpen(false);
-                  setMessageBienvenue(false);
-                }, 3000);
-              }}
-            >
-              M'inscrire
-            </button>
-            {isMessageBienvenue && (
-              <section className={style.messageBienvenue}>
-                <h3 className={style.titleh3}>
-                  Inscription validée ! Bienvenue !
-                </h3>
-              </section>
-            )}
-          </section>
-        </section>
-
         {/* MODALE D'INSCRIPTION */}
-        <section
-          className={`${style.modaleInscription} ${
-            isModaleInscriptionOpen ? style.active : ""
-          }`}
-        >
-          <section className={style.modaleInscriptionContent}>
-            <section className={style.textlogoContainer}>
-              <img
-                src={logoModale}
-                alt="logo coeur cardio"
-                className={style.logoModale}
-              />
-              <h3 className={style.titleh3}>Questionnaire</h3>
-            </section>
-
-            <section className={style.inputContainer}>
+        <form className={style.inputContainer} onSubmit={handleSubmitRegister}>
+          <section
+            className={`${style.modaleInscription} ${
+              isModaleInscriptionOpen ? style.active : ""
+            }`}
+          >
+            <section className={style.modaleInscriptionContent}>
+              <section className={style.textlogoContainer}>
+                <img
+                  src={logoModale}
+                  alt="logo coeur cardio"
+                  className={style.logoModale}
+                />
+                <h3 className={style.titleh3}>Questionnaire</h3>
+              </section>
               <input
                 type="text"
                 placeholder="Prénom"
                 className={style.inscriptionInput}
+                name="firstname"
+                value={register.firstname}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
                 placeholder="Nom"
                 className={style.inscriptionInput}
+                name="lastname"
+                value={register.lastname}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
                 placeholder="Date de naissance"
                 className={style.inscriptionInput}
+                name="birthday_date"
+                value={register.birthday_date}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
                 placeholder="Taille"
                 className={style.inscriptionInput}
+                name="size"
+                value={register.size}
+                onChange={handleChangeRegister}
               />
               <input
                 type="text"
                 placeholder="Votre poids actuel"
                 className={style.inscriptionInput}
+                name="initial_weight"
+                value={register.initial_weight}
+                onChange={handleChangeRegister}
               />{" "}
               <input
                 type="text"
                 placeholder="Votre poids souhaité"
                 className={style.inscriptionInput}
+                name="desired_weight"
+                value={register.desired_weight}
+                onChange={handleChangeRegister}
               />
-            </section>
-            <section className={style.infosUserContainer}>
-              <form>
+              <input
+                type="text"
+                placeholder="Fréquence de pesée"
+                className={style.inscriptionInput}
+                name="weight_frequency"
+                value={register.weight_frequency}
+                onChange={handleChangeRegister}
+              />
+              <section className={style.infosUserContainer}>
                 <h3 className={style.titleh3}>Sexe :</h3>
+                <label htmlFor="Féminin">Féminin</label>
                 <input
                   className={style.input}
                   type="radio"
-                  id="feminin"
+                  id="Féminin"
                   name="sexe"
-                  value="feminin"
+                  value="Féminin"
+                  onChange={handleChangeRegister}
                 />
-                <label htmlFor="feminin">Féminin</label>
-
+                <label htmlFor="Masculin">Masculin</label>
                 <input
                   className={style.input}
                   type="radio"
-                  id="masculin"
+                  id="Masculin"
                   name="sexe"
-                  value="masculin"
+                  value="Masculin"
+                  onChange={handleChangeRegister}
                 />
-                <label htmlFor="masculin">Masculin</label>
-              </form>
-
-              <img
-                src={logoAvatar}
-                alt="Icone d'un avatar pour insérer un avatar"
-                className={style.logoAvatar}
-              />
-              <form method="post" encType="multipart/form-data">
-                <div>
-                  <label htmlFor="file">Ajouter une photo</label>
-                  <input
-                    className={style.input}
-                    type="file"
-                    id="file"
-                    name="file"
-                    multiple
-                  />
-                </div>
-              </form>
-
-              <section className={style.objectif}>
-                <form>
-                  <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
-
-                  <input
-                    className={style.input}
-                    type="radio"
-                    id="perte"
-                    name="objectif"
-                    value="perte"
-                  />
-                  <label htmlFor="perte">Perte de poids</label>
-
-                  <input
-                    className={style.input}
-                    type="radio"
-                    id="prise"
-                    name="objectif"
-                    value="prise"
-                  />
-                  <label htmlFor="prise">Prise de masse</label>
-                </form>
+                <img
+                  src={logoAvatar}
+                  alt="Icone d'un avatar pour insérer un avatar"
+                  className={style.logoAvatar}
+                />
+                <label htmlFor="file">Ajouter une photo</label>
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  multiple
+                  onChange={handleChangeRegister}
+                />
               </section>
+              <section className={style.objectif}>
+                <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
+                <input
+                  className={style.input}
+                  type="radio"
+                  id="perte"
+                  name="objective"
+                  value="perte"
+                  onChange={handleChangeRegister}
+                />
+                <label htmlFor="perte">Perte de poids</label>
+                <input
+                  className={style.input}
+                  type="radio"
+                  id="prise"
+                  name="objective"
+                  value="prise"
+                  onChange={handleChangeRegister}
+                />
+                <label htmlFor="prise">Prise de masse</label>
+              </section>
+              <section className={style.inputContainer}>
+                <img
+                  src={mail}
+                  alt="Icone d'un email"
+                  className={style.logoMail}
+                />
+                <input
+                  type="email"
+                  id="email-create"
+                  placeholder="Votre email"
+                  value={register.email}
+                  name="email"
+                  onChange={handleChangeRegister}
+                  className={style.inputField}
+                />
+                <img
+                  src={mdp}
+                  alt="Icone d'un cadenas"
+                  className={style.logoMdp}
+                />
+                <input
+                  type="password"
+                  id="password-create"
+                  placeholder="Votre mot de passe"
+                  value={register.password}
+                  name="password"
+                  onChange={handleChangeRegister}
+                  className={style.inputField}
+                />
+              </section>
+              <button type="submit" className={style.inscription}>
+                Créer un compte
+              </button>
+              <button
+                type="button"
+                className={style.closeInscription}
+                onClick={() => setModaleInscriptionOpen(false)}
+              >
+                x
+              </button>
             </section>
-            <button
-              type="button"
-              className={style.inscription}
-              onClick={() => {
-                setModaleInscriptionOpen(false);
-                setCreateAccountOpen(true);
-              }}
-            >
-              Créer un compte
-            </button>
-            <button
-              type="button"
-              className={style.closeInscription}
-              onClick={() => setModaleInscriptionOpen(false)}
-            >
-              x
-            </button>
           </section>
-        </section>
+        </form>
 
         {/* ENCART DE BIENVENUE */}
 

@@ -51,11 +51,11 @@ class AuthRepository {
 
   // The Rs of CRUD - Read operations
 
-  async read(id: number) {
+  async read(email: string) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from users where id >= 1",
-      [id],
+      "select * from users where email =?",
+      [email],
     );
 
     // Return the first row of the result, which represents the user
