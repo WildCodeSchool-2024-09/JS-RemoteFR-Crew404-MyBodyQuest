@@ -14,12 +14,12 @@ class SuccesRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific success by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from success where id >= 1",
-      [id]
+      "select * from success where id >= 0",
+      [id],
     );
 
     // Return the first row of the result, which represents the success
-    return rows[0] as Success;
+    return rows[id] as Success;
   }
 
   async readAll() {
