@@ -9,9 +9,9 @@ type Category = {
 };
 
 class CategoryRepository {
-   // The C of CRUD - Create operation
+  // The C of CRUD - Create operation
 
-   async create(category: Omit<Category, "id">) {
+  async create(category: Omit<Category, "id">) {
     // Execute the SQL INSERT query to add a new category to the "category" table
     const [result] = await databaseClient.query<Result>(
       "insert into category (name, success_id) values (?, ?)",

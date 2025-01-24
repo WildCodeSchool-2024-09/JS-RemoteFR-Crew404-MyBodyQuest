@@ -9,9 +9,9 @@ type Success = {
 };
 
 class SuccesRepository {
-   // The C of CRUD - Create operation
+  // The C of CRUD - Create operation
 
-   async create(success: Omit<Success, "id">) {
+  async create(success: Omit<Success, "id">) {
     // Execute the SQL INSERT query to add a new success to the "success" table
     const [result] = await databaseClient.query<Result>(
       "insert into success (success_title, success_img) values (?,?)",

@@ -11,9 +11,9 @@ type Quests = {
 };
 
 class QuestsRepository {
-   // The C of CRUD - Create operation
+  // The C of CRUD - Create operation
 
-   async create(quests: Omit<Quests, "id">) {
+  async create(quests: Omit<Quests, "id">) {
     // Execute the SQL INSERT query to add a new quest to the "quests" table
     const [result] = await databaseClient.query<Result>(
       "insert into quests (quest_title, description, xp, category_id) values (?, ?, ?, ?)",
@@ -23,7 +23,7 @@ class QuestsRepository {
     // Return the ID of the newly inserted quest
     return result.insertId;
   }
-  
+
   // The Rs of CRUD - Read operations
 
   async read(id: number) {
