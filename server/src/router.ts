@@ -29,14 +29,17 @@ router.post("/api/trackings", trackingActions.add);
 import questsActions from "./modules/quests/questsActions";
 router.get("/api/quests", questsActions.browse);
 router.get("/api/quests/:id", questsActions.read);
+router.post("/api/quests", questsActions.add);
 
 import categoryActions from "./modules/category/categoryActions";
 router.get("/api/categories", categoryActions.browse);
 router.get("/api/categories/:id", categoryActions.read);
+router.post("/api/categories", categoryActions.add);
 
 import succesActions from "./modules/succes/succesActions";
 
 router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
+router.post("/api/succes", succesActions.add);
 
 export default router;

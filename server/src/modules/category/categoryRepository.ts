@@ -9,6 +9,19 @@ type Category = {
 };
 
 class CategoryRepository {
+   // The C of CRUD - Create operation
+
+   async create(category: Omit<Category, "id">) {
+    // Execute the SQL INSERT query to add a new category to the "category" table
+    const [result] = await databaseClient.query<Result>(
+      "insert into category (name, success_id) values (?, ?)",
+      [category.name, category.success_id],
+    );
+
+    // Return the ID of the newly inserted category
+    return result.insertId;
+  }
+
   // The Rs of CRUD - Read operations
 
   async read(id: number) {

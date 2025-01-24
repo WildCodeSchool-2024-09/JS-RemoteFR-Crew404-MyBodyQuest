@@ -37,4 +37,26 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read };
+// The A of BREAD - Add (Create) operation
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the Quest data from the request body
+    const newQuest = {
+      quest_title: req.body.quest_title,
+      description: req.body.description,
+      xp: req.body.xp,
+      category_id: req.body.category_id,
+    };
+
+    // Create the Quest
+    const insertId = await questsRepository.create(newQuest);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted Quest
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, read, add };
