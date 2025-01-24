@@ -29,12 +29,12 @@ class QuestsRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific quest by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from quests where id >= 1",
+      "select * from quests where id >= 0",
       [id],
     );
 
     // Return the first row of the result, which represents the quest
-    return rows[0] as Quests;
+    return rows[id] as Quests;
   }
 
   async readAll() {
