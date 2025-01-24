@@ -37,24 +37,4 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-// The A of BREAD - Add (Create) operation
-const add: RequestHandler = async (req, res, next) => {
-  try {
-    // Extract the success data from the request body
-    const newSuccess = {
-      succes_title: req.body.succes_title,
-      succes_img: req.body.succes_img,
-    };
-
-    // Create the succes
-    const insertId = await succesRepository.create(newSuccess);
-
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted success
-    res.status(201).json({ insertId });
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
-  }
-};
-
-export default { browse, read, add };
+export default { browse, read };
