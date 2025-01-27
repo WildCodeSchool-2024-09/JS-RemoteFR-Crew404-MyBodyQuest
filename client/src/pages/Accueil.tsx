@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "../components/Footer";
 import { failed, success } from "../services/toasts";
 
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
@@ -395,6 +395,7 @@ function Accueil() {
           </section>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

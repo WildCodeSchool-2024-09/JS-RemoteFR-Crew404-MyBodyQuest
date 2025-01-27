@@ -11,6 +11,7 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
+import Accueil from "./pages/Accueil";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
@@ -20,9 +21,15 @@ const router = createBrowserRouter([
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
   },
+
   {
     element: <Layout />,
     children: [
+      {
+        path: "/",
+        element: <Accueil />,
+      },
+
       {
         path: "/dashboard",
         element: <Dashboard />,

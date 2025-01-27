@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
+import Footer from "../components/Footer.tsx";
 import styles from "../styles/Layout.module.css";
 
 function Layout() {
@@ -41,13 +42,7 @@ function Layout() {
         </ul>
       </nav>
       <Outlet />
-      <footer className={styles.footercontainer}>
-        <a href="cgu">CGU</a>
-        <img src="images/instagram_icon.png" alt="instagram" />
-        <img src="images/facebook.png" alt="facebook" />
-        <img src="images/github_icon.png" alt="github" />
-        <Link to="/contact">Contact</Link>
-      </footer>
+      <Footer />
     </>
   );
 }
