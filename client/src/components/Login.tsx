@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { FaLock } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { failed, success } from "../services/toasts"; // Ensure this path is correct or update it to the correct path
 
 import logo from "../assets/images/Logo site.png";
 import logoModale from "../assets/images/coeur_logo.png";
-import mail from "../assets/images/mail.png";
-import mdp from "../assets/images/mdp.png";
 import api from "../services/api";
 import style from "../styles/Accueil.module.css";
 
@@ -84,11 +84,7 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
             </section>
 
             <form className={style.inputContainer} onSubmit={handleSubmitLogin}>
-              <img
-                src={mail}
-                alt="Icone d'un email"
-                className={style.logoMail}
-              />
+              <IoMail size={15} />
               <input
                 type="email"
                 id="email-login"
@@ -98,11 +94,7 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
                 className={style.inputField}
                 onChange={handleChangeLogin}
               />
-              <img
-                src={mdp}
-                alt="Icone d'un cadenas"
-                className={style.logoMdp}
-              />
+              <FaLock className={style.logoMdp} size={15} />
               <input
                 type="password"
                 name="password"

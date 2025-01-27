@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { FaLock } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { failed, success } from "../services/toasts";
+
 import logoAvatar from "../assets/images/avatar.png";
 import logoModale from "../assets/images/coeur_logo.png";
-import mail from "../assets/images/mail.png";
-import mdp from "../assets/images/mdp.png";
+
 import api from "../services/api";
-import { failed, success } from "../services/toasts";
 import style from "../styles/Accueil.module.css";
 
 interface RegisterProps {
@@ -186,11 +188,7 @@ function Register({
                 <label htmlFor="prise">Prise de masse</label>
               </section>
               <section className={style.inputContainer}>
-                <img
-                  src={mail}
-                  alt="Icone d'un email"
-                  className={style.logoMail}
-                />
+                <IoMail size={15} />
                 <input
                   type="email"
                   id="email-create"
@@ -200,11 +198,7 @@ function Register({
                   onChange={handleChangeRegister}
                   className={style.inputField}
                 />
-                <img
-                  src={mdp}
-                  alt="Icone d'un cadenas"
-                  className={style.logoMdp}
-                />
+                <FaLock size={15} />
                 <input
                   type="password"
                   id="password-create"
