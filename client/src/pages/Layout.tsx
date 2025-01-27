@@ -46,7 +46,7 @@ function Layout() {
         <img src="images/instagram_icon.png" alt="instagram" />
         <img src="images/facebook.png" alt="facebook" />
         <img src="images/github_icon.png" alt="github" />
-        <a href="contact">Contact</a>
+        <Link to="/contact">Contact</Link>
       </footer>
     </>
   );

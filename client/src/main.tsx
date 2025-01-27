@@ -11,6 +11,7 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
+import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 
@@ -52,7 +53,10 @@ const router = createBrowserRouter([
     path: "*",
     element: <Page404 />,
   },
-
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
   // Try adding a new route! For example, "/about" with an About component
 ]);
 
