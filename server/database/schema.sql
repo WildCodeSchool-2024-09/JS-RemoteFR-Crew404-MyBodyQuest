@@ -12,7 +12,7 @@ CREATE TABLE users (
   avatar VARCHAR(255),
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
-  birthday_date DATE DEFAULT NULL,
+  birthday_date DATE,
   size DECIMAL(5,2) NOT NULL,
   objective VARCHAR(50) NOT NULL,
   initial_weight DECIMAL(5,2) NOT NULL,
