@@ -12,6 +12,7 @@ type Quests = {
 
 class QuestsRepository {
   // The C of CRUD - Create operation
+  // Delete if no administrator has been added or created
 
   async create(quests: Omit<Quests, "id">) {
     // Execute the SQL INSERT query to add a new quest to the "quests" table
@@ -29,12 +30,16 @@ class QuestsRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific quest by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from quests where id >= 0",
+      "select * from quests where id = ?",
       [id],
     );
 
+    if (rows.length === 0) {
+      throw new Error(`Quest with ID ${id} not found`);
+    }
+
     // Return the first row of the result, which represents the quest
-    return rows[id] as Quests;
+    return rows[0] as Quests;
   }
 
   async readAll() {
