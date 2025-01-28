@@ -1,0 +1,35 @@
+/*Footer Mobile*/
+.footercontainer {
+  font-family: var(--text-font);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--bg-color-light);
+  border-radius: 20px;
+  height: 41px;
+  width: 90%; /* Ajustez la largeur selon vos besoins */
+  max-width: 337px; /* Limite la largeur maximale */
+  margin: 0.8rem auto; /* Centre le conteneur horizontalement */
+  position: fixed; /* Fixe le footer en bas de la page */
+  bottom: 0; /* Positionne le footer en bas */
+  left: 50%; /* Centre horizontalement */
+  transform: translateX(-50%); /* Centre le footer */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
+}
+
+.footercontainer img {
+  width: 25px;
+  height: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*Footer Desktop*/
+.footercontainer {
+  width: 80%;
+  max-width: 800px;
+  margin: 0.8rem auto;
+}

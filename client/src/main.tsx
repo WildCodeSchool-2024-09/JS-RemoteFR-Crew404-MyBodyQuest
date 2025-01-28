@@ -20,6 +20,7 @@ const router = createBrowserRouter([
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
   },
+
   {
     element: <Layout />,
     children: [
