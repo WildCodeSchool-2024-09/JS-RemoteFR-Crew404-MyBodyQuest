@@ -5,3 +5,9 @@ export interface Quest {
   xp: number;
   category_id: number;
 }
+
+export interface Category {
+  id: number;
+  name: string;
+  success_id: number;
+}

@@ -1,15 +1,19 @@
+import QuestsCards from "../components/QuestsCards";
+import { CategoryProvider } from "../context/CategoryContext";
 import styles from "../styles/Quests.module.css";
+import CategoriesFilter from "./CategoriesFilter";
 import ProgressBar from "./ProgressBar";
-import QuestsCards from "./QuestsCards";
 
 function Quests() {
   return (
-    <section className={styles.questsComponent}>
-      <ProgressBar />
-      <h1 className={styles.questsComponentTitle}>Mes Quêtes</h1>
-
-      <QuestsCards />
-    </section>
+    <CategoryProvider>
+      <section className={styles.questsComponent}>
+        <ProgressBar />
+        <h1 className={styles.questsComponentTitle}>Mes Quêtes</h1>
+        <CategoriesFilter />
+        <QuestsCards />
+      </section>
+    </CategoryProvider>
   );
 }
 

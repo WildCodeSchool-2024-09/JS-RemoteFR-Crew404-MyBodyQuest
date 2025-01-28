@@ -1,9 +1,11 @@
 .questsArticles {
-  display: grid;
-  grid-template-columns: repeat(2, 15em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 1.5em;
-  margin-top: 5em;
+  margin: 3em;
   @media screen and (min-width: 768px) {
+    display: grid;
     grid-template-columns: repeat(4, 20em);
     gap: 4em;
   }
@@ -19,9 +21,11 @@
   flex-direction: row;
   justify-content: flex-end;
 }
+
 .questXp {
   background-color: var(--bg-color-green);
   border-radius: 2em;
+  height: 1.6em;
   padding: 0.6em;
   @media screen and (min-width: 768px) {
     margin: 0;
@@ -29,27 +33,28 @@
   }
 }
 
-.questTitle {
-  font-family: var(--title-font);
-  font-size: 2em;
-}
-
-.questDescription {
-  font-family: var(--text-font);
-  font-size: 1.5em;
-}
-
 .questTitleAndObj {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.5em;
-  width: 100%;
-  height: 10em;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0 1em 1em 1em;
   @media screen and (min-width: 768px) {
     width: 100%;
     height: 20em;
   }
+}
+
+.questTitle {
+  font-family: var(--title-font);
+  font-size: var(--title-font);
+  margin: 0;
+}
+
+.questDescription {
+  font-family: var(--text-font);
+  font-size: var(--text-font);
 }
 
 .questsCheckbox {
