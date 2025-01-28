@@ -2,10 +2,9 @@ import type React from "react";
 import { type ReactNode, createContext, useState } from "react";
 import type { Category } from "../types/interface";
 
-// Définir la forme des données dans le contexte
 interface CategoryContextType {
-  selectedCategory: Category | null; // Catégorie sélectionnée
-  setSelectedCategory: React.Dispatch<React.SetStateAction<Category | null>>; // Méthode pour changer la catégorie
+  selectedCategory: Category | null;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<Category | null>>;
 }
 
 // Create context with default value
