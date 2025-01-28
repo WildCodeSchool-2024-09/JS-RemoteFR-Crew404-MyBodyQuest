@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useState } from "react";
+import api from "../services/api";
 import style from "../styles/Contact.module.css";
 
 function Contact() {
@@ -24,8 +24,8 @@ function Contact() {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.CLIENT_URL}/api/mail`,
+      const response = await api.post(
+        "/api/mail",
         {
           destinataire: formData.email,
           subject: "Contact depuis le site web",

@@ -11,7 +11,6 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
-import Accueil from "./pages/Accueil";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
@@ -25,11 +24,6 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <Accueil />,
-      },
-
       {
         path: "/dashboard",
         element: <Dashboard />,
