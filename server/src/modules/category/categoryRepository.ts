@@ -10,6 +10,7 @@ type Category = {
 
 class CategoryRepository {
   // The C of CRUD - Create operation
+  // Delete if no administrator has been added or created
 
   async create(category: Omit<Category, "id">) {
     // Execute the SQL INSERT query to add a new category to the "category" table
@@ -27,12 +28,16 @@ class CategoryRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific category by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from category where id >= 0",
+      "select * from category where id = ?",
       [id],
     );
 
     // Return the row of the result, which represents the category
-    return rows[id] as Category;
+    if (rows.length === 0) {
+      throw new Error(`Category with ID ${id} not found`);
+    }
+
+    return rows[0] as Category;
   }
 
   async readAll() {

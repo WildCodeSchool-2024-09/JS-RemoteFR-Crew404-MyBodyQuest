@@ -10,6 +10,7 @@ type Success = {
 
 class SuccesRepository {
   // The C of CRUD - Create operation
+  // Delete if no administrator has been added or created
 
   async create(success: Omit<Success, "id">) {
     // Execute the SQL INSERT query to add a new success to the "success" table
@@ -26,12 +27,16 @@ class SuccesRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific success by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from success where id >= 0",
+      "select * from success where id = ?",
       [id],
     );
 
+    if (rows.length === 0) {
+      throw new Error(`Success with ID ${id} not found`);
+    }
+
     // Return the first row of the result, which represents the success
-    return rows[id] as Success;
+    return rows[0] as Success;
   }
 
   async readAll() {

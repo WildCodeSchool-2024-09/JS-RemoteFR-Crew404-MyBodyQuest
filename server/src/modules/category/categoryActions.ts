@@ -38,6 +38,7 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 // The A of BREAD - Add (Create) operation
+// Delete if no administrator has been added or created
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the item data from the request body
