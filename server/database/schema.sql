@@ -9,7 +9,7 @@ CREATE TABLE users (
   firstname VARCHAR(50) NOT NULL,
   lastname VARCHAR(50) NOT NULL,
   sexe ENUM('Masculin', 'Féminin') DEFAULT NULL,
-  avatar VARCHAR(255),
+  avatar VARCHAR(255) DEFAULT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   birthday_date DATE,
