@@ -3,9 +3,9 @@ import Register from "../components/Register";
 
 import { useState } from "react";
 
-
 import avatar1 from "../assets/images/Avatar Elodie.jpg";
 import avatar2 from "../assets/images/Avatar Manon.jpg";
+import Footer from "../components/Footer";
 import style from "../styles/Accueil.module.css";
 
 function Accueil() {
