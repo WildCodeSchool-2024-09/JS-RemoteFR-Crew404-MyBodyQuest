@@ -11,8 +11,8 @@
 :root {
   --text-font: Tajawal;
   --title-font: Libre Franklin;
-  --fontsize-text: 0.8rem;
-  --fontsize-title: 1rem;
+  --fontsize-text: 1rem;
+  --fontsize-title: 1.2em;
   --bg-color-light: #f2f0f6;
   --bg-color-green: #5dcd8a;
   --bg-color-purple: #7b5cb9;
