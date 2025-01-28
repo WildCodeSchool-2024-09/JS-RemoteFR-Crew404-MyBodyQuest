@@ -44,4 +44,8 @@ router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);
 
+import mailActions from "./modules/mail/mailActions";
+
+router.post("/api/mail", mailActions.sendMail);
+
 export default router;

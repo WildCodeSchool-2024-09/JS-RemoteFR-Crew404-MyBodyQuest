@@ -1,3 +1,5 @@
+/* MOBILE FIRST */
+
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -6,4 +8,29 @@
   width: 100%;
   padding-top: 15rem;
   box-sizing: border-box;
+}
+
+.user_informations {
+  width: auto;
+  padding: 0.4rem;
+  margin: 1rem;
+  background-color: #f2f0f6;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+  width: 15rem;
+  top: 2rem;
+  right: 3rem;
+  padding: 0.2rem;
+  margin: 1rem;
+  background-color: black;
+  border: black;
+  color: white;
+  border-radius: 0.5rem;
 }
