@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import style from "../styles/Contact.module.css";
 
@@ -23,25 +24,25 @@ function Contact() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3310/api/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        `${import.meta.env.CLIENT_URL}/api/mail`,
+        {
           destinataire: formData.email,
           subject: "Contact depuis le site web",
-          content: `Nom : ${formData.nom}\nPrénom : ${formData.prenom}\nMessage : ${formData.message}`,
-        }),
-      });
+          content: `\nMessage : ${formData.message}`,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Une erreur est survenue lors de l'envoi du mail.");
       }
 
-      const result = await response.json();
-      alert(result.message);
-
+      alert(response.data.message);
       setFormData({
         nom: "",
         prenom: "",
@@ -87,8 +88,7 @@ function Contact() {
         Une question ?
       </button>
       <button type="submit" className={style.button}>
-        {" "}
-        Signaler un problème{" "}
+        Signaler un problème
       </button>
       <textarea
         className={style.message}
@@ -96,7 +96,7 @@ function Contact() {
         value={formData.message}
         onChange={handleChange}
         placeholder="Message"
-      />{" "}
+      />
       <button type="submit">Envoyer</button>
     </form>
   );

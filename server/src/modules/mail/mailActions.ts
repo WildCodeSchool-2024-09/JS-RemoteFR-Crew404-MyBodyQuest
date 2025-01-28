@@ -12,7 +12,6 @@ const sendMail: RequestHandler = async (req, res) => {
       html: `<b>${req.body.content}</b>`, // html body
     });
 
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
     res.json({ message: "Mail envoyé" });
   } catch (error) {
     console.error(error);
