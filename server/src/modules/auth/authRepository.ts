@@ -9,8 +9,9 @@ type User = {
   avatar: string;
   email: string;
   password: string;
-  birthday_date?: number;
+  birthday_date?: string;
   size: number;
+  sexe: string;
   objective: string;
   initial_weight: number;
   desired_weight: number;
@@ -23,21 +24,19 @@ class AuthRepository {
   // The C of CRUD - Create operation
   // (Register)
 
-  async create(
-    user: Omit<
-      User,
-      "id" | "avatar" | "birthday_date" | "current_xp" | "level_id"
-    >,
-  ) {
+  async create(user: Omit<User, "id" | "current_xp" | "level_id">) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into users (firstname, lastname, email, password, size, objective, initial_weight, desired_weight, weight_frequency) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into users (firstname, lastname, avatar,email, password, birthday_date,size, sexe, objective, initial_weight, desired_weight, weight_frequency) values (?, ?,?, ?, ?, ?, ?, ?, ?, ?,?,?)",
       [
         user.firstname,
         user.lastname,
+        user.avatar,
         user.email,
         user.password,
+        user.birthday_date,
         user.size,
+        user.sexe,
         user.objective,
         user.initial_weight,
         user.desired_weight,

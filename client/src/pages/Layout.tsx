@@ -16,7 +16,7 @@ function Layout() {
         </Link>
         <img
           className={styles.avatar}
-          src="images/illustration-avatar-degrade_52683-142426.avif"
+          src="images/illustration-avatar-degrade_52683-142426.avif" //fetch l'avatar de user (une fois le context créé)
           alt="avatar user"
         />
         <BurgerMenu /> {/*n'apparait que sur mobile*/}

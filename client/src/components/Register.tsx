@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
+import { RxAvatar } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import { failed, success } from "../services/toasts";
 
-import logoAvatar from "../assets/images/avatar.png";
 import logoModale from "../assets/images/coeur_logo.png";
-
 import api from "../services/api";
+import { failed, success } from "../services/toasts";
 import style from "../styles/Accueil.module.css";
 
 interface RegisterProps {
@@ -20,21 +19,25 @@ function Register({
   setModaleInscriptionOpen,
 }: RegisterProps) {
   const nav = useNavigate();
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [register, setRegister] = useState({
     email: "",
     password: "",
     firstname: "",
     lastname: "",
-    file: "",
     birthday_date: "",
     size: "",
+    sexe: "",
     objective: "",
     initial_weight: "",
     desired_weight: "",
     weight_frequency: "",
   });
 
-  const handleChangeRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRegister = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
     setRegister((prevRegister) => ({
       ...prevRegister,
@@ -42,10 +45,25 @@ function Register({
     }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const file = e.target.files[0];
+      setImageFile(file);
+      setPreviewImage(URL.createObjectURL(file));
+    }
+  };
+
+  //Etape pour push l'image sur le réseau
+
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Empêche le rechargement de la page
+    const formData = new FormData();
+    if (imageFile) {
+      formData.append("file", imageFile);
+    }
+    formData.append("register", JSON.stringify(register));
     try {
-      const response = await api.post("/api/register", register); // Envoi des données du formulaire d'inscription à l'API     // si le user est bien créé message succes de toastify
+      const response = await api.post("/api/register", formData); // Envoi des données du formulaire d'inscription à l'API     // si le user est bien créé message succes de toastify
       if (response.status === 201) {
         success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
         setTimeout(() => {
@@ -93,7 +111,7 @@ function Register({
                 onChange={handleChangeRegister}
               />
               <input
-                type="text"
+                type="date"
                 placeholder="Date de naissance"
                 className={style.inscriptionInput}
                 name="birthday_date"
@@ -101,7 +119,7 @@ function Register({
                 onChange={handleChangeRegister}
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Taille"
                 className={style.inscriptionInput}
                 name="size"
@@ -109,7 +127,7 @@ function Register({
                 onChange={handleChangeRegister}
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Votre poids actuel"
                 className={style.inscriptionInput}
                 name="initial_weight"
@@ -117,21 +135,23 @@ function Register({
                 onChange={handleChangeRegister}
               />{" "}
               <input
-                type="text"
+                type="number"
                 placeholder="Votre poids souhaité"
                 className={style.inscriptionInput}
                 name="desired_weight"
                 value={register.desired_weight}
                 onChange={handleChangeRegister}
               />
-              <input
-                type="text"
-                placeholder="Fréquence de pesée"
+              <select
                 className={style.inscriptionInput}
                 name="weight_frequency"
-                value={register.weight_frequency}
+                id="weight_frequency"
                 onChange={handleChangeRegister}
-              />
+              >
+                <option value="">Choisissez une fréquence de pesée</option>
+                <option value="1">1 fois/semaine</option>
+                <option value="2">1 fois/2 semaines</option>
+              </select>
               <section className={style.infosUserContainer}>
                 <h3 className={style.titleh3}>Sexe :</h3>
                 <label htmlFor="Féminin">Féminin</label>
@@ -152,40 +172,48 @@ function Register({
                   value="Masculin"
                   onChange={handleChangeRegister}
                 />
-                <img
-                  src={logoAvatar}
-                  alt="Icone d'un avatar pour insérer un avatar"
-                  className={style.logoAvatar}
-                />
+                {previewImage ? (
+                  <img
+                    src={previewImage}
+                    className={style.logoAvatar}
+                    alt="Prévisualisation de l'image"
+                  />
+                ) : (
+                  <RxAvatar size={100} />
+                )}
                 <label htmlFor="file">Ajouter une photo</label>
                 <input
                   type="file"
                   id="file"
                   name="file"
-                  multiple
-                  onChange={handleChangeRegister}
+                  accept="image/png, image/jpeg"
+                  onChange={handleFileChange}
                 />
               </section>
               <section className={style.objectif}>
                 <h3 className={style.titleh3}>Quel est votre objectif ?</h3>
-                <input
-                  className={style.input}
-                  type="radio"
-                  id="perte"
-                  name="objective"
-                  value="perte"
-                  onChange={handleChangeRegister}
-                />
-                <label htmlFor="perte">Perte de poids</label>
-                <input
-                  className={style.input}
-                  type="radio"
-                  id="prise"
-                  name="objective"
-                  value="prise"
-                  onChange={handleChangeRegister}
-                />
-                <label htmlFor="prise">Prise de masse</label>
+                <label htmlFor="perte">
+                  <input
+                    className={style.input}
+                    type="radio"
+                    id="perte"
+                    name="objective"
+                    value="perte"
+                    onChange={handleChangeRegister}
+                  />
+                  Perte de poids
+                </label>
+                <label htmlFor="prise">
+                  <input
+                    className={style.input}
+                    type="radio"
+                    id="prise"
+                    name="objective"
+                    value="prise"
+                    onChange={handleChangeRegister}
+                  />
+                  Prise de masse
+                </label>
               </section>
               <section className={style.inputContainer}>
                 <IoMail size={15} />
@@ -226,5 +254,4 @@ function Register({
     </>
   );
 }
-
 export default Register;
