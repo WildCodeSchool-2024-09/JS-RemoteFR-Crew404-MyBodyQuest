@@ -23,7 +23,11 @@ function Layout() {
           alt="avatar user"
         />
         {user && (
-          <button type="button" onClick={() => user.handleLogout()}>
+          <button
+            type="button"
+            onClick={() => user.handleLogout()}
+            className={styles.logoutButton}
+          >
             Se déconnecter
           </button>
         )}
