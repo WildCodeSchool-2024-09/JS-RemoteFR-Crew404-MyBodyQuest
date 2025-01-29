@@ -1,9 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
 import Footer from "../components/Footer.tsx";
+import { useAuth } from "../context/AuthContext.tsx";
 import styles from "../styles/Layout.module.css";
 
 function Layout() {
+  const user = useAuth();
   return (
     <>
       <header className={styles.headercontainer}>
@@ -20,6 +22,11 @@ function Layout() {
           src="images/illustration-avatar-degrade_52683-142426.avif" //fetch l'avatar de user (une fois le context créé)
           alt="avatar user"
         />
+        {user && (
+          <button type="button" onClick={() => user.handleLogout()}>
+            Se déconnecter
+          </button>
+        )}
         <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
       <nav className={styles.navbar}>
