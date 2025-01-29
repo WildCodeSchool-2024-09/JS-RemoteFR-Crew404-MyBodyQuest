@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
 import style from "../styles/Account.module.css";
+import type { User } from "../types/interface";
 
 export default function Account() {
-  return (
-    // --------------------------liste des formulaires utilisateurs------------------------------
+  const [user, setUser] = useState<User[]>([]);
 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await api.get("/api/users");
+        const data = res.data;
+        setUser(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getData();
+  }, []);
+
+  return (
     <section className={style.account}>
       <form action="" method="get" className={style.user}>
         <label className={style.form}>
@@ -11,6 +27,7 @@ export default function Account() {
           <input
             type="text"
             name="username"
+            placeholder={user[0]?.username}
             className={style.input}
             id="username"
             required
@@ -21,6 +38,7 @@ export default function Account() {
           <input
             type="text"
             name="lastname"
+            placeholder=""
             className={style.input}
             id="lastname"
             required

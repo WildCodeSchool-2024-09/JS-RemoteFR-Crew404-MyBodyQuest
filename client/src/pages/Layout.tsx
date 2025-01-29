@@ -36,7 +36,7 @@ function Layout() {
             <Link to="/food">Alimentation</Link>
           </li>
           <li>
-            <Link to="/account">Mon compte</Link>
+            <Link to="/account/1">Mon compte</Link>
           </li>
         </ul>
       </nav>
