@@ -45,7 +45,7 @@
 .bm-item {
   color: black !important;
   font-family: var(--title-font) !important;
-  font-size: var(--fontsize-title) !important;
+  font-size: 0.8rem;
 }
 
 .bm-cross {

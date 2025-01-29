@@ -20,7 +20,6 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
     email: "",
     password: "",
   });
-
   const handleChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogin((prevLogin) => ({

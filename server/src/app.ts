@@ -2,7 +2,6 @@
 
 import cookieParser from "cookie-parser";
 import express from "express";
-import auth from "./middlewares/JwtMiddleware";
 
 const app = express();
 

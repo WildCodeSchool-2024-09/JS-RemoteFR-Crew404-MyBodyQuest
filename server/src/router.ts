@@ -2,21 +2,21 @@ import express from "express";
 
 const router = express.Router();
 
-/* ************************************************************************* */
-// Define Your API Routes Here
-
-import levelsActions from "./modules/levels/levelsActions";
-
-router.get("/api/levels", levelsActions.browse);
-router.get("/api/levels/:id", levelsActions.read);
-router.post("/api/levels", levelsActions.add);
-
 import {
   hashPwd,
   uploads,
   verifyEmail,
   verifyPwd,
 } from "./middlewares/AuthMiddleware";
+import { verifyToken } from "./middlewares/JwtMiddleware";
+/* ************************************************************************* */
+// Define Your API Routes Here
+
+import levelsActions from "./modules/levels/levelsActions";
+router.get("/api/levels", levelsActions.browse);
+router.get("/api/levels/:id", levelsActions.read);
+router.post("/api/levels", levelsActions.add);
+
 // Login & Register
 import authActions from "./modules/auth/authActions";
 router.post(
@@ -26,6 +26,17 @@ router.post(
   authActions.register,
 );
 router.post("/api/login", verifyEmail, verifyPwd, authActions.login);
+router.post("/api/logout", authActions.logout);
+
+/**
+ * Toutes les personnes connectées doivent passer pas la vérification de son token
+ * Valide, pas expiré, etc.
+ */
+import mailActions from "./modules/mail/mailActions";
+
+router.post("/api/mail", mailActions.sendMail);
+
+router.use(verifyToken);
 
 import userActions from "./modules/users/usersActions";
 router.get("/api/users", userActions.browse);
@@ -53,9 +64,5 @@ import succesActions from "./modules/succes/succesActions";
 router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);
-
-import mailActions from "./modules/mail/mailActions";
-
-router.post("/api/mail", mailActions.sendMail);
 
 export default router;

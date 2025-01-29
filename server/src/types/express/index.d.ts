@@ -4,14 +4,14 @@ export type {};
 declare global {
   namespace Express {
     export interface Request {
-      user: {
+      user?: {
         id: number;
         firstname: string;
         lastname: string;
-        avatar: string;
+        avatar: string | null;
         email: string;
         password: string;
-        birthday_date?: number;
+        birthday_date?: Date | string;
         size: number;
         objective: string;
         initial_weight: number;
