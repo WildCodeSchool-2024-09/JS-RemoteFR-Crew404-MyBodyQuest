@@ -179,7 +179,7 @@ function Register({
                     alt="Prévisualisation de l'image"
                   />
                 ) : (
-                  <RxAvatar size={100} />
+                  <RxAvatar size={60} />
                 )}
                 <label htmlFor="file">Ajouter une photo</label>
                 <input
