@@ -1,0 +1,83 @@
+/* Style général du conteneur de la recherche */
+div {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 10px;
+}
+
+/* Titre principal */
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Bouton de recherche */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Section des résultats */
+h3 {
+  font-size: 1.5rem;
+  color: #444;
+  margin-top: 20px;
+}
+
+/* Liste des recettes */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la recette */
+li h4 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+/* Description de la recette */
+li p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Lien vers la recette */
+a {
+  text-decoration: none;
+  color: #3498db;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
