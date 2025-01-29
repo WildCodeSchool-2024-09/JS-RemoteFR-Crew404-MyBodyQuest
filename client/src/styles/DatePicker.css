@@ -14,11 +14,6 @@
   background-color: white !important;
 }
 
-/* input {
-  background-color: white;
-  width: 90%;
-} */
-
 .react-datepicker__close-icon::after {
   background-color: var(--bg-color-purple) !important;
 }
