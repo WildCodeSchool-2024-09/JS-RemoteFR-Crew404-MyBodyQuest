@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../services/api";
+import { failed, success } from "../services/toasts";
 import style from "../styles/Contact.module.css";
 
 function Contact() {
@@ -24,25 +25,16 @@ function Contact() {
     event.preventDefault();
 
     try {
-      const response = await api.post(
-        "/api/mail",
-        {
-          destinataire: formData.email,
-          subject: "Contact depuis le site web",
-          content: `\nMessage : ${formData.message}`,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      const response = await api.post("/api/mail", {
+        destinataire: formData.email,
+        subject: "Contact depuis le site web",
+        content: `\nMessage : ${formData.message}`,
+      });
 
       if (response.status !== 200) {
         throw new Error("Une erreur est survenue lors de l'envoi du mail.");
       }
 
-      alert(response.data.message);
       setFormData({
         nom: "",
         prenom: "",
@@ -51,10 +43,10 @@ function Contact() {
         probleme: "",
         message: "",
       });
-      alert("Message envoyé avec succès !");
+      success("Message envoyé avec succès !");
     } catch (error) {
       console.error(error);
-      alert("Échec de l'envoi du message.");
+      failed("Échec de l'envoi du message.");
     }
   };
 
@@ -83,6 +75,7 @@ function Contact() {
         value={formData.email}
         onChange={handleChange}
         placeholder="Email"
+        required
       />
       <button type="submit" className={style.button}>
         Une question ?
@@ -96,6 +89,8 @@ function Contact() {
         value={formData.message}
         onChange={handleChange}
         placeholder="Message"
+        rows={15}
+        required
       />
       <button type="submit">Envoyer</button>
     </form>
