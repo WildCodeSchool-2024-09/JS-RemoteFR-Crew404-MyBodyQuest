@@ -1,8 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import BurgerMenu from "../components/BurgerMenu.tsx";
+import Footer from "../components/Footer.tsx";
+import { useAuth } from "../context/AuthContext.tsx";
 import styles from "../styles/Layout.module.css";
 
 function Layout() {
+  const user = useAuth();
   return (
     <>
       <header className={styles.headercontainer}>
@@ -16,9 +19,18 @@ function Layout() {
         </Link>
         <img
           className={styles.avatar}
-          src="images/illustration-avatar-degrade_52683-142426.avif"
+          src="images/illustration-avatar-degrade_52683-142426.avif" //fetch l'avatar de user (une fois le context créé)
           alt="avatar user"
         />
+        {user && (
+          <button
+            type="button"
+            onClick={() => user.handleLogout()}
+            className={styles.logoutButton}
+          >
+            Se déconnecter
+          </button>
+        )}
         <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
       <nav className={styles.navbar}>
@@ -41,13 +53,7 @@ function Layout() {
         </ul>
       </nav>
       <Outlet />
-      <footer className={styles.footercontainer}>
-        <a href="cgu">CGU</a>
-        <img src="images/instagram_icon.png" alt="instagram" />
-        <img src="images/facebook.png" alt="facebook" />
-        <img src="images/github_icon.png" alt="github" />
-        <Link to="/contact">Contact</Link>
-      </footer>
+      <Footer />
     </>
   );
 }
