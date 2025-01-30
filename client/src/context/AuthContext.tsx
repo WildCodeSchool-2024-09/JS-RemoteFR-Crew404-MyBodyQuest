@@ -43,7 +43,6 @@ export function AuthProvider({ children }: ChildrenType) {
       window.location.href = "/";
     }, 1000);
   };
-  console.info(user);
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
       {children}
