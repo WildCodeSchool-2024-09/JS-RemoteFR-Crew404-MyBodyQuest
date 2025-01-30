@@ -44,6 +44,7 @@ const add: RequestHandler = async (req, res, next) => {
     const newUser = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      sexe: req.body.sexe,
       avatar: req.body.avatar,
       email: req.body.email,
       password: req.body.password,
