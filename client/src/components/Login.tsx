@@ -40,7 +40,6 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
         success(`Bonjour ${firstname} !`);
         nav("/dashboard");
         handleLogin(response.data);
-        console.info(response.data);
       }
     } catch (error) {
       failed("Email ou mot de passe invalide. Veuillez réessayer.");
