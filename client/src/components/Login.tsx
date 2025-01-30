@@ -6,6 +6,7 @@ import { failed, success } from "../services/toasts"; // Ensure this path is cor
 
 import logo from "../assets/images/Logo site.png";
 import logoModale from "../assets/images/coeur_logo.png";
+import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import style from "../styles/Accueil.module.css";
 
@@ -14,6 +15,7 @@ interface RegisterProps {
 }
 
 function Login({ setModaleInscriptionOpen }: RegisterProps) {
+  const { handleLogin } = useAuth();
   const nav = useNavigate();
   const [isConnexionOpen, setConnexionOpen] = useState(false);
   const [login, setLogin] = useState({
@@ -37,6 +39,8 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
         const firstname = response.data.firstname;
         success(`Bonjour ${firstname} !`);
         nav("/dashboard");
+        handleLogin(response.data);
+        console.info(response.data);
       }
     } catch (error) {
       failed("Email ou mot de passe invalide. Veuillez réessayer.");

@@ -39,11 +39,11 @@ export function AuthProvider({ children }: ChildrenType) {
     setUser(null);
     const response = await api.post("/api/logout");
     success(response.data.message);
-    setInterval(() => {
+    setTimeout(() => {
       window.location.href = "/";
     }, 1000);
   };
-
+  console.info(user);
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
       {children}

@@ -22,7 +22,10 @@ const login: RequestHandler = async (req, res, next) => {
     // Fetch the user by email
     const user = await authRepository.read(req.body.email);
     const token = createToken(user); // génération JWT
-    res.cookie("jwtToken", token, { httpOnly: true, secure: false }).json(user); // envoi du jwt dans les cookies
+    res
+      .status(200)
+      .cookie("jwtToken", token, { httpOnly: true, secure: false })
+      .json(user); // envoi du jwt dans les cookies
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -31,7 +34,10 @@ const login: RequestHandler = async (req, res, next) => {
 
 const logout: RequestHandler = async (req, res, next) => {
   try {
-    res.clearCookie("jwtToken").json({ message: "Déconnexion réussie" });
+    res
+      .status(200)
+      .clearCookie("jwtToken")
+      .json({ message: "Déconnexion réussie" });
   } catch (err) {
     next(err);
   }

@@ -42,13 +42,13 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the tracking data from the request body
     const newTracking = {
-      date: req.body.date,
-      mesure_size: req.body.mesure_size,
-      mesure_chest: req.body.mesure_chest,
-      mesure_breast: req.body.mesure_breast,
-      mesure_buttocks: req.body.mesure_buttocks,
-      mesure_hips: req.body.mesure_hips,
-      mesure_calves: req.body.mesure_calves,
+      entryDate: req.body.entryDate,
+      waistline: req.body.waistline,
+      chestMeasurement: req.body.chestMeasurement,
+      thighCircumference: req.body.thighCircumference,
+      buttocksCircumference: req.body.buttocksCircumference,
+      hipCircumference: req.body.hipCircumference,
+      calfCircumference: req.body.calfCircumference,
       weight: req.body.weight,
       comments: req.body.comments,
       user_id: req.body.user_id,
