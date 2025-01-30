@@ -48,7 +48,7 @@ function Layout() {
             <Link to="/food">Alimentation</Link>
           </li>
           <li>
-            <Link to="/account/">Mon compte</Link>
+            <Link to="/account">Mon compte</Link>
           </li>
         </ul>
       </nav>

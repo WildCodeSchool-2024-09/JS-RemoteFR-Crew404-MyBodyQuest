@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../services/api";
 import { success } from "../services/toasts";
 type AuthContextType = {
@@ -44,19 +44,6 @@ export function AuthProvider({ children }: ChildrenType) {
       window.location.href = "/";
     }, 1000);
   };
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await api.get("/api/users");
-        setUser(res.data);
-      } catch (error) {
-        console.error("Erreur lors de la récupération du user :", error);
-      }
-    };
-
-    fetchUser();
-  }, []);
 
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
