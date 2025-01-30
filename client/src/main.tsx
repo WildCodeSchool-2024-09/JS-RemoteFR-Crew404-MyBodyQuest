@@ -11,6 +11,7 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
+import { AuthProvider } from "./context/AuthContext";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
   },
+
   {
     element: <Layout />,
     children: [
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
         element: <Food />,
       },
       {
-        path: "/account/:id",
+        path: "/account",
         element: <Account />,
       },
     ],
@@ -71,18 +73,20 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer
-      position="top-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-    />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </AuthProvider>
   </StrictMode>,
 );

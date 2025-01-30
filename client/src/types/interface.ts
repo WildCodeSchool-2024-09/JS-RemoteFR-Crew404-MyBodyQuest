@@ -5,7 +5,7 @@ export interface User {
   firstname: string;
   email: string;
   birthday: string;
-  age: number;
+  age: string;
   size: string;
   original_weight: string;
   current_weight: string;
