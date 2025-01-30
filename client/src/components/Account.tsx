@@ -3,7 +3,6 @@ import style from "../styles/Account.module.css";
 
 export default function Account() {
   const { user } = useAuth();
-  console.info("User", user);
 
   if (!user) {
     return <p>Chargement...</p>;
