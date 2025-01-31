@@ -1,0 +1,73 @@
+/* Food.module.css */
+
+.foodContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+select,
+input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+select {
+  width: 200px;
+}
+
+input {
+  width: 300px;
+}
+
+.foodList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 80%;
+}
+
+.foodList li {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foodList img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 15px 0;
+}
+
+.foodList h2 {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+.foodList p {
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+}
+
+.foodList li:hover {
+  background-color: #eaeaea;
+  cursor: pointer;
+}
