@@ -1,83 +1,73 @@
-/* Style général du conteneur de la recherche */
-div {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  padding: 10px;
-}
+/* Food.module.css */
 
-/* Titre principal */
-h2 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-/* Bouton de recherche */
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-/* Section des résultats */
-h3 {
-  font-size: 1.5rem;
-  color: #444;
+.foodContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
 }
 
-/* Liste des recettes */
-ul {
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+select,
+input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+select {
+  width: 200px;
+}
+
+input {
+  width: 300px;
+}
+
+.foodList {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  width: 80%;
 }
 
-li {
-  background-color: #f9f9f9;
+.foodList li {
   border: 1px solid #ddd;
-  border-radius: 8px;
-  margin: 10px 0;
   padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Titre de la recette */
-li h4 {
-  font-size: 1.2rem;
-  color: #2c3e50;
-  margin-bottom: 8px;
+.foodList img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 15px 0;
 }
 
-/* Description de la recette */
-li p {
+.foodList h2 {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+.foodList p {
   font-size: 1rem;
   color: #555;
-  margin-bottom: 15px;
+  text-align: center;
 }
 
-/* Lien vers la recette */
-a {
-  text-decoration: none;
-  color: #3498db;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
+.foodList li:hover {
+  background-color: #eaeaea;
+  cursor: pointer;
 }

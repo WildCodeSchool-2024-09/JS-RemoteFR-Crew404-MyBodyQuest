@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "../components/Footer";
 import api from "../services/api";
 import { failed, success } from "../services/toasts";
 import style from "../styles/Contact.module.css";
@@ -51,49 +52,50 @@ function Contact() {
   };
 
   return (
-    <form className={style.inputContainer} onSubmit={handleSubmit}>
-      <input
-        className={style.user_informations}
-        type="text"
-        name="nom"
-        value={formData.nom}
-        onChange={handleChange}
-        placeholder="Nom"
-      />
-      <input
-        className={style.user_informations}
-        type="text"
-        name="prenom"
-        value={formData.prenom}
-        onChange={handleChange}
-        placeholder="Prénom"
-      />
-      <input
-        className={style.user_informations}
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <button type="submit" className={style.button}>
-        Une question ?
-      </button>
-      <button type="submit" className={style.button}>
-        Signaler un problème
-      </button>
-      <textarea
-        className={style.message}
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
-        placeholder="Message"
-        rows={15}
-        required
-      />
-      <button type="submit">Envoyer</button>
-    </form>
+    <>
+      <main>
+        <form className={style.inputContainer} onSubmit={handleSubmit}>
+          <input
+            className={style.user_informations}
+            type="text"
+            name="nom"
+            value={formData.nom}
+            onChange={handleChange}
+            placeholder="Nom"
+          />
+          <input
+            className={style.user_informations}
+            type="text"
+            name="prenom"
+            value={formData.prenom}
+            onChange={handleChange}
+            placeholder="Prénom"
+          />
+          <input
+            className={style.user_informations}
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            required
+          />
+          <textarea
+            className={style.message}
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Message"
+            rows={15}
+            required
+          />
+          <button type="submit">Envoyer</button>
+        </form>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 }
 
