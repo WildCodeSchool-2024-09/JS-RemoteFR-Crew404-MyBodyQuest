@@ -18,6 +18,7 @@ type User = {
   email: string;
   password: string;
   birthday_date?: string;
+  age: string;
   size: number;
   sexe: string;
   objective: string;
