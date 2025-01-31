@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import api from "../services/api";
 import { failed, success } from "../services/toasts";
 import style from "../styles/Contact.module.css";
@@ -53,6 +54,7 @@ function Contact() {
 
   return (
     <>
+      <Header />
       <main>
         <form className={style.inputContainer} onSubmit={handleSubmit}>
           <input
@@ -80,6 +82,7 @@ function Contact() {
             placeholder="Email"
             required
           />
+
           <textarea
             className={style.message}
             name="message"
