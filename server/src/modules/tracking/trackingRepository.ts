@@ -4,13 +4,13 @@ import type { Result, Rows } from "../../../database/client";
 
 type Tracking = {
   id: number;
-  date: Date;
-  mesure_size: number;
-  mesure_chest: number;
-  mesure_breast: number;
-  mesure_buttocks: number;
-  mesure_hips: number;
-  mesure_calves: number;
+  entryDate: Date;
+  waistline: number;
+  chestMeasurement: number;
+  thighCircumference: number;
+  buttocksCircumference: number;
+  hipCircumference: number;
+  calfCircumference: number;
   weight: number;
   comments: string;
   user_id: number;
@@ -22,17 +22,17 @@ class TrackingRepository {
   async create(tracking: Omit<Tracking, "id">) {
     // Execute the SQL INSERT query to add a new tracking to the "tracking" table
     const [result] = await databaseClient.query<Result>(
-      "insert into tracking (date, mesure_size, mesure_chest, mesure_breast, mesure_buttocks, mesure_hips, mesure_calves, weight, comments,user_id) values (?, ?,?,?,?,?,?,?,?,?)",
+      "insert into tracking (entryDate, waistline, chestMeasurement, thighCircumference,buttocksCircumference, hipCircumference, calfCircumference, weight, comments,user_id) values (?, ?,?,?,?,?,?,?,?,?)",
       [
-        tracking.date,
-        tracking.mesure_size,
-        tracking.mesure_chest,
-        tracking.mesure_breast,
-        tracking.mesure_buttocks,
-        tracking.mesure_hips,
-        tracking.mesure_calves,
-        tracking.weight,
-        tracking.comments,
+        tracking.entryDate,
+        tracking.waistline ? tracking.waistline : null,
+        tracking.chestMeasurement ? tracking.chestMeasurement : null,
+        tracking.thighCircumference ? tracking.thighCircumference : null,
+        tracking.buttocksCircumference ? tracking.buttocksCircumference : null,
+        tracking.hipCircumference ? tracking.hipCircumference : null,
+        tracking.calfCircumference ? tracking.calfCircumference : null,
+        tracking.weight ? tracking.weight : null,
+        tracking.comments ? tracking.comments : null,
         tracking.user_id,
       ],
     );

@@ -12,6 +12,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
   const token = req.cookies.jwtToken;
   if (!token) {
     res.status(403).json({ message: "Token non fourni." });
+    return;
   }
   try {
     const decoded = jwt.verify(token, APP_SECRET);
@@ -19,6 +20,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
     next();
   } catch (err) {
     res.status(401).json({ message: "Token invalide" });
+    return;
   }
 };
 
