@@ -42,6 +42,32 @@ const read: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+//The E of BREAD - Edit (Update) operation
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the tracking data from the request body
+    const tracking = {
+      id: req.body.id,
+      entryDate: req.body.entryDate,
+      waistline: req.body.waistline,
+      chestMeasurement: req.body.chestMeasurement,
+      thighCircumference: req.body.thighCircumference,
+      buttocksCircumference: req.body.buttocksCircumference,
+      hipCircumference: req.body.hipCircumference,
+      calfCircumference: req.body.calfCircumference,
+      weight: req.body.weight,
+      comments: req.body.comments,
+      user_id: req.body.user_id,
+    };
+    // Update the tracking
+    await trackingRepository.update(tracking);
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
@@ -71,4 +97,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+export default { browse, read, edit, add };

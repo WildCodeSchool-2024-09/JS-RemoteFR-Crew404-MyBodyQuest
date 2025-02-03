@@ -63,11 +63,26 @@ class TrackingRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing tracking
-
-  // async update(tracking: tracking) {
-  //   ...
-  // }
+  async update(tracking: Tracking) {
+    // Execute the SQL UPDATE query to update the tracking in the "tracking" table
+    await databaseClient.query(
+      "update tracking set entryDate = ?, waistline = ?, chestMeasurement = ?, thighCircumference = ?, buttocksCircumference = ?, hipCircumference = ?, calfCircumference = ?, weight = ?, comments = ?, user_id = ? where id = ?",
+      [
+        tracking.entryDate,
+        tracking.waistline ? tracking.waistline : null,
+        tracking.chestMeasurement ? tracking.chestMeasurement : null,
+        tracking.thighCircumference ? tracking.thighCircumference : null,
+        tracking.buttocksCircumference ? tracking.buttocksCircumference : null,
+        tracking.hipCircumference ? tracking.hipCircumference : null,
+        tracking.calfCircumference ? tracking.calfCircumference : null,
+        tracking.weight ? tracking.weight : null,
+        tracking.comments ? tracking.comments : null,
+        tracking.user_id,
+        tracking.id,
+      ],
+    );
+    return tracking.id;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an tracking by its ID

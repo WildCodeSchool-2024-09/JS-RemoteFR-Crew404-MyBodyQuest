@@ -48,6 +48,7 @@ import trackingActions from "./modules/tracking/trackingActions";
 router.get("/api/trackings", trackingActions.browse);
 router.get("/api/trackings/:id", trackingActions.read);
 router.post("/api/trackings", trackingActions.add);
+router.put("/api/trackings/:id", trackingActions.edit);
 
 import questsActions from "./modules/quests/questsActions";
 router.get("/api/quests", questsActions.browse);

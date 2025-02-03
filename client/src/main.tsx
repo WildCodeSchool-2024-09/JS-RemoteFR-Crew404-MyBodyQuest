@@ -13,7 +13,7 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
-import TrackingData from "./components/TrackingData";
+import TrackingData from "./components/TrackingsData";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
