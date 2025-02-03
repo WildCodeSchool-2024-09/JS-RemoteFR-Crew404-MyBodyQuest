@@ -13,17 +13,6 @@ function TrackingsData() {
   const [editData, setEditData] = useState<TrackingData | null>(null); // Données de l'élément en cours d'édition
   const [updatedFields, setUpdatedFields] = useState<TrackingData | null>(null); // Champs mis à jour
 
-  // Tri des données par date
-  const sortedTrackingData = [...trackingData].sort((a, b) => {
-    const dateA = new Date(a.entryDate); // Assure-toi que entryDate est bien au format ISO ou un format valide
-    const dateB = new Date(b.entryDate);
-
-    if (sortOrder === "asc") {
-      return dateA.getTime() - dateB.getTime(); // Tri croissant
-    }
-    return dateB.getTime() - dateA.getTime(); // Tri décroissant
-  });
-
   const handleSortOrderChange = () => {
     setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
@@ -95,6 +84,12 @@ function TrackingsData() {
       user_id: tracking.user_id,
     });
   };
+
+  const sortedTrackingData = [...trackingData].sort((a, b) =>
+    sortOrder === "asc"
+      ? new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime()
+      : new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime(),
+  );
 
   return (
     <div className={style.containerTrackingData}>

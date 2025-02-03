@@ -25,19 +25,27 @@ export function TrackingProvider({ children }: { children: React.ReactNode }) {
   const [trackingData, setTrackingData] = useState<TrackingData[]>([]);
 
   useEffect(() => {
-    if (trackingData.length === 0) {
-      // ✅ Vérifie si c'est vide avant de charger
-      const HandleTrackingData = async () => {
-        try {
-          const response = await api.get("/api/trackings");
-          setTrackingData(response.data);
-          console.info(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+    const fetchTrackingData = async () => {
+      try {
+        const response = await api.get("/api/trackings");
 
-      HandleTrackingData();
+        // 🔥 Trie directement avant de stocker
+        const sortedTrackingData = response.data.sort(
+          (a: TrackingData, b: TrackingData) =>
+            new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime(),
+        );
+
+        setTrackingData(sortedTrackingData);
+      } catch (error) {
+        console.error(
+          "Erreur lors du chargement des données de suivi :",
+          error,
+        );
+      }
+    };
+
+    if (trackingData.length === 0) {
+      fetchTrackingData();
     }
   }, [trackingData]);
 
