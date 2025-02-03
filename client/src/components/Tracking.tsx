@@ -1,9 +1,11 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import { FaPencilAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 import style from "../styles/Tracking.module.css";
 import "../styles/DatePicker.css";
 import "react-datepicker/dist/react-datepicker.css"; // Styles de base pour le calendrier
-import { FaPencilAlt } from "react-icons/fa";
 
 import Chart from "./Chart";
 import NewTracking from "./NewTracking";
@@ -33,6 +35,8 @@ function Tracking() {
     setSelectedDataType(event.target.value); // Met à jour la valeur sélectionnée
   };
 
+  const nav = useNavigate();
+
   return (
     <>
       <section className={style.ButtonsSection}>
@@ -59,8 +63,11 @@ function Tracking() {
           isClearable={true} // Ajoute un bouton pour effacer la sélection
           placeholderText="Période"
         />
-
-        <button type="button" className={style.modifyButton}>
+        <button
+          type="button"
+          className={style.modifyButton}
+          onClick={() => nav("/tracking/data")}
+        >
           <FaPencilAlt /> Modifier mes données
         </button>
       </section>

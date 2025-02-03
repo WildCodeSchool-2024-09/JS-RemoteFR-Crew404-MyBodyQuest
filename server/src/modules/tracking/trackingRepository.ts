@@ -46,12 +46,12 @@ class TrackingRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific tracking by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from tracking where id >=1",
+      "select * from tracking where user_id =?",
       [id],
     );
 
     // Return the first row of the result, which represents the tracking
-    return rows[0] as Tracking;
+    return rows as Tracking[];
   }
 
   async readAll() {

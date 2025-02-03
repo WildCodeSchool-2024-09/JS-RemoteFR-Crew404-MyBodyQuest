@@ -7,7 +7,13 @@ import trackingRepository from "./trackingRepository";
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all trackings
-    const trackings = await trackingRepository.readAll();
+    if (!req.body.user) {
+      res.status(401).json({
+        message: "User non identifié",
+      });
+      return;
+    }
+    const trackings = await trackingRepository.read(req.body.user.id);
 
     // Respond with the trackings in JSON format
     res.json(trackings);
