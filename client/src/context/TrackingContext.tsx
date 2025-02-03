@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../services/api";
 
 export type TrackingData = {
-  trackingDate: string | number | Date;
   id: number;
   entryDate: Date;
   waistline: number;
@@ -32,6 +31,7 @@ export function TrackingProvider({ children }: { children: React.ReactNode }) {
         try {
           const response = await api.get("/api/trackings");
           setTrackingData(response.data);
+          console.info(response.data);
         } catch (error) {
           console.error(error);
         }

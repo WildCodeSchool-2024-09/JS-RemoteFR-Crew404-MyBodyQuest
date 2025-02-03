@@ -6,15 +6,15 @@ function TrackingData() {
   const context = useTracking(); // 👈 Utilisation du contexte
   const trackingData = context?.trackingData || []; // Provide a default empty array if context is null
   return (
-    <div className={style.container}>
+    <div className={style.containerTrackingData}>
       <h2 className={style.heading}>Historique de suivi</h2>
       {trackingData.length > 0 ? (
-        <ul className={style.list}>
+        <ul className={style.wrapTracking}>
           {trackingData.map((tracking: TrackingDataType) => (
-            <li key={tracking.id} className={style.card}>
+            <li key={tracking.id} className={style.listTracking}>
               <p>
                 <strong>Date :</strong>{" "}
-                {new Date(tracking.trackingDate).toLocaleDateString()}
+                {new Date(tracking.entryDate).toLocaleDateString()}
               </p>
               <p>
                 <strong>Poids :</strong> {tracking.weight} kg
