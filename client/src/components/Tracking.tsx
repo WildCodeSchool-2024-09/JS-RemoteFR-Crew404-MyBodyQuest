@@ -11,12 +11,11 @@ import Chart from "./Chart";
 import NewTracking from "./NewTracking";
 
 function Tracking() {
-  const [selectedDataType, setSelectedDataType] = useState(""); // Gère le type de données sélectionné
-  //const [selectedPeriod, setSelectedPeriod] = useState(""); // Gère la période sélectionnée
   const [selectedRange, setSelectedRange] = useState<
     [Date | null, Date | null]
   >([null, null]); // Gère la plage de dates sélectionnée
   const [startDate, endDate] = selectedRange;
+  const [selectedDataType, setSelectedDataType] = useState<string>("Poids"); // Gère le type de données sélectionné
 
   const optionsData = [
     "Poids",
@@ -72,7 +71,10 @@ function Tracking() {
         </button>
       </section>
       <section className={style.GraphSection}>
-        <Chart />
+        <Chart
+          selectedDataType={selectedDataType}
+          selectedRange={selectedRange}
+        />
       </section>
       <NewTracking />
     </>
