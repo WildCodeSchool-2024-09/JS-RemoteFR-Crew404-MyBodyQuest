@@ -2,127 +2,163 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import style from "../styles/Food.module.css";
 
+interface Category {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+}
+
 interface Recipe {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
-  strIngredients: string[];
   strInstructions: string;
 }
 
 const Food = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
-  const [ingredients, setIngredients] = useState<string[]>([]);
-  const [selectedIngredient, setSelectedIngredient] = useState<string>("");
-  const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+  const [categorieSelectionnee, setcategorieSelectionnee] =
+    useState<string>("");
+  const [recetteSelectionnee, setrecetteSelectionnée] = useState<Recipe | null>(
+    null,
+  );
 
   useEffect(() => {
     axios
-      .get("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+      .get("https://www.themealdb.com/api/json/v1/1/categories.php")
       .then((response) => {
-        const recipesData = response.data.meals;
-        setRecipes(recipesData);
-        setFilteredRecipes(recipesData);
+        setCategories(response.data.categories);
+      })
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des catégories", error),
+      );
+  }, []);
+
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const category = event.target.value;
+    setcategorieSelectionnee(category);
+    setrecetteSelectionnée(null);
+
+    if (category === "") {
+      setRecipes([]);
+      return;
+    }
+
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+      .then((response) => {
+        setRecipes(response.data.meals || []);
       })
       .catch((error) =>
         console.error("Erreur lors de la récupération des recettes", error),
       );
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("https://www.themealdb.com/api/json/v1/1/list.php?i=list")
-      .then((response) => {
-        const ingredientList = response.data.meals.map(
-          (meal: { strIngredient: string }) => meal.strIngredient,
-        );
-        setIngredients(ingredientList);
-      })
-      .catch((error) =>
-        console.error("Erreur lors de la récupération des ingrédients", error),
-      );
-  }, []);
-
-  const handleIngredientFilterChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const ingredient = event.target.value;
-    setSelectedIngredient(ingredient);
-
-    if (ingredient) {
-      const filtered = recipes.filter((recipe) => {
-        return recipe.strIngredients?.some((i) =>
-          i.toLowerCase().includes(ingredient.toLowerCase()),
-        );
-      });
-      setFilteredRecipes(filtered);
-    } else {
-      setFilteredRecipes(recipes);
-    }
   };
 
   const handleRecipeClick = (idMeal: string) => {
     axios
       .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`)
       .then((response) => {
-        const recipe = response.data.meals[0];
-        setSelectedRecipe(recipe);
+        setrecetteSelectionnée(response.data.meals[0]);
       })
       .catch((error) =>
-        console.error(
-          "Erreur lors de la récupération des détails de la recette",
-          error,
-        ),
+        console.error("Erreur lors de la récupération de la recette", error),
       );
   };
 
   return (
     <div className={style.foodContainer}>
-      <h1>Recettes avec filtre par ingrédient</h1>
+      <h1>Alimentation</h1>
 
-      {/* Sélectionner un ingrédient */}
-      <select
-        onChange={handleIngredientFilterChange}
-        value={selectedIngredient}
-      >
-        <option value="">Choisir un ingrédient</option>
-        {ingredients.map((ingredient) => (
-          <option key={ingredient} value={ingredient}>
-            {ingredient}
+      {/* Menu déroulant pour sélectionner une catégorie */}
+      <select onChange={handleCategoryChange} value={categorieSelectionnee}>
+        <option value="">Recettes disponibles</option>
+        {categories.map((category) => (
+          <option key={category.idCategory} value={category.strCategory}>
+            {category.strCategory}
           </option>
         ))}
       </select>
 
-      {/* Affichage des recettes filtrées */}
-      <ul className={style.foodList}>
-        {filteredRecipes.length > 0 ? (
-          filteredRecipes.map((recipe) => (
-            <li
-              key={recipe.idMeal}
-              onClick={() => handleRecipeClick(recipe.idMeal)}
-              onKeyUp={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleRecipeClick(recipe.idMeal);
-                }
-              }}
-            >
-              <h2>{recipe.strMeal}</h2>
-              <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-            </li>
-          ))
-        ) : (
-          <p>Aucune recette trouvée avec cet ingrédient.</p>
-        )}
-      </ul>
+      {/* Affichage des recettes de la catégorie sélectionnée ou toutes les catégories */}
+      {!recetteSelectionnee && (
+        <div>
+          <h2>
+            {categorieSelectionnee
+              ? `${categorieSelectionnee}`
+              : "Choisissez votre catégorie"}
+          </h2>
+          <ul className={style.foodList}>
+            {recipes.length > 0
+              ? recipes.map((recipe) => (
+                  <li key={recipe.idMeal}>
+                    <button
+                      type="button"
+                      onClick={() => handleRecipeClick(recipe.idMeal)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          handleRecipeClick(recipe.idMeal);
+                        }
+                      }}
+                      className={style.recette}
+                    >
+                      <h3>{recipe.strMeal}</h3>
+                      <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                    </button>
+                  </li>
+                ))
+              : categories.map((category) => (
+                  <button
+                    type="button"
+                    key={category.idCategory}
+                    onClick={() =>
+                      handleCategoryChange({
+                        target: { value: category.strCategory },
+                      } as React.ChangeEvent<HTMLSelectElement>)
+                    }
+                    onKeyUp={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        handleCategoryChange({
+                          target: { value: category.strCategory },
+                        } as React.ChangeEvent<HTMLSelectElement>);
+                      }
+                    }}
+                    style={{ all: "unset" }}
+                  >
+                    <h2>{category.strCategory}</h2>
+                    <img
+                      src={category.strCategoryThumb}
+                      alt={category.strCategory}
+                    />
+                  </button>
+                ))}
+          </ul>
+        </div>
+      )}
 
-      {/* Affichage des détails de la recette sélectionnée */}
-      {selectedRecipe && (
-        <div className={style.recipeDetails}>
-          <h2>{selectedRecipe.strMeal}</h2>
-          <img src={selectedRecipe.strMealThumb} alt={selectedRecipe.strMeal} />
-          <h3>Instructions</h3>
-          <p>{selectedRecipe.strInstructions}</p>
+      {/* Affichage des détails d'une recette */}
+      {recetteSelectionnee && (
+        <div className={style.detailRecette}>
+          <h2 className={style.nomRecette}>{recetteSelectionnee.strMeal}</h2>
+          <img
+            className={style.photoRecette}
+            src={recetteSelectionnee.strMealThumb}
+            alt={recetteSelectionnee.strMeal}
+          />
+          <h3>Recette</h3>
+          <p className={style.instructionsRecette}>
+            {recetteSelectionnee.strInstructions}
+          </p>
+          <button
+            type="button"
+            className={style.retour}
+            onClick={() => setrecetteSelectionnée(null)}
+          >
+            Retour
+          </button>
         </div>
       )}
     </div>
