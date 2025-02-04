@@ -95,9 +95,7 @@ function Contact() {
           <button type="submit">Envoyer</button>
         </form>
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 }
