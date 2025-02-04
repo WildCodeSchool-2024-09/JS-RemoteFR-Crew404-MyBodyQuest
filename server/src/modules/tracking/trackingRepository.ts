@@ -1,3 +1,4 @@
+import { response } from "express";
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
@@ -85,11 +86,14 @@ class TrackingRepository {
   }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an tracking by its ID
-
-  // async delete(id: number) {
-  //   ...
-  // }
+  async delete(id: number) {
+    // Execute the SQL DELETE query to remove the tracking from the "tracking" table
+    const [result] = await databaseClient.query<Result>(
+      "delete from tracking where id = ?",
+      [id],
+    );
+    return result.affectedRows > 0;
+  }
 }
 
 export default new TrackingRepository();

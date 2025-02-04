@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { FaEdit } from "react-icons/fa";
 import { FaArrowDownWideShort } from "react-icons/fa6";
 import { FaArrowUpWideShort } from "react-icons/fa6";
+import { MdDeleteForever } from "react-icons/md";
 import { useTracking } from "../context/TrackingContext";
 import type { TrackingData } from "../context/TrackingContext";
 import api from "../services/api"; // Assurez-vous que l'API est correctement configurée pour faire des requêtes
+import { success } from "../services/toasts";
 import style from "../styles/Tracking.module.css";
 
 function TrackingsData() {
@@ -44,7 +47,8 @@ function TrackingsData() {
           .slice(0, 19),
       }; // Mettre à jour les champs modifiés
       const response = await api.put(`/api/trackings/${id}`, updatedData); // Remplacer par l'URL de ton API
-      console.info("Mise à jour réussie:", response.data);
+      success("Mise à jour réussie:");
+      console.info("Mise à jour réussie", response.data);
 
       // Mettre à jour le contexte après la mise à jour
       if (context?.setTrackingData) {
@@ -83,6 +87,24 @@ function TrackingsData() {
       comments: tracking.comments || "",
       user_id: tracking.user_id,
     });
+  };
+
+  const handleDelete = async (id: number) => {
+    try {
+      console.info(id);
+      const response = await api.delete(`/api/trackings/${id}`); // Remplacer par l'URL de ton API
+      success("Suppression réussie");
+      console.info("Suppression réussie", response.data);
+
+      // Mettre à jour le contexte après la suppression
+      if (context?.setTrackingData) {
+        context.setTrackingData(
+          trackingData.filter((tracking) => tracking.id !== id),
+        );
+      }
+    } catch (error) {
+      console.error("Erreur lors de la suppression:", error);
+    }
   };
 
   const sortedTrackingData = [...trackingData].sort((a, b) =>
@@ -228,9 +250,15 @@ function TrackingsData() {
                       type="button"
                       onClick={() => handleEditClick(tracking)}
                     >
-                      Modifier
+                      <FaEdit />
                     </button>
                   )}
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(tracking.id)}
+                  >
+                    <MdDeleteForever />
+                  </button>
                 </td>
               </tr>
             ))}

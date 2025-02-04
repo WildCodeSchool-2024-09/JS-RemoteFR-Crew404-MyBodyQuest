@@ -97,4 +97,18 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add };
+//The D of BREAD - Delete operation
+const remove: RequestHandler = async (req, res, next) => {
+  try {
+    // Delete the tracking
+    const trackingId = Number(req.params.id);
+    await trackingRepository.delete(trackingId);
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, read, edit, add, remove };
