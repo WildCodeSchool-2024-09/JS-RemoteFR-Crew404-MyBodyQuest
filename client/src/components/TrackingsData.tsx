@@ -136,6 +136,7 @@ function TrackingsData() {
               <th>Tour de poitrine (cm)</th>
               <th>Tour de hanches (cm)</th>
               <th>Tour de mollet (cm)</th>
+              <th>Tour de fesses (cm)</th>
               <th>Commentaire</th>
               <th>Actions</th>
             </tr>
@@ -224,6 +225,22 @@ function TrackingsData() {
                     />
                   ) : (
                     tracking.calfCircumference
+                  )}
+                </td>
+                <td>
+                  {editData?.id === tracking.id ? (
+                    <input
+                      type="number"
+                      value={
+                        updatedFields?.buttocksCircumference ||
+                        tracking.buttocksCircumference
+                      }
+                      onChange={(e) =>
+                        handleInputChange(e, "buttocksCircumference")
+                      }
+                    />
+                  ) : (
+                    tracking.buttocksCircumference
                   )}
                 </td>
                 <td>

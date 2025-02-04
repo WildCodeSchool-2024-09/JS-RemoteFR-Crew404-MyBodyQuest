@@ -83,7 +83,7 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
                 return tracking.thighCircumference;
               case "Tour de mollet":
                 return tracking.calfCircumference;
-              case "Tour de bras":
+              case "Tour de fesses":
                 return tracking.buttocksCircumference;
               // Ajouter d'autres cas pour les types de données
               default:

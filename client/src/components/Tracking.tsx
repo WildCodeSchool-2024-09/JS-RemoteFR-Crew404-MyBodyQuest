@@ -19,13 +19,13 @@ function Tracking() {
 
   const optionsData = [
     "Poids",
-    "Mesures",
     "Tour de taille",
     "Tour de poitrine",
     "Tour de hanches",
-    "Tour de bras",
+    "Tour de fesses",
     "Tour de cuisses",
     "Tour de mollet",
+    "Tour de fesses",
   ]; // Const avec les choix de données à afficher
 
   const handleDataTypeChange = (
