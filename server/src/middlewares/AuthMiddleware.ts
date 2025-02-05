@@ -39,6 +39,13 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
     if (!user) {
       res.status(401).json({ message: "Aucun compte existant" });
     }
+    req.user = {
+      ...user,
+      birthday_date: user.birthday_date
+        ? Date.parse(user.birthday_date)
+        : undefined,
+    };
+
     next();
   } catch (err) {
     console.error(err);
@@ -50,6 +57,10 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
 
 const verifyPwd: RequestHandler = async (req, res, next) => {
   try {
+    if (!req.user) {
+      res.status(401).json({ message: "Vous n'êtes pas connecté" });
+      return;
+    }
     const user = req.user;
     const isPwdValid = await argon2.verify(user.password, req.body.password);
     if (!isPwdValid) {

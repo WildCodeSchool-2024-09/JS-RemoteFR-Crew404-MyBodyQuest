@@ -1,6 +1,7 @@
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
+import type { UserQuest } from "../../types/express/userQuest";
 
 type Quests = {
   id: number;
@@ -51,12 +52,14 @@ class QuestsRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing quest
-
-  // async update(quest: Quest) {
-  //   ...
-  // }
-
+  async updateQuestStatus(userQuest: UserQuest) {
+    // Update le statut d'une quête pour un utilisateur
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO user_quests (user_id, quest_id) VALUE (?, ?)",
+      [userQuest.user_id, userQuest.quest_id],
+    );
+    return result.affectedRows;
+  }
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an quest by its ID
 

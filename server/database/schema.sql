@@ -63,11 +63,20 @@ CREATE TABLE quests (
 CREATE TABLE user_quests (
   user_id INT UNSIGNED,
   quest_id INT UNSIGNED,
-  is_done BOOLEAN DEFAULT FALSE,
+  is_done BOOLEAN DEFAULT TRUE,
   PRIMARY KEY (user_id, quest_id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (quest_id) REFERENCES quests(id)
 );
+
+CREATE TABLE user_success (
+  user_id INT UNSIGNED,
+  success_id INT UNSIGNED,
+  PRIMARY KEY (user_id, success_id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (success_id) REFERENCES success(id)
+);
+
 
 INSERT INTO levels (xp_max)
  VALUES ('80');
@@ -210,4 +219,7 @@ VALUES ('Première connexion', 'Félicitations, tu t''es connecté pour la premi
 INSERT INTO user_quests (user_id, quest_id, is_done)
 VALUES ('1', '1', TRUE);
 
+
+INSERT INTO user_success (user_id, success_id)
+VALUES ('1', '1');
 -- SQLBook: Code

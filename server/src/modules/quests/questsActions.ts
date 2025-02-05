@@ -37,6 +37,24 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
+// Mettre à jour une quête
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const userQuestDone = {
+      // Je récupère l'id de l'utilisateur via le token
+      user_id: req.body.user.id,
+      // le signe + est un alias pour rendre un string en number
+      quest_id: +req.body.quest_id,
+    };
+
+    const editQuest = await questsRepository.updateQuestStatus(userQuestDone);
+
+    res.status(200).json(editQuest);
+  } catch (err) {
+    next(err);
+  }
+};
+
 // The A of BREAD - Add (Create) operation
 // Delete if no administrator has been added or created
 const add: RequestHandler = async (req, res, next) => {
@@ -60,4 +78,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+export default { browse, read, edit, add };
