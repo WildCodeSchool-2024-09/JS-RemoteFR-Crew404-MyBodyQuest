@@ -6,7 +6,7 @@ function Dashboard() {
   return (
     <main className={styles.mainDashoard}>
       <section className={styles.helloUser}>
-        <HelloUserDashboard userId={1} />
+        <HelloUserDashboard />
       </section>
       <ProgressBar />
       <section className={styles.widgetsDashboard}>
