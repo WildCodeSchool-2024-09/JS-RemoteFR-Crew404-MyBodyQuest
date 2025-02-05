@@ -116,7 +116,7 @@ function NewTracking() {
               />
             </label>
             <label htmlFor="buttocks-circumference">
-              Tour des fesses
+              Tour de fesses
               <input
                 type="number"
                 placeholder="cm"

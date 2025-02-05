@@ -126,3 +126,23 @@
 .mesures {
   width: 10em;
 }
+
+/*TRACKING DATA*/
+.containerTrackingData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapTracking {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listTracking {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}

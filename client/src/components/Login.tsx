@@ -38,7 +38,6 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
       if (response.status === 200) {
         const firstname = response.data.firstname;
         success(`Bonjour ${firstname} !`);
-        handleLogin(response.data);
         nav("/dashboard");
         handleLogin(response.data);
       }

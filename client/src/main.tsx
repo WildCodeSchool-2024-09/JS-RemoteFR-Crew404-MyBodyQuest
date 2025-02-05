@@ -2,6 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./context/AuthContext";
+import { TrackingProvider } from "./context/TrackingContext";
 
 // Import the main app component
 import App from "./App";
@@ -11,7 +13,7 @@ import Food from "./components/Food";
 import Quests from "./components/Quests";
 import Success from "./components/Success";
 import Tracking from "./components/Tracking";
-import { AuthProvider } from "./context/AuthContext";
+import TrackingData from "./components/TrackingsData";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/tracking",
         element: <Tracking />,
+      },
+      {
+        path: "/tracking/data",
+        element: <TrackingData />,
       },
       {
         path: "/quests",
@@ -74,19 +80,21 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <TrackingProvider>
+        <RouterProvider router={router} />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </TrackingProvider>
     </AuthProvider>
   </StrictMode>,
 );
