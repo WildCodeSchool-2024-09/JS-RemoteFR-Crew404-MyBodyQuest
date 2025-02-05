@@ -24,6 +24,7 @@ const Food = () => {
   const [recetteSelectionnee, setrecetteSelectionnée] = useState<Recipe | null>(
     null,
   );
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     axios
@@ -69,9 +70,22 @@ const Food = () => {
       );
   };
 
+  const handleSearch = () => {
+    if (searchTerm.trim() === "") return;
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`)
+      .then((response) => {
+        setRecipes(response.data.meals || []);
+        setcategorieSelectionnee("");
+      })
+      .catch((error) =>
+        console.error("Erreur lors de la recherche de recettes", error),
+      );
+  };
+
   return (
-    <div className={style.foodContainer}>
-      <h1>Alimentation</h1>
+    <section className={style.foodContainer}>
+      <h1 className={style.pageTitle}>Alimentation</h1>
 
       {/* Menu déroulant pour sélectionner une catégorie */}
       <select onChange={handleCategoryChange} value={categorieSelectionnee}>
@@ -83,18 +97,31 @@ const Food = () => {
         ))}
       </select>
 
-      {/* Affichage des recettes de la catégorie sélectionnée ou toutes les catégories */}
+      {/* Barre de recherche */}
+      <input
+        className={style.recherche}
+        type="search"
+        id="site-search"
+        name="q"
+        placeholder="Recherche"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <button
+        type="button"
+        className={style.rechercheButton}
+        onClick={handleSearch}
+      >
+        Rechercher
+      </button>
+
+      {/* Affichage des recettes */}
       {!recetteSelectionnee && (
-        <div>
-          <h2>
-            {categorieSelectionnee
-              ? `${categorieSelectionnee}`
-              : "Choisissez votre catégorie"}
-          </h2>
+        <section className={style.recettesContainer}>
           <ul className={style.foodList}>
             {recipes.length > 0
               ? recipes.map((recipe) => (
-                  <li key={recipe.idMeal}>
+                  <section className={style.nomRecette} key={recipe.idMeal}>
                     <button
                       type="button"
                       onClick={() => handleRecipeClick(recipe.idMeal)}
@@ -105,13 +132,18 @@ const Food = () => {
                       }}
                       className={style.recette}
                     >
-                      <h3>{recipe.strMeal}</h3>
-                      <img src={recipe.strMealThumb} alt={recipe.strMeal} />
+                      <h3 className={style.recetteTitle}>{recipe.strMeal}</h3>
+                      <img
+                        className={style.recetteImage}
+                        src={recipe.strMealThumb}
+                        alt={recipe.strMeal}
+                      />
                     </button>
-                  </li>
+                  </section>
                 ))
               : categories.map((category) => (
                   <button
+                    className={style.category}
                     type="button"
                     key={category.idCategory}
                     onClick={() =>
@@ -126,22 +158,24 @@ const Food = () => {
                         } as React.ChangeEvent<HTMLSelectElement>);
                       }
                     }}
-                    style={{ all: "unset" }}
                   >
-                    <h2>{category.strCategory}</h2>
+                    <h2 className={style.categoryTitle}>
+                      {category.strCategory}
+                    </h2>
                     <img
+                      className={style.categoryImage}
                       src={category.strCategoryThumb}
                       alt={category.strCategory}
                     />
                   </button>
                 ))}
           </ul>
-        </div>
+        </section>
       )}
 
       {/* Affichage des détails d'une recette */}
       {recetteSelectionnee && (
-        <div className={style.detailRecette}>
+        <section className={style.detailRecette}>
           <h2 className={style.nomRecette}>{recetteSelectionnee.strMeal}</h2>
           <img
             className={style.photoRecette}
@@ -159,9 +193,9 @@ const Food = () => {
           >
             Retour
           </button>
-        </div>
+        </section>
       )}
-    </div>
+    </section>
   );
 };
 

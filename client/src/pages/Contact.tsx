@@ -92,7 +92,9 @@ function Contact() {
             rows={15}
             required
           />
-          <button type="submit">Envoyer</button>
+          <button className={style.submit_button} type="submit">
+            Envoyer
+          </button>
         </form>
       </main>
       <Footer />
