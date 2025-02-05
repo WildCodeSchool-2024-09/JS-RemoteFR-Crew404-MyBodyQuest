@@ -6,12 +6,25 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 15rem;
+  padding-top: 1rem;
   box-sizing: border-box;
 }
 
 .user_informations {
   width: auto;
+  padding: 0.4rem;
+  margin: 1rem;
+  background-color: #f2f0f6;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.user_informationsEmail {
+  width: 20rem;
   padding: 0.4rem;
   margin: 1rem;
   background-color: #f2f0f6;
@@ -33,4 +46,44 @@
   border: black;
   color: white;
   border-radius: 0.5rem;
+}
+
+.message {
+  width: 15rem;
+  padding: 0.4rem;
+  margin: 1rem;
+  background-color: #f2f0f6;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: "Libre Franklin", serif;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.message:focus,
+.user_informations:focus {
+  outline: none;
+}
+
+/* DESKTOP   */
+
+@media (min-width: 768px) {
+  .inputContainer {
+    margin-top: 12rem;
+  }
+
+  .message {
+    width: 45rem;
+    height: 25rem;
+    padding: 0.4rem;
+    margin: 1rem;
+    background-color: #f2f0f6;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: "Libre Franklin", serif;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
 }

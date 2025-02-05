@@ -10,8 +10,6 @@ function Contact() {
     nom: "",
     prenom: "",
     email: "",
-    question: "",
-    probleme: "",
     message: "",
   });
 
@@ -41,8 +39,6 @@ function Contact() {
         nom: "",
         prenom: "",
         email: "",
-        question: "",
-        probleme: "",
         message: "",
       });
       success("Message envoyé avec succès !");
@@ -57,24 +53,28 @@ function Contact() {
       <Header />
       <main>
         <form className={style.inputContainer} onSubmit={handleSubmit}>
+          {/* Nom Prénom */}
+          <div className={style.inputGroup}>
+            <input
+              className={style.user_informations}
+              type="text"
+              name="nom"
+              value={formData.nom}
+              onChange={handleChange}
+              placeholder="Nom"
+            />
+            <input
+              className={style.user_informations}
+              type="text"
+              name="prenom"
+              value={formData.prenom}
+              onChange={handleChange}
+              placeholder="Prénom"
+            />
+          </div>
+          {/* Email */}
           <input
-            className={style.user_informations}
-            type="text"
-            name="nom"
-            value={formData.nom}
-            onChange={handleChange}
-            placeholder="Nom"
-          />
-          <input
-            className={style.user_informations}
-            type="text"
-            name="prenom"
-            value={formData.prenom}
-            onChange={handleChange}
-            placeholder="Prénom"
-          />
-          <input
-            className={style.user_informations}
+            className={style.user_informationsEmail}
             type="email"
             name="email"
             value={formData.email}
@@ -82,16 +82,17 @@ function Contact() {
             placeholder="Email"
             required
           />
-
+          {/* Message */}
           <textarea
             className={style.message}
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Message"
+            placeholder="Votre message"
             rows={15}
             required
           />
+          {/* Envoyer */}
           <button className={style.submit_button} type="submit">
             Envoyer
           </button>
