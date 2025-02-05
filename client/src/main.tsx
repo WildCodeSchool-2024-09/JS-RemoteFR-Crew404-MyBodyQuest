@@ -17,6 +17,7 @@ import TrackingData from "./components/TrackingsData";
 import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,32 +29,37 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "/tracking",
-        element: <Tracking />,
-      },
-      {
-        path: "/tracking/data",
-        element: <TrackingData />,
-      },
-      {
-        path: "/quests",
-        element: <Quests />,
-      },
-      {
-        path: "/success",
-        element: <Success />,
-      },
-      {
-        path: "/food",
-        element: <Food />,
-      },
-      {
-        path: "/account",
-        element: <Account />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/tracking",
+            element: <Tracking />,
+          },
+          {
+            path: "/tracking/data",
+            element: <TrackingData />,
+          },
+          {
+            path: "/quests",
+            element: <Quests />,
+          },
+          {
+            path: "/success",
+            element: <Success />,
+          },
+          {
+            path: "/food",
+            element: <Food />,
+          },
+          {
+            path: "/account",
+            element: <Account />,
+          },
+        ],
       },
     ],
   },

@@ -5,6 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 
 import logoModale from "../assets/images/coeur_logo.png";
+import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
 import { failed, success } from "../services/toasts";
 import style from "../styles/Accueil.module.css";
@@ -19,20 +20,22 @@ function Register({
   setModaleInscriptionOpen,
 }: RegisterProps) {
   const nav = useNavigate();
+  const { handleRegister } = useAuth();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [register, setRegister] = useState({
-    email: "",
-    password: "",
     firstname: "",
     lastname: "",
+    avatar: "",
     birthday_date: "",
-    size: "",
+    size: 0,
+    initial_weight: 0,
+    desired_weight: 0,
+    weight_frequency: "",
     sexe: "",
     objective: "",
-    initial_weight: "",
-    desired_weight: "",
-    weight_frequency: "",
+    email: "",
+    password: "",
   });
 
   const handleChangeRegister = (
@@ -63,8 +66,9 @@ function Register({
     }
     formData.append("register", JSON.stringify(register));
     try {
-      const response = await api.post("/api/register", formData); // Envoi des données du formulaire d'inscription à l'API     // si le user est bien créé message succes de toastify
+      const response = await api.post("/api/register", formData); // Envoi des données du formulaire d'inscription à l'API
       if (response.status === 201) {
+        handleRegister(register);
         success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
         setTimeout(() => {
           //Redirection apres 3sec vers dashboard

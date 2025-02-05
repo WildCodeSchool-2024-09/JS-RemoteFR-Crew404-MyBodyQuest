@@ -44,11 +44,15 @@ function TrackingsData() {
           updatedFields?.entryDate ?? editData?.entryDate ?? "",
         )
           .toISOString()
-          .slice(0, 19),
+          .split("T")[0],
       };
-      const response = await api.put(`/api/trackings/${id}`, updatedData);
+
+      console.info({ updatedFields });
+      console.info({ editData });
+
       success("Mise à jour réussie:");
-      console.info("Mise à jour réussie", response.data);
+      // const response = await api.put(`/api/trackings/${id}`, updatedData);
+      // console.info("Mise à jour réussie", response.data);
 
       // Mettre à jour le contexte après la mise à jour
       if (context?.setTrackingData) {

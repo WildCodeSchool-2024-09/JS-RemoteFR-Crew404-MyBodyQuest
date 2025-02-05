@@ -55,16 +55,6 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Age :
-          <input
-            type="text"
-            name="age"
-            placeholder={user.age}
-            className={style.input}
-            id="age"
-          />
-        </label>
-        <label className={style.form}>
           Taille * :
           <input
             type="text"
