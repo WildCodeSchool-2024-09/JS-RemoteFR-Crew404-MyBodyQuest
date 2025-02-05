@@ -5,14 +5,14 @@ import { FaArrowUpWideShort } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { useTracking } from "../context/TrackingContext";
 import type { TrackingData } from "../context/TrackingContext";
-import api from "../services/api"; // Assurez-vous que l'API est correctement configurée pour faire des requêtes
+import api from "../services/api";
 import { success } from "../services/toasts";
 import style from "../styles/Tracking.module.css";
 
 function TrackingsData() {
   const context = useTracking(); // 👈 Utilisation du contexte
   const trackingData = context?.trackingData || []; // Fournit un tableau vide par défaut si le contexte est null
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // "asc" pour croissant, "desc" pour décroissant
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [editData, setEditData] = useState<TrackingData | null>(null); // Données de l'élément en cours d'édition
   const [updatedFields, setUpdatedFields] = useState<TrackingData | null>(null); // Champs mis à jour
 
@@ -45,8 +45,8 @@ function TrackingsData() {
         )
           .toISOString()
           .slice(0, 19),
-      }; // Mettre à jour les champs modifiés
-      const response = await api.put(`/api/trackings/${id}`, updatedData); // Remplacer par l'URL de ton API
+      };
+      const response = await api.put(`/api/trackings/${id}`, updatedData);
       success("Mise à jour réussie:");
       console.info("Mise à jour réussie", response.data);
 
@@ -92,7 +92,7 @@ function TrackingsData() {
   const handleDelete = async (id: number) => {
     try {
       console.info(id);
-      const response = await api.delete(`/api/trackings/${id}`); // Remplacer par l'URL de ton API
+      const response = await api.delete(`/api/trackings/${id}`);
       success("Suppression réussie");
       console.info("Suppression réussie", response.data);
 
