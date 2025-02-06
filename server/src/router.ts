@@ -2,13 +2,6 @@ import express from "express";
 
 const router = express.Router();
 
-import {
-  hashPwd,
-  uploads,
-  verifyEmail,
-  verifyPwd,
-} from "./middlewares/AuthMiddleware";
-import { verifyToken } from "./middlewares/JwtMiddleware";
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
@@ -22,7 +15,7 @@ import {
   verifyEmail,
   verifyPwd,
 } from "./middlewares/AuthMiddleware";
-import jwtMiddleware from "./middlewares/JwtMiddleware";
+import { verifyToken } from "./middlewares/JwtMiddleware";
 
 /* ************************************************************************* */
 // Auth
@@ -39,21 +32,11 @@ router.post(
 router.post("/api/login", verifyEmail, verifyPwd, authActions.login);
 router.post("/api/logout", authActions.logout);
 
-/**
- * Toutes les personnes connectées doivent passer pas la vérification de son token
- * Valide, pas expiré, etc.
- */
-import mailActions from "./modules/mail/mailActions";
-
-router.post("/api/mail", mailActions.sendMail);
-
-router.use(verifyToken);
-
 /* ************************************************************************* */
 // Nous allons mettre un "mur" d'authentification pour tous nos users
 /* ************************************************************************* */
 // req.body.user: undefined
-router.use(jwtMiddleware.verifyToken);
+router.use(verifyToken);
 // req.body.user: {id: 2, name: toto...}
 
 /* ************************************************************************* */
@@ -109,7 +92,6 @@ router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);
 
-
 /* ************************************************************************* */
 // User success
 /* ************************************************************************* */
@@ -122,6 +104,5 @@ router.get("/api/userSuccess/:id", userSuccesssActions.read);
 /* ************************************************************************* */
 import mailActions from "./modules/mail/mailActions";
 router.post("/api/mail", mailActions.sendMail);
-
 
 export default router;

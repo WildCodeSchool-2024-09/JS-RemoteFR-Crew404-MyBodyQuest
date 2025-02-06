@@ -40,13 +40,7 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
       return;
     }
 
-    req.user = {
-      ...user,
-      birthday_date: user.birthday_date
-        ? Date.parse(user.birthday_date)
-        : undefined,
-    };
-
+    req.user = user;
     next();
   } catch (err) {
     console.error(err);
