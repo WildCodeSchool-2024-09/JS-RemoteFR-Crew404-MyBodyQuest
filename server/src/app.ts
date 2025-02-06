@@ -57,6 +57,12 @@ app.use(cookieParser());
 // app.use(express.text());
 // app.use(express.raw());
 
+const uploadsFolder = path.join(__dirname, "../../server/uploads");
+
+if (fs.existsSync(uploadsFolder)) {
+  app.use("/uploads", express.static(uploadsFolder));
+}
+
 /* ************************************************************************* */
 
 // Import the API router

@@ -1,19 +1,23 @@
+import { Link } from "react-router-dom";
 import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
 import styles from "../styles/Dashboard.module.css";
+import Chart from "./Chart";
 
 function Dashboard() {
   return (
     <main className={styles.mainDashoard}>
       <section className={styles.helloUser}>
-        <HelloUserDashboard userId={1} />
+        <HelloUserDashboard />
       </section>
       <ProgressBar />
       <section className={styles.widgetsDashboard}>
         <article className={styles.widgetStats}>
           <h2>Mes stats</h2>
           <p> Courbe </p>
-          <link rel="preload" href="#" as="#" />
+          <Link to="/tracking">
+            <Chart selectedDataType="Poids" selectedRange={[null, null]} />
+          </Link>
         </article>
         <article className={styles.widgetTracking}>
           <h2>Mon Suivi</h2>

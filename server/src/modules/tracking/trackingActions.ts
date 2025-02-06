@@ -47,7 +47,7 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     // Extract the tracking data from the request body
     const tracking = {
-      id: req.body.id,
+      id: +req.params.id,
       entryDate: req.body.entryDate,
       waistline: req.body.waistline,
       chestMeasurement: req.body.chestMeasurement,
@@ -57,12 +57,14 @@ const edit: RequestHandler = async (req, res, next) => {
       calfCircumference: req.body.calfCircumference,
       weight: req.body.weight,
       comments: req.body.comments,
-      user_id: req.body.user_id,
+      user_id: req.body.user.id,
     };
+
     // Update the tracking
-    await trackingRepository.update(tracking);
+    const response = await trackingRepository.update(tracking);
+
     // Respond with HTTP 204 (No Content)
-    res.sendStatus(204);
+    res.status(200).json({ message: "Update with success" });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

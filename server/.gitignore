@@ -3,3 +3,4 @@ coverage
 .env
 uploads/*
 !uploads/.gitkeep
+!uploads/avatardefault.svg

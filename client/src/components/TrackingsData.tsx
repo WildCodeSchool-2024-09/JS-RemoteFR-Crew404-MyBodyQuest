@@ -44,11 +44,11 @@ function TrackingsData() {
           updatedFields?.entryDate ?? editData?.entryDate ?? "",
         )
           .toISOString()
-          .slice(0, 19),
+          .split("T")[0],
       };
-      const response = await api.put(`/api/trackings/${id}`, updatedData);
+
+      await api.put(`/api/trackings/${id}`, updatedData);
       success("Mise à jour réussie:");
-      console.info("Mise à jour réussie", response.data);
 
       // Mettre à jour le contexte après la mise à jour
       if (context?.setTrackingData) {
@@ -91,10 +91,8 @@ function TrackingsData() {
 
   const handleDelete = async (id: number) => {
     try {
-      console.info(id);
-      const response = await api.delete(`/api/trackings/${id}`);
+      await api.delete(`/api/trackings/${id}`);
       success("Suppression réussie");
-      console.info("Suppression réussie", response.data);
 
       // Mettre à jour le contexte après la suppression
       if (context?.setTrackingData) {

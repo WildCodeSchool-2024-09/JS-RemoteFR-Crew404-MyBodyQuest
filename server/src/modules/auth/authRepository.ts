@@ -27,11 +27,11 @@ class AuthRepository {
   async create(user: Omit<User, "id" | "current_xp" | "level_id">) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into users (firstname, lastname, avatar,email, password, birthday_date,size, sexe, objective, initial_weight, desired_weight, weight_frequency) values (?, ?,?, ?, ?, ?, ?, ?, ?, ?,?,?)",
+      "insert into users (firstname, lastname, avatar,email, password, birthday_date,size, sexe, objective, initial_weight, desired_weight, weight_frequency) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)",
       [
         user.firstname,
         user.lastname,
-        user.avatar,
+        user.avatar ? user.avatar : "avatardefault.svg",
         user.email,
         user.password,
         user.birthday_date,
