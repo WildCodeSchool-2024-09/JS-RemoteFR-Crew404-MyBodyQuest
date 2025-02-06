@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { failed, success } from "../services/toasts"; // Ensure this path is correct or update it to the correct path
 
 import logo from "../assets/images/Logo site.png";
@@ -14,13 +15,13 @@ interface RegisterProps {
 }
 
 function Login({ setModaleInscriptionOpen }: RegisterProps) {
+  const { handleLogin } = useAuth();
   const nav = useNavigate();
   const [isConnexionOpen, setConnexionOpen] = useState(false);
   const [login, setLogin] = useState({
     email: "",
     password: "",
   });
-
   const handleChangeLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogin((prevLogin) => ({
@@ -38,6 +39,7 @@ function Login({ setModaleInscriptionOpen }: RegisterProps) {
         const firstname = response.data.firstname;
         success(`Bonjour ${firstname} !`);
         nav("/dashboard");
+        handleLogin(response.data);
       }
     } catch (error) {
       failed("Email ou mot de passe invalide. Veuillez réessayer.");

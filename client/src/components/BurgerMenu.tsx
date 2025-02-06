@@ -2,8 +2,10 @@ import { slide as Menu } from "react-burger-menu";
 import "../styles/BurgerMenu.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function BurgerMenu() {
+  const user = useAuth();
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // Ajout de l'état pour gérer l'ouverture du menu
 
@@ -47,6 +49,11 @@ function BurgerMenu() {
       <Link to="account" onClick={handleMenuClose}>
         Mon Compte
       </Link>
+      {user && (
+        <button type="button" onClick={() => user.handleLogout()}>
+          Se déconnecter
+        </button>
+      )}
     </Menu>
   );
 }

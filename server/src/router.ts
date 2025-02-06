@@ -2,6 +2,13 @@ import express from "express";
 
 const router = express.Router();
 
+import {
+  hashPwd,
+  uploads,
+  verifyEmail,
+  verifyPwd,
+} from "./middlewares/AuthMiddleware";
+import { verifyToken } from "./middlewares/JwtMiddleware";
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
@@ -20,6 +27,7 @@ import jwtMiddleware from "./middlewares/JwtMiddleware";
 /* ************************************************************************* */
 // Auth
 /* ************************************************************************* */
+
 import authActions from "./modules/auth/authActions";
 
 router.post(
@@ -29,6 +37,17 @@ router.post(
   authActions.register,
 );
 router.post("/api/login", verifyEmail, verifyPwd, authActions.login);
+router.post("/api/logout", authActions.logout);
+
+/**
+ * Toutes les personnes connectées doivent passer pas la vérification de son token
+ * Valide, pas expiré, etc.
+ */
+import mailActions from "./modules/mail/mailActions";
+
+router.post("/api/mail", mailActions.sendMail);
+
+router.use(verifyToken);
 
 /* ************************************************************************* */
 // Nous allons mettre un "mur" d'authentification pour tous nos users
@@ -62,6 +81,8 @@ import trackingActions from "./modules/tracking/trackingActions";
 router.get("/api/trackings", trackingActions.browse);
 router.get("/api/trackings/:id", trackingActions.read);
 router.post("/api/trackings", trackingActions.add);
+router.put("/api/trackings/:id", trackingActions.edit);
+router.delete("/api/trackings/:id", trackingActions.remove);
 
 /* ************************************************************************* */
 // Quests
@@ -88,6 +109,7 @@ router.get("/api/succes", succesActions.browse);
 router.get("/api/succes/:id", succesActions.read);
 router.post("/api/succes", succesActions.add);
 
+
 /* ************************************************************************* */
 // User success
 /* ************************************************************************* */
@@ -100,5 +122,6 @@ router.get("/api/userSuccess/:id", userSuccesssActions.read);
 /* ************************************************************************* */
 import mailActions from "./modules/mail/mailActions";
 router.post("/api/mail", mailActions.sendMail);
+
 
 export default router;

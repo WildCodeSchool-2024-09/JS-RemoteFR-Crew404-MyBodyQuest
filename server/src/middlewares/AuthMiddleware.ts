@@ -20,7 +20,6 @@ const configMulter = multer.diskStorage({
 const uploads = multer({ storage: configMulter });
 
 const hashPwd: RequestHandler = async (req, res, next) => {
-  console.info(req.body);
   try {
     const register = JSON.parse(req.body.register);
     const hash = await argon2.hash(register.password);
@@ -38,7 +37,9 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
     const user = await authRepository.read(req.body.email); //recherche de l'utilisateur par son email
     if (!user) {
       res.status(401).json({ message: "Aucun compte existant" });
+      return;
     }
+
     req.user = {
       ...user,
       birthday_date: user.birthday_date
@@ -63,6 +64,7 @@ const verifyPwd: RequestHandler = async (req, res, next) => {
     }
     const user = req.user;
     const isPwdValid = await argon2.verify(user.password, req.body.password);
+
     if (!isPwdValid) {
       res.status(401).json({ message: "Email ou Mot de passe incorrect" });
     }

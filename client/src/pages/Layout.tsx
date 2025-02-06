@@ -1,46 +1,13 @@
-import { Link, Outlet } from "react-router-dom";
-import BurgerMenu from "../components/BurgerMenu.tsx";
+import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer.tsx";
-import styles from "../styles/Layout.module.css";
+import Header from "../components/Header.tsx";
+import NavBar from "../components/NavBar.tsx";
 
 function Layout() {
   return (
     <>
-      <header className={styles.headercontainer}>
-        <Link to="dashboard">
-          <img
-            className={styles.coeur}
-            src="images/coeur_logo.png"
-            alt="logo"
-          />
-          <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
-        </Link>
-        <img
-          className={styles.avatar}
-          src="images/illustration-avatar-degrade_52683-142426.avif" //fetch l'avatar de user (une fois le context créé)
-          alt="avatar user"
-        />
-        <BurgerMenu /> {/*n'apparait que sur mobile*/}
-      </header>
-      <nav className={styles.navbar}>
-        <ul className={styles.navlist}>
-          <li>
-            <Link to="/tracking">Suivi</Link>
-          </li>
-          <li>
-            <Link to="/quests">Mes quêtes</Link>
-          </li>
-          <li>
-            <Link to="/success">Mes succès</Link>
-          </li>
-          <li>
-            <Link to="/food">Alimentation</Link>
-          </li>
-          <li>
-            <Link to="/account">Mon compte</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
+      <NavBar />
       <Outlet />
       <Footer />
     </>

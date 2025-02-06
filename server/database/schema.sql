@@ -1,4 +1,4 @@
--- SQLBook: Code
+-- SQLBook: 
 CREATE TABLE levels (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   xp_max INT NOT NULL
@@ -222,4 +222,3 @@ VALUES ('1', '1', TRUE);
 
 INSERT INTO user_success (user_id, success_id)
 VALUES ('1', '1');
--- SQLBook: Code

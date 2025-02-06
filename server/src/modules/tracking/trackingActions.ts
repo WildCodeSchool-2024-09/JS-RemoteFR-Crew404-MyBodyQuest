@@ -7,7 +7,13 @@ import trackingRepository from "./trackingRepository";
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all trackings
-    const trackings = await trackingRepository.readAll();
+    if (!req.body.user) {
+      res.status(401).json({
+        message: "User non identifié",
+      });
+      return;
+    }
+    const trackings = await trackingRepository.read(req.body.user.id);
 
     // Respond with the trackings in JSON format
     res.json(trackings);
@@ -36,19 +42,45 @@ const read: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+//The E of BREAD - Edit (Update) operation
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    // Extract the tracking data from the request body
+    const tracking = {
+      id: req.body.id,
+      entryDate: req.body.entryDate,
+      waistline: req.body.waistline,
+      chestMeasurement: req.body.chestMeasurement,
+      thighCircumference: req.body.thighCircumference,
+      buttocksCircumference: req.body.buttocksCircumference,
+      hipCircumference: req.body.hipCircumference,
+      calfCircumference: req.body.calfCircumference,
+      weight: req.body.weight,
+      comments: req.body.comments,
+      user_id: req.body.user_id,
+    };
+    // Update the tracking
+    await trackingRepository.update(tracking);
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the tracking data from the request body
     const newTracking = {
-      date: req.body.date,
-      mesure_size: req.body.mesure_size,
-      mesure_chest: req.body.mesure_chest,
-      mesure_breast: req.body.mesure_breast,
-      mesure_buttocks: req.body.mesure_buttocks,
-      mesure_hips: req.body.mesure_hips,
-      mesure_calves: req.body.mesure_calves,
+      entryDate: req.body.entryDate,
+      waistline: req.body.waistline,
+      chestMeasurement: req.body.chestMeasurement,
+      thighCircumference: req.body.thighCircumference,
+      buttocksCircumference: req.body.buttocksCircumference,
+      hipCircumference: req.body.hipCircumference,
+      calfCircumference: req.body.calfCircumference,
       weight: req.body.weight,
       comments: req.body.comments,
       user_id: req.body.user_id,
@@ -65,4 +97,18 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+//The D of BREAD - Delete operation
+const remove: RequestHandler = async (req, res, next) => {
+  try {
+    // Delete the tracking
+    const trackingId = Number(req.params.id);
+    await trackingRepository.delete(trackingId);
+    // Respond with HTTP 204 (No Content)
+    res.sendStatus(204);
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { browse, read, edit, add, remove };

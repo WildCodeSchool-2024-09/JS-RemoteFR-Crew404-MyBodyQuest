@@ -1,16 +1,22 @@
+import { useAuth } from "../context/AuthContext";
 import style from "../styles/Account.module.css";
 
 export default function Account() {
-  return (
-    // --------------------------liste des formulaires utilisateurs------------------------------
+  const { user } = useAuth();
 
+  if (!user) {
+    return <p>Chargement...</p>;
+  }
+
+  return (
     <section className={style.account}>
-      <form action="" method="get" className={style.user}>
+      <form key={user.id} action="" method="get" className={style.user}>
         <label className={style.form}>
           Nom d'utilisateur * :
           <input
             type="text"
             name="username"
+            placeholder={user.email}
             className={style.input}
             id="username"
             required
@@ -21,6 +27,7 @@ export default function Account() {
           <input
             type="text"
             name="lastname"
+            placeholder={user.lastname}
             className={style.input}
             id="lastname"
             required
@@ -31,6 +38,7 @@ export default function Account() {
           <input
             type="text"
             name="firstname"
+            placeholder={user.firstname}
             className={style.input}
             id="firstname"
             required
@@ -38,17 +46,30 @@ export default function Account() {
         </label>
         <label className={style.form}>
           Date d'anniversaire :
-          <input type="text" name="date" className={style.input} id="date" />
+          <input
+            type="text"
+            name="date"
+            placeholder={user.birthday_date}
+            className={style.input}
+            id="date"
+          />
         </label>
         <label className={style.form}>
           Age :
-          <input type="text" name="age" className={style.input} id="age" />
+          <input
+            type="text"
+            name="age"
+            placeholder={user.age}
+            className={style.input}
+            id="age"
+          />
         </label>
         <label className={style.form}>
           Taille * :
           <input
             type="text"
             name="size"
+            placeholder={String(user.size)}
             className={style.input}
             id="size"
             required
@@ -59,6 +80,7 @@ export default function Account() {
           <input
             type="text"
             name="original_weight"
+            placeholder={String(user.initial_weight)}
             className={style.input}
             id="original_weight"
             required
@@ -69,6 +91,7 @@ export default function Account() {
           <input
             type="text"
             name="desired_weight"
+            placeholder={String(user.desired_weight)}
             className={style.input}
             id="desired_weight"
             required

@@ -1,0 +1,103 @@
+.foodContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+select,
+input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+select {
+  width: 200px;
+}
+
+input {
+  width: 300px;
+}
+
+.foodList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding-bottom: 5rem;
+}
+
+.foodList li {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 13rem;
+}
+
+.foodList img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 15px 0;
+}
+
+.nomRecette {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.recette {
+  all: unset; /* Supprime le style moche des boutons par défaut */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.photoRecette {
+  width: 65%;
+}
+
+.foodList li:hover {
+  background-color: #eaeaea;
+  cursor: pointer;
+}
+
+.retour {
+  margin-bottom: 4em;
+}
+
+/* Version desktop */
+@media (min-width: 768px) {
+  .foodList {
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+  }
+
+  .photoRecette {
+    width: 35%;
+  }
+}

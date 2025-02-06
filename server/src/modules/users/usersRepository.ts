@@ -6,6 +6,7 @@ type User = {
   id: number;
   firstname: string;
   lastname: string;
+  sexe: string;
   avatar: string;
   email: string;
   password: string;
@@ -25,10 +26,11 @@ class UserRepository {
   async create(user: Omit<User, "id">) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into users (firstname, lastname, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into users (firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         user.firstname,
         user.lastname,
+        user.sexe,
         user.avatar,
         user.email,
         user.password,
@@ -52,9 +54,13 @@ class UserRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from users where id >= 1",
+      "select * from users where id = ?",
       [id],
     );
+
+    if (rows.length === 0) {
+      throw new Error(`User with ID ${id} not found`);
+    }
 
     // Return the first row of the result, which represents the user
     return rows[0] as User;
