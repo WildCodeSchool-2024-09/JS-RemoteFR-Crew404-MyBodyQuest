@@ -25,13 +25,13 @@ CREATE TABLE users (
 
 CREATE TABLE tracking (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  date DATE NOT NULL,
-  mesure_size DECIMAL(5,2) DEFAULT NULL,
-  mesure_chest DECIMAL(5,2) DEFAULT NULL,
-  mesure_breast DECIMAL(5,2) DEFAULT NULL,
-  mesure_buttocks DECIMAL(5,2) DEFAULT NULL,
-  mesure_hips DECIMAL(5,2) DEFAULT NULL,
-  mesure_calves DECIMAL(5,2) DEFAULT NULL,
+  entryDate DATE NOT NULL,
+  waistline DECIMAL(5,2) DEFAULT NULL,
+  chestMeasurement DECIMAL(5,2) DEFAULT NULL,
+  thighCircumference DECIMAL(5,2) DEFAULT NULL,
+  buttocksCircumference DECIMAL(5,2) DEFAULT NULL,
+  hipCircumference DECIMAL(5,2) DEFAULT NULL,
+  calfCircumference DECIMAL(5,2) DEFAULT NULL,
   weight DECIMAL(5,2) DEFAULT NULL,
   comments TEXT DEFAULT NULL,
   user_id INT UNSIGNED,
@@ -86,7 +86,7 @@ INSERT INTO users
   VALUES
   ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
 
-INSERT INTO tracking (date,weight,comments,user_id)
+INSERT INTO tracking (entryDate,weight,comments,user_id)
  VALUES ('2025-01-08','83.70','Test','1');
 
 INSERT INTO success (success_title)
