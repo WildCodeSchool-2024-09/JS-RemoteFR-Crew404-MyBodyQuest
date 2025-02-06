@@ -10,13 +10,19 @@ import style from "../styles/Accueil.module.css";
 
 function Accueil() {
   const [isModaleInscriptionOpen, setModaleInscriptionOpen] = useState(false);
+  const [isConnexionOpen, setConnexionOpen] = useState(false);
   return (
     <>
       <main className={style.pageAccueil}>
-        <Login setModaleInscriptionOpen={setModaleInscriptionOpen} />
+        <Login
+          setModaleInscriptionOpen={setModaleInscriptionOpen}
+          setConnexionOpen={setConnexionOpen}
+          isConnexionOpen={isConnexionOpen}
+        />
         <Register
           isModaleInscriptionOpen={isModaleInscriptionOpen}
           setModaleInscriptionOpen={setModaleInscriptionOpen}
+          setConnexionOpen={setConnexionOpen}
         />
         {/* ENCART DE BIENVENUE */}
         <section className={style.bienvenue}>
