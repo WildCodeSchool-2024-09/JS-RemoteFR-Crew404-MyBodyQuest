@@ -19,6 +19,15 @@ type User = {
   current_xp: number;
   level_id: number;
 };
+type UserUpdate = {
+  firstname: string;
+  lastname: string;
+  size: number;
+  objective: string;
+  initial_weight: number;
+  desired_weight: number;
+  weight_frequency: string;
+};
 
 class UserRepository {
   // The C of CRUD - Create operation
@@ -63,7 +72,7 @@ class UserRepository {
     }
 
     // Return the first row of the result, which represents the user
-    return rows[0] as User;
+    return rows as User[];
   }
 
   async readAll() {
@@ -75,18 +84,32 @@ class UserRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing user
-
-  // async update(user: User) {
-  //   ...
-  // }
+  async update(user: UserUpdate, id: number) {
+    // TODO: Implement the update operation to modify an existing user
+    const [rows] = await databaseClient.query<Result>(
+      "update users set firstname = ?, lastname = ?, size = ?, objective = ?, initial_weight = ?, desired_weight = ?, weight_frequency = ? where id = ?",
+      [
+        user.firstname,
+        user.lastname,
+        user.size,
+        user.objective,
+        user.initial_weight,
+        user.desired_weight,
+        user.weight_frequency,
+        id,
+      ],
+    );
+    return rows.affectedRows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a user by its ID
-
-  // async delete(id: number) {
-  //   ...
-  // }
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from users where id = ?",
+      [id],
+    );
+    return result.affectedRows > 0;
+  }
 }
 
 export default new UserRepository();
