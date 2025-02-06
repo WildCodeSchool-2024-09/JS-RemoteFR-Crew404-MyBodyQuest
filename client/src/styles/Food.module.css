@@ -8,29 +8,36 @@
   margin: 0 auto;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
+.pageTitle {
+  font-size: 1.2rem;
+  background-color: var(--bg-color-green);
+  width: 14rem;
+  height: auto;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  color: white;
   text-align: center;
 }
 
 select,
 input {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
   font-size: 1rem;
   text-align: center;
+  color: black;
 }
 
-select {
-  width: 200px;
-}
-
-input {
-  width: 300px;
+.rechercheButton {
+  background-color: var(--bg-color-green);
+  border: none;
+  border-radius: 10%;
+  width: auto;
+  margin: 0.8rem;
+  padding: 0.3rem;
+  color: white;
 }
 
 .foodList {
@@ -38,52 +45,64 @@ input {
   padding: 0;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
   justify-content: center;
   padding-bottom: 5rem;
 }
 
-.foodList li {
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+.category {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  background-color: var(--bg-color-light);
+  border: none;
   width: 13rem;
+  height: 1rem;
+  padding: 6rem;
+  border-radius: 5%;
+  cursor: pointer;
 }
 
-.foodList img {
-  width: 150px;
-  height: 150px;
+.recette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color-light);
+  border: none;
+  width: 15rem;
+  height: 12rem;
+  padding: 9rem;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.categoryImage,
+.recetteImage {
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
-  margin: 15px 0;
+  margin: 1rem;
+  border-radius: 2%;
+}
+
+.categoryTitle,
+.recetteTitle {
+  font-size: 1rem;
+  text-align: center;
+  background-color: #e8def8;
+  width: 10rem;
+  border-radius: 10%;
+  margin-top: 2rem;
 }
 
 .nomRecette {
   font-size: 1.8rem;
-  color: #333;
-}
-
-.recette {
-  all: unset; /* Supprime le style moche des boutons par défaut */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  cursor: pointer;
 }
 
 .photoRecette {
   width: 65%;
-}
-
-.foodList li:hover {
-  background-color: #eaeaea;
-  cursor: pointer;
 }
 
 .retour {
@@ -92,12 +111,63 @@ input {
 
 /* Version desktop */
 @media (min-width: 768px) {
-  .foodList {
-    grid-template-columns: repeat(5, 1fr);
-    justify-content: center;
-  }
-
   .photoRecette {
     width: 35%;
+  }
+
+  .category,
+  .recette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color-light);
+    border: none;
+    width: 22rem;
+    height: 22rem;
+    padding: 6rem;
+    border-radius: 5%;
+    cursor: pointer;
+  }
+
+  .categoryImage,
+  .recetteImage {
+    width: 16rem;
+    height: 10rem;
+    object-fit: cover;
+    margin: 1rem;
+    border-radius: 2%;
+  }
+
+  .recetteTitle {
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #e8def8;
+    padding: 0.5rem;
+    border-radius: 10%;
+  }
+
+  .categoryTitle {
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #e8def8;
+    padding: 0.5rem;
+    border-radius: 10%;
+  }
+
+  .foodList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pageTitle {
+    font-size: 2.5rem;
+    background-color: var(--bg-color-green);
+    width: 25rem;
+    height: auto;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
   }
 }
