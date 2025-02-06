@@ -16,24 +16,26 @@ function Header() {
           />
           <img className={styles.logo} src="images/Logo_txt.png" alt="logo" />
         </Link>
-        <img
-          className={styles.avatar}
-          src={
-            user?.avatar
-              ? `${import.meta.env.VITE_API_URL}/uploads/${user.avatar}`
-              : `${import.meta.env.VITE_API_URL}/uploads/avatardefault.svg`
-          } //fetch l'avatar de user (une fois le context créé)
-          alt="avatar user"
-        />
-        {user && (
-          <button
-            type="button"
-            onClick={() => handleLogout()}
-            className={styles.logoutButton}
-          >
-            Se déconnecter
-          </button>
-        )}
+        <div className={styles.headerProfile}>
+          <img
+            className={styles.avatar}
+            src={
+              user?.avatar
+                ? `${import.meta.env.VITE_API_URL}/uploads/${user.avatar}`
+                : `${import.meta.env.VITE_API_URL}/uploads/avatardefault.svg`
+            } //fetch l'avatar de user (une fois le context créé)
+            alt="avatar user"
+          />
+          {user && (
+            <button
+              type="button"
+              onClick={() => handleLogout()}
+              className={styles.logoutButton}
+            >
+              Déconnexion
+            </button>
+          )}
+        </div>
         <BurgerMenu /> {/*n'apparait que sur mobile*/}
       </header>
     </>
