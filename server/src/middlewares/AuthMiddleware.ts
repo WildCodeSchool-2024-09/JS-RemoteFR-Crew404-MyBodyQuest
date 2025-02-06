@@ -53,14 +53,12 @@ const verifyEmail: RequestHandler = async (req, res, next) => {
 const verifyPwd: RequestHandler = async (req, res, next) => {
   try {
     if (!req.user) {
-      res.status(401).json({ message: "Utilisateur non trouvé" });
+      res.status(401).json({ message: "Vous n'êtes pas connecté" });
       return;
     }
+    const user = req.user;
+    const isPwdValid = await argon2.verify(user.password, req.body.password);
 
-    const isPwdValid = await argon2.verify(
-      req.user.password,
-      req.body.password,
-    );
     if (!isPwdValid) {
       res.status(401).json({ message: "Email ou Mot de passe incorrect" });
     }

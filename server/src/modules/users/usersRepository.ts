@@ -10,7 +10,7 @@ type User = {
   avatar: string;
   email: string;
   password: string;
-  birthday_date: number;
+  birthday_date?: string;
   size: number;
   objective: string;
   initial_weight: number;

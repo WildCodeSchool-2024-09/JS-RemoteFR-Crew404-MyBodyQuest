@@ -1,4 +1,3 @@
-import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
@@ -8,15 +7,18 @@ const createToken = (payload: object): string => {
   return jwt.sign(payload, APP_SECRET); // à modifier pour n'avoir que le token codé sur id & mail
 };
 
-const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
+import type { NextFunction, Request, Response } from "express";
+
+const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies.jwtToken;
   if (!token) {
     res.status(403).json({ message: "Token non fourni." });
     return;
   }
   try {
-    const decoded = jwt.verify(token, APP_SECRET);
-    req.body.user = decoded; //Décode le token contenant toutes les infos du user et les stocke
+    const decoded = await jwt.verify(token, APP_SECRET);
+    req.body.user = decoded;
+
     next();
   } catch (err) {
     res.status(401).json({ message: "Token invalide" });

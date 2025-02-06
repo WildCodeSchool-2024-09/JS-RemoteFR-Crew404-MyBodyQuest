@@ -1,4 +1,4 @@
--- SQLBook: Code
+-- SQLBook: 
 CREATE TABLE levels (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   xp_max INT NOT NULL
@@ -25,13 +25,13 @@ CREATE TABLE users (
 
 CREATE TABLE tracking (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  entryDate DATE NOT NULL,
-  waistline DECIMAL(5,2) DEFAULT NULL,
-  chestMeasurement DECIMAL(5,2) DEFAULT NULL,
-  thighCircumference DECIMAL(5,2) DEFAULT NULL,
-  buttocksCircumference DECIMAL(5,2) DEFAULT NULL,
-  hipCircumference DECIMAL(5,2) DEFAULT NULL,
-  calfCircumference DECIMAL(5,2) DEFAULT NULL,
+  date DATE NOT NULL,
+  mesure_size DECIMAL(5,2) DEFAULT NULL,
+  mesure_chest DECIMAL(5,2) DEFAULT NULL,
+  mesure_breast DECIMAL(5,2) DEFAULT NULL,
+  mesure_buttocks DECIMAL(5,2) DEFAULT NULL,
+  mesure_hips DECIMAL(5,2) DEFAULT NULL,
+  mesure_calves DECIMAL(5,2) DEFAULT NULL,
   weight DECIMAL(5,2) DEFAULT NULL,
   comments TEXT DEFAULT NULL,
   user_id INT UNSIGNED,
@@ -63,11 +63,20 @@ CREATE TABLE quests (
 CREATE TABLE user_quests (
   user_id INT UNSIGNED,
   quest_id INT UNSIGNED,
-  is_done BOOLEAN DEFAULT FALSE,
+  is_done BOOLEAN DEFAULT TRUE,
   PRIMARY KEY (user_id, quest_id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (quest_id) REFERENCES quests(id)
 );
+
+CREATE TABLE user_success (
+  user_id INT UNSIGNED,
+  success_id INT UNSIGNED,
+  PRIMARY KEY (user_id, success_id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (success_id) REFERENCES success(id)
+);
+
 
 INSERT INTO levels (xp_max)
  VALUES ('80');
@@ -75,9 +84,9 @@ INSERT INTO levels (xp_max)
 INSERT INTO users 
 (firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
   VALUES
-  ('john', 'doe', 'Masculin', 'avatardefault.svg', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
+  ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
 
-INSERT INTO tracking (entryDate,weight,comments,user_id)
+INSERT INTO tracking (date,weight,comments,user_id)
  VALUES ('2025-01-08','83.70','Test','1');
 
 INSERT INTO success (success_title)
@@ -210,4 +219,6 @@ VALUES ('Première connexion', 'Félicitations, tu t''es connecté pour la premi
 INSERT INTO user_quests (user_id, quest_id, is_done)
 VALUES ('1', '1', TRUE);
 
--- SQLBook: Code
+
+INSERT INTO user_success (user_id, success_id)
+VALUES ('1', '1');
