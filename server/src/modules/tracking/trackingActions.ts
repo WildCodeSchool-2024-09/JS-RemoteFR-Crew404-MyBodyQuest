@@ -44,7 +44,6 @@ const read: RequestHandler = async (req, res, next) => {
 };
 //The E of BREAD - Edit (Update) operation
 const edit: RequestHandler = async (req, res, next) => {
-  console.info(req.body);
   try {
     // Extract the tracking data from the request body
     const tracking = {
@@ -61,7 +60,6 @@ const edit: RequestHandler = async (req, res, next) => {
       user_id: req.body.user.id,
     };
 
-    console.info({ tracking });
     // Update the tracking
     const response = await trackingRepository.update(tracking);
 
