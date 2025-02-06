@@ -49,7 +49,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/success",
-            element: <Success />,
+            element: <UserSuccess />,
           },
           {
             path: "/food",
