@@ -47,9 +47,6 @@ function TrackingsData() {
           .split("T")[0],
       };
 
-      console.info({ updatedFields });
-      console.info({ editData });
-
       success("Mise à jour réussie:");
       // const response = await api.put(`/api/trackings/${id}`, updatedData);
       // console.info("Mise à jour réussie", response.data);
@@ -98,7 +95,6 @@ function TrackingsData() {
       console.info(id);
       const response = await api.delete(`/api/trackings/${id}`);
       success("Suppression réussie");
-      console.info("Suppression réussie", response.data);
 
       // Mettre à jour le contexte après la suppression
       if (context?.setTrackingData) {
