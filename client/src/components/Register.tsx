@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { RxAvatar } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
 
 import logoModale from "../assets/images/coeur_logo.png";
 import { useAuth } from "../context/AuthContext";
@@ -13,13 +12,14 @@ import style from "../styles/Accueil.module.css";
 interface RegisterProps {
   isModaleInscriptionOpen: boolean;
   setModaleInscriptionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setConnexionOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Register({
   isModaleInscriptionOpen,
   setModaleInscriptionOpen,
+  setConnexionOpen,
 }: RegisterProps) {
-  const nav = useNavigate();
   const { handleRegister } = useAuth();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -71,14 +71,20 @@ function Register({
         handleRegister(register);
         success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
         setTimeout(() => {
-          //Redirection apres 3sec vers dashboard
-          nav("/dashboard");
-        }, 3000);
+          setModaleInscriptionOpen(false);
+          setConnexionOpen(true);
+        }, 1000);
+      } else {
+        failed(
+          "Erreur lors de la création de votre compte. Veuillez réessayer.",
+        );
       }
     } catch (error) {
+      console.error("Erreur API : ", error);
       failed("Erreur lors de la création de votre compte. Veuillez réessayer.");
     }
   };
+
   return (
     <>
       {/* MODALE D'INSCRIPTION */}
