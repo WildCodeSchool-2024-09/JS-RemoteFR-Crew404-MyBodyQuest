@@ -7,7 +7,11 @@ import userRepository from "./usersRepository";
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all users
-    const users = await userRepository.readAll();
+    if (!req.body.user) {
+      res.status(401).json({ message: "User non identifié" });
+      return;
+    }
+    const users = await userRepository.read(req.body.user.id);
 
     // Respond with the users in JSON format
     res.json(users);
@@ -33,6 +37,31 @@ const read: RequestHandler = async (req, res, next) => {
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+// The E of BREAD - Edit (Update) operation
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const userData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      size: req.body.size,
+      objective: req.body.objective,
+      initial_weight: req.body.original_weight,
+      desired_weight: req.body.desired_weight,
+      weight_frequency: req.body.weight_frequency,
+    };
+    const response = await userRepository.update(userData, req.body.user.id);
+
+    if (response !== 1) {
+      res.status(500).json({ message: "erreur server" });
+      return;
+    }
+
+    res.status(200).json({ message: "user updated" });
+  } catch (err) {
     next(err);
   }
 };
@@ -69,4 +98,14 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+const remove: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    await userRepository.delete(userId);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, edit, add, remove };

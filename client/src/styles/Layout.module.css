@@ -1,5 +1,9 @@
 /*MOBILE FIRST */
 /*Header Mobile*/
+::selection {
+  background-color: var(--bg-color-green);
+  color: #fff;
+}
 
 .headercontainer {
   padding: 1rem;

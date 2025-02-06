@@ -42,6 +42,8 @@ import userActions from "./modules/users/usersActions";
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", userActions.add);
+router.put("/api/users/:id", userActions.edit);
+router.delete("/api/users/:id", userActions.remove);
 
 import trackingActions from "./modules/tracking/trackingActions";
 
