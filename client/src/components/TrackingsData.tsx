@@ -47,9 +47,8 @@ function TrackingsData() {
           .split("T")[0],
       };
 
+      const response = await api.put(`/api/trackings/${id}`, updatedData);
       success("Mise à jour réussie:");
-      // const response = await api.put(`/api/trackings/${id}`, updatedData);
-      // console.info("Mise à jour réussie", response.data);
 
       // Mettre à jour le contexte après la mise à jour
       if (context?.setTrackingData) {
