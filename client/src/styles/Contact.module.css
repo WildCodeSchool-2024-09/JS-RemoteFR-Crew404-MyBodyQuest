@@ -1,5 +1,17 @@
 /* MOBILE FIRST */
 
+.pageTitle {
+  font-size: 0.9rem;
+  background-color: var(--bg-color-purple);
+  width: 8rem;
+  height: auto;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  color: white;
+  text-align: center;
+}
+
 .inputContainer {
   display: flex;
   flex-direction: column;
@@ -37,12 +49,13 @@
 }
 
 .submit_button {
-  width: 15rem;
+  width: 10rem;
+  height: 2rem;
   top: 2rem;
   right: 3rem;
   padding: 0.2rem;
   margin: 1rem;
-  background-color: black;
+  background-color: var(--bg-color-purple);
   border: black;
   color: white;
   border-radius: 0.5rem;
@@ -70,14 +83,14 @@
 
 @media (min-width: 768px) {
   .inputContainer {
-    margin-top: 12rem;
+    margin-top: 3rem;
   }
 
   .message {
     width: 45rem;
     height: 25rem;
     padding: 0.4rem;
-    margin: 1rem;
+    margin: 0.5rem;
     background-color: #f2f0f6;
     border: none;
     border-radius: 0.5rem;
@@ -85,5 +98,18 @@
     font-size: 0.8rem;
     font-family: "Libre Franklin", serif;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .pageTitle {
+    font-size: 1.2rem;
+    background-color: var(--bg-color-purple);
+    width: 14rem;
+    height: auto;
+    padding: 0.5rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    color: white;
+    text-align: center;
   }
 }

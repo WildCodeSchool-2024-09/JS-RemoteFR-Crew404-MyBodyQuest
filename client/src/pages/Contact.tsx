@@ -53,6 +53,7 @@ function Contact() {
       <Header />
       <main>
         <form className={style.inputContainer} onSubmit={handleSubmit}>
+          <h1 className={style.pageTitle}>Contact</h1>
           {/* Nom Prénom */}
           <div className={style.inputGroup}>
             <input

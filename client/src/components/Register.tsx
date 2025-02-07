@@ -122,30 +122,34 @@ function Register({
                 value={register.birthday_date}
                 onChange={handleChangeRegister}
               />
-              <input
-                type="number"
-                placeholder="Taille"
-                className={style.inscriptionInput}
-                name="size"
-                value={register.size}
-                onChange={handleChangeRegister}
-              />
-              <input
-                type="number"
-                placeholder="Votre poids actuel"
-                className={style.inscriptionInput}
-                name="initial_weight"
-                value={register.initial_weight}
-                onChange={handleChangeRegister}
-              />{" "}
-              <input
-                type="number"
-                placeholder="Votre poids souhaité"
-                className={style.inscriptionInput}
-                name="desired_weight"
-                value={register.desired_weight}
-                onChange={handleChangeRegister}
-              />
+              <section className={style.size}>
+                <input
+                  type="number"
+                  placeholder="Taille"
+                  className={style.inscriptionInput}
+                  name="size"
+                  value={register.size}
+                  onChange={handleChangeRegister}
+                />
+              </section>
+              <section className={style.weight}>
+                <input
+                  type="number"
+                  placeholder="Votre poids actuel"
+                  className={style.inscriptionInput}
+                  name="initial_weight"
+                  value={register.initial_weight}
+                  onChange={handleChangeRegister}
+                />
+                <input
+                  type="number"
+                  placeholder="Votre poids souhaité"
+                  className={style.inscriptionInput}
+                  name="desired_weight"
+                  value={register.desired_weight}
+                  onChange={handleChangeRegister}
+                />
+              </section>
               <select
                 className={style.inscriptionInput}
                 name="weight_frequency"
@@ -156,7 +160,7 @@ function Register({
                 <option value="1">1 fois/semaine</option>
                 <option value="2">1 fois/2 semaines</option>
               </select>
-              <section className={style.infosUserContainer}>
+              <section className="sexe">
                 <h3 className={style.titleh3}>Sexe :</h3>
                 <label htmlFor="Féminin">Féminin</label>
                 <input
@@ -176,6 +180,8 @@ function Register({
                   value="Masculin"
                   onChange={handleChangeRegister}
                 />
+              </section>
+              <section className={style.infosUserContainer}>
                 {previewImage ? (
                   <img
                     src={previewImage}

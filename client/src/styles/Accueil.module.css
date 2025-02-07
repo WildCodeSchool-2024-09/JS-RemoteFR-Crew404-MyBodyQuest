@@ -166,8 +166,7 @@
 }
 
 .modaleConnexionContent,
-.modaleCreateAccountContent,
-.modaleInscriptionContent {
+.modaleCreateAccountContent {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color-light);
@@ -246,7 +245,7 @@
 
 .closeInscription {
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   right: 2rem;
   background: none;
   border: none;
@@ -286,6 +285,19 @@
   margin: 0;
 }
 
+.modaleInscriptionContent {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--bg-color-light);
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 70%;
+  height: 40rem;
+  text-align: center;
+}
+
 /* STYLE MODALE "FAISONS CONNAISSANCE" */
 
 .infosUserContainer {
@@ -301,7 +313,7 @@
 
 /* DESKTOP  */
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .headercontainer {
     display: flex;
     flex-direction: row;
@@ -478,9 +490,12 @@
   .modaleInscriptionContent {
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: hidden;
     position: relative;
     background-color: var(--bg-color-light);
-    padding: 2rem;
+    padding: 1rem;
+    padding-right: 2rem;
     border-radius: 2rem;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     width: 25rem;
@@ -488,6 +503,25 @@
     text-align: center;
     gap: 0.5rem;
   }
+
+  /* STYLE POUR INPUT SIZE AND WEIGHT */
+
+  .size,
+  .weight {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .inscriptionInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
   .createAccount {
     width: 10rem;
     margin: 0.3rem;
@@ -547,11 +581,20 @@
   }
 
   .closeConnexion,
-  .closeCreateAccount,
-  .closeInscription {
+  .closeCreateAccount {
     position: absolute;
     top: -2.5rem;
     right: 0;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  .closeInscription {
+    position: absolute;
+    right: 1rem;
     background: none;
     border: none;
     font-size: 1.5rem;
