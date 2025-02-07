@@ -42,7 +42,7 @@ export default function Account() {
     <section className={style.account}>
       <form onSubmit={handleSubmit} className={style.user}>
         <label className={style.form}>
-          Nom d'utilisateur * :
+          Nom d'utilisateur *
           <input
             type="text"
             name="username"
@@ -54,7 +54,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Nom * :
+          Nom *
           <input
             type="text"
             name="lastname"
@@ -66,7 +66,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Prénom * :
+          Prénom *
           <input
             type="text"
             name="firstname"
@@ -78,7 +78,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Date d'anniversaire :
+          Date d'anniversaire
           <input
             type="text"
             name="birthday_date"
@@ -93,7 +93,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Taille * :
+          Taille *
           <input
             type="text"
             name="size"
@@ -105,7 +105,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Poids Initial * :
+          Poids Initial *
           <input
             type="text"
             name="original_weight"
@@ -117,7 +117,7 @@ export default function Account() {
           />
         </label>
         <label className={style.form}>
-          Objectif de poids * :
+          Objectif de poids *
           <input
             type="text"
             name="desired_weight"
