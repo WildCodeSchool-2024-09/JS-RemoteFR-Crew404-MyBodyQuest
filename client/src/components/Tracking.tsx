@@ -69,14 +69,14 @@ function Tracking() {
           selectedRange={selectedRange}
         />
       </section>
-      <section className={style.ButtonsSection}>
+      <section className={style.buttonsData}>
         <NewTracking />
         <button
           type="button"
           className={style.modifyButton}
           onClick={() => nav("/tracking/data")}
         >
-          <FaPencilAlt /> Modifier mes données
+          <FaPencilAlt size={10} /> Modifier mes données
         </button>
       </section>
     </>

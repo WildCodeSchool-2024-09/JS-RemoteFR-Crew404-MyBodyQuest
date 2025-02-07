@@ -6,6 +6,7 @@
   justify-items: center;
   align-items: center;
   position: relative;
+  margin-bottom: 1rem;
 }
 
 .toggleButton {
@@ -57,8 +58,29 @@
   margin-top: 1rem;
 }
 
-.modifyButton {
+.GraphSection {
+  padding: 1rem;
+}
+
+.SortButton {
   font-size: 0.7rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: var(--bg-color-light);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
+}
+
+.buttonsData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modifyButton {
+  font-size: 0.8rem;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
