@@ -11,6 +11,7 @@ import Account from "./components/Account";
 import Dashboard from "./components/Dashboard";
 import Food from "./components/Food";
 import Quests from "./components/Quests";
+import Recipe from "./components/Recipe";
 import Tracking from "./components/Tracking";
 import TrackingData from "./components/TrackingsData";
 import UserSuccess from "./components/UserSuccess";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
           {
             path: "/account",
             element: <Account />,
+          },
+          {
+            path: "/food/:idMeal",
+            element: <Recipe />,
           },
         ],
       },
