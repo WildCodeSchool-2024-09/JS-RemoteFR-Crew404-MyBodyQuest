@@ -113,35 +113,39 @@ function TrackingsData() {
 
   return (
     <div className={style.containerTrackingData}>
-      <h2 className={style.heading}>Historique de suivi</h2>
-      <button type="button" onClick={handleSortOrderChange}>
-        Trier par date{" "}
-        {sortOrder === "asc" ? (
-          <FaArrowUpWideShort />
-        ) : (
-          <FaArrowDownWideShort />
-        )}
-      </button>
+      <h2 className={style.TitlePage}>Historique de suivi</h2>
 
       {trackingData.length > 0 ? (
         <table className={style.tableTracking}>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Poids (kg)</th>
-              <th>Tour de taille (cm)</th>
-              <th>Tour de cuisse (cm)</th>
-              <th>Tour de poitrine (cm)</th>
-              <th>Tour de hanches (cm)</th>
-              <th>Tour de mollet (cm)</th>
-              <th>Tour de fesses (cm)</th>
-              <th>Commentaire</th>
-              <th>Actions</th>
+          <thead className={style.tableHead}>
+            <tr className={style.tableRow}>
+              <th>
+                <button
+                  type="button"
+                  onClick={handleSortOrderChange}
+                  className={style.sort}
+                >
+                  Date{" "}
+                  {sortOrder === "asc" ? (
+                    <FaArrowUpWideShort />
+                  ) : (
+                    <FaArrowDownWideShort />
+                  )}
+                </button>
+              </th>
+              <th>Poids</th>
+              <th>Taille</th>
+              <th>Cuisses</th>
+              <th>Poitrine</th>
+              <th>Hanches</th>
+              <th>Mollets</th>
+              <th>Fesses </th>
+              <th>Notes</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={style.tableBody}>
             {sortedTrackingData.map((tracking: TrackingData) => (
-              <tr key={tracking.id}>
+              <tr key={tracking.id} className={style.tableRow}>
                 <td>{new Date(tracking.entryDate).toLocaleDateString()}</td>
                 <td>
                   {editData?.id === tracking.id ? (

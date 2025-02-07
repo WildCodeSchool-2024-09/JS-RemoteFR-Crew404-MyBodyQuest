@@ -1,3 +1,17 @@
+.TitlePage {
+  margin: 1rem;
+  font-size: var(--fontsize-title);
+  font-family: var(--title-font);
+  background-color: var(--bg-color-green);
+  width: 50%;
+  height: auto;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  color: white;
+  text-align: center;
+  justify-self: center;
+}
+
 .ButtonsSection {
   padding: 1rem;
   display: grid;
@@ -53,11 +67,6 @@
   background-color: #f1f1f1;
 }
 
-.heading {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-}
-
 .GraphSection {
   padding: 1rem;
 }
@@ -81,6 +90,7 @@
 
 .modifyButton {
   font-size: 0.8rem;
+  margin: 1rem;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
@@ -89,6 +99,8 @@
   background: var(--bg-color-light);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
 }
+
+/* New tracking Modale*/
 .NewEntrySection {
   display: flex;
   justify-content: center;
@@ -119,7 +131,7 @@
   opacity: 1;
 }
 
-.modaleNewEntryContent {
+.modaleNewEntryContainer {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color-light);
@@ -129,6 +141,39 @@
   width: 55%;
   height: 85%;
   text-align: center;
+}
+
+.modaleNewEntryContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.label {
+  padding: 0.3rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.dateInput {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.input {
+  border-radius: 0.5rem;
+  border-color: var(--bg-color-purple);
+}
+
+.SubmitButton {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--bg-color-purple);
+  color: white;
+  cursor: pointer;
 }
 
 .closeModaleNewEntry {
@@ -145,24 +190,59 @@
 
 .mesures {
   width: 10em;
+  padding: 1rem;
 }
 
-/*TRACKING DATA*/
+/*Liste des trackings*/
 .containerTrackingData {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 75vh;
 }
 
-.wrapTracking {
+.sort {
+  background-color: var(--bg-color-light);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  align-self: self-start;
+}
+
+.tableTracking {
+  display: grid;
+  width: 90%;
+  font-size: 0.2rem;
+  margin-top: 1rem;
+}
+
+.tableHead {
+  background-color: var(--bg-color-purple);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.2rem;
+  width: 90%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  height: fit-content;
 }
 
-.listTracking {
+.tableRow {
   display: flex;
   align-items: center;
+}
+
+td,
+th {
+  padding: 0.5rem;
+  width: 5rem;
+}
+
+.tableEntry {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
-  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-color-light);
+  width: 90%;
 }

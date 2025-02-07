@@ -38,6 +38,7 @@ function Tracking() {
 
   return (
     <>
+      <h1 className={style.TitlePage}>Mon évolution</h1>
       <section className={style.ButtonsSection}>
         <select
           id="dataTypeSelect"
