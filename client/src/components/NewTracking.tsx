@@ -204,7 +204,10 @@ function NewTracking() {
           setNewEntryOpen(true);
         }}
       >
-        <TbCirclePlusFilled size={50} color="#7b5cb9" />
+        <TbCirclePlusFilled
+          size={window.innerWidth < 768 ? 50 : 70}
+          color="#7b5cb9"
+        />
       </button>
     </>
   );

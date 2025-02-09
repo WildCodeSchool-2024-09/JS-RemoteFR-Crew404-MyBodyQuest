@@ -25,7 +25,10 @@ a {
 
 /*Footer Desktop*/
 .footercontainer {
-  width: 80%;
-  max-width: 800px;
-  margin: 0.8rem auto;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
 }

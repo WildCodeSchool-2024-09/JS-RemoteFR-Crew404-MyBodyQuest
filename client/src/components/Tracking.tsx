@@ -37,7 +37,7 @@ function Tracking() {
   const nav = useNavigate();
 
   return (
-    <>
+    <main className={style.MainTracking}>
       <h1 className={style.TitlePage}>Mon évolution</h1>
       <section className={style.ButtonsSection}>
         <select
@@ -80,7 +80,7 @@ function Tracking() {
           <FaPencilAlt size={10} /> Modifier mes données
         </button>
       </section>
-    </>
+    </main>
   );
 }
 

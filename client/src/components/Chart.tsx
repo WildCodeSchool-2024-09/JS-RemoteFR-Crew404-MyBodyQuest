@@ -114,7 +114,6 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
   }, [selectedDataType, selectedRange, sortedTrackingData]); // Enlever trackingData et sortOrder des dépendances
 
   const options = {
-    responsive: true,
     plugins: {
       tooltip: {
         mode: "index" as const,
