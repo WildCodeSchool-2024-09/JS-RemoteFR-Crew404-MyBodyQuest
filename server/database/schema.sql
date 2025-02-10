@@ -1,9 +1,5 @@
--- SQLBook: 
-CREATE TABLE levels (
-  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  xp_max INT NOT NULL
-);
-
+-- SQLBook: Code
+-- SQLBook:
 CREATE TABLE users (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   firstname VARCHAR(50) NOT NULL,
@@ -18,20 +14,19 @@ CREATE TABLE users (
   initial_weight DECIMAL(5,2) NOT NULL,
   desired_weight DECIMAL(5,2) NOT NULL,
   weight_frequency VARCHAR(50) NOT NULL,
-  current_xp INT DEFAULT 200 NOT NULL,
-  level_id INT UNSIGNED,
-  FOREIGN KEY (level_id) REFERENCES levels(id)
+  current_xp INT DEFAULT 0 NOT NULL,
+  level INT UNSIGNED DEFAULT 1
 );
 
 CREATE TABLE tracking (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  date DATE NOT NULL,
-  mesure_size DECIMAL(5,2) DEFAULT NULL,
-  mesure_chest DECIMAL(5,2) DEFAULT NULL,
-  mesure_breast DECIMAL(5,2) DEFAULT NULL,
-  mesure_buttocks DECIMAL(5,2) DEFAULT NULL,
-  mesure_hips DECIMAL(5,2) DEFAULT NULL,
-  mesure_calves DECIMAL(5,2) DEFAULT NULL,
+  entryDate DATE NOT NULL,
+  waistline DECIMAL(5,2) DEFAULT NULL,
+  chestMeasurement DECIMAL(5,2) DEFAULT NULL,
+  thighCircumference DECIMAL(5,2) DEFAULT NULL,
+  buttocksCircumference DECIMAL(5,2) DEFAULT NULL,
+  hipCircumference DECIMAL(5,2) DEFAULT NULL,
+  calfCircumference DECIMAL(5,2) DEFAULT NULL,
   weight DECIMAL(5,2) DEFAULT NULL,
   comments TEXT DEFAULT NULL,
   user_id INT UNSIGNED,
@@ -77,17 +72,11 @@ CREATE TABLE user_success (
   FOREIGN KEY (success_id) REFERENCES success(id)
 );
 
-
-INSERT INTO levels (xp_max)
- VALUES ('80');
-
 INSERT INTO users 
-(firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level_id)
+(firstname, lastname, sexe, avatar, email, password, birthday_date, size, objective, initial_weight, desired_weight, weight_frequency, current_xp, level)
   VALUES
-  ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', '1' );
+  ('john', 'doe', 'Masculin', '', 'johndoe@gmail.com', 'john1999', '1999-01-01', '180', 'perte', '85', '80', '1 fois par semaine', '200', 2);
 
-INSERT INTO tracking (date,weight,comments,user_id)
- VALUES ('2025-01-08','83.70','Test','1');
 
 INSERT INTO success (success_title)
 VALUES ('Inscription sur le site réussie 💪'), 
@@ -117,46 +106,46 @@ VALUES ('Running lvl1', '2'),
 
 INSERT INTO quests (quest_title, description, xp, category_id)
 VALUES ('Première connexion', 'Félicitations, tu t''es connecté pour la première fois!', '10', '11'),
-('Marche lvl1', 'Marcher 30 min, 1jour/2, pendant 2 semaines à allure modérée', '5', '1'),
-('Marche lvl1', 'Marcher 30 min/jour pendant 2 semaines à allure modérée', '10', '1'),
-('Marche  lvl1', 'Marcher 45 min/jour pendant 2 semaines à allure modérée', '10', '1'),
-('Marche  lvl1', 'Marcher 1h/jour pendant 2 semaines à allure modérée', '15', '1'),
-('Course lvl1', 'Courir 1fois/mois pendant 3 mois (10 min)', '5', '1'),
-('Course lvl1', 'Courir 2fois/mois pendant 3 mois (10 min)', '10', '1'),
+('Marche lvl1', 'Marcher 30 min, 1jour/2, pendant 2 semaines à allure modérée', '10', '1'),
+('Marche lvl1', 'Marcher 30 min/jour pendant 2 semaines à allure modérée', '15', '1'),
+('Marche  lvl1', 'Marcher 45 min/jour pendant 2 semaines à allure modérée', '15', '1'),
+('Marche  lvl1', 'Marcher 1h/jour pendant 2 semaines à allure modérée', '20', '1'),
+('Course lvl1', 'Courir 1fois/mois pendant 3 mois (10 min)', '10', '1'),
+('Course lvl1', 'Courir 2fois/mois pendant 3 mois (10 min)', '15', '1'),
 
-('Marche  lvl2', 'Marcher 30min, 1jour/2, pendant 2 semaines à allure rapide', '15', '2'),
-('Marche  lvl2', 'Marcher 30min/jour, pendant 2 semaines à allure rapide', '20', '2'),
-('Marche  lvl2', 'Marcher 45min/jour, pendant 1 mois à allure rapide', '25', '2'),
-('Course lvl2', 'Courir 2fois/mois pendant 3 mois (15 min)', '10', '2'),
-('Course lvl2', 'Courir 1fois/semaine pendant 3 mois (15 min)', '15', '2'),
-('Course lvl2', 'Courir 1fois/semaine pendant 3 mois (20 min)', '20', '2'),
+('Marche  lvl2', 'Marcher 30min, 1jour/2, pendant 2 semaines à allure rapide', '20', '2'),
+('Marche  lvl2', 'Marcher 30min/jour, pendant 2 semaines à allure rapide', '25', '2'),
+('Marche  lvl2', 'Marcher 45min/jour, pendant 1 mois à allure rapide', '30', '2'),
+('Course lvl2', 'Courir 2fois/mois pendant 3 mois (15 min)', '20', '2'),
+('Course lvl2', 'Courir 1fois/semaine pendant 3 mois (15 min)', '25', '2'),
+('Course lvl2', 'Courir 1fois/semaine pendant 3 mois (20 min)', '25', '2'),
 
-('Marche lvl3', 'Marcher 1h/jour pendant 3 mois à allure rapide', '25', '3'),
-('Marche lvl3', 'Marcher 1h/jour pendant 6 mois à allure rapide', '50', '3'),
+('Marche lvl3', 'Marcher 1h/jour pendant 3 mois à allure rapide', '35', '3'),
+('Marche lvl3', 'Marcher 1h/jour pendant 6 mois à allure rapide', '60', '3'),
 ('Marche Nordique', 'Effectuer une séance de 1h de marche nordique, 1fois/semaine pendant 3 mois (avec échauffements et étirements)', '25', '3'),
 ('Marche Nordique', 'Effectuer une séance de 1h de marche nordique, 2fois/semaine pendant 6 mois (avec échauffements et étirements)', '50', '3'),
-('Course lvl3', 'Courir 1fois/semaine pendant 3 mois (30 min)', '25', '3'),
-('Course lvl3', 'Courir 1fois/semaine pendant 3 mois (40 min)', '25', '3'),
-('Course lvl3', 'Courir 2fois/semaine pendant 3 mois (40 min)', '50', '3'),
+('Course lvl3', 'Courir 1fois/semaine pendant 3 mois (30 min)', '30', '3'),
+('Course lvl3', 'Courir 1fois/semaine pendant 3 mois (40 min)', '35', '3'),
+('Course lvl3', 'Courir 2fois/semaine pendant 3 mois (40 min)', '60', '3'),
 
-('Cardio lvl1', 'Réaliser le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Jumping jack. Avec 20s de repos entre chaque exercice', '5', '4'),
-('Cardio lvl1', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '10', '4'),
-('Gainage lvl1', 'Réaliser le circuit: 30s de Planche sur les genoux, 30s Planche latérale droite et 30s gauche.  Avec 20s de repos entre chaque exercice', '5', '4'),
-('Gainage lvl1', 'Réaliser 2fois le circuit: 30s de Planche sur les genoux, 30s Planche latérale droite et 30s gauche.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '10', '4'),
-('Renforcement lvl1', 'Réaliser le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 30s de repos entre chaque exercice', '5', '4'),
-('Renforcement lvl1', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 30s de repos entre chaque exercice et 1min entre les circuits', '10', '4'),
+('Cardio lvl1', 'Réaliser le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Jumping jack. Avec 20s de repos entre chaque exercice', '10', '4'),
+('Cardio lvl1', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '15', '4'),
+('Gainage lvl1', 'Réaliser le circuit: 30s de Planche sur les genoux, 30s Planche latérale droite et 30s gauche.  Avec 20s de repos entre chaque exercice', '10', '4'),
+('Gainage lvl1', 'Réaliser 2fois le circuit: 30s de Planche sur les genoux, 30s Planche latérale droite et 30s gauche.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '15', '4'),
+('Renforcement lvl1', 'Réaliser le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 30s de repos entre chaque exercice', '10', '4'),
+('Renforcement lvl1', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 30s de repos entre chaque exercice et 1min entre les circuits', '15', '4'),
 
-('Cardio lvl2', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '15', '5' ),
-('Gainage lvl2', 'Réaliser 2fois le circuit: 30s de Planche, 30s Planche latérale droite et 30s gauche, 30s de Gainage dos.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '15', '5'),
-('Gainage lvl2', 'Réaliser 2fois le circuit: 30s de planche, 30s de Planche latérale droite et 30s gauche, 30s de Relevés buste, 30s de Gainage dos.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '20', '5'),
-('Renforcement lvl2', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '10', '5'),
-('Renforcement lvl2', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '15', '5'),
+('Cardio lvl2', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '20', '5' ),
+('Gainage lvl2', 'Réaliser 2fois le circuit: 30s de Planche, 30s Planche latérale droite et 30s gauche, 30s de Gainage dos.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '20', '5'),
+('Gainage lvl2', 'Réaliser 2fois le circuit: 30s de planche, 30s de Planche latérale droite et 30s gauche, 30s de Relevés buste, 30s de Gainage dos.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '25', '5'),
+('Renforcement lvl2', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Lever de jambe latérale droite et 30s gauche. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '20', '5'),
+('Renforcement lvl2', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '25', '5'),
 
-('Cardio lvl3', 'Réaliser 1fois le circuit: 30s de Burpees, 30s de Corde à sauter, 30s de Mountains climber, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice', '20', '6'),
-('Cardio lvl3', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Corde à sauter, 30s de Mountains climber, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '40', '6'),
+('Cardio lvl3', 'Réaliser 1fois le circuit: 30s de Burpees, 30s de Corde à sauter, 30s de Mountains climber, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice', '25', '6'),
+('Cardio lvl3', 'Réaliser 2fois le circuit: 30s de Burpees, 30s de Corde à sauter, 30s de Mountains climber, 30s de Fentes alternées, 30s de Squats sautés, 30s de Jumping jack. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '50', '6'),
 ('Gainage lvl3', 'Réaliser 2fois le circuit: 30s de Planche, 30s de Planche latérale droite et 30s gauche, 30s de Relevé buste, 30s de Gainage dos, 30 Scrunch croisés.  Avec 10s de repos entre chaque exercice et 1min entre les circuits', '30', '6'),
-('Renforcement lvl3', 'Réaliser le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche, 30s de Squats. Avec 20s de repos entre chaque exercice', '20', '6'),
-('Renforcement lvl3', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche, 30s de Squats. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '40', '6'),
+('Renforcement lvl3', 'Réaliser le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche, 30s de Squats. Avec 20s de repos entre chaque exercice', '25', '6'),
+('Renforcement lvl3', 'Réaliser 2fois le circuit: 30s de Relevé bassin, 30s de Dips, 30s de Lever de jambe latérale droite et 30s gauche, 30s de Squats. Avec 20s de repos entre chaque exercice et 1min entre les circuits', '50', '6'),
 
 ('Promenade à vélo', 'Effectuer min 15km à vélo sur un weekend', '20', '7'),
 ('Entrainement à vélo 1', 'Faire 5km à vélo 2fois/semaine (min 6 mois)', '20', '7'),
@@ -175,20 +164,20 @@ VALUES ('Première connexion', 'Félicitations, tu t''es connecté pour la premi
 ('Détente en plein air 1', 'Faire une partie de Volley-ball', '5', '7'),
 ('Détente en plein air 2', 'Faire une partie de frisbee', '5', '7'),
 ('Détente en plein air 3', 'Faire un partie de pétanque', '5', '7' ),
-('Weekend sports nautiques','Faire au moins 2 sports nautiques sur un weekend (surf, planche à voile, ski nautique, pédalo...)', '25', '7'),
-('Vacances à la mer', 'Passer 1 semaine de vacances à la mer et pratiquer des activités nautiques', '40', '7'),
-('Weekend à la montagne', 'Faire au moins 2 jours de ski ou snowboard', '20', '7'),
-('Vacances à la montagne hiver', 'Passer 1 semaine de vacances à la montagne et faire du ski, du snowboard, des raquettes...', '40', '7'),
-('Vacances à la montagne été', 'Passer 1 semaine de vacances à la montagne et faire une randonnée, du canyoning, de la luge d''été, de la trotinette de montagne...', '40', '7'),
-('Weekend à la campagne', 'Effectuer une rando d''un weekend à la campagne', '20', '7'),
-('Vacances à la campagne', 'Effectuer une rando d''une semaine en campagne', '40', '7'),
-('Géocaching ou Course d''orientation', 'Essayer le Géocaching ou participer à une course d''orientation', '10', '7'),
+('Weekend sports nautiques','Faire au moins 2 sports nautiques sur un weekend (surf, planche à voile, ski nautique, pédalo...)', '30', '7'),
+('Vacances à la mer', 'Passer 1 semaine de vacances à la mer et pratiquer des activités nautiques', '50', '7'),
+('Weekend à la montagne', 'Faire au moins 2 jours de ski ou snowboard', '30', '7'),
+('Vacances à la montagne hiver', 'Passer 1 semaine de vacances à la montagne et faire du ski, du snowboard, des raquettes...', '50', '7'),
+('Vacances à la montagne été', 'Passer 1 semaine de vacances à la montagne et faire une randonnée, du canyoning, de la luge d''été, de la trotinette de montagne...', '50', '7'),
+('Weekend à la campagne', 'Effectuer une rando d''un weekend à la campagne', '30', '7'),
+('Vacances à la campagne', 'Effectuer une rando d''une semaine en campagne', '50', '7'),
+('Géocaching ou Course d''orientation', 'Essayer le Géocaching ou participer à une course d''orientation', '15', '7'),
 
-('Circuit échauffement 1', 'Réaliser le circuit: 30s de Course sur place, 30s de Talons fesses, 30s de Montées de genoux. Avec 30s de repos entre chaque exercice', '5', '8'),
-('Circuit échauffement 2', 'Réaliser le circuit: 30s de Course sur place, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 20s de repos entre chaque exercice', '5', '8'),
-('Circuit échauffement 3', 'Réaliser le circuit: 30s de Course sur place, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice', '10', '8'),
-('Circuit échauffement 4', 'Réaliser le circuit: 30s de Course sur place, 30s de Fente latérale gauche et 30s droite, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice', '10', '8'),
-('Circuit échauffement 5', 'Réaliser 2 fois le circuit: 30s de Course sur place, 30s de Fente latérale gauche et 30s droite, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice et 1min entre les circuits', '20', '8'),
+('Circuit échauffement 1', 'Réaliser le circuit: 30s de Course sur place, 30s de Talons fesses, 30s de Montées de genoux. Avec 30s de repos entre chaque exercice', '15', '8'),
+('Circuit échauffement 2', 'Réaliser le circuit: 30s de Course sur place, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 20s de repos entre chaque exercice', '20', '8'),
+('Circuit échauffement 3', 'Réaliser le circuit: 30s de Course sur place, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice', '25', '8'),
+('Circuit échauffement 4', 'Réaliser le circuit: 30s de Course sur place, 30s de Fente latérale gauche et 30s droite, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice', '30', '8'),
+('Circuit échauffement 5', 'Réaliser 2 fois le circuit: 30s de Course sur place, 30s de Fente latérale gauche et 30s droite, 30s de Jumping jack, 30s de Talons fesses, 30s de Montées de genoux. Avec 10s de repos entre chaque exercice et 1min entre les circuits', '35', '8'),
 ('Etirement Petite boulle', 'Au sol, sur le dos, ramener les deux genoux à la poitrine, en gardant la tête au sol puis presser sur les genoux pour allonger la colonne vertébrale lors de l''expiration. Répeter 5 à 10fois', '5', '8'),
 ('Etirement Chat', 'À 4 pattes, faire le dos creux en regardant vers le plafond, allonger la nuque et sortir les fesses, puis revenir lentement en dos plat, enfin faire le dos rond en regardant le nombril. Répéter 1 à 2min', '5', '8'),
 ('Etirement Torsion', 'Au sol, sur le dos, placer les bras en croix, les paumes vers le ciel, les jambes décollées du sol et fléchies à 90°. Inspirer, et à l''expiration, laisser les genoux basculer délicatement au sol sur le côté droit. Répéter l''exercice à gauche. Maintenir la posture 30s de chaque côté', '5', '8'),
@@ -203,22 +192,18 @@ VALUES ('Première connexion', 'Félicitations, tu t''es connecté pour la premi
 ('Etirement Triceps', 'Debout, poser la main droite sur l''oreille droite et l''arrière de la nuque, placer la main gauche sur le coude droit et appuyer légèrement. Quand une petite tension à l''arrière du bras droit est ressentie, maintenir 30s et répéter de l''autre côté', '5', '8'),
 
 ('Respiration', ' Inspirer 2s et expirer 4s, puis augmenter progressivement jusqu''à 6s d''inspiration et 10s d''expiration', '5', '9'),
-('Bains chauds', 'Passer un weekend aux thermes', '20', '9'),
-('Spa', 'Faire une séance de 2h au spa', '15', '9'),
-('Soin du visage', 'Effectuer un soin du visage', '5', '9'),
-('Soin du corps 1', 'Effectuer un soin du corps (modelage)', '10', '9'),
-('Soin du corps 2', 'Effectuer un soin du corps (pierres chaudes)', '10', '9'),
-('Soin du corps 3', 'Effectuer un soin du corps (bain)', '15', '9'),
+('Bains chauds', 'Passer un weekend aux thermes', '30', '9'),
+('Spa', 'Faire une séance de 2h au spa', '25', '9'),
+('Soin du visage', 'Effectuer un soin du visage', '10', '9'),
+('Soin du corps 1', 'Effectuer un soin du corps (modelage)', '20', '9'),
+('Soin du corps 2', 'Effectuer un soin du corps (pierres chaudes)', '20', '9'),
+('Soin du corps 3', 'Effectuer un soin du corps (bain)', '30', '9'),
 ('Yoga débutant 1', 'Réaliser les postures: de l''enfant, du chien tête en bas, du guerrier II, de la pince puis Savasana. 2fois/semaine pendant 3 mois', '10', '9'),
-('Yoga débutant 2', 'Réaliser les postures: de l''enfant, du chien tête en bas, de la montagne, du guerrier II, de l''arbre, de la pince puis Savasana. 2fois/semaine pendant 3 mois', '15', '9'),
-('Yoga intermédiaire 1', 'Réaliser les postures: de la tête au genou, du chien museau levé, de l''aigle puis Savasana. 2 fois/semaine pendant 3mois', '20', '9'),
-('Yoga intermédiaire 2', 'Réaliser les postures: de la tête au genou, du chien museau levé, de l''aigle, du cobra, de la charrue, de la chandelle puis Savasana. 2 fois/semaine pendant 3mois', '25', '9'),
-('Yoga difficile 1', 'Réaliser les postures: du lotus, du danseur, de la roue, du poisson puis Savasana. 2 fois/semaine pendant 3mois', '30', '9'),
-('Yoga difficile 2', 'Réaliser les postures: du lotus, du danseur, de la roue, du poisson, de l''équilibre sur la tête, du corbeau puis Savasana. 2 fois/semaine pendant 3mois', '35', '9');
+('Yoga débutant 2', 'Réaliser les postures: de l''enfant, du chien tête en bas, de la montagne, du guerrier II, de l''arbre, de la pince puis Savasana. 2fois/semaine pendant 3 mois', '20', '9'),
+('Yoga intermédiaire 1', 'Réaliser les postures: de la tête au genou, du chien museau levé, de l''aigle puis Savasana. 2 fois/semaine pendant 3mois', '25', '9'),
+('Yoga intermédiaire 2', 'Réaliser les postures: de la tête au genou, du chien museau levé, de l''aigle, du cobra, de la charrue, de la chandelle puis Savasana. 2 fois/semaine pendant 3mois', '35', '9'),
+('Yoga difficile 1', 'Réaliser les postures: du lotus, du danseur, de la roue, du poisson puis Savasana. 2 fois/semaine pendant 3mois', '40', '9'),
+('Yoga difficile 2', 'Réaliser les postures: du lotus, du danseur, de la roue, du poisson, de l''équilibre sur la tête, du corbeau puis Savasana. 2 fois/semaine pendant 3mois', '45', '9');
 
 INSERT INTO user_quests (user_id, quest_id, is_done)
 VALUES ('1', '1', TRUE);
-
-
-INSERT INTO user_success (user_id, success_id)
-VALUES ('1', '1');

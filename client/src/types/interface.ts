@@ -9,6 +9,8 @@ export interface User {
   size: string;
   original_weight: string;
   current_weight: string;
+  current_xp: number;
+  level: number;
 }
 
 export interface Quest {
