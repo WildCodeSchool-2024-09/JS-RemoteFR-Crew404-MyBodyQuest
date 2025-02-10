@@ -46,7 +46,7 @@ function QuestsCards() {
 
       if (response.status === 200) {
         success("Félicitations! Votre quête est terminée 💜");
-        refreshUserProgress();
+        refreshUserProgress([]);
         setQuests((prevQuests) =>
           prevQuests.map((quest) =>
             quest.id === quest_id ? { ...quest, is_done: true } : quest,
