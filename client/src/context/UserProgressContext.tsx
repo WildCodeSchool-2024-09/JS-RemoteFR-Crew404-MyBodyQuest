@@ -9,10 +9,12 @@ interface UserProgress {
 
 interface UserProgressContextType {
   userProgress: UserProgress[];
-  refreshUserProgress: (newUserProgress: UserProgress[]) => void;
+  refreshUserProgress: () => void;
 }
 
-const UserProgressContext = createContext<UserProgressContextType | null>(null);
+const UserProgressContext = createContext<UserProgressContextType | undefined>(
+  undefined,
+);
 
 export function UserProgressProvider({
   children,
@@ -24,7 +26,8 @@ export function UserProgressProvider({
       try {
         // { userXp: { level, current_xp } }
         const res = await api.post("/api/user_quest");
-        setUserProgress(res.data.userXp);
+        setUserProgress(res.data.xpUser);
+        console.info(userProgress);
       } catch (error) {
         console.error(error);
       }
@@ -39,9 +42,7 @@ export function UserProgressProvider({
     <UserProgressContext.Provider
       value={{
         userProgress,
-        refreshUserProgress: (newUserProgress: UserProgress[]) => {
-          setUserProgress(newUserProgress);
-        },
+        refreshUserProgress() {},
       }}
     >
       {children}

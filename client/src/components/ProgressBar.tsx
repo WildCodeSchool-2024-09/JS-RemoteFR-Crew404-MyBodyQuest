@@ -11,12 +11,12 @@ function UserProgressBar() {
     <section className={styles.progressUser}>
       <h2
         className={styles.progressTitle}
-      >{`Niveau ${userProgress[0].level}`}</h2>
+      >{`Niveau ${userProgress[0]?.level}`}</h2>
       <ProgressBar
-        completed={userProgress[0].current_xp}
+        completed={userProgress[0]?.current_xp}
         maxCompleted={100}
-        bgColor="#E0E0E0"
-        baseBgColor="#5DCD8A"
+        bgColor="#5DCD8A"
+        baseBgColor="#E0E0E0"
         className={styles.levelProgressBar}
       />
     </section>
