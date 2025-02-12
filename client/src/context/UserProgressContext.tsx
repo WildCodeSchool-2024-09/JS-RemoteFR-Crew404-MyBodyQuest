@@ -1,5 +1,5 @@
 // src/context/UserProgressContext.tsx
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import api from "../services/api";
 
 interface UserProgress {
@@ -9,40 +9,32 @@ interface UserProgress {
 
 interface UserProgressContextType {
   userProgress: UserProgress[];
-  refreshUserProgress: () => void;
+  handleRefreshUserProgress: () => void;
 }
 
-const UserProgressContext = createContext<UserProgressContextType | undefined>(
-  undefined,
-);
+const UserProgressContext = createContext<UserProgressContextType | null>(null);
 
 export function UserProgressProvider({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode;
+}) {
   const [userProgress, setUserProgress] = useState<UserProgress[]>([]);
 
-  useEffect(() => {
-    const fetchUserProgress = async () => {
-      try {
-        // { userXp: { level, current_xp } }
-        const res = await api.post("/api/user_quest");
-        setUserProgress(res.data.xpUser);
-        console.info(userProgress);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    if (userProgress.length === 0) {
-      fetchUserProgress();
+  const handleRefreshUserProgress = async () => {
+    try {
+      const res = await api.get("/api/user_quest");
+      setUserProgress(res.data.xpUser);
+    } catch (error) {
+      console.error(error);
     }
-  }, [userProgress]);
+  };
 
   return (
     <UserProgressContext.Provider
       value={{
         userProgress,
-        refreshUserProgress() {},
+        handleRefreshUserProgress,
       }}
     >
       {children}

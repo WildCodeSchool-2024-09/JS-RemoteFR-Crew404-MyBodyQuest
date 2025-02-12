@@ -1,14 +1,16 @@
 export interface User {
   id: number;
-  username: string;
-  lastname: string;
   firstname: string;
+  lastname: string;
+  sexe: string;
+  avatar: string;
   email: string;
-  birthday: string;
-  age: string;
-  size: string;
-  original_weight: string;
-  current_weight: string;
+  birthday_date: string;
+  size: number;
+  objective: string;
+  initial_weight: number;
+  desired_weight: number;
+  weight_frequency: string;
   current_xp: number;
   level: number;
 }

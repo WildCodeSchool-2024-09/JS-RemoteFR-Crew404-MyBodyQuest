@@ -1,19 +1,17 @@
 // src/components/ProgressBar.tsx
 import ProgressBar from "@ramonak/react-progress-bar";
-import { useUserProgress } from "../context/UserProgressContext";
+import { useAuth } from "../context/AuthContext";
 import styles from "../styles/ProgressBar.module.css";
 
 function UserProgressBar() {
-  const { userProgress } = useUserProgress();
+  const { user } = useAuth();
 
   // VERIFIER Niveau et current Xp!!!
   return (
     <section className={styles.progressUser}>
-      <h2
-        className={styles.progressTitle}
-      >{`Niveau ${userProgress[0]?.level}`}</h2>
+      <h2 className={styles.progressTitle}>{`Niveau ${user?.level}`}</h2>
       <ProgressBar
-        completed={userProgress[0]?.current_xp}
+        completed={user?.current_xp || 0}
         maxCompleted={100}
         bgColor="#5DCD8A"
         baseBgColor="#E0E0E0"

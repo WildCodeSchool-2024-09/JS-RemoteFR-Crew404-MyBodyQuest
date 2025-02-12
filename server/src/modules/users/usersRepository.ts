@@ -63,7 +63,7 @@ class UserRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific user by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from users where id = ?",
+      "select * from users where id = ? LIMIT 1",
       [id],
     );
 
@@ -72,7 +72,7 @@ class UserRepository {
     }
 
     // Return the first row of the result, which represents the user
-    return rows as User[];
+    return [rows];
   }
 
   async readAll() {

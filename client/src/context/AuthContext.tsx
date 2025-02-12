@@ -1,32 +1,18 @@
 import { createContext, useContext, useState } from "react";
 import api from "../services/api";
 import { success } from "../services/toasts";
+import type { User } from "../types/interface";
 type AuthContextType = {
   user: User | null;
   handleRegister: (user: User) => void;
   handleLogin: (user: User) => void;
   handleLogout: () => void;
+  handleUpdateUser: (user: User) => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 type ChildrenType = { children: React.ReactNode };
-type User = {
-  id?: number;
-  firstname: string;
-  lastname: string;
-  avatar: string;
-  email: string;
-  birthday_date?: string;
-  size: number;
-  sexe: string;
-  objective: string;
-  initial_weight: number;
-  desired_weight: number;
-  weight_frequency: string;
-  current_xp?: number;
-  level_id?: number;
-};
 
 export function AuthProvider({ children }: ChildrenType) {
   const [user, setUser] = useState<User | null>(null);
@@ -36,6 +22,10 @@ export function AuthProvider({ children }: ChildrenType) {
   };
 
   const handleLogin = (user: User) => {
+    setUser(user);
+  };
+
+  const handleUpdateUser = async (user: User) => {
     setUser(user);
   };
 
@@ -49,7 +39,13 @@ export function AuthProvider({ children }: ChildrenType) {
   };
   return (
     <AuthContext.Provider
-      value={{ user, handleLogin, handleLogout, handleRegister }}
+      value={{
+        user,
+        handleLogin,
+        handleLogout,
+        handleRegister,
+        handleUpdateUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

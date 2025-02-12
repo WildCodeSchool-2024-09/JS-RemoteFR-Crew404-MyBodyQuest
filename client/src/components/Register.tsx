@@ -24,6 +24,7 @@ function Register({
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [register, setRegister] = useState({
+    id: 0,
     firstname: "",
     lastname: "",
     avatar: "",
@@ -36,6 +37,8 @@ function Register({
     objective: "",
     email: "",
     password: "",
+    level: 1,
+    current_xp: 0,
   });
 
   const handleChangeRegister = (

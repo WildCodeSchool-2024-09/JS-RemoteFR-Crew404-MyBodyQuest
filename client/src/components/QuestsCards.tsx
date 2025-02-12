@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../context/CategoryContext";
-import { useUserProgress } from "../context/UserProgressContext";
 import api from "../services/api";
 import { failed, success } from "../services/toasts";
 import styles from "../styles/QuestsCards.module.css";
@@ -10,7 +9,6 @@ function QuestsCards() {
   const [quests, setQuests] = useState<Quest[]>([]);
   const { selectedCategory } = useContext(CategoryContext);
   const [filteredQuests, setFilteredQuests] = useState<Quest[]>([]);
-  const { refreshUserProgress } = useUserProgress();
 
   useEffect(() => {
     const getCards = async () => {
@@ -46,8 +44,6 @@ function QuestsCards() {
 
       if (response.status === 200) {
         success("Félicitations! Votre quête est terminée 💜");
-        refreshUserProgress();
-        console.info(refreshUserProgress);
         setQuests((prevQuests) =>
           prevQuests.map((quest) =>
             quest.id === quest_id ? { ...quest, is_done: true } : quest,
