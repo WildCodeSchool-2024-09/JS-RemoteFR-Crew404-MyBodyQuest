@@ -43,10 +43,15 @@ function QuestsCards() {
       });
 
       if (response.status === 200) {
-        success("Votre quête est fini");
+        success("Félicitations! Votre quête est terminée 💜");
+        setQuests((prevQuests) =>
+          prevQuests.map((quest) =>
+            quest.id === quest_id ? { ...quest, is_done: true } : quest,
+          ),
+        );
       }
     } catch (error) {
-      failed("Oups, une erreur est survenue");
+      failed("Ooups, une erreur est survenue...");
       console.error("Error", error);
     }
   };
@@ -65,7 +70,9 @@ function QuestsCards() {
           <section className={styles.questsCheckbox}>
             <input
               type="checkbox"
+              checked={quest.is_done || false}
               onChange={() => handleCheckboxChange(quest.id)}
+              disabled={quest.is_done}
             />
           </section>
         </article>

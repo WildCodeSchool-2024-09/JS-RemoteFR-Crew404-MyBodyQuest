@@ -11,7 +11,6 @@ import {
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useTracking } from "../context/TrackingContext";
-import Style from "../styles/Tracking.module.css";
 
 ChartJS.register(
   Title,
@@ -115,6 +114,7 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
     plugins: {
       title: {
         display: true,
+        text: "Évolution des données",
       },
       tooltip: {
         mode: "index" as const,
@@ -125,12 +125,14 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
       x: {
         title: {
           display: true,
+          text: "Date",
         },
       },
       y: {
         type: "linear" as const,
         title: {
           display: true,
+          text: selectedDataType, // Utiliser le nom du type de données sélectionné pour l'axe Y
         },
       },
     },
@@ -142,7 +144,6 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
       <button
         type="button"
         onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-        className={Style.modifyButton}
       >
         Trier par date {sortOrder === "asc" ? "↓" : "↑"}
       </button>

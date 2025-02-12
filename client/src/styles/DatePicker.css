@@ -5,26 +5,13 @@
 }
 
 .react-datepicker__input-container {
-  background-color: white;
-  cursor: pointer;
-}
-
-.react-datepicker__input-container input {
-  background-color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  background-color: white !important;
   border: 2px solid var(--bg-color-purple);
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  font-size: 0.7rem;
+  border-radius: 5px;
 }
 
 .react-datepicker-ignore-onclickoutside {
   background-color: white !important;
-  width: 90%;
 }
 
 .react-datepicker__close-icon::after {

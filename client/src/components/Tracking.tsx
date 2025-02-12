@@ -62,15 +62,6 @@ function Tracking() {
           isClearable={true} // Ajoute un bouton pour effacer la sélection
           placeholderText="Période"
         />
-      </section>
-      <section className={style.GraphSection}>
-        <Chart
-          selectedDataType={selectedDataType}
-          selectedRange={selectedRange}
-        />
-      </section>
-      <section className={style.ButtonsSection}>
-        <NewTracking />
         <button
           type="button"
           className={style.modifyButton}
@@ -79,6 +70,13 @@ function Tracking() {
           <FaPencilAlt /> Modifier mes données
         </button>
       </section>
+      <section className={style.GraphSection}>
+        <Chart
+          selectedDataType={selectedDataType}
+          selectedRange={selectedRange}
+        />
+      </section>
+      <NewTracking />
     </>
   );
 }
