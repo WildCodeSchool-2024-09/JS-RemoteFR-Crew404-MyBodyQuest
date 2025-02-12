@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useTracking } from "../context/TrackingContext";
+import Style from "../styles/Tracking.module.css";
 
 ChartJS.register(
   Title,
@@ -64,7 +65,10 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
 
     const chartDataSet = {
       labels: filteredData.map((tracking) =>
-        new Date(tracking.entryDate).toLocaleDateString(),
+        new Date(tracking.entryDate).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "2-digit",
+        }),
       ), // Les dates sous forme lisible
       datasets: [
         {
@@ -110,47 +114,34 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
   }, [selectedDataType, selectedRange, sortedTrackingData]); // Enlever trackingData et sortOrder des dépendances
 
   const options = {
-    responsive: true,
     plugins: {
-      title: {
-        display: true,
-        text: "Évolution des données",
-      },
       tooltip: {
         mode: "index" as const,
         intersect: false,
       },
     },
     scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Date",
-        },
-      },
       y: {
         type: "linear" as const,
-        title: {
-          display: true,
-          text: selectedDataType, // Utiliser le nom du type de données sélectionné pour l'axe Y
-        },
       },
     },
   };
 
   return (
-    <div>
+    <>
       {/* Bouton pour changer l'ordre de tri */}
       <button
         type="button"
         onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+        className={Style.SortButton}
       >
-        Trier par date {sortOrder === "asc" ? "↓" : "↑"}
+        Date {sortOrder === "asc" ? "↓" : "↑"}
       </button>
-
-      {/* Affichage du graphique */}
-      <Line data={chartData} options={options} />
-    </div>
+      <div className={Style.ChartContainer}>
+        {/* Affichage du graphique */}
+        <Line data={chartData} options={options} />
+      </div>
+    </>
   );
 }
 
