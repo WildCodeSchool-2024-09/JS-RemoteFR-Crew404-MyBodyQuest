@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useTracking } from "../context/TrackingContext";
+import Style from "../styles/Tracking.module.css";
 
 ChartJS.register(
   Title,
