@@ -48,24 +48,6 @@
   font-size: 0.8rem;
 }
 
-.bm-item:hover {
-  color: var(--bg-color-green) !important;
-}
-
-.logoutButtonMobile {
-  background-color: var(--bg-color-purple);
-  color: white !important;
-  border: none !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  padding: 1 !important;
-}
-
-.logoutButtonMobile:hover {
-  background-color: var(--bg-color-green) !important;
-  color: white !important;
-}
-
 .bm-cross {
   background-color: var(--bg-color-purple) !important;
 }

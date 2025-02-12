@@ -10,7 +10,7 @@ function NewTracking() {
   const [isNewEntryOpen, setNewEntryOpen] = useState(false);
   const { user } = useAuth();
   const [newTracking, setNewTracking] = useState({
-    entryDate: "",
+    entryDate: new Date().toISOString().split("T")[0],
     waistline: "",
     thighCircumference: "",
     chestMeasurement: "",

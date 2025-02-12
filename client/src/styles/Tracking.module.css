@@ -34,6 +34,8 @@
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
+  gap: 1rem;
+  margin-top: 10%;
   position: relative;
   margin-bottom: 1rem;
   @media screen and (min-width: 768px) {
@@ -145,6 +147,8 @@
   cursor: pointer;
   border-radius: 5px;
   grid-column: span 2;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   background: var(--bg-color-light);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* Décalage X, décalage Y, flou, couleur rgba */
   @media screen and (min-width: 768px) {

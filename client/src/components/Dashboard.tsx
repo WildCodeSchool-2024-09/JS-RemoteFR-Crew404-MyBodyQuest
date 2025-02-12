@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
+import { useAuth } from "../context/AuthContext";
 import styles from "../styles/Dashboard.module.css";
+import type { User } from "../types/interface";
 import Chart from "./Chart";
-
 function Dashboard() {
+  const dataUser = useLoaderData() as User;
+  const { handleUpdateUser } = useAuth();
+
+  handleUpdateUser(dataUser);
   return (
     <main className={styles.mainDashoard}>
       <section className={styles.helloUser}>

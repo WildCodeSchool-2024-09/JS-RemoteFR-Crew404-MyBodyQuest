@@ -50,12 +50,8 @@ function BurgerMenu() {
         Mon Compte
       </Link>
       {user && (
-        <button
-          type="button"
-          className="logoutButtonMobile"
-          onClick={() => user.handleLogout()}
-        >
-          Déconnexion
+        <button type="button" onClick={() => user.handleLogout()}>
+          Se déconnecter
         </button>
       )}
     </Menu>
