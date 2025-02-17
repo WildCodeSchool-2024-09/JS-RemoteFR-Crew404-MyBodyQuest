@@ -3,7 +3,7 @@ import api from "../services/api";
 
 export type TrackingData = {
   id: number;
-  entryDate: Date;
+  entryDate: number;
   waistline: number;
   thighCircumference: number;
   chestMeasurement: number;
