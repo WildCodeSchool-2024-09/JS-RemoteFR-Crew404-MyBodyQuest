@@ -74,8 +74,16 @@ main {
   /*Header Desktop*/
   .headercontainer {
     padding: 1rem 2rem;
-    position: fixed;
     top: 0;
+  }
+
+  .coeur {
+    width: 88px;
+    height: 88px;
+  }
+  .logo {
+    width: 402px;
+    height: 89px;
   }
 
   .logoutButton {
