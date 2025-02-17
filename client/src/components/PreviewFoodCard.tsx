@@ -15,13 +15,11 @@ const PreviewFoodCard = () => {
   useEffect(() => {
     const storedRecipe = localStorage.getItem("dailyRecipe");
     const storedDate = localStorage.getItem("recipeDate");
-    const today = new Date().toISOString().split("T")[0]; // Format YYYY-MM-DD
+    const today = new Date().toISOString().split("T")[0];
 
     if (storedRecipe && storedDate === today) {
-      // Si une recette est stockée et que la date est la même, on la garde
       setRandomRecipe(JSON.parse(storedRecipe));
     } else {
-      // Sinon, on récupère une nouvelle recette et on la stocke
       axios
         .get("https://www.themealdb.com/api/json/v1/1/random.php")
         .then((response) => {
@@ -49,7 +47,7 @@ const PreviewFoodCard = () => {
         alt={randomRecipe.strMeal}
       />
       <Link to={`/food/${randomRecipe.idMeal}`}>
-        <button type="button" className={style.viewRecipeButton}>
+        <button type="button" className={style.recipeButton}>
           Voir la recette
         </button>
       </Link>

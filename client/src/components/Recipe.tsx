@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import style from "../styles/Food.module.css";
+import { useNavigate, useParams } from "react-router-dom";
+import style from "../styles/Recipe.module.css";
 
 interface Recipe {
   idMeal: string;
@@ -12,6 +12,7 @@ interface Recipe {
 
 const Recipe = () => {
   const { idMeal } = useParams<{ idMeal: string }>();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
 
   useEffect(() => {
@@ -37,11 +38,22 @@ const Recipe = () => {
   }
 
   return (
-    <section className={style.detailRecette}>
-      <h2>{recipe.strMeal}</h2>
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-      <h3>Instructions</h3>
-      <p>{recipe.strInstructions}</p>
+    <section className={style.detailRecipe}>
+      <h2 className={style.nameRecipe}>{recipe.strMeal}</h2>
+      <img
+        className={style.photoRecipe}
+        src={recipe.strMealThumb}
+        alt={recipe.strMeal}
+      />
+      <h3>Recette</h3>
+      <p className={style.instructionsRecipe}>{recipe.strInstructions}</p>
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        className={style.backButton}
+      >
+        Retour
+      </button>
     </section>
   );
 };

@@ -52,7 +52,7 @@ function Dashboard() {
 
         {/* Aperçu de la recette */}
         <article className={styles.widgetSeasonalRecipe}>
-          <h2>Idée recette !</h2>
+          <h2>Recette du jour !</h2>
           <PreviewFoodCard />
         </article>
       </section>
