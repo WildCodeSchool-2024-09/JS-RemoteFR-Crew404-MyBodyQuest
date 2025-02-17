@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import Layout from "./pages/Layout";
 import Page404 from "./pages/Page404";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import api from "./services/api";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,15 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+            loader: async () => {
+              try {
+                const response = await api.get("/api/user/me");
+
+                return response.data;
+              } catch (error) {
+                console.error(error);
+              }
+            },
           },
           {
             path: "/tracking",

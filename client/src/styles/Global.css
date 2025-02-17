@@ -16,6 +16,7 @@
   --bg-color-light: #f2f0f6;
   --bg-color-green: #5dcd8a;
   --bg-color-purple: #7b5cb9;
+  --min-height: 100%;
 }
 
 * {

@@ -108,4 +108,22 @@ const remove: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, remove };
+const me: RequestHandler = async (req, res, next) => {
+  try {
+    /**
+     * !TODO
+     * Pensez à virer tous les éléménts qui ne sont pas utiles
+     */
+    const [[user]] = await userRepository.read(req.body.user.id);
+    const rest = {
+      password: undefined,
+      ...user,
+    };
+
+    res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, read, edit, add, remove, me };

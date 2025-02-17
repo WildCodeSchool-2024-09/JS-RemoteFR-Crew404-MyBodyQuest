@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import type { Success } from "../types/interface";
-import ProgressBar from "./ProgressBar";
 
 // Fonction pour récupérer le nom et l'image du succès débloqué
 function UserSuccess() {
@@ -23,7 +22,6 @@ function UserSuccess() {
 
   return (
     <section>
-      <ProgressBar />
       <h1>Mes Succès</h1>
       {successes.length > 0 && (
         <section>

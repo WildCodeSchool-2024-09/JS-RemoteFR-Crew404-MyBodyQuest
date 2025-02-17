@@ -19,8 +19,8 @@
   text-align: center;
 }
 
-select,
-input {
+.select,
+.recherche {
   padding: 0.5rem;
   margin: 0.5rem;
   border: 0.1rem solid #ccc;

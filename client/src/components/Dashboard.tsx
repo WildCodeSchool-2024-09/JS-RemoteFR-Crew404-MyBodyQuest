@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import HelloUserDashboard from "../components/HelloUserDashboard";
-import ProgressBar from "../components/ProgressBar";
-import api from "../services/api";
-import styles from "../styles/Dashboard.module.css";
-import type { Quest } from "../types/interface";
-import Chart from "./Chart";
 import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
-
+import api from "../services/api";
+import { useEffect, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import HelloUserDashboard from "../components/HelloUserDashboard";
+import ProgressBar from "../components/ProgressBar";
+import { useAuth } from "../context/AuthContext";
+import styles from "../styles/Dashboard.module.css";
+import type { User, Quest } from "../types/interface";
+import Chart from "./Chart";
 function Dashboard() {
+  const dataUser = useLoaderData() as User;
+  const { handleUpdateUser } = useAuth();
+  handleUpdateUser(dataUser);
   const [quests, setQuests] = useState<Quest[]>([]);
 
   useEffect(() => {
@@ -33,15 +36,14 @@ function Dashboard() {
       <ProgressBar />
       <section className={styles.widgetsDashboard}>
         <article className={styles.widgetStats}>
-          <h2>Mes stats</h2>
-          <p> Courbe </p>
+          <h2>Mon suivi</h2>
           <Link to="/tracking">
             <Chart selectedDataType="Poids" selectedRange={[null, null]} />
           </Link>
         </article>
 
         <article className={styles.widgetTracking}>
-          <h2>Mon Suivi</h2>
+          <h2>Mes stats</h2>
         </article>
 
         {/* Aperçu des quêtes */}

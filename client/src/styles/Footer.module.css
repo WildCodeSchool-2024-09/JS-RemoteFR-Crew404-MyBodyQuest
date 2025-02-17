@@ -8,12 +8,7 @@
   border-radius: 20px;
   height: 41px;
   width: 90%;
-  max-width: 337px;
-  margin: 0.8rem auto;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -29,7 +24,10 @@ a {
 
 /*Footer Desktop*/
 .footercontainer {
-  width: 80%;
-  max-width: 800px;
-  margin: 0.8rem auto;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
 }

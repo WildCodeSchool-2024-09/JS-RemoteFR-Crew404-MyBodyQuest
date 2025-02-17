@@ -1,23 +1,24 @@
-import { Line } from "rc-progress";
+// src/components/ProgressBar.tsx
+import ProgressBar from "@ramonak/react-progress-bar";
+import { useAuth } from "../context/AuthContext";
 import styles from "../styles/ProgressBar.module.css";
 
-function ProgressBar() {
+function UserProgressBar() {
+  const { user } = useAuth();
+
+  // VERIFIER Niveau et current Xp!!!
   return (
-    // Progession de Niveau et lien vers la page Mes Succès
-    <>
-      <section className={styles.progressUser}>
-        <h2 className={styles.progressTitle}>Niveau N</h2>
-        <Line
-          percent={60}
-          strokeWidth={8}
-          trailWidth={8}
-          trailColor="#E0E0E0"
-          strokeColor="#5DCD8A"
-          className={styles.levelProgressBar}
-        />
-      </section>
-    </>
+    <section className={styles.progressUser}>
+      <h2 className={styles.progressTitle}>{`Niveau ${user?.level}`}</h2>
+      <ProgressBar
+        completed={user?.current_xp || 0}
+        maxCompleted={100}
+        bgColor="#5DCD8A"
+        baseBgColor="#E0E0E0"
+        className={styles.levelProgressBar}
+      />
+    </section>
   );
 }
 
-export default ProgressBar;
+export default UserProgressBar;
