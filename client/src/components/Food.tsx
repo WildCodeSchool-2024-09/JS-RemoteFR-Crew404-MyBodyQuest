@@ -88,7 +88,11 @@ const Food = () => {
       <h1 className={style.pageTitle}>Alimentation</h1>
 
       {/* Menu déroulant pour sélectionner une catégorie */}
-      <select onChange={handleCategoryChange} value={categorieSelectionnee}>
+      <select
+        className={style.select}
+        onChange={handleCategoryChange}
+        value={categorieSelectionnee}
+      >
         <option value="">Recettes disponibles</option>
         {categories.map((category) => (
           <option key={category.idCategory} value={category.strCategory}>

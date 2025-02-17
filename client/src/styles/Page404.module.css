@@ -167,20 +167,11 @@
   margin: 0.3rem;
   margin-top: 1rem;
   padding: 0.5rem;
-  background-color: var(--bg-color-purple);
+  background-color: var(--another-color);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   margin-left: 72em;
-}
-
-@media (max-width: 768px) {
-  .screen_reader_text {
-    font-size: 8em;
-  }
-  .to_home {
-    margin-left: 10em;
-  }
 }

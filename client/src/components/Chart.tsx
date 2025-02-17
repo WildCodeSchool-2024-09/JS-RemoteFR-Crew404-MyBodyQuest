@@ -65,7 +65,10 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
 
     const chartDataSet = {
       labels: filteredData.map((tracking) =>
-        new Date(tracking.entryDate).toLocaleDateString(),
+        new Date(tracking.entryDate).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "2-digit",
+        }),
       ), // Les dates sous forme lisible
       datasets: [
         {
@@ -111,45 +114,34 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
   }, [selectedDataType, selectedRange, sortedTrackingData]); // Enlever trackingData et sortOrder des dépendances
 
   const options = {
-    responsive: true,
     plugins: {
-      title: {
-        display: true,
-      },
       tooltip: {
         mode: "index" as const,
         intersect: false,
       },
     },
     scales: {
-      x: {
-        title: {
-          display: true,
-        },
-      },
       y: {
         type: "linear" as const,
-        title: {
-          display: true,
-        },
       },
     },
   };
 
   return (
-    <div>
+    <>
       {/* Bouton pour changer l'ordre de tri */}
       <button
         type="button"
         onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-        className={Style.modifyButton}
+        className={Style.SortButton}
       >
-        Trier par date {sortOrder === "asc" ? "↓" : "↑"}
+        Date {sortOrder === "asc" ? "↓" : "↑"}
       </button>
-
-      {/* Affichage du graphique */}
-      <Line data={chartData} options={options} />
-    </div>
+      <div className={Style.ChartContainer}>
+        {/* Affichage du graphique */}
+        <Line data={chartData} options={options} />
+      </div>
+    </>
   );
 }
 

@@ -51,12 +51,22 @@
   height: 44px;
 }
 .logoutButton {
-  display: none; /* On cache le bouton de déconnexion Desktop*/
+  display: none; /* Cache le bouton de déconnexion du desktop */
 }
 
 .navbar,
 .avatar {
   display: none;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Prend toute la hauteur de l'écran */
+}
+
+main {
+  flex: 1; /* Prend tout l'espace restant pour repousser le footer en bas */
 }
 
 /*RESPONSIVE TABLET & DESKTOP*/
@@ -71,7 +81,6 @@
     width: 88px;
     height: 88px;
   }
-
   .logo {
     width: 402px;
     height: 89px;

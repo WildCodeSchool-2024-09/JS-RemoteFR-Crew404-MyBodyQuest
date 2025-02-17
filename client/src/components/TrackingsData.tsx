@@ -112,177 +112,186 @@ function TrackingsData() {
   );
 
   return (
-    <div className={style.containerTrackingData}>
-      <h2 className={style.heading}>Historique de suivi</h2>
-      <button type="button" onClick={handleSortOrderChange}>
-        Trier par date{" "}
-        {sortOrder === "asc" ? (
-          <FaArrowUpWideShort />
-        ) : (
-          <FaArrowDownWideShort />
-        )}
-      </button>
-
-      {trackingData.length > 0 ? (
-        <table className={style.tableTracking}>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Poids (kg)</th>
-              <th>Tour de taille (cm)</th>
-              <th>Tour de cuisse (cm)</th>
-              <th>Tour de poitrine (cm)</th>
-              <th>Tour de hanches (cm)</th>
-              <th>Tour de mollet (cm)</th>
-              <th>Tour de fesses (cm)</th>
-              <th>Commentaire</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedTrackingData.map((tracking: TrackingData) => (
-              <tr key={tracking.id}>
-                <td>{new Date(tracking.entryDate).toLocaleDateString()}</td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={updatedFields?.weight || tracking.weight}
-                      onChange={(e) => handleInputChange(e, "weight")}
-                    />
-                  ) : (
-                    tracking.weight
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={updatedFields?.waistline || tracking.waistline}
-                      onChange={(e) => handleInputChange(e, "waistline")}
-                    />
-                  ) : (
-                    tracking.waistline
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={
-                        updatedFields?.thighCircumference ||
-                        tracking.thighCircumference
-                      }
-                      onChange={(e) =>
-                        handleInputChange(e, "thighCircumference")
-                      }
-                    />
-                  ) : (
-                    tracking.thighCircumference
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={
-                        updatedFields?.chestMeasurement ||
-                        tracking.chestMeasurement
-                      }
-                      onChange={(e) => handleInputChange(e, "chestMeasurement")}
-                    />
-                  ) : (
-                    tracking.chestMeasurement
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={
-                        updatedFields?.hipCircumference ||
-                        tracking.hipCircumference
-                      }
-                      onChange={(e) => handleInputChange(e, "hipCircumference")}
-                    />
-                  ) : (
-                    tracking.hipCircumference
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={
-                        updatedFields?.calfCircumference ||
-                        tracking.calfCircumference
-                      }
-                      onChange={(e) =>
-                        handleInputChange(e, "calfCircumference")
-                      }
-                    />
-                  ) : (
-                    tracking.calfCircumference
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="number"
-                      value={
-                        updatedFields?.buttocksCircumference ||
-                        tracking.buttocksCircumference
-                      }
-                      onChange={(e) =>
-                        handleInputChange(e, "buttocksCircumference")
-                      }
-                    />
-                  ) : (
-                    tracking.buttocksCircumference
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <input
-                      type="text"
-                      value={updatedFields?.comments || tracking.comments}
-                      onChange={(e) => handleInputChange(e, "comments")}
-                    />
-                  ) : (
-                    tracking.comments || "Aucun"
-                  )}
-                </td>
-                <td>
-                  {editData?.id === tracking.id ? (
-                    <button
-                      type="submit"
-                      onClick={() => handleUpdate(tracking.id)}
-                    >
-                      Sauvegarder
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => handleEditClick(tracking)}
-                    >
-                      <FaEdit />
-                    </button>
-                  )}
+    <>
+      <h2 className={style.TitlePage}>Historique de suivi</h2>
+      <div className={style.containerTrackingData}>
+        {trackingData.length > 0 ? (
+          <table className={style.tableTracking}>
+            <thead className={style.tableHead}>
+              <tr className={style.tableRow}>
+                <th>
                   <button
                     type="button"
-                    onClick={() => handleDelete(tracking.id)}
+                    onClick={handleSortOrderChange}
+                    className={style.sort}
                   >
-                    <MdDeleteForever />
+                    Date{" "}
+                    {sortOrder === "asc" ? (
+                      <FaArrowUpWideShort />
+                    ) : (
+                      <FaArrowDownWideShort />
+                    )}
                   </button>
-                </td>
+                </th>
+                <th>Poids</th>
+                <th>Taille</th>
+                <th>Cuisses</th>
+                <th>Poitrine</th>
+                <th>Hanches</th>
+                <th>Mollets</th>
+                <th>Fesses </th>
+                <th>Notes</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p className={style.noData}>Aucune donnée disponible.</p>
-      )}
-    </div>
+            </thead>
+            <tbody className={style.tableBody}>
+              {sortedTrackingData.map((tracking: TrackingData) => (
+                <tr key={tracking.id} className={style.tableRow}>
+                  <td>{new Date(tracking.entryDate).toLocaleDateString()}</td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={updatedFields?.weight || tracking.weight}
+                        onChange={(e) => handleInputChange(e, "weight")}
+                      />
+                    ) : (
+                      tracking.weight
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={updatedFields?.waistline || tracking.waistline}
+                        onChange={(e) => handleInputChange(e, "waistline")}
+                      />
+                    ) : (
+                      tracking.waistline
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={
+                          updatedFields?.thighCircumference ||
+                          tracking.thighCircumference
+                        }
+                        onChange={(e) =>
+                          handleInputChange(e, "thighCircumference")
+                        }
+                      />
+                    ) : (
+                      tracking.thighCircumference
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={
+                          updatedFields?.chestMeasurement ||
+                          tracking.chestMeasurement
+                        }
+                        onChange={(e) =>
+                          handleInputChange(e, "chestMeasurement")
+                        }
+                      />
+                    ) : (
+                      tracking.chestMeasurement
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={
+                          updatedFields?.hipCircumference ||
+                          tracking.hipCircumference
+                        }
+                        onChange={(e) =>
+                          handleInputChange(e, "hipCircumference")
+                        }
+                      />
+                    ) : (
+                      tracking.hipCircumference
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={
+                          updatedFields?.calfCircumference ||
+                          tracking.calfCircumference
+                        }
+                        onChange={(e) =>
+                          handleInputChange(e, "calfCircumference")
+                        }
+                      />
+                    ) : (
+                      tracking.calfCircumference
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="number"
+                        value={
+                          updatedFields?.buttocksCircumference ||
+                          tracking.buttocksCircumference
+                        }
+                        onChange={(e) =>
+                          handleInputChange(e, "buttocksCircumference")
+                        }
+                      />
+                    ) : (
+                      tracking.buttocksCircumference
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <input
+                        type="text"
+                        value={updatedFields?.comments || tracking.comments}
+                        onChange={(e) => handleInputChange(e, "comments")}
+                      />
+                    ) : (
+                      tracking.comments || "Aucun"
+                    )}
+                  </td>
+                  <td>
+                    {editData?.id === tracking.id ? (
+                      <button
+                        type="submit"
+                        onClick={() => handleUpdate(tracking.id)}
+                      >
+                        Sauvegarder
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleEditClick(tracking)}
+                      >
+                        <FaEdit />
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(tracking.id)}
+                    >
+                      <MdDeleteForever />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p className={style.noData}>Aucune donnée disponible.</p>
+        )}
+      </div>
+    </>
   );
 }
 

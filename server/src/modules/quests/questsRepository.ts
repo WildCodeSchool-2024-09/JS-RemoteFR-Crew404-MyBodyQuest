@@ -1,6 +1,6 @@
 import databaseClient from "../../../database/client";
-
 import type { Result, Rows } from "../../../database/client";
+import type { User } from "../../types/express/user";
 import type { UserQuest } from "../../types/express/userQuest";
 
 type Quests = {
@@ -60,6 +60,25 @@ class QuestsRepository {
     );
     return result.affectedRows;
   }
+
+  // Je Récupère le current_xp et le level
+  async readUserXp(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT current_xp, level FROM users WHERE id = ?",
+      [id],
+    );
+    return rows[0] as User;
+  }
+
+  async updateLevelAndXP(level: number, xp: number, id: number) {
+    console.info(level, xp);
+    const [result] = await databaseClient.query<Result>(
+      "UPDATE users SET level = ?, current_xp = ?  WHERE id = ?",
+      [level, xp, id],
+    );
+    return result.affectedRows;
+  }
+
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an quest by its ID
 

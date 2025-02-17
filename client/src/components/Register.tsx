@@ -24,6 +24,7 @@ function Register({
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [register, setRegister] = useState({
+    id: 0,
     firstname: "",
     lastname: "",
     avatar: "",
@@ -36,6 +37,8 @@ function Register({
     objective: "",
     email: "",
     password: "",
+    current_xp: 0,
+    level: 1,
   });
 
   const handleChangeRegister = (
@@ -84,7 +87,6 @@ function Register({
       failed("Erreur lors de la création de votre compte. Veuillez réessayer.");
     }
   };
-
   return (
     <>
       {/* MODALE D'INSCRIPTION */}

@@ -37,7 +37,8 @@ function Tracking() {
   const nav = useNavigate();
 
   return (
-    <>
+    <main className={style.MainTracking}>
+      <h1 className={style.TitlePage}>Mon évolution</h1>
       <section className={style.ButtonsSection}>
         <select
           id="dataTypeSelect"
@@ -69,17 +70,17 @@ function Tracking() {
           selectedRange={selectedRange}
         />
       </section>
-      <section className={style.ButtonsSection}>
+      <section className={style.buttonsData}>
         <NewTracking />
         <button
           type="button"
           className={style.modifyButton}
           onClick={() => nav("/tracking/data")}
         >
-          <FaPencilAlt /> Modifier mes données
+          <FaPencilAlt size={10} /> Modifier mes données
         </button>
       </section>
-    </>
+    </main>
   );
 }
 

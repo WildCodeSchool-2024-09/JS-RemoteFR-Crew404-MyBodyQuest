@@ -47,9 +47,35 @@ const edit: RequestHandler = async (req, res, next) => {
       quest_id: +req.body.quest_id,
     };
 
+    // Ici, je récupère les informations de mon user pour avoir les derniere MAJ
+    const xpUser = await questsRepository.readUserXp(+req.body.user.id);
+    // Ici, je récupere toute les informations de la quête
+    const xpQuest = await questsRepository.read(+req.body.quest_id);
+
+    // Si mon user a plus de 100 d'exp, je le lvl up,
+    if (xpUser.current_xp + xpQuest.xp >= 100) {
+      await questsRepository.updateLevelAndXP(
+        xpUser.level + 1,
+        xpUser.current_xp + xpQuest.xp - 100,
+        req.body.user.id,
+      );
+    } else {
+      // Sinon, j'update juste son current_xp
+      await questsRepository.updateLevelAndXP(
+        xpUser.level,
+        xpUser.current_xp + xpQuest.xp,
+        req.body.user.id,
+      );
+    }
+
+    // Je met à jour la quête
     const editQuest = await questsRepository.updateQuestStatus(userQuestDone);
 
-    res.status(200).json(editQuest);
+    // Je recupère les infos mises à jour
+    const updateUserXp = await questsRepository.readUserXp(+req.body.user.id);
+
+    // renvoi réponse avec infos à jour
+    res.status(200).json({ editQuest, userXp: updateUserXp });
   } catch (err) {
     next(err);
   }
