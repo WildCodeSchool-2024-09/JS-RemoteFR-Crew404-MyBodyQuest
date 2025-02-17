@@ -39,7 +39,6 @@ function NewTracking() {
     e.preventDefault(); // Empêche le rechargement de la page
     if (user) {
       const TrackingData = { ...newTracking, user_id: user.id };
-      console.info(TrackingData);
       try {
         const response = await api.post("/api/trackings", TrackingData);
 
