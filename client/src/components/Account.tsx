@@ -98,7 +98,7 @@ export default function Account() {
             />
           </label>
           <label className={style.form}>
-            Taille *
+            Taille (centimètres) *
             <input
               type="text"
               name="size"
@@ -110,7 +110,7 @@ export default function Account() {
             />
           </label>
           <label className={style.form}>
-            Poids Initial *
+            Poids Initial (kilogrammes) *
             <input
               type="text"
               name="original_weight"
@@ -122,7 +122,7 @@ export default function Account() {
             />
           </label>
           <label className={style.form}>
-            Objectif de poids *
+            Objectif de poids (kilogrammes) *
             <input
               type="text"
               name="desired_weight"
