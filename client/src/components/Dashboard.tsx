@@ -11,6 +11,7 @@ import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
 function Dashboard() {
   const dataUser = useLoaderData() as User;
+
   const { handleUpdateUser } = useAuth();
   handleUpdateUser(dataUser);
   const [quests, setQuests] = useState<Quest[]>([]);

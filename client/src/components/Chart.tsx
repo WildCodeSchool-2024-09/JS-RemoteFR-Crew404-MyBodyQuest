@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useTracking } from "../context/TrackingContext";
+import api from "../services/api";
 import Style from "../styles/Tracking.module.css";
 
 ChartJS.register(
@@ -30,16 +31,9 @@ type ChartProps = {
 
 function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
   const trackingContext = useTracking(); // On récupère les données depuis le contexte
-  const trackingData = trackingContext ? trackingContext.trackingData : []; // Gérer le cas où trackingContext est null
+  const setTrackingData = trackingContext?.setTrackingData;
+  const trackingData = trackingContext?.trackingData;
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc"); // Etat pour le tri des dates
-
-  // Fonction pour trier les données
-  const sortedTrackingData = [...trackingData].sort((a, b) =>
-    sortOrder === "asc"
-      ? new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime()
-      : new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime(),
-  );
-
   const [chartData, setChartData] = useState<{
     labels: string[];
     datasets: {
@@ -53,7 +47,44 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
     datasets: [],
   });
 
+  // Fonction pour trier les données
+  const sortedTrackingData = trackingData
+    ? [...trackingData].sort((a, b) =>
+        sortOrder === "asc"
+          ? new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime()
+          : new Date(b.entryDate).getTime() - new Date(a.entryDate).getTime(),
+      )
+    : [];
+
   useEffect(() => {
+    const fetchTrackingData = async () => {
+      //récupération et tri des données
+      try {
+        const response = await api.get("/api/trackings");
+
+        // 🔥 Trie directement avant de stocker
+        const sortedTrackingData = response.data.sort(
+          (a: { entryDate: string }, b: { entryDate: string }) =>
+            new Date(a.entryDate).getTime() - new Date(b.entryDate).getTime(),
+        );
+
+        if (setTrackingData) {
+          setTrackingData(sortedTrackingData);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors du chargement des données de suivi :",
+          error,
+        );
+      }
+    };
+    fetchTrackingData();
+  }, [setTrackingData]);
+
+  // Mettre à jour les données du graphique lorsque `trackingData`, `selectedDataType` ou `selectedRange` change
+  useEffect(() => {
+    if (!trackingData) return; // Si trackingData n'est pas encore défini, ne pas tenter de mettre à jour le graphique
+
     // Filtrer les données en fonction de la période sélectionnée
     const filteredData = sortedTrackingData.filter((item) => {
       const entryDate = new Date(item.entryDate);
@@ -111,7 +142,7 @@ function TrackingChart({ selectedDataType, selectedRange }: ChartProps) {
       }
       return prevData;
     });
-  }, [selectedDataType, selectedRange, sortedTrackingData]); // Enlever trackingData et sortOrder des dépendances
+  }, [selectedDataType, selectedRange, sortedTrackingData, trackingData]); // Recalcule a chaque changement
 
   const options = {
     plugins: {
