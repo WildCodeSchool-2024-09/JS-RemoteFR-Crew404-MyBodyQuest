@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TbCirclePlusFilled } from "react-icons/tb";
 import mesures from "../assets/images/Mesures.jpg";
 import { useAuth } from "../context/AuthContext";
+import { useTracking } from "../context/TrackingContext";
 import api from "../services/api";
 import { failed, success } from "../services/toasts";
 import style from "../styles/Tracking.module.css";
@@ -9,6 +10,8 @@ import style from "../styles/Tracking.module.css";
 function NewTracking() {
   const [isNewEntryOpen, setNewEntryOpen] = useState(false);
   const { user } = useAuth();
+  const trackingContext = useTracking();
+  const setTrackingData = trackingContext?.setTrackingData;
   const [newTracking, setNewTracking] = useState({
     entryDate: "",
     waistline: "",
@@ -35,13 +38,15 @@ function NewTracking() {
   ) => {
     e.preventDefault(); // Empêche le rechargement de la page
     if (user) {
-      const trackingData = { ...newTracking, user_id: user.id };
-      console.info(trackingData);
+      const TrackingData = { ...newTracking, user_id: user.id };
       try {
-        const response = await api.post("/api/trackings", trackingData);
+        const response = await api.post("/api/trackings", TrackingData);
+
         if (response.status === 201) {
-          setNewEntryOpen(false);
-          success("Nouvelle entrée ajoutée !");
+          // Une fois que j'ai post, je fait une demande pour tout récupérer
+          const response = await api.get("/api/trackings");
+          setTrackingData?.(response.data); // Je met à jour le contexte avec l'ensemble des données fetchées
+          success("Nouvelle entrée ajoutée");
         }
       } catch (error) {
         failed("Erreur lors de l'ajout de la nouvelle entrée");

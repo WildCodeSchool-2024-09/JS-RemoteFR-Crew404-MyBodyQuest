@@ -41,12 +41,14 @@ function TrackingsData() {
         ...editData,
         ...updatedFields,
         entryDate: new Date(
-          updatedFields?.entryDate ?? editData?.entryDate ?? "",
+          new Date(
+            updatedFields?.entryDate ?? editData?.entryDate ?? "",
+          ).getTime() +
+            2 * 60 * 60 * 1000,
         )
           .toISOString()
           .split("T")[0],
       };
-
       await api.put(`/api/trackings/${id}`, updatedData);
       success("Mise à jour réussie:");
 
@@ -58,13 +60,14 @@ function TrackingsData() {
               ? {
                   ...tracking,
                   ...updatedData,
-                  entryDate: new Date(updatedData.entryDate),
+                  entryDate:
+                    new Date(updatedData.entryDate).getTime() +
+                    2 * 60 * 60 * 1000,
                 }
               : tracking,
           ),
         );
       }
-
       setEditData(null); // Fermer le mode édition après la mise à jour
     } catch (error) {
       console.error("Erreur lors de la mise à jour:", error);
