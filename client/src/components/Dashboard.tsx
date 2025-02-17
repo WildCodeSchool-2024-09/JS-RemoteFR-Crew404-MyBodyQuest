@@ -48,7 +48,7 @@ function Dashboard() {
 
         {/* Aperçu des quêtes */}
         <article className={styles.widgetQuests}>
-          <h2>Mes Quêtes</h2>
+          <h2 className={styles.myQuests}>Mes Quêtes</h2>
           <PreviewQuestsCard quests={quests} />
         </article>
 
