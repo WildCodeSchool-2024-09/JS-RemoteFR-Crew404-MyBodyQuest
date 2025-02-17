@@ -41,6 +41,7 @@
   width: 100%;
   max-width: 100px;
   padding: 1em;
+  gap: 0.5rem;
   justify-content: center;
 }
 
@@ -98,15 +99,16 @@
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
     max-width: 70rem;
-    padding: 1rem;
     margin: 1rem auto;
     justify-content: center;
     padding-right: 3.5rem;
+    padding-bottom: 2rem;
   }
 
   .myQuests {
-    margin-top: 11em;
+    margin-top: 11rem;
   }
+
   .questContent {
     display: flex;
     flex-direction: column;
