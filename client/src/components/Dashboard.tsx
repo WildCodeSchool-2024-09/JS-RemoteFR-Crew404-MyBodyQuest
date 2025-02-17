@@ -1,14 +1,14 @@
-import PreviewFoodCard from "./PreviewFoodCard";
-import PreviewQuestsCard from "./PreviewQuestCard";
-import api from "../services/api";
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
 import { useAuth } from "../context/AuthContext";
+import api from "../services/api";
 import styles from "../styles/Dashboard.module.css";
-import type { User, Quest } from "../types/interface";
+import type { Quest, User } from "../types/interface";
 import Chart from "./Chart";
+import PreviewFoodCard from "./PreviewFoodCard";
+import PreviewQuestsCard from "./PreviewQuestCard";
 function Dashboard() {
   const dataUser = useLoaderData() as User;
   const { handleUpdateUser } = useAuth();
