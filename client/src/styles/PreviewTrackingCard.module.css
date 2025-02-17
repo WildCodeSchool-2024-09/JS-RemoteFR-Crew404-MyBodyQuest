@@ -1,0 +1,18 @@
+.card {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  width: 9rem;
+  justify-content: center;
+}
+
+.date {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+}

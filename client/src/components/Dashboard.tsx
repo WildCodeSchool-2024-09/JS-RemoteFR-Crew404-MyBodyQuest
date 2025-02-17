@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
+import PreviewTrackingCard from "../components/previewTrackingCard";
 import { useAuth } from "../context/AuthContext";
+import type { TrackingData } from "../context/TrackingContext";
 import api from "../services/api";
 import styles from "../styles/Dashboard.module.css";
 import type { Quest, User } from "../types/interface";
 import Chart from "./Chart";
 import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
+
 function Dashboard() {
   const dataUser = useLoaderData() as User;
   const { handleUpdateUser } = useAuth();
   handleUpdateUser(dataUser);
   const [quests, setQuests] = useState<Quest[]>([]);
+  const [trackings, setTrackings] = useState<TrackingData[]>([]);
 
   useEffect(() => {
     const fetchQuests = async () => {
@@ -26,6 +30,19 @@ function Dashboard() {
     };
 
     fetchQuests();
+  }, []);
+
+  useEffect(() => {
+    const fetchTrackings = async () => {
+      try {
+        const res = await api.get("/api/trackings");
+        setTrackings(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchTrackings();
   }, []);
 
   return (
@@ -44,6 +61,11 @@ function Dashboard() {
 
         <article className={styles.widgetTracking}>
           <h2>Mes stats</h2>
+          {trackings.length > 0 ? (
+            <PreviewTrackingCard tracking={trackings[0]} />
+          ) : (
+            <p>Aucune donnée disponible.</p>
+          )}
         </article>
 
         {/* Aperçu des quêtes */}
