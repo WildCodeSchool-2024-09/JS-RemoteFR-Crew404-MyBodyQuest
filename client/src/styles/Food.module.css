@@ -112,7 +112,11 @@
 /* Version desktop */
 @media (min-width: 768px) {
   .photoRecette {
-    width: 35%;
+    width: 20%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
   }
 
   .category,
@@ -155,6 +159,10 @@
     border-radius: 10%;
   }
 
+  .instructionsRecette {
+    max-width: 80rem;
+    line-height: 1.7;
+  }
   .foodList {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
