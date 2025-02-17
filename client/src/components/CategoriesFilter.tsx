@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../context/CategoryContext";
 import api from "../services/api";
+import styles from "../styles/CategoriesFilter.module.css";
 import type { Category } from "../types/interface";
 
 function CategoriesFilter() {
@@ -26,11 +27,12 @@ function CategoriesFilter() {
   };
 
   return (
-    <section>
+    <section className={styles.filterContainer}>
       <select
         name="selectedCategory"
         id={selectedCategory?.name || ""}
         onChange={(e) => handleSelectCategory(e.target.value)}
+        className={styles.selectFilter}
       >
         <option value="">Toutes</option>
 

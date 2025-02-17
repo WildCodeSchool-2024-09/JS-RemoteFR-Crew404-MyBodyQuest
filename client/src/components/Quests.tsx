@@ -12,8 +12,10 @@ function Quests() {
         <section className={styles.questsComponent}>
           <h1 className={styles.questsComponentTitle}>Mes Quêtes</h1>
           <ProgressBar />
-          <CategoriesFilter />
-          <QuestsCards />
+          <section>
+            <CategoriesFilter />
+            <QuestsCards />
+          </section>
         </section>
       </CategoryProvider>
     </UserProgressProvider>

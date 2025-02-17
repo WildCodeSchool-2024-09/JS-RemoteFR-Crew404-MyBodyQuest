@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 1em;
   @media screen and (min-width: 768px) {
-    margin-top: 10em;
+    margin: 0 4em 0.5em 6em;
   }
 }
 
@@ -11,10 +12,12 @@
   font-family: var(--title-font);
   color: white;
   background-color: var(--bg-color-green);
-  border-radius: 5em;
+  border-radius: 3em;
   font-size: var(--title-font);
-  padding: 1em;
+  padding: 0.8em;
   @media screen and (min-width: 768px) {
     font-size: 1.4em;
+    padding: 0.8em;
+    border-radius: 2em;
   }
 }
