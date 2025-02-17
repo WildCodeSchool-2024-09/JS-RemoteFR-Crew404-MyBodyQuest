@@ -10,7 +10,7 @@ function NewTracking() {
   const [isNewEntryOpen, setNewEntryOpen] = useState(false);
   const { user } = useAuth();
   const [newTracking, setNewTracking] = useState({
-    entryDate: new Date().toISOString().split("T")[0],
+    entryDate: "",
     waistline: "",
     thighCircumference: "",
     chestMeasurement: "",
@@ -58,27 +58,24 @@ function NewTracking() {
           isNewEntryOpen ? style.active : ""
         }`}
       >
-        <section className={style.modaleNewEntryContent}>
+        <section className={style.modaleNewEntryContainer}>
           <form
-            className={style.newEntryContainer}
+            className={style.modaleNewEntryContent}
             onSubmit={handleSubmitNewTracking}
           >
-            <label htmlFor="newEntryDate">
-              Choisir la date
-              <input
-                className={style.dateInput}
-                type="date"
-                name="entryDate"
-                value={newTracking.entryDate}
-                max={new Date().toISOString().split("T")[0]}
-                onChange={handleChangeNewTracking}
-              />
-            </label>
+            <input
+              className={style.dateInput}
+              type="date"
+              name="entryDate"
+              value={newTracking.entryDate}
+              max={new Date().toISOString().split("T")[0]}
+              onChange={handleChangeNewTracking}
+            />
             <img src={mesures} alt="Mesures" className={style.mesures} />
-            <h3 className="newEntryValue"> Valeurs</h3>
-            <label htmlFor="waistline">
+            <label htmlFor="waistline" className={style.label}>
               Tour de taille
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="waistline"
@@ -89,9 +86,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="thigh-circumference">
+            <label htmlFor="thigh-circumference" className={style.label}>
               Tour de cuisses
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="thighCircumference"
@@ -102,9 +100,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="chest-measurement">
+            <label htmlFor="chest-measurement" className={style.label}>
               Tour de poitrine
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="chestMeasurement"
@@ -115,9 +114,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="buttocks-circumference">
+            <label htmlFor="buttocks-circumference" className={style.label}>
               Tour de fesses
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="buttocksCircumference"
@@ -128,9 +128,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="hip-circumference">
+            <label htmlFor="hip-circumference" className={style.label}>
               Tour de hanches
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="hipCircumference"
@@ -141,9 +142,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="calf-circumference">
+            <label htmlFor="calf-circumference" className={style.label}>
               Tour de mollets
               <input
+                className={style.input}
                 type="number"
                 placeholder="cm"
                 name="calfCircumference"
@@ -154,9 +156,10 @@ function NewTracking() {
                 onChange={handleChangeNewTracking}
               />
             </label>
-            <label htmlFor="weight">
+            <label htmlFor="weight" className={style.label}>
               Poids
               <input
+                className={style.input}
                 type="number"
                 placeholder="kg"
                 name="weight"
@@ -168,18 +171,22 @@ function NewTracking() {
               />
             </label>
 
-            <label htmlFor="notes">
-              Notes / commentaires
+            <label htmlFor="notes" className={style.label}>
               <input
+                className={style.input}
                 type="text"
-                placeholder="Commentaires"
+                placeholder="Mes notes"
                 name="comments"
                 value={newTracking.comments}
                 onChange={handleChangeNewTracking}
               />
             </label>
 
-            <input type="submit" value="valider" />
+            <input
+              type="submit"
+              value="valider"
+              className={style.SubmitButton}
+            />
           </form>
           <button
             type="button"
@@ -197,7 +204,10 @@ function NewTracking() {
           setNewEntryOpen(true);
         }}
       >
-        <TbCirclePlusFilled size={30} />
+        <TbCirclePlusFilled
+          size={window.innerWidth < 768 ? 50 : 70}
+          color="#7b5cb9"
+        />
       </button>
     </>
   );

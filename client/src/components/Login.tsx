@@ -12,12 +12,17 @@ import style from "../styles/Accueil.module.css";
 
 interface RegisterProps {
   setModaleInscriptionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setConnexionOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isConnexionOpen: boolean;
 }
 
-function Login({ setModaleInscriptionOpen }: RegisterProps) {
+function Login({
+  setModaleInscriptionOpen,
+  setConnexionOpen,
+  isConnexionOpen,
+}: RegisterProps) {
   const { handleLogin } = useAuth();
   const nav = useNavigate();
-  const [isConnexionOpen, setConnexionOpen] = useState(false);
   const [login, setLogin] = useState({
     email: "",
     password: "",

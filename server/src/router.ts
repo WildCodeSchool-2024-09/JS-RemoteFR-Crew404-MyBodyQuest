@@ -53,6 +53,7 @@ router.post("/api/levels", levelsActions.add);
 /* ************************************************************************* */
 import userActions from "./modules/users/usersActions";
 router.get("/api/users", userActions.browse);
+router.get("/api/user/me", userActions.me);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", userActions.add);
 router.put("/api/users/:id", userActions.edit);
