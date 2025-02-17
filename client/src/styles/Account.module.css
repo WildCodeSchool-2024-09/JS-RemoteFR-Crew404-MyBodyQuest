@@ -65,3 +65,33 @@
   flex-direction: row;
   gap: 1em;
 }
+
+.acc_title {
+  font-family: var(--title-font);
+  color: white;
+  background-color: var(--bg-color-green);
+  border-radius: 5em;
+  font-size: var(--title-font);
+  padding: 1em;
+  margin: auto;
+  width: 7em;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 768px) {
+  .account {
+    width: 50vw;
+    height: 65vh;
+    margin-left: 24vw;
+  }
+
+  .valid {
+    width: 10rem;
+    height: 2rem;
+    margin-left: 25rem;
+    margin-top: 1rem;
+  }
+}
