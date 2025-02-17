@@ -24,8 +24,6 @@ const TrackingContext = createContext<TrackingContextType | null>(null);
 export function TrackingProvider({ children }: { children: React.ReactNode }) {
   const [trackingData, setTrackingData] = useState<TrackingData[]>([]);
 
-  console.info(trackingData);
-
   useEffect(() => {
     const fetchTrackingData = async () => {
       try {
