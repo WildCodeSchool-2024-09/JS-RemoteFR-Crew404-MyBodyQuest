@@ -20,11 +20,13 @@ function PreviewQuestsCard({ quests }: PreviewQuestsCardProps) {
           </section>
         </article>
       ))}
-      <Link to="/quests">
-        <button type="button" className={styles.questsButton}>
-          Voir plus de quêtes
-        </button>
-      </Link>
+      <section className={styles.redirectionButton}>
+        <Link to="/quests">
+          <button type="button" className={styles.questsButton}>
+            Voir plus de quêtes
+          </button>
+        </Link>
+      </section>
     </section>
   );
 }
