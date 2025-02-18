@@ -134,16 +134,6 @@ export default function Account() {
             />
           </label>
 
-          <section className={style.frequency}>
-            <p>Fréquence de pesée</p>
-            <button type="button" className={style.oneweek}>
-              1 fois/sem
-            </button>
-            <button type="button" className={style.twoweek}>
-              1 fois/2sem
-            </button>
-          </section>
-
           <button type="submit" className={style.valid}>
             Valider
           </button>
