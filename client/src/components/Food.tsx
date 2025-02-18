@@ -83,6 +83,19 @@ const Food = () => {
       );
   };
 
+  const RecipeInstructions = ({ instructions }: { instructions: string }) => {
+    const steps = instructions
+      .split(/\r\n|\n|\./) // Coupe sur les sauts de ligne ou les points
+      .filter((step) => step !== ""); // Évite les éléments vides
+    return (
+      <ol>
+        {steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    );
+  };
+
   return (
     <section className={style.foodContainer}>
       <h1 className={style.pageTitle}>Alimentation</h1>
@@ -179,16 +192,18 @@ const Food = () => {
 
       {/* Affichage des détails d'une recette */}
       {recetteSelectionnee && (
-        <section className={style.detailRecette}>
+        <section className={style.recetteContainer}>
           <h2 className={style.nomRecette}>{recetteSelectionnee.strMeal}</h2>
           <img
             className={style.photoRecette}
             src={recetteSelectionnee.strMealThumb}
             alt={recetteSelectionnee.strMeal}
           />
-          <h3>Recette</h3>
+          <h3 className={style.instructionsTitle}>Instructions</h3>
           <p className={style.instructionsRecette}>
-            {recetteSelectionnee.strInstructions}
+            <RecipeInstructions
+              instructions={recetteSelectionnee.strInstructions}
+            />
           </p>
           <button
             type="button"

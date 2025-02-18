@@ -21,7 +21,8 @@
   margin-bottom: 1rem;
 }
 
-.instructionsRecipe {
+.instructionsRecette {
   max-width: 80rem;
   line-height: 1.7;
+  background-color: var(--bg--color-light);
 }
