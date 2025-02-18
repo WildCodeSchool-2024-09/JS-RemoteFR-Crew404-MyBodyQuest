@@ -29,10 +29,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 20em;
+  height: auto;
   border-radius: 1.2em;
   padding: 0.5em;
   width: 100%;
+}
+
+.widgetsTitle {
+  background-color: var(--bg-color-green);
+  color: white;
+  padding: 0.6em;
+  border-radius: 2em;
 }
 
 .questsArticles {
@@ -40,18 +47,42 @@
   grid-template-columns: repeat(1, 1fr);
   width: 100%;
   max-width: 100px;
-  padding: 1em;
+  padding: 0.5em;
   gap: 0.5rem;
   justify-content: center;
 }
 
 .questContent {
+  border-radius: 2em;
   background: white;
   padding: 1em;
+  padding-top: 0;
+  padding-right: 0;
   border-radius: 0.8em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   width: 10rem;
-  height: 12rem;
+  height: 13rem;
+}
+
+.myQuests {
+  background-color: var(--bg-color-green);
+  color: white;
+  padding: 0.6em;
+  border-radius: 2em;
+}
+
+.questXp {
+  background-color: var(--bg-color-green);
+  border-radius: 2em;
+  height: 1.6rem;
+  padding: 0.4em;
+  margin: 0;
+}
+
+.questXpContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .foodCard {
@@ -77,11 +108,30 @@
   width: 70%;
   height: auto;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 /* Desktop */
 @media screen and (min-width: 768px) {
+  .widgetStats,
+  .widgetTracking,
+  .widgetQuests,
+  .widgetSeasonalRecipe {
+    background-color: #f2f0f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30em;
+    border-radius: 1.2em;
+    padding: 0.5em;
+    width: 100%;
+  }
+  .widgetsTitle {
+    margin-top: -22em;
+    position: absolute;
+  }
+
   .mainDashoard {
     padding: 5em;
   }
@@ -93,28 +143,55 @@
   }
 
   /* Quests */
+
   .questsArticles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
     max-width: 70rem;
-    margin: 1rem auto;
+    margin-left: 1.5rem;
     justify-content: center;
-    padding-right: 3.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 5rem;
+    padding-top: -15rem;
   }
 
   .myQuests {
-    margin-top: 11rem;
+    margin-top: 15rem;
+    background-color: var(--bg-color-green);
+    color: white;
+    padding: 0.6em;
+    border-radius: 2em;
   }
 
   .questContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 1em;
+    padding-right: 0;
   }
-  .redirectionButton {
+
+  .questsButton {
+    margin: 0 1em 1em 1em;
+  }
+
+  .questXp {
+    margin-top: -0.2em;
+    margin-right: -0.1em;
+    padding: 0.6em;
+  }
+
+  .questTitleAndObj {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 0 1em 1em 1em;
+  }
+
+  .redirectionButtonQuests {
     margin-top: 3rem;
     grid-area: 2 / 2 / 3 / 3;
   }
@@ -122,14 +199,20 @@
   /* Food */
   .widgetSeasonalRecipe {
     gap: 0.7em;
+    height: 30rem;
   }
 
   .foodCard {
     width: 300px;
   }
 
-  .widgetQuests,
-  .widgetSeasonalRecipe {
-    max-height: 25rem;
+  .foodImage {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  .recipeTitle {
+    margin-top: 5rem;
   }
 }

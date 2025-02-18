@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import HelloUserDashboard from "../components/HelloUserDashboard";
 import ProgressBar from "../components/ProgressBar";
-import PreviewTrackingCard from "../components/previewTrackingCard";
 import { useAuth } from "../context/AuthContext";
 import type { TrackingData } from "../context/TrackingContext";
 import api from "../services/api";
@@ -11,6 +10,7 @@ import type { Quest, User } from "../types/interface";
 import Chart from "./Chart";
 import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
+import PreviewTrackingCard from "./PreviewTrackingCard";
 
 function Dashboard() {
   const dataUser = useLoaderData() as User;
@@ -53,14 +53,14 @@ function Dashboard() {
       <ProgressBar />
       <section className={styles.widgetsDashboard}>
         <article className={styles.widgetStats}>
-          <h2>Mon suivi</h2>
+          <h2 className={styles.widgetsTitle}>Mon suivi</h2>
           <Link to="/tracking">
             <Chart selectedDataType="Poids" selectedRange={[null, null]} />
           </Link>
         </article>
 
         <article className={styles.widgetTracking}>
-          <h2>Mes stats</h2>
+          <h2 className={styles.widgetsTitle}>Dernière entrée</h2>
           {trackings.length > 0 ? (
             <PreviewTrackingCard tracking={trackings[0]} />
           ) : (
@@ -76,7 +76,7 @@ function Dashboard() {
 
         {/* Aperçu de la recette */}
         <article className={styles.widgetSeasonalRecipe}>
-          <h2>Recette du jour !</h2>
+          <h2 className={styles.widgetsTitle}>Recette du jour !</h2>
           <PreviewFoodCard />
         </article>
       </section>
