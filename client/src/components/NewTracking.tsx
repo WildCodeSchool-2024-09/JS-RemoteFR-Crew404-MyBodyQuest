@@ -47,6 +47,7 @@ function NewTracking() {
           const response = await api.get("/api/trackings");
           setTrackingData?.(response.data); // Je met à jour le contexte avec l'ensemble des données fetchées
           success("Nouvelle entrée ajoutée");
+          setNewEntryOpen(false);
         }
       } catch (error) {
         failed("Erreur lors de l'ajout de la nouvelle entrée");
