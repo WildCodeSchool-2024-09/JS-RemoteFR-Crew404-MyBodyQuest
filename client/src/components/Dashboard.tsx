@@ -10,7 +10,7 @@ import type { Quest, User } from "../types/interface";
 import Chart from "./Chart";
 import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
-import PreviewTrackingCard from "./PreviewTrackingCard";
+import PreviewTrackingCard from "./PreviewTrackingsCard";
 
 function Dashboard() {
   const dataUser = useLoaderData() as User;
