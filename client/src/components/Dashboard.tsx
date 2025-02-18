@@ -8,9 +8,9 @@ import api from "../services/api";
 import styles from "../styles/Dashboard.module.css";
 import type { Quest, User } from "../types/interface";
 import Chart from "./Chart";
+import PrevTrackingCard from "./PrevTrackingCard";
 import PreviewFoodCard from "./PreviewFoodCard";
 import PreviewQuestsCard from "./PreviewQuestCard";
-import PreviewTrackingCard from "./PreviewTrackingsCard";
 
 function Dashboard() {
   const dataUser = useLoaderData() as User;
@@ -62,7 +62,7 @@ function Dashboard() {
         <article className={styles.widgetTracking}>
           <h2 className={styles.widgetsTitle}>Dernière entrée</h2>
           {trackings.length > 0 ? (
-            <PreviewTrackingCard tracking={trackings[0]} />
+            <PrevTrackingCard tracking={trackings[0]} />
           ) : (
             <p>Aucune donnée disponible.</p>
           )}

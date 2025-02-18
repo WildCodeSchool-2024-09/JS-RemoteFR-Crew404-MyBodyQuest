@@ -2,13 +2,11 @@ import type React from "react";
 import type { TrackingData } from "../context/TrackingContext";
 import style from "../styles/PreviewTrackingCard.module.css";
 
-interface PreviewTrackingsCardProps {
+interface PrevTrackingsCardProps {
   tracking: TrackingData;
 }
 
-const PreviewTrackingsCard: React.FC<PreviewTrackingsCardProps> = ({
-  tracking,
-}) => {
+const PrevTrackingsCard: React.FC<PrevTrackingsCardProps> = ({ tracking }) => {
   return (
     <div className={style.card}>
       <h3 className={style.date}>
@@ -46,4 +44,4 @@ const PreviewTrackingsCard: React.FC<PreviewTrackingsCardProps> = ({
   );
 };
 
-export default PreviewTrackingsCard;
+export default PrevTrackingsCard;
