@@ -39,7 +39,7 @@
 }
 
 .bienvenue {
-  margin: 5em 0.5em;
+  margin: 5em 0.5em 2em 0.5em;
   border-radius: 2rem;
   height: auto;
   background-color: var(--bg-color-light);
@@ -51,7 +51,7 @@
 
 .titleh1 {
   color: var(--bg-color-green);
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
   margin-top: 0.8em;
 }
@@ -60,7 +60,7 @@
   color: var(--bg-color-purple);
   font-size: var(--fontsize-title);
   text-align: center;
-  margin: auto;
+  margin: 0 1;
 }
 
 .intro {
@@ -71,7 +71,6 @@
 
 .imgMetreRuban {
   width: 5em;
-  margin-left: 7em;
   margin-top: 0.5em;
 }
 
@@ -88,18 +87,18 @@
 
 .balance {
   width: 2.8em;
-  margin-right: 11em;
+  margin-top: 0.5em;
 }
 
 .xp_img {
-  width: 2.2em;
-  margin-left: 14em;
+  width: 2.4em;
+  margin: 0.3em;
   border-radius: 1.4em;
 }
 
 .progress_bar {
-  width: 15em;
-  margin-top: 0.6em;
+  width: 16em;
+  margin-top: 0.7em;
 }
 
 .buttonContainer {
@@ -113,7 +112,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  margin-top: 2em;
+  margin-top: 2.2em;
   padding: 0.5em 1em;
   color: white;
   border-radius: 0.6em;
