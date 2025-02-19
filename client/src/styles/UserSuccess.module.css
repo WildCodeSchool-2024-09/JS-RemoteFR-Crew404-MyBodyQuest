@@ -1,10 +1,9 @@
 .background {
-  border-radius: 2rem;
-  margin-top: 10rem;
-  margin-left: 40rem;
-  height: 30rem;
-  width: 50rem;
   background-color: var(--bg-color-light);
+  border-radius: 20px;
+  margin-top: 15rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 @property --k {
@@ -42,5 +41,20 @@ svg[height="0"] {
 
 .wip {
   text-align: center;
-  padding-top: 8rem;
+  padding: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    margin-top: 10rem;
+    margin-left: 30rem;
+    margin-right: 30rem;
+    height: 25rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .wip {
+    padding: 5rem;
+  }
 }
