@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import style from "../styles/UserSuccess.module.css";
 import type { Success } from "../types/interface";
 
 // Fonction pour récupérer le nom et l'image du succès débloqué
@@ -21,8 +22,8 @@ function UserSuccess() {
   }, []);
 
   return (
-    <section>
-      <h1>Mes Succès</h1>
+    <section className={style.background}>
+      <h1 className={style.wip}>Work in progress</h1>
       {successes.length > 0 && (
         <section>
           {successes.map((succes) => (
