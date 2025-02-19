@@ -32,46 +32,50 @@ function Accueil() {
           <h2 className={style.titleh2}>
             Une plateforme qui allie bien-être et engagement ludique
           </h2>
-          <section className={style.introSuivi}>
+          <section>
             <h3 className={style.intro}>
               Ce site a été conçu pour répondre aux besoins des personnes
               souhaitant perdre du poids ou prendre de la masse
               <br />
               en leur offrant un accompagnement personnalisé
             </h3>
-
-            <img
-              src={metre_ruban}
-              alt="img_mètre_ruban"
-              className={style.imgMetreRuban}
-            />
-            <section>
-              <ul className={style.lists}>
-                <li className={style.listItem}>
-                  Suivi avec courbe de progression
-                </li>
-                <li className={style.listItem}>Statistiques personnalisées</li>
-                <li className={style.listItem}>Un maximum de recettes</li>
-              </ul>
+            <section className={style.introSuivi}>
+              <img
+                src={metre_ruban}
+                alt="img_mètre_ruban"
+                className={style.imgMetreRuban}
+              />
+              <section>
+                <ul className={style.lists}>
+                  <li className={style.listItem}>
+                    Suivi avec courbe de progression
+                  </li>
+                  <li className={style.listItem}>
+                    Statistiques personnalisées
+                  </li>
+                  <li className={style.listItem}>Un maximum de recettes</li>
+                </ul>
+              </section>
+              <img src={balance} alt="img_balance" className={style.balance} />
             </section>
-            <img src={balance} alt="img_balance" className={style.balance} />
-
             <h3 className={style.intro}>
               Et une approche ludique qui rend chaque étape motivante et
               gratifiante
             </h3>
-            <img src={xp_img} alt="xp_img" className={style.xp_img} />
-            <section>
-              <ul className={style.lists}>
-                <li className={style.listItem}>Des quêtes à relever</li>
-                <li className={style.listItem}>Des niveaux à atteindre</li>
-              </ul>
-            </section>
+            <section className={style.introGame}>
+              <img src={xp_img} alt="xp_img" className={style.xp_img} />
+              <section>
+                <ul className={style.lists}>
+                  <li className={style.listItem}>Des quêtes à relever</li>
+                  <li className={style.listItem}>Des niveaux à atteindre</li>
+                </ul>
+              </section>
+            </section>{" "}
             <img
               src={progress_bar}
               alt="progress_bar"
               className={style.progress_bar}
-            />
+            />{" "}
           </section>
           <section className={style.buttonContainer}>
             <button

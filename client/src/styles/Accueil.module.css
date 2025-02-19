@@ -309,53 +309,16 @@
 /* DESKTOP  */
 
 @media screen and (min-width: 768px) {
-  .headercontainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
   .pageAccueil {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .titleh1 {
-    color: var(--bg-color-green);
-    font-size: 4rem;
-  }
-
-  .titleh2 {
-    color: var(--bg-color-purple);
-    font-size: 2.5rem;
-  }
-
-  .intro {
-    font-size: 1.4rem;
-  }
-
-  .bienvenue {
-    margin-top: 10rem;
-    border-radius: 2rem;
-    padding: 1.5rem;
-    height: 30rem;
-    width: 100rem;
-    background-color: var(--bg-color-light);
+  .headercontainer {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-  }
-
-  .questionnaire {
-    background-color: var(--bg-color-purple);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-family: "Libre Franklin", serif;
-    width: 18rem;
-    height: auto;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   }
 
   .logo {
@@ -380,6 +343,90 @@
     color: white;
     border: none;
     border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: "Libre Franklin", serif;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .bienvenue {
+    margin: 7em 0;
+    border-radius: 2em;
+    height: auto;
+    min-width: 70%;
+    background-color: var(--bg-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .titleh1 {
+    color: var(--bg-color-green);
+    font-size: 2.4em;
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .titleh2 {
+    color: var(--bg-color-purple);
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0.5em;
+  }
+
+  .intro {
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 1em;
+    padding: 1em;
+  }
+
+  .introSuivi {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+
+  .introGame {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .imgMetreRuban {
+    width: 7em;
+    margin-top: 0.5em;
+  }
+
+  .listItem {
+    font-size: var(--fontsize-title);
+  }
+
+  .balance {
+    width: 5em;
+    margin-right: 5em;
+  }
+
+  .xp_img {
+    width: 3em;
+    border-radius: 1.4em;
+    margin-top: 1em;
+    margin-left: auto;
+  }
+
+  .progress_bar {
+    width: 20em;
+    margin-top: 1.5em;
+  }
+
+  .buttonContainer {
+    margin-bottom: 1.4em;
+  }
+
+  .questionnaire {
+    background-color: var(--bg-color-purple);
+    color: white;
+    border: none;
+    border-radius: 1em;
     cursor: pointer;
     font-size: 1.5rem;
     font-family: "Libre Franklin", serif;
