@@ -15,6 +15,24 @@ interface RegisterProps {
   setConnexionOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface RegisterState {
+  id: number;
+  firstname: string;
+  lastname: string;
+  avatar: string;
+  birthday_date: string;
+  size: number | null;
+  initial_weight: number | null;
+  desired_weight: number | null;
+  weight_frequency: string;
+  sexe: string;
+  objective: string;
+  email: string;
+  password: string;
+  current_xp: number;
+  level: number;
+}
+
 function Register({
   isModaleInscriptionOpen,
   setModaleInscriptionOpen,
@@ -23,15 +41,15 @@ function Register({
   const { handleRegister } = useAuth();
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [register, setRegister] = useState({
+  const [register, setRegister] = useState<RegisterState>({
     id: 0,
     firstname: "",
     lastname: "",
     avatar: "",
     birthday_date: "",
-    size: 0,
-    initial_weight: 0,
-    desired_weight: 0,
+    size: null,
+    initial_weight: null,
+    desired_weight: null,
     weight_frequency: "",
     sexe: "",
     objective: "",
@@ -71,7 +89,12 @@ function Register({
     try {
       const response = await api.post("/api/register", formData); // Envoi des données du formulaire d'inscription à l'API
       if (response.status === 201) {
-        handleRegister(register);
+        handleRegister({
+          ...register,
+          size: register.size || 0,
+          initial_weight: register.initial_weight || 0,
+          desired_weight: register.desired_weight || 0,
+        });
         success(`Bonjour ${register.firstname}, ton compte a bien été créé !`);
         setTimeout(() => {
           setModaleInscriptionOpen(false);
@@ -136,7 +159,7 @@ function Register({
                   placeholder="Taille"
                   className={style.inscriptionInput}
                   name="size"
-                  value={register.size}
+                  value={register.size ?? ""}
                   onChange={handleChangeRegister}
                 />
               </section>
@@ -146,7 +169,7 @@ function Register({
                   placeholder="Votre poids actuel"
                   className={style.inscriptionInput}
                   name="initial_weight"
-                  value={register.initial_weight}
+                  value={register.initial_weight ?? ""}
                   onChange={handleChangeRegister}
                 />
                 <input
@@ -154,7 +177,7 @@ function Register({
                   placeholder="Votre poids souhaité"
                   className={style.inscriptionInput}
                   name="desired_weight"
-                  value={register.desired_weight}
+                  value={register.desired_weight ?? ""}
                   onChange={handleChangeRegister}
                 />
               </section>
