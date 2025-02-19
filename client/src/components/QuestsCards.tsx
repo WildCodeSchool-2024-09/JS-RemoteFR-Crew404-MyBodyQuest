@@ -70,6 +70,7 @@ function QuestsCards() {
           <section className={styles.questsCheckbox}>
             <input
               type="checkbox"
+              className={styles.check}
               checked={quest.is_done || false}
               onChange={() => handleCheckboxChange(quest.id)}
               disabled={quest.is_done}

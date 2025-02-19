@@ -74,3 +74,26 @@
   margin-right: 0.5em;
   margin-bottom: 0.4em;
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid var(--bg-color-purple);
+  border-radius: 0.2em;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "";
+  position: absolute;
+  bottom: 0.1em;
+  right: 0.1em;
+  left: 0.1em;
+  width: 0.8em;
+  height: 0.8em;
+  background-color: var(--bg-color-purple);
+  border-radius: 0.2em;
+}
