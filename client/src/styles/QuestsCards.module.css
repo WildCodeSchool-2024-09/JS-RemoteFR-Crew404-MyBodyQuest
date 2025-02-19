@@ -30,6 +30,7 @@
 
 .questXp {
   background-color: var(--bg-color-green);
+  color: white;
   border-radius: 2em;
   height: 1.6em;
   padding: 0.6em;
