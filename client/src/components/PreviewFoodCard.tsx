@@ -40,7 +40,7 @@ const PreviewFoodCard = () => {
 
   return (
     <section className={style.foodCard}>
-      <h3>{randomRecipe.strMeal}</h3>
+      <h3 className={style.recipeTitle}>{randomRecipe.strMeal}</h3>
       <img
         className={style.foodImage}
         src={randomRecipe.strMealThumb}
