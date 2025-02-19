@@ -91,26 +91,30 @@ function Login({
             </section>
 
             <form className={style.inputContainer} onSubmit={handleSubmitLogin}>
-              <IoMail size={15} />
-              <input
-                type="email"
-                id="email-login"
-                name="email"
-                placeholder="Votre email"
-                value={login.email}
-                className={style.inputField}
-                onChange={handleChangeLogin}
-              />
-              <FaLock className={style.logoMdp} size={15} />
-              <input
-                type="password"
-                name="password"
-                id="password-login"
-                placeholder="Votre mot de passe"
-                value={login.password}
-                className={style.inputField}
-                onChange={handleChangeLogin}
-              />
+              <section className={style.inputconnexion}>
+                <IoMail size={15} />
+                <input
+                  type="email"
+                  id="email-login"
+                  name="email"
+                  placeholder="Votre email"
+                  value={login.email}
+                  className={style.inputField}
+                  onChange={handleChangeLogin}
+                />
+              </section>
+              <section className={style.inputconnexion2}>
+                <FaLock className={style.logoMdp} size={15} />
+                <input
+                  type="password"
+                  name="password"
+                  id="password-login"
+                  placeholder="Votre mot de passe"
+                  value={login.password}
+                  className={style.inputField}
+                  onChange={handleChangeLogin}
+                />
+              </section>
               <button type="submit" className={style.buttonConnexion}>
                 Connexion
               </button>

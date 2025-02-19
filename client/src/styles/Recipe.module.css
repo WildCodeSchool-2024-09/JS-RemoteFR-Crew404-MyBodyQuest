@@ -26,3 +26,27 @@
   line-height: 1.7;
   background-color: var(--bg--color-light);
 }
+.instructionsTitle {
+  background-color: var(--bg-color-purple);
+  padding: 0.5rem;
+  color: white;
+  border-radius: 5px;
+}
+
+.instructionsRecette {
+  background-color: var(--bg-color-light);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.instructionsRecette ol {
+  background-color: var(--bg-color-light);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 90%;
+}
