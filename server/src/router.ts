@@ -78,6 +78,7 @@ router.get("/api/quests", questsActions.browse);
 router.get("/api/quests/:id", questsActions.read);
 router.post("/api/quests", questsActions.add);
 router.post("/api/user_quest", questsActions.edit);
+router.get("/api/user_quest", questsActions.browseAllQuestDone);
 
 /* ************************************************************************* */
 // Category

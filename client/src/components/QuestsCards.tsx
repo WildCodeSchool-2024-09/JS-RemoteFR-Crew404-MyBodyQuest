@@ -6,8 +6,9 @@ import styles from "../styles/QuestsCards.module.css";
 import type { Quest } from "../types/interface";
 
 function QuestsCards() {
-  const [quests, setQuests] = useState<Quest[]>([]);
   const { selectedCategory } = useContext(CategoryContext);
+  const [quests, setQuests] = useState<Quest[]>([]);
+  const [questsDone, setQuestsDone] = useState<number[]>([]);
   const [filteredQuests, setFilteredQuests] = useState<Quest[]>([]);
 
   useEffect(() => {
@@ -21,8 +22,27 @@ function QuestsCards() {
         console.error(error);
       }
     };
+
+    const getQuestDone = async () => {
+      try {
+        const res = await api.get("/api/user_quest");
+        const completedQuests = res.data.map(
+          (quest: { quest_id: number }) => quest.quest_id,
+        );
+        setQuestsDone(completedQuests);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getQuestDone();
     getCards();
   }, []);
+
+  // biome-ignore lint: useExhaustiveDependencies
+  useEffect(() => {
+    const filtered = quests.filter((quest) => !questsDone.includes(quest.id));
+    setQuests(filtered);
+  }, [questsDone]);
 
   useEffect(() => {
     if (!selectedCategory) {

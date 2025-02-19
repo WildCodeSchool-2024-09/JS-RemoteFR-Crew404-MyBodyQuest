@@ -71,12 +71,20 @@ class QuestsRepository {
   }
 
   async updateLevelAndXP(level: number, xp: number, id: number) {
-    console.info(level, xp);
     const [result] = await databaseClient.query<Result>(
       "UPDATE users SET level = ?, current_xp = ?  WHERE id = ?",
       [level, xp, id],
     );
     return result.affectedRows;
+  }
+
+  async getAllQuestsDone(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM user_quests WHERE user_id = ?",
+      [id],
+    );
+
+    return rows;
   }
 
   // The D of CRUD - Delete operation

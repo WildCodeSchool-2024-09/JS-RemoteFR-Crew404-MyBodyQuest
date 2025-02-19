@@ -104,4 +104,21 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add };
+const browseAllQuestDone: RequestHandler = async (req, res, next) => {
+  if (!req.body.user) {
+    res.status(401).json({ message: "Unautorized" });
+    return;
+  }
+
+  try {
+    const allQuestsDone = await questsRepository.getAllQuestsDone(
+      req.body.user.id,
+    );
+
+    res.json(allQuestsDone);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, read, edit, add, browseAllQuestDone };
