@@ -36,7 +36,18 @@ const Recipe = () => {
   if (!recipe) {
     return <div>Chargement...</div>;
   }
-
+  const RecipeInstructions = ({ instructions }: { instructions: string }) => {
+    const steps = instructions
+      .split(/\r\n|\n|\./) // Coupe sur les sauts de ligne ou les points
+      .filter((step) => step !== ""); // Évite les éléments vides
+    return (
+      <ol>
+        {steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    );
+  };
   return (
     <section className={style.detailRecipe}>
       <h2 className={style.nameRecipe}>{recipe.strMeal}</h2>
@@ -45,8 +56,10 @@ const Recipe = () => {
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
       />
-      <h3>Recette</h3>
-      <p className={style.instructionsRecipe}>{recipe.strInstructions}</p>
+      <h3 className={style.instructionsTitle}>Recette</h3>
+      <p className={style.instructionsRecette}>
+        <RecipeInstructions instructions={recipe.strInstructions} />
+      </p>
       <button
         type="button"
         onClick={() => navigate(-1)}
