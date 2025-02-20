@@ -49,7 +49,7 @@ const edit: RequestHandler = async (req, res, next) => {
       lastname: req.body.lastname,
       size: req.body.size,
       objective: req.body.objective,
-      initial_weight: req.body.original_weight,
+      initial_weight: req.body.initial_weight,
       desired_weight: req.body.desired_weight,
       weight_frequency: req.body.weight_frequency,
     };

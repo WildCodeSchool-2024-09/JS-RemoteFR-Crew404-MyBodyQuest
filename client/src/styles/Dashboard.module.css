@@ -166,6 +166,7 @@
     width: 100%;
     max-width: 70rem;
     margin-left: 1.5rem;
+    margin-top: 6rem;
     justify-content: center;
   }
 
@@ -197,7 +198,7 @@
   }
 
   .questXp {
-    margin-top: -0.2em;
+    margin-top: 0.5em;
     margin-right: -0.1em;
     padding: 0.6em;
   }
