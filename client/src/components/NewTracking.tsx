@@ -12,6 +12,7 @@ function NewTracking() {
   const { user } = useAuth();
   const trackingContext = useTracking();
   const setTrackingData = trackingContext?.setTrackingData;
+  const setIsNewData = trackingContext?.setIsNewData;
   const [newTracking, setNewTracking] = useState({
     entryDate: "",
     waistline: "",
@@ -48,6 +49,7 @@ function NewTracking() {
           setTrackingData?.(response.data); // Je met à jour le contexte avec l'ensemble des données fetchées
           success("Nouvelle entrée ajoutée");
           setNewEntryOpen(false);
+          setIsNewData?.(true);
         }
       } catch (error) {
         failed("Erreur lors de l'ajout de la nouvelle entrée");

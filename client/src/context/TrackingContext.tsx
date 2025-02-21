@@ -17,13 +17,17 @@ export type TrackingData = {
 
 type TrackingContextType = {
   trackingData: TrackingData[];
+  setIsNewData: (data: boolean) => void;
   setTrackingData: (TrackingData: TrackingData[]) => void;
 };
 const TrackingContext = createContext<TrackingContextType | null>(null);
 
 export function TrackingProvider({ children }: { children: React.ReactNode }) {
   const [trackingData, setTrackingData] = useState<TrackingData[]>([]);
+  const [isNewData, setIsNewData] = useState(false);
+  const [, setIsLoading] = useState(true);
 
+  // biome-ignore lint: useExhaustiveDependencies
   useEffect(() => {
     const fetchTrackingData = async () => {
       try {
@@ -41,16 +45,22 @@ export function TrackingProvider({ children }: { children: React.ReactNode }) {
           "Erreur lors du chargement des données de suivi :",
           error,
         );
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    if (trackingData.length === 0) {
+    if (!trackingData.length) {
       fetchTrackingData();
+    } else {
+      setIsLoading(false);
     }
-  }, [trackingData]);
+  }, [isNewData]);
 
   return (
-    <TrackingContext.Provider value={{ trackingData, setTrackingData }}>
+    <TrackingContext.Provider
+      value={{ trackingData, setTrackingData, setIsNewData }}
+    >
       {children}
     </TrackingContext.Provider>
   );
